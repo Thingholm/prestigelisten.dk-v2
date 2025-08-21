@@ -7,7 +7,7 @@ export const getAllRiderPointsWithNationAndTeam = unstable_cache(async () => {
     
     if (error) { throw error; }
 
-    return data as RiderPointsWithNation;
+    return data as RiderPointsWithNationAndTeam;
 
 }, ["allRiderPointsWithNation"], { revalidate: 60 * 60 });
 
@@ -28,4 +28,4 @@ const riderPointsWithNationAndTeamQuery = supabase
         )
         .order("points", { ascending: false });
 
-export type RiderPointsWithNation = QueryData<typeof riderPointsWithNationAndTeamQuery>
+export type RiderPointsWithNationAndTeam = QueryData<typeof riderPointsWithNationAndTeamQuery>

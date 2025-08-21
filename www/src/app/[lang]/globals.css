@@ -1,4 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-primary-50: #feffe7;
+  --color-primary-100: #faffc1;
+  --color-primary-200: #faff86;
+  --color-primary-300: #ffff41;
+  --color-primary-400: #fff20e;
+  --color-primary-500: #fee402;
+  --color-primary-600: #d0a900;
+  --color-primary-700: #a67a02;
+  --color-primary-800: #895f0a;
+  --color-primary-900: #744d0f;
+  --color-primary-950: #442904;
+
+  --color-secondary-50: #f6f6f6;
+  --color-secondary-100: #e7e7e7;
+  --color-secondary-200: #d1d1d1;
+  --color-secondary-300: #b0b0b0;
+  --color-secondary-400: #888888;
+  --color-secondary-500: #6d6d6d;
+  --color-secondary-600: #5d5d5d;
+  --color-secondary-700: #4f4f4f;
+  --color-secondary-800: #454545;
+  --color-secondary-900: #3d3d3d;
+  --color-secondary-950: #171717;
+
+  --font-inter: 'Inter', sans-serif;
+}
+
+@source inline("sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden hidden");
 
 :root {
   --background: #ffffff;

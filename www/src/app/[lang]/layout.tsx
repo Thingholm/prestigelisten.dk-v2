@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import "../../../node_modules/flag-icons/css/flag-icons.min.css";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +14,7 @@ export default async function RootLayout({
   params
 }: Readonly<{
   children: React.ReactNode;
-  params: { lang: "en" | "da" };
+  params: Promise<{ lang: "en" | "da" }>;
 }>) {
   const messages = await getMessages();
   const { lang } = await params;
@@ -28,7 +23,7 @@ export default async function RootLayout({
     <html lang={lang}>
       <NextIntlClientProvider messages={messages}>
         <body
-            className={`${inter.variable} antialiased overflow-x-hidden text-sm sm:text-base flex flex-col min-h-screen`}
+            className={`font-inter antialiased overflow-x-hidden text-sm sm:text-[0.938rem] flex flex-col min-h-screen`}
         >
           {children}
         </body>
