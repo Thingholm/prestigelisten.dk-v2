@@ -5,7 +5,8 @@ import SecondaryCellSpan from "./SecondaryCellSpan";
 
 export type SecondarySpanProps = {
     content: React.ReactNode;
-    breakpoint: ScreenBreakpoint;
+    breakpoint?: ScreenBreakpoint;
+    inlineBreakpoint?: ScreenBreakpoint | "always";
 }
 
 export default function TableCell({
@@ -24,9 +25,14 @@ export default function TableCell({
     secondarySpan?: SecondarySpanProps;
 }>) {
     let content = children;
+    let secondarySpanContent = secondarySpan?.content;
 
     if (typeof children === "number" && !noFormat) {
         content = formatNumber(children);
+    }
+
+    if (typeof secondarySpan?.content === "number" && !noFormat) {
+        secondarySpanContent = formatNumber(secondarySpan?.content);
     }
 
     return (
@@ -38,8 +44,8 @@ export default function TableCell({
                 }
             </span>
             {secondarySpan &&
-                <SecondaryCellSpan breakpoint={secondarySpan.breakpoint} >
-                    {secondarySpan.content}
+                <SecondaryCellSpan breakpoint={secondarySpan.breakpoint} inlineBreakpoint={secondarySpan.inlineBreakpoint}>
+                    {secondarySpanContent}
                 </SecondaryCellSpan>
             }
         </td>

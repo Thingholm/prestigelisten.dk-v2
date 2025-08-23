@@ -140,6 +140,13 @@ export type Database = {
             foreignKeyName: "fk_meta_races_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
+            referencedRelation: "nation_points_with_rider_counts_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_meta_races_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
             referencedRelation: "nations"
             referencedColumns: ["id"]
           },
@@ -193,6 +200,13 @@ export type Database = {
           points?: number
         }
         Relationships: [
+          {
+            foreignKeyName: "fk_nation_points_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
+            referencedRelation: "nation_points_with_rider_counts_view"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "fk_nation_points_nations_nation_id"
             columns: ["nation_id"]
@@ -257,6 +271,13 @@ export type Database = {
             foreignKeyName: "fk_nation_ranks_yearly_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
+            referencedRelation: "nation_points_with_rider_counts_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_nation_ranks_yearly_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
             referencedRelation: "nations"
             referencedColumns: ["id"]
           },
@@ -313,6 +334,13 @@ export type Database = {
           year?: number
         }
         Relationships: [
+          {
+            foreignKeyName: "fk_nation_ranks_yearly_acc_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
+            referencedRelation: "nation_points_with_rider_counts_view"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "fk_nation_ranks_yearly_acc_nations_nation_id"
             columns: ["nation_id"]
@@ -430,6 +458,13 @@ export type Database = {
           start_year?: number | null
         }
         Relationships: [
+          {
+            foreignKeyName: "fk_prev_nationalities_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
+            referencedRelation: "nation_points_with_rider_counts_view"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "fk_prev_nationalities_nations_nation_id"
             columns: ["nation_id"]
@@ -963,6 +998,13 @@ export type Database = {
             foreignKeyName: "fk_riders_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
+            referencedRelation: "nation_points_with_rider_counts_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_riders_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
             referencedRelation: "nations"
             referencedColumns: ["id"]
           },
@@ -1027,6 +1069,13 @@ export type Database = {
             foreignKeyName: "teams_nation_id_fkey"
             columns: ["nation_id"]
             isOneToOne: false
+            referencedRelation: "nation_points_with_rider_counts_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "teams_nation_id_fkey"
+            columns: ["nation_id"]
+            isOneToOne: false
             referencedRelation: "nations"
             referencedColumns: ["id"]
           },
@@ -1062,6 +1111,21 @@ export type Database = {
       }
     }
     Views: {
+      nation_points_with_rider_counts_view: {
+        Row: {
+          active: boolean | null
+          active_points: number | null
+          active_rider_count: number | null
+          ative_points_per_rider: number | null
+          code: string | null
+          id: number | null
+          name: string | null
+          points: number | null
+          points_per_rider: number | null
+          rider_count: number | null
+        }
+        Relationships: []
+      }
       rider_decade_rankings: {
         Row: {
           decade_start: number | null
@@ -1200,15 +1264,15 @@ export type Database = {
         | "Top 3"
         | "Top 5"
         | "Top 10"
-        | "Bjergtrøje"
-        | "Pointtrøje"
-        | "1. dag i førertrøjen"
-        | "2. dag i førertrøjen"
-        | "3. dag i førertrøjen"
-        | "Øvrig dag i førertrøjen"
+        | "Bjergtr├©je"
+        | "Pointtr├©je"
+        | "1. dag i f├©rertr├©jen"
+        | "2. dag i f├©rertr├©jen"
+        | "3. dag i f├©rertr├©jen"
+        | "├ÿvrig dag i f├©rertr├©jen"
         | "Etapesejr"
         | "Guld"
-        | "Sølv"
+        | "S├©lv"
         | "Bronze"
     }
     CompositeTypes: {
@@ -1342,15 +1406,15 @@ export const Constants = {
         "Top 3",
         "Top 5",
         "Top 10",
-        "Bjergtrøje",
-        "Pointtrøje",
-        "1. dag i førertrøjen",
-        "2. dag i førertrøjen",
-        "3. dag i førertrøjen",
-        "Øvrig dag i førertrøjen",
+        "Bjergtr├©je",
+        "Pointtr├©je",
+        "1. dag i f├©rertr├©jen",
+        "2. dag i f├©rertr├©jen",
+        "3. dag i f├©rertr├©jen",
+        "├ÿvrig dag i f├©rertr├©jen",
         "Etapesejr",
         "Guld",
-        "Sølv",
+        "S├©lv",
         "Bronze",
       ],
     },

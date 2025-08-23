@@ -329,6 +329,10 @@
         "uz": {
             "name": "Uzbekistan",
             "adjective": "Uzbekistani"
+        },
+        "za": {
+            "name": "South Africa",
+            "adjective": "South African"
         }
     },
     "chartTooltips": {
@@ -396,7 +400,7 @@
             "calendar": "Calendar",
             "greatestActiveRiders": "Greatest active riders",
             "greatestDanishRiders": "Greatest danish riders",
-            "greatestNationalities": "Greatest nations",
+            "greatestNations": "Greatest nations",
             "greatestSeasons": "Greatest individual seasons",
             "greatestAlltimeEachYear": "Greatest riders each year",
             "greatest3YearSpan": "Greatest riders over a 3-year span",

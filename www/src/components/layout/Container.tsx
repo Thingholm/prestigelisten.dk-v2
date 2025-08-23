@@ -33,7 +33,10 @@ export default function Container({
                 ? <Link href={href}><Heading /></Link>
                 : <Heading />
             )}
-            {isCard && <Card>{children}</Card>}
+            {isCard 
+                ? <Card>{children}</Card>
+                : children
+            }
         </div>
     );
 }

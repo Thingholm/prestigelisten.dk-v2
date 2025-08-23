@@ -329,6 +329,10 @@
         "uz": {
             "name": "Usbekistan",
             "adjective": "Usbekisk"
+        },
+        "za": {
+            "name": "Sydafrika",
+            "adjective": "Sydafrikansk"
         }
     },
     "chartTooltips": {
@@ -396,7 +400,7 @@
             "calendar": "Kalender",
             "greatestActiveRiders": "Største aktive ryttere",
             "greatestDanishRiders": "Største danske ryttere",
-            "greatestNationalities": "Største nationer",
+            "greatestNations": "Største nationer",
             "greatestSeasons": "Største individuelle sæsoner",
             "greatestAlltimeEachYear": "Største ryttere hvert år",
             "greatest3YearSpan": "Største ryttere over en 3-årig periode",
