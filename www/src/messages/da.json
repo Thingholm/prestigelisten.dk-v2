@@ -1,4 +1,44 @@
 {
+    "getResultNames": {
+        "resultTypes": {
+            "1": "Sejr",
+            "2": "Top 3",
+            "3": "Top 5",
+            "4": "Top 10",
+            "12": "Guld",
+            "13": "Sølv",
+            "14": "Bronze",
+            "6": "Pointtrøje",
+            "5": "Bjergtrøje",
+            "7": "Etapesejr",
+            "8": "1. dag i førertrøjen",
+            "9": "2. dag i førertrøjen",
+            "10": "3. dag i førertrøjen",
+            "11": "Øvrig dag i førertrøjen"
+        },
+        "raceClasses": {
+            "18": "Verdensmester",
+            "20": "Europamester",
+            "16": "Olympisk mester",
+            "19": "Verdensmester i enkeltstart",
+            "21": "Europamester i enkeltstart",
+            "17": "Olympisk mester i enkeltstart",
+            "27": "Verdensmester (amatør)",
+            "22": "Olympisk mester (amatør)",
+            "23": "Olympisk mester (amatør) i enkeltstart"
+        },
+        "suffixes": {
+            "1": ".",
+            "2": ".",
+            "3": ".",
+            "other": "."
+        },
+        "at": "til",
+        "in": "i",
+        "stageIn": "Etape i",
+        "stageInLower": "etape i",
+        "place": "plads"
+    },
     "resultTypes": {
         "win": "Sejr",
         "top3": "Top 3",

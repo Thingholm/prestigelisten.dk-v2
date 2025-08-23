@@ -71,3 +71,16 @@ export function getTeamUrl(team: Team | null) {
 export function getListNationsUrl() {
     return urls["listNations"];
 }
+
+export function getGreatestSeasonsUrl() {
+    return urls["listRidersGreatestSeasons"];
+}
+
+type MetaRace = {
+    id: number;
+    name: string;
+}
+
+export function getRaceUrl(race: MetaRace) {
+    return `${urls["race"]}/${race.id}/${race.name.replaceAll(" ", "_").toLowerCase()}`;
+}

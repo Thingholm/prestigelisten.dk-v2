@@ -1,4 +1,45 @@
+
 {
+    "getResultNames": {
+        "resultTypes": {
+            "1": "Win",
+            "2": "Top 3",
+            "3": "Top 5",
+            "4": "Top 10",
+            "12": "Gold",
+            "13": "Silver",
+            "14": "Bronze",
+            "6": "Points jersey",
+            "5": "Mountain jersey",
+            "7": "Stage win",
+            "8": "1st day in leader's jersey",
+            "9": "2nd day in leader's jersey",
+            "10": "3rd day in leader's jersey",
+            "11": "Other day in leader's jersey"
+        },
+        "raceClasses": {
+            "18": "World champion",
+            "20": "European champion",
+            "16": "Olympic champion",
+            "19": "World champion in ITT",
+            "21": "European champion in ITT",
+            "17": "Olympic champion in ITT",
+            "27": "World champion (amateur)",
+            "22": "Olympic champion (amateur)",
+            "23": "Olympic champion (amateur) in ITT"
+        },
+        "suffixes": {
+            "1": "st",
+            "2": "nd",
+            "3": "rd",
+            "other": "th"
+        },
+        "at": "at",
+        "in": "in",
+        "stageIn": "Stage in",
+        "stageInLower": "stage in",
+        "place": "place"
+    },
     "resultTypes": {
         "win": "Win",
         "top3": "Top 3",
