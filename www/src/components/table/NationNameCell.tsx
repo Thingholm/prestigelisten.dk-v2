@@ -1,6 +1,7 @@
 import { getNationUrl } from "@/lib/helpers/urls";
 import FlagSpan from "./FlagSpan";
 import TableCell from "./TableCell";
+import { useTranslations } from "next-intl";
 
 type Nation = {
     id: number;
@@ -19,10 +20,16 @@ export default function NationNameCell({
     isMain?: boolean;
     isLink?: boolean;
 }>) {
+    const t = useTranslations("nations");
+    const nationName = (nation.code && nation.code != "xx") 
+        ? t(`${nation.code}.name`)
+        : nation.name;
+        
+
     return (
         <TableCell className={`${className}`} href={isLink ? getNationUrl(nation) : undefined}>
             <FlagSpan code={nation.code} />
-            <span className={`${isMain ? "font-medium" : ""}`}>{nation.name}</span>
+            <span className={`${isMain ? "font-medium" : ""}`}>{nationName}</span>
         </TableCell>
     );
 }

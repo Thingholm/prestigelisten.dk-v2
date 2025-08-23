@@ -35,10 +35,35 @@ export function getYearUrl(year: number | null) {
     return `${urls["year"]}/${year}`;
 }
 
-export function getListRidersUrl() {
-    return urls["listRiders"];
+export function getListRidersUrl(nation?: Nation | null, active?: boolean) {
+    let url = urls["listRiders"];
+
+    if (nation) {
+        url += `&nations=${nation.id}`;
+    } else if (active === true) {
+        url += `&status=activeOnly`;
+    } else if (active === false) {
+        url += `&status=inactiveOnly`;
+    }
+
+    url = url.replace("&", "?");
+
+    return url
 }
 
 export function getAboutUrl() {
     return urls["about"];
+}
+
+type Team = {
+    id: number;
+    name: string;
+}
+
+export function getTeamUrl(team: Team | null) {
+    if (!team) {
+        return urls["teams"];
+    }
+
+    return `${urls["team"]}/${team.id}/${team.name.replaceAll(" ", "_").toLowerCase()}`;
 }

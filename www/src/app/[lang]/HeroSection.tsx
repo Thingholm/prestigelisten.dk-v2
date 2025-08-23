@@ -32,8 +32,13 @@ export default function HeroSection({
                     </Button>
                 </div>
             </div>
-            <Container className="w-full lg:w-1/2" isCard title={t("tableTitles.allTimePoints")} href={getListRidersUrl()}>
-                <HeroTable riderPointsWithNationsAndTeams={riderPointsWithNationsAndTeams} />
+            <Container 
+                className="w-full lg:w-1/2" 
+                isCard 
+                title={t("tableTitles.allTimePoints")} 
+                href={getListRidersUrl()}
+            >
+                <HeroTable riderPointsWithNationsAndTeams={riderPointsWithNationsAndTeams.slice(0, 17)} />
             </Container>
         </Section>
     );

@@ -5,3 +5,6 @@ export { default as TableBody } from "./TableBody";
 export { default as TableRow } from "./TableRow";
 export { default as TableCell } from "./TableCell";
 export { default as RiderNameCell } from "./RiderNameCell";
+export { default as NationNameCell } from "./NationNameCell";
+export { default as YearCell } from "./YearCell";
+export { default as SecondaryCellSpan } from "./SecondaryCellSpan";

@@ -1,5 +1,5 @@
 import { ScreenBreakpoint } from "@/lib/constants/screenBreakpoints";
-import TableCell from "./TableCell";
+import TableCell, { SecondarySpanProps } from "./TableCell";
 import FlagSpan from "./FlagSpan";
 import { getRiderUrl } from "@/lib/helpers/urls";
 
@@ -17,12 +17,14 @@ export default function RiderNameCell({
     className = "",
     showFlagBreakpoint,
     isLink = true,
+    secondarySpan,
 }: Readonly<{
     rider: Rider;
     className?: string;
     showFlagBreakpoint?: ScreenBreakpoint | "always";
     isCell?: boolean;
     isLink?: boolean;
+    secondarySpan?: SecondarySpanProps;
 }>) {
     const flagSpanVariants = {
         sm: "sm:!hidden",
@@ -34,7 +36,11 @@ export default function RiderNameCell({
     };
 
     return (
-        <TableCell className={`${className}`} href={isLink ? getRiderUrl(rider) : undefined}>
+        <TableCell 
+            className={`${className}`} 
+            href={isLink ? getRiderUrl(rider) : undefined}
+            secondarySpan={secondarySpan}
+        >
             <FlagSpan code={rider.nations?.code} className={`${showFlagBreakpoint ? `${flagSpanVariants[showFlagBreakpoint]}` : "!hidden"}`}/>
             <span className="font-semibold">{rider.last_name.toUpperCase()}</span>
             {rider.first_name && 

@@ -24,12 +24,12 @@
   --color-secondary-700: #4f4f4f;
   --color-secondary-800: #454545;
   --color-secondary-900: #3d3d3d;
-  --color-secondary-950: #171717;
+  --color-secondary-950: #1c1c1c;
 
   --font-inter: 'Inter', sans-serif;
 }
 
-@source inline("sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden hidden");
+@source inline("sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden hidden sm:table-row md:table-row lg:table-row xl:table-row 2xl:table-row table-row");
 
 :root {
   --background: #ffffff;

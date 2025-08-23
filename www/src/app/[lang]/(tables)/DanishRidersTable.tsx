@@ -1,24 +1,27 @@
-import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
+import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
 import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { rankBy } from "@/lib/helpers/rank";
 import { useTranslations } from "next-intl";
 
-
-export default function HeroTable({
-    riderPointsWithNationsAndTeams = [],
+export default function DanishRidersTable({
+    riderPointsWithNationAndTeam = [],
 }: Readonly<{
-    riderPointsWithNationsAndTeams: RiderPointsWithNationAndTeam;
+    riderPointsWithNationAndTeam: RiderPointsWithNationAndTeam;
 }>) {
     const t = useTranslations("tableColumns");
 
-    const rankedRiderPoints = rankBy(riderPointsWithNationsAndTeams, "points");
+    const rankedRiderPoints = rankBy(
+        riderPointsWithNationAndTeam
+            .filter(rider => rider.riders.nations.code == "dk")
+            .slice(0, 17),
+        "points"
+    );
 
     return (
         <Table>
             <TableHead>
                 <TableColumn>{t("no")}</TableColumn>
                 <TableColumn>{t("rider")}</TableColumn>
-                <TableColumn className="hidden md:table-cell">{t("nation")}</TableColumn>
                 <TableColumn>{t("year")}</TableColumn>
                 <TableColumn>{t("points")}</TableColumn>
             </TableHead>
@@ -26,8 +29,7 @@ export default function HeroTable({
                 {rankedRiderPoints.map(riderPoint => (
                     <TableRow key={riderPoint.id}>
                         <TableCell>{riderPoint.rank}</TableCell>
-                        <RiderNameCell showFlagBreakpoint="md" rider={riderPoint.riders}/>
-                        <NationNameCell nation={riderPoint.riders.nations} className="hidden md:table-cell" />
+                        <RiderNameCell showFlagBreakpoint="always" rider={riderPoint.riders}/>
                         <YearCell year={riderPoint.riders.year} />
                         <TableCell>{riderPoint.points}</TableCell>
                     </TableRow>

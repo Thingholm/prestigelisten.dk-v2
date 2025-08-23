@@ -1,4 +1,11 @@
+import { ScreenBreakpoint } from "@/lib/constants/screenBreakpoints";
 import { ReactElement } from "react";
+
+export type ResponsiveSliceProps = {
+    breakpoint: ScreenBreakpoint;
+    end: number;
+    rowIndex: number;
+}
 
 export default function TableRow({
     children,
@@ -6,12 +13,14 @@ export default function TableRow({
     isHighlighted = false,
     isFaded = false,
     hasBorder = true,
+    responsiveSlice,
 }: Readonly<{
     children: ReactElement<React.ComponentProps<"td">>[] | ReactElement<React.ComponentProps<"td">>;
     className?: string;
     isHighlighted?: boolean;
     isFaded?: boolean;
     hasBorder?: boolean;
+    responsiveSlice?: ResponsiveSliceProps;
 }>) {
     const paramClassList = [];
 
@@ -21,8 +30,12 @@ export default function TableRow({
 
     if (hasBorder) paramClassList.push("border-t-1");
 
+    const responsiveSliceClass = responsiveSlice && (responsiveSlice.rowIndex >= responsiveSlice.end) 
+        ? `hidden ${responsiveSlice.breakpoint}:table-row` 
+        : "";
+
     return (
-        <tr className={`${paramClassList.join(" ")} border-t-gray-200 ${className}`}>
+        <tr className={`${paramClassList.join(" ")} border-t-gray-200 ${responsiveSliceClass} ${className}`}>
             {children}
         </tr>
     );
