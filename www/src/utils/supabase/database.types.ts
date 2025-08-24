@@ -1263,6 +1263,51 @@ export type Database = {
           },
         ]
       }
+      riders_3_year_rolling_rankings: {
+        Row: {
+          points_last_3_years: number | null
+          rank_for_3_year_span: number | null
+          rider_id: number | null
+          year: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "rider_decade_rankings"
+            referencedColumns: ["rider_id"]
+          },
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "riders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "top_3_active_riders_per_country"
+            referencedColumns: ["rider_id"]
+          },
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "top_3_inactive_riders_per_country"
+            referencedColumns: ["rider_id"]
+          },
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "top_3_riders_per_country"
+            referencedColumns: ["rider_id"]
+          },
+        ]
+      }
       top_3_active_riders_per_country: {
         Row: {
           active: boolean | null

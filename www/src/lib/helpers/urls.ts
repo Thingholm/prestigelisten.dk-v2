@@ -84,3 +84,7 @@ type MetaRace = {
 export function getRaceUrl(race: MetaRace) {
     return `${urls["race"]}/${race.id}/${race.name.replaceAll(" ", "_").toLowerCase()}`;
 }
+
+export function getRiders3YearRollingRankingsUrl() {
+    return urls["listRiders3YearPeriod"];
+}
