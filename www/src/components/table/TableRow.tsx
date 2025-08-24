@@ -28,7 +28,7 @@ export default function TableRow({
 
     if (isFaded) paramClassList.push("opacity-50");
 
-    if (hasBorder) paramClassList.push("border-t-1");
+    if (hasBorder) paramClassList.push("not-first:border-t-1");
 
     const responsiveSliceClass = responsiveSlice && (responsiveSlice.rowIndex >= responsiveSlice.end) 
         ? `hidden ${responsiveSlice.breakpoint}:table-row` 

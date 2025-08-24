@@ -41,3 +41,27 @@ const greatestSeasonsQuery = supabase
     .limit(15);
     
 export type GreatestSeasons = QueryData<typeof greatestSeasonsQuery>;
+
+export const getTop10AlltimeEachSeason = unstable_cache(async () => {
+    const { data, error } = await greatestTop10AlltimeEachSeasonQuery;
+
+    if (error) { throw error; }
+
+    return data;
+}, ["top10AlltimeEachSeason"], { revalidate: 60 * 60 })
+
+const greatestTop10AlltimeEachSeasonQuery = supabase
+    .from("rider_seasons")
+    .select(`
+        *,
+        riders (
+            *,
+            nations (
+                *
+            )
+        )
+    `)
+    .lte("rank_all_time", 10)
+    .gte("year", new Date().getFullYear() - 10);
+
+export type Top10AlltimeEachSeason = QueryData<typeof greatestTop10AlltimeEachSeasonQuery>;

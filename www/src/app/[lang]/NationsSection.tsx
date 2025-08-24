@@ -9,8 +9,7 @@ export default function NationsSection({
     nationPointsWithRiderCount,
 }: Readonly<{
     nationPointsWithRiderCount: NationPointsWithRiderCount;
-}>
-) {
+}>) {
     const t = useTranslations("homepage");
 
     return (

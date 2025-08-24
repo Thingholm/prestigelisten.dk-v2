@@ -2,6 +2,7 @@ import { ScreenBreakpoint } from "@/lib/constants/screenBreakpoints";
 import TableCell, { SecondarySpanProps } from "./TableCell";
 import FlagSpan from "./FlagSpan";
 import { getRiderUrl } from "@/lib/helpers/urls";
+import MovementIcon from "../ui/MovementIcon";
 
 type Rider = {
     id: number,
@@ -18,6 +19,7 @@ export default function RiderNameCell({
     showFlagBreakpoint,
     isLink = true,
     secondarySpan,
+    movement
 }: Readonly<{
     rider: Rider;
     className?: string;
@@ -25,6 +27,7 @@ export default function RiderNameCell({
     isCell?: boolean;
     isLink?: boolean;
     secondarySpan?: SecondarySpanProps;
+    movement?: "up" | "none" | "down"
 }>) {
     const flagSpanVariants = {
         sm: "sm:!hidden",
@@ -45,6 +48,9 @@ export default function RiderNameCell({
             <span className="font-semibold">{rider.last_name.toUpperCase()}</span>
             {rider.first_name && 
                 <span> {rider.first_name}</span>
+            }
+            {movement &&
+                <MovementIcon movement={movement} />
             }
         </TableCell>
     );
