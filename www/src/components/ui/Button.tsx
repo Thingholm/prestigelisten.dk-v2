@@ -16,7 +16,7 @@ type ButtonAsButton = {
     disabled?: boolean;
 }
 
-type ButtonVariant = "solid" | "outline" | "text";
+export type ButtonVariant = "solid" | "outline" | "text";
 
 const variants: Record<ButtonVariant, Record<ColorVariant, string>> = {
     solid: {

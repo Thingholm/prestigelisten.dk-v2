@@ -11,19 +11,19 @@ export const getAllRiderPointsWithNationAndTeam = unstable_cache(async () => {
 }, ["allRiderPointsWithNation"], { revalidate: 60 * 60 });
 
 const riderPointsWithNationAndTeamQuery = supabase
-        .from("rider_points")
-        .select(`
+    .from("rider_points")
+    .select(`
+        *,
+        riders (
             *,
-            riders (
-                *,
-                nations (
-                    *
-                ),
-                teams (
-                    *
-                )
+            nations (
+                *
+            ),
+            teams (
+                *
             )
-        `)
-        .order("points", { ascending: false });
+        )
+    `)
+    .order("points", { ascending: false });
 
 export type RiderPointsWithNationAndTeam = QueryData<typeof riderPointsWithNationAndTeamQuery>

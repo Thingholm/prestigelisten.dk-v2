@@ -65,3 +65,25 @@ const greatestTop10AlltimeEachSeasonQuery = supabase
     .gte("year", new Date().getFullYear() - 10);
 
 export type Top10AlltimeEachSeason = QueryData<typeof greatestTop10AlltimeEachSeasonQuery>;
+
+export const getAllRiderSeasonsFromYear = unstable_cache(async (year: number) => {
+    const { data, error } = await  allRiderSeasonsFromYearQuery.eq("year", year);
+
+    if (error) { throw error; }
+
+    return data as RiderSeasonsFromYear;
+}, ["allRiderSeasonsFromYear"], { revalidate: 60 * 60 })
+
+const allRiderSeasonsFromYearQuery = supabase
+    .from("rider_seasons")
+    .select(`
+        *,
+        riders (
+            *,
+            nations (
+                *
+            )
+        )
+    `)
+
+export type RiderSeasonsFromYear = QueryData<typeof allRiderSeasonsFromYearQuery>;

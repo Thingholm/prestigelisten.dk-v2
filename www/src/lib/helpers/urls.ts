@@ -27,7 +27,7 @@ export function getNationUrl(nation: Nation) {
     return `${urls["nation"]}/${nation.id}/${nation.name.replaceAll(" ", "_").toLowerCase()}`;
 }
 
-export function getYearUrl(year: number | null) {
+export function getYearUrl(year?: number | null) {
     if (!year) {
         return urls["year"];
     }

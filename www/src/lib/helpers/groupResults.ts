@@ -9,15 +9,15 @@ type Result = {
     }
 }
 
-type GroupedResult =  {
-    results: (Result & { points: number })[];
+type GroupedResult<T> =  {
+    results: (T & { points: number })[];
     points: number;
 }
 
 export function groupResults<T extends Result>(results: T[], pointSystem: PointSystem) {
     const resultsWithPoints = getResultsWithPoints(results, pointSystem);
 
-    const groupsMap = new Map<string, T & GroupedResult>();
+    const groupsMap = new Map<string, T & GroupedResult<T>>();
 
     for (const result of resultsWithPoints) {
         const key = `${result.result_type_id}-${result.races.meta_race_id}`;

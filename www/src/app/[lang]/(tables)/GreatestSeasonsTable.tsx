@@ -3,7 +3,7 @@ import { PointSystem } from "@/db/pointSystem";
 import { GreatestSeasons } from "@/db/seasons";
 import { groupResults } from "@/lib/helpers/groupResults";
 import { rankBy } from "@/lib/helpers/rank";
-import { getGroupedResultName } from "@/lib/helpers/resultNames";
+import { getGroupedResultNameWithCount } from "@/lib/helpers/resultNames";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -41,7 +41,7 @@ export default function GreatestSeasonsTable({
                         <TableCell className="hidden lg:table-cell">
                             {season.results.slice(0, 3).map((result, index) => (
                                 <span key={result.id}>
-                                    <Link href={getRaceUrl(result.races.meta_races)} className="hover:underline">{getGroupedResultName(result, tResultNames, true)}</Link>
+                                    <Link href={getRaceUrl(result.races.meta_races)} className="hover:underline">{getGroupedResultNameWithCount(result, tResultNames, true)}</Link>
                                     {index < 2 && ", "}
                                 </span>
                             ))}

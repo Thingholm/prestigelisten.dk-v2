@@ -17,7 +17,6 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
     let resultName = "";
 
     const resultCount = groupedResult.results.length;
-    if (resultCount > 1) resultName += `${resultCount}x `
 
     const isGold = groupedResult.result_type_id == 12;
 
@@ -48,6 +47,17 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
     resultName += groupedResult.races.meta_races.name
     return resultName;
 }
+
+export function getGroupedResultNameWithCount(groupedResult: GroupedResult, t: ReturnType<typeof useTranslations>, showPlacement?: boolean) {
+    const resultCount = groupedResult.results.length;
+
+    let resultName = resultCount > 1 ? `${resultCount}x ` : ``
+
+    resultName += getGroupedResultName(groupedResult, t, showPlacement);
+
+    return resultName;
+}
+
 
 function getSuffix(number: number) {
     if (10 < number && number < 14) return "other";

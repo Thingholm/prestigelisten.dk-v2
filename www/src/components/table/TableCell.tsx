@@ -13,14 +13,14 @@ export default function TableCell({
     children,
     className = "",
     href,
-    colspan,
+    colSpan,
     noFormat = false,
     secondarySpan,
 }: Readonly<{
-    children: React.ReactNode;
+    children?: React.ReactNode;
     className?: string;
     href?: string;
-    colspan?: number;
+    colSpan?: number;
     noFormat?: boolean;
     secondarySpan?: SecondarySpanProps;
 }>) {
@@ -36,7 +36,7 @@ export default function TableCell({
     }
 
     return (
-        <td className={`py-0.5 not-last:pr-1 ${className}`} colSpan={colspan ?? 1}>
+        <td className={`py-0.5 not-last:pr-1 ${className}`} colSpan={colSpan ?? 1}>
             <span>
                 {href 
                     ? <Link href={href} className="hover:underline">{content}</Link>

@@ -8,3 +8,5 @@ export { default as RiderNameCell } from "./RiderNameCell";
 export { default as NationNameCell } from "./NationNameCell";
 export { default as YearCell } from "./YearCell";
 export { default as SecondaryCellSpan } from "./SecondaryCellSpan";
+export { default as ExpandCell } from "./ExpandCell";
+export { default as ExpandedResultsRow} from "./ExpandedResultsRow";
