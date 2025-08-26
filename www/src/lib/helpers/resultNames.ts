@@ -29,11 +29,14 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
     const isChampionship = raceClassesWithRenames.includes(groupedResult.races.race_class_id);
     const isPlacement = [2, 3, 4].includes(groupedResult.result_type_id) && (showPlacement != undefined || showPlacement != false) && groupedResult?.placement != null
     const isNotWin = groupedResult.result_type_id != 1;
+    const isDayInLeadersJersey = 8 <= groupedResult.result_type_id && groupedResult.result_type_id <= 11;
 
     if (isStageWin) {
         resultName += `${t(resultCount > 1 ? "stageInLower" : "stageIn")} `
     } else if (isPlacement) {
         resultName += `${groupedResult.placement}${t(`suffixes.${getSuffix(groupedResult.placement!)}`)} ${t("place")} ${t(isChampionship ? "at" : "in")} `
+    } else if (isDayInLeadersJersey) {
+        resultName += `${t("resultTypes.99")} ${t("in")} `
     } else if (isNotWin) {
         resultName += t(`resultTypes.${groupedResult.result_type_id}`)
 

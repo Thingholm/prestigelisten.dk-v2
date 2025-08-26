@@ -20,7 +20,13 @@ export function groupResults<T extends Result>(results: T[], pointSystem: PointS
     const groupsMap = new Map<string, T & GroupedResult<T>>();
 
     for (const result of resultsWithPoints) {
-        const key = `${result.result_type_id}-${result.races.meta_race_id}`;
+        let resultTypeId = result.result_type_id 
+
+        if (8 <= resultTypeId && resultTypeId <= 11) {
+            resultTypeId = 99;
+        }
+
+        const key = `${resultTypeId}-${result.races.meta_race_id}`;
 
         if (!groupsMap.has(key)) {
             groupsMap.set(key, {

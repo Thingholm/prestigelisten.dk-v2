@@ -15,7 +15,8 @@
             "8": "1st day in leader's jersey",
             "9": "2nd day in leader's jersey",
             "10": "3rd day in leader's jersey",
-            "11": "Other day in leader's jersey"
+            "11": "Other day in leader's jersey",
+            "99": "Day in leader's jersey"
         },
         "raceClasses": {
             "18": "World champion",

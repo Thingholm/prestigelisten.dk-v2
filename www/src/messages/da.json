@@ -14,7 +14,8 @@
             "8": "1. dag i førertrøjen",
             "9": "2. dag i førertrøjen",
             "10": "3. dag i førertrøjen",
-            "11": "Øvrig dag i førertrøjen"
+            "11": "Øvrig dag i førertrøjen",
+            "99": "Dag i førertrøjen"
         },
         "raceClasses": {
             "18": "Verdensmester",
