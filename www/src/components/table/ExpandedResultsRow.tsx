@@ -22,21 +22,23 @@ type Result = {
 export default function ExpandedResultsRow({
     results,
     pointSystem,
-    columns
+    columns,
+    distinctPlacements,
 }: Readonly<{
     results: Result[]
     pointSystem: PointSystem
     columns: number
+    distinctPlacements?: boolean
 }>) {
     const t = useTranslations("getResultNames")
 
-    const groupedResults = groupResults(results, pointSystem);
+    const groupedResults = groupResults(results, pointSystem, distinctPlacements);
 
     return (
-        <TableRow>
+        <TableRow className="bg-gray-100">
             <TableCell></TableCell>
             <TableCell colSpan={columns - 1}>
-                <ul>
+                <ul className="pt-1 pb-2">
                     {groupedResults.map((group, index) => (
                         <ResultNameListItem key={index}
                             resultName={getGroupedResultName(group, t, true)}

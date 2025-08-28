@@ -2,19 +2,19 @@
 
 import { Table, TableBody, TableColumn, TableHead } from "@/components/table"
 import { ResultsFromYear } from "@/db/results"
-import { RiderSeasonsFromYear } from "@/db/seasons"
+import { NationSeasonsFromYear } from "@/db/seasons"
 import { useTranslations } from "next-intl"
 import React, { useState } from "react"
-import ExpandableRiderPointsInYearRow from "./ExpandableRiderPointsInYearRow"
 import { PointSystem } from "@/db/pointSystem"
+import ExpandableNationPointsInYearRow from "./ExpandableNationPointsInYearRow"
 import Button from "@/components/ui/Button";
 
-export default function MostRiderPointsInYearTable({
-    riderSeasonsFromYear,
+export default function MostNationPointsInYearTable({
+    nationSeasonsFromYear,
     resultsFromYear,
     pointSystem
 }: Readonly<{
-    riderSeasonsFromYear: RiderSeasonsFromYear
+    nationSeasonsFromYear: NationSeasonsFromYear
     resultsFromYear: ResultsFromYear
     pointSystem: PointSystem
 }>) {
@@ -22,8 +22,8 @@ export default function MostRiderPointsInYearTable({
 
     const t = useTranslations("tableColumns");
 
-    const filteredRiderSeasonsFromYear = riderSeasonsFromYear.filter(riderSeason => riderSeason.points_for_year);
-    
+    const filteredNationSeasonsFromYear = nationSeasonsFromYear.filter(nationSeason => nationSeason.points_for_year);
+
     return (
         <div>
             <Table>
@@ -34,20 +34,20 @@ export default function MostRiderPointsInYearTable({
                     <TableColumn></TableColumn>
                 </TableHead>
                 <TableBody>
-                    {filteredRiderSeasonsFromYear.sort((a, b) => (b.points_for_year ?? 0) - (a.points_for_year ?? 0))
+                    {filteredNationSeasonsFromYear.sort((a, b) => (b.points_for_year ?? 0) - (a.points_for_year ?? 0))
                         .slice(0, rowAmount)
-                        .map(riderSeason => (
-                            <ExpandableRiderPointsInYearRow 
-                                riderSeason={riderSeason} 
-                                riderResults={resultsFromYear.filter(result => result.rider_id == riderSeason.rider_id)}
+                        .map(nationSeason => (
+                            <ExpandableNationPointsInYearRow 
+                                nationSeason={nationSeason} 
+                                nationResults={resultsFromYear.filter(result => result.riders.nation_id == nationSeason.nation_id)}
                                 pointSystem={pointSystem}
-                                key={riderSeason.id}
+                                key={nationSeason.id}
                             /> 
                         ))
                     }
                 </TableBody>
             </Table>
-            {rowAmount < filteredRiderSeasonsFromYear.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 15)}>{t("showMore")}</Button>}
+            {rowAmount < filteredNationSeasonsFromYear.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 15)}>{t("showMore")}</Button>}
         </div>
     )
 }

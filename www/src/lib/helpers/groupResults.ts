@@ -6,7 +6,8 @@ type Result = {
     races: {
         race_class_id: number;
         meta_race_id: number;
-    }
+    },
+    placement?: number | null;
 }
 
 type GroupedResult<T> =  {
@@ -14,7 +15,7 @@ type GroupedResult<T> =  {
     points: number;
 }
 
-export function groupResults<T extends Result>(results: T[], pointSystem: PointSystem) {
+export function groupResults<T extends Result>(results: T[], pointSystem: PointSystem, distinctPlacement: boolean = false ) {
     const resultsWithPoints = getResultsWithPoints(results, pointSystem);
 
     const groupsMap = new Map<string, T & GroupedResult<T>>();
@@ -23,7 +24,11 @@ export function groupResults<T extends Result>(results: T[], pointSystem: PointS
         let resultTypeId = result.result_type_id 
 
         if (8 <= resultTypeId && resultTypeId <= 11) {
-            resultTypeId = 99;
+            resultTypeId = 100;
+        }
+
+        if (distinctPlacement && 2 <= resultTypeId && resultTypeId <= 4 && result.placement) {
+            resultTypeId = 100 + result.placement;
         }
 
         const key = `${resultTypeId}-${result.races.meta_race_id}`;
@@ -41,5 +46,8 @@ export function groupResults<T extends Result>(results: T[], pointSystem: PointS
         group.points += result.points
     }
 
-    return Array.from(groupsMap.values()).sort((a, b) => b.points - a.points);
+    return Array.from(groupsMap.values())
+        .sort((a, b) => (a.placement ?? 0) - (b.placement ?? 0))
+        .sort((a, b) => b.results.length - a.results.length)
+        .sort((a, b) => b.points - a.points);
 }

@@ -1,6 +1,6 @@
 import { getAllResultsFromYear } from "@/db/results";
 import { getMinRiderBirthYear } from "@/db/rider";
-import { getAllRiderSeasonsFromYear } from "@/db/seasons";
+import { getAllNationSeasonsFromYear, getAllRiderSeasonsFromYear } from "@/db/seasons";
 import SelectYearSection from "./SelectYearSection";
 import MostPointsInYearSection from "./MostPointsInYearSection";
 import { getPointSystem } from "@/db/pointSystem";
@@ -14,10 +14,12 @@ export default async function YearPage({
     const maxYear = new Date().getFullYear();
 
     const minYear = (await getMinRiderBirthYear()).min;
+
     const resultsFromYear = await getAllResultsFromYear(year);
     const riderSeasonsFromYear = await getAllRiderSeasonsFromYear(year);
-    const pointSystem = await getPointSystem();
+    const nationSeasonsFromYear = await getAllNationSeasonsFromYear(year);
 
+    const pointSystem = await getPointSystem();
 
     return (
         <div>
@@ -30,6 +32,7 @@ export default async function YearPage({
                 year={year}
                 resultsFromYear={resultsFromYear} 
                 riderSeasonsFromYear={riderSeasonsFromYear}
+                nationSeasonsFromYear={nationSeasonsFromYear}
                 pointSystem={pointSystem}
             />
         </div>

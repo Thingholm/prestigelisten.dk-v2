@@ -2,15 +2,15 @@ import { supabase } from "@/utils/supabase/client";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
-export const getAllResultsFromYear = unstable_cache(async (year: number) => {    
-    const { data, error } = await allResultsFromYearQuery.eq("year", year);
+export const getAllResultsFromYear = (year: number) =>unstable_cache(async () => {
+        const { data, error } = await allResultsFromYearQuery().eq("year", year);
 
-    if (error) { throw error; }
+        if (error) throw error;
+        return data as ResultsFromYear;
+    },
+    ["allResultsFromYear", year.toString()], { revalidate: 60 * 60 })();
 
-    return data as ResultsFromYear;
-}, ["allResultsFromYear"], { revalidate: 60 * 60 })
-
-const allResultsFromYearQuery = supabase
+const allResultsFromYearQuery = () => supabase
     .from("results")
     .select(`
         *,
@@ -31,4 +31,4 @@ const allResultsFromYearQuery = supabase
         )
     `)
 
-    export type ResultsFromYear = QueryData<typeof allResultsFromYearQuery>
+    export type ResultsFromYear = QueryData<ReturnType<typeof allResultsFromYearQuery>>
