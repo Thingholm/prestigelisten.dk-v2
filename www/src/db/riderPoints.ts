@@ -27,3 +27,31 @@ const riderPointsWithNationAndTeamQuery = supabase
     .order("points", { ascending: false });
 
 export type RiderPointsWithNationAndTeam = QueryData<typeof riderPointsWithNationAndTeamQuery>
+
+export const getRidersFromYear = async (year: number) => await unstable_cache(async () => {
+    const currentYear = new Date().getFullYear();
+    const { data, error } = await  ridersFromYearQuery()
+        .eq("riders.year", year)
+        .eq("riders.rider_seasons.year", currentYear);
+
+    if (error) { throw error; }
+
+    return data as RidersFromYear;
+}, ["getRidersFromYear", year.toString()], { revalidate: 5 })()
+
+const ridersFromYearQuery = () => supabase
+    .from("rider_points")
+    .select(`
+        *,
+        riders!inner (
+            *,
+            nations (
+                *
+            ),
+            rider_seasons (
+                *
+            )
+        )
+    `)
+
+export type RidersFromYear = QueryData<ReturnType<typeof ridersFromYearQuery>>;

@@ -5,6 +5,8 @@ import SelectYearSection from "./_sections/SelectYearSection";
 import MostPointsInYearSection from "./_sections/MostPointsInYearSection";
 import { getPointSystem } from "@/db/pointSystem";
 import AlltimePointsForYearSection from "./_sections/AlltimePointsForYearSection";
+import { getRidersFromYear } from "@/db/riderPoints";
+import GreatestRidersBornInYearSection from "./_sections/GreatestRidersBornInYearSection";
 
 export default async function YearPage({
     params
@@ -19,6 +21,7 @@ export default async function YearPage({
     const resultsFromYear = await getAllResultsFromYear(year);
     const riderSeasonsFromYear = await getAllRiderSeasonsFromYear(year);
     const nationSeasonsFromYear = await getAllNationSeasonsFromYear(year);
+    const ridersFromYear = await getRidersFromYear(year);
 
     const pointSystem = await getPointSystem();
 
@@ -41,6 +44,7 @@ export default async function YearPage({
                 riderSeasonsFromYear={riderSeasonsFromYear}
                 nationSeasonsFromYear={nationSeasonsFromYear}
             />
+            <GreatestRidersBornInYearSection ridersFromYear={ridersFromYear} year={year}/>
         </div>
     )
 }
