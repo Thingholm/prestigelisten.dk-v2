@@ -5,7 +5,7 @@ import { ResultsFromYear } from "@/db/results"
 import { RiderSeasonsFromYear } from "@/db/seasons"
 import { useTranslations } from "next-intl"
 import React, { useState } from "react"
-import ExpandableRiderPointsInYearRow from "./ExpandableRiderPointsInYearRow"
+import ExpandableRiderPointsInYearRow from "../_components/ExpandableRiderPointsInYearRow"
 import { PointSystem } from "@/db/pointSystem"
 import Button from "@/components/ui/Button";
 
@@ -28,7 +28,7 @@ export default function MostRiderPointsInYearTable({
         <div>
             <Table>
                 <TableHead>
-                    <TableColumn>{t("no")}</TableColumn>
+                    <TableColumn className="pr-2 sm:pr-0">{t("no")}</TableColumn>
                     <TableColumn>{t("rider")}</TableColumn>
                     <TableColumn>{t("points")}</TableColumn>
                     <TableColumn></TableColumn>
@@ -47,7 +47,7 @@ export default function MostRiderPointsInYearTable({
                     }
                 </TableBody>
             </Table>
-            {rowAmount < filteredRiderSeasonsFromYear.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 15)}>{t("showMore")}</Button>}
+            {rowAmount < filteredRiderSeasonsFromYear.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 30)}>{t("showMore")}</Button>}
         </div>
     )
 }

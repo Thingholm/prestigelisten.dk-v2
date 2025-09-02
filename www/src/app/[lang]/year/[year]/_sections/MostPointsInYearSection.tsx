@@ -3,9 +3,9 @@ import Section from "@/components/layout/Section";
 import { ResultsFromYear } from "@/db/results";
 import { NationSeasonsFromYear, RiderSeasonsFromYear } from "@/db/seasons";
 import { useTranslations } from "next-intl";
-import MostRiderPointsInYearTable from "./MostRiderPointsInYearTable";
+import MostRiderPointsInYearTable from "../_tables/MostRiderPointsInYearTable";
 import { PointSystem } from "@/db/pointSystem";
-import MostNationPointsInYearTable from "./MostNationPointsInYearTable";
+import MostNationPointsInYearTable from "../_tables/MostNationPointsInYearTable";
 
 export default function MostPointsInYearSection({
     year,
@@ -23,7 +23,7 @@ export default function MostPointsInYearSection({
     const t = useTranslations("yearPage");
 
     return (
-        <Section className="gap-x-12">
+        <Section className="gap-x-12 flex-col lg:flex-row">
             <Container title={t("titles.riderWithMostPoints", {year: year})}>
                 <MostRiderPointsInYearTable 
                     riderSeasonsFromYear={riderSeasonsFromYear} 

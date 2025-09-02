@@ -2,8 +2,8 @@ import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
 import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { useTranslations } from "next-intl";
-import ActiveRidersTable from "./(tables)/ActiveRidersTable";
-import DanishRidersTable from "./(tables)/DanishRidersTable";
+import ActiveRidersTable from "../_tables/ActiveRidersTable";
+import DanishRidersTable from "../_tables/DanishRidersTable";
 import { getListRidersUrl } from "@/lib/helpers/urls";
 
 export default function ActiveAndDanishRidersSection({

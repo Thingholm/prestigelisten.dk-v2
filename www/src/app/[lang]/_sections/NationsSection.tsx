@@ -3,7 +3,7 @@ import Section from "@/components/layout/Section";
 import { NationPointsWithRiderCount } from "@/db/nationPoints";
 import { getListNationsUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";
-import NationsTable from "./(tables)/NationsTable";
+import NationsTable from "../_tables/NationsTable";
 
 export default function NationsSection({
     nationPointsWithRiderCount,

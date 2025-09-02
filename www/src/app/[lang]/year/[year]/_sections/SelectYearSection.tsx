@@ -19,13 +19,13 @@ export default function SelectYearSection({
     const t = useTranslations("yearPage");
 
     return (
-        <Section>
+        <Section className="pb-0!">
             <label>
-                <span className="font-medium text-lg mr-1">{t("year")}</span>
+                <span className="font-medium text-xl mr-1">{t("year")}</span>
                 <Select
                     value={curYear}
                     onChange={e => router.push(`${getYearUrl()}/${e.target.value}`)}
-                    className="mb-4 font-semibold"
+                    className="mb-4 font-semibold text-lg"
                 >
                     {Array.from({ length: maxYear - minYear + 1}, (_, index) => maxYear - index).map(year => (
                         <option value={year} key={year}>

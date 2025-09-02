@@ -3,7 +3,7 @@ import Section from "@/components/layout/Section";
 import { Riders3YearRollingRankings } from "@/db/riders3YearRollingRankings";
 import { getRiders3YearRollingRankingsUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";
-import Riders3YearRollingRankingsTable from "./(tables)/Riders3YearRollingRankingsTable";
+import Riders3YearRollingRankingsTable from "../_tables/Riders3YearRollingRankingsTable";
 
 export default function Riders3YearRollingRankingsSection({
     riders3YearRollingRankings

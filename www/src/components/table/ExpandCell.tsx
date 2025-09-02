@@ -15,12 +15,12 @@ export default function ExpandCell({
     setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>
 }>) {
     return (
-        <TableCell className="w-12">
+        <TableCell className="w-8 sm:w-12">
             <Button 
-                variant="text" 
-                color="secondary" 
+                variant={variant} 
+                color={color} 
                 onClick={() => setIsExpanded(s => s ? false : true)}
-                className="!py-1"
+                className="!py-1 px-2! sm:px-4"
             >
                 <IoChevronDown className={`duration-150 ${isExpanded ? "rotate-180" : ""}`}/>
             </Button>

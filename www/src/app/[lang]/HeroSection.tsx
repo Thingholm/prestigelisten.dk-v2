@@ -3,7 +3,7 @@ import Button from "@/components/ui/Button";
 import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { useTranslations } from "next-intl";
 import { BiSolidQuoteAltLeft } from "react-icons/bi";
-import HeroTable from "./(tables)/HeroTable";
+import HeroTable from "./_tables/HeroTable";
 import Container from "@/components/layout/Container";
 import { getAboutUrl, getListRidersUrl } from "@/lib/helpers/urls";
 

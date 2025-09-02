@@ -21,7 +21,7 @@ export default function ExpandableNationPointsInYearRow({
         <>
             <TableRow >
                 <TableCell>{nationSeason.rank_for_year}</TableCell>
-                <NationNameCell nation={nationSeason.nations}/>
+                <NationNameCell nation={nationSeason.nations} isMain/>
                 <TableCell>{nationSeason.points_for_year}</TableCell>
                 <ExpandCell isExpanded={isExpanded} setIsExpanded={setIsExpanded}/>
             </TableRow>

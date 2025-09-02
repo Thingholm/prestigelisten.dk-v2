@@ -4,7 +4,7 @@ import { PointSystem } from "@/db/pointSystem";
 import { GreatestSeasons } from "@/db/seasons";
 import { getGreatestSeasonsUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";
-import GreatestSeasonsTable from "./(tables)/GreatestSeasonsTable";
+import GreatestSeasonsTable from "../_tables/GreatestSeasonsTable";
 
 export default function GreatestSeasonsSection({
     greatestSeasons,

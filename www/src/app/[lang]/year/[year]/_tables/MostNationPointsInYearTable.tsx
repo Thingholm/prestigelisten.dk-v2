@@ -6,7 +6,7 @@ import { NationSeasonsFromYear } from "@/db/seasons"
 import { useTranslations } from "next-intl"
 import React, { useState } from "react"
 import { PointSystem } from "@/db/pointSystem"
-import ExpandableNationPointsInYearRow from "./ExpandableNationPointsInYearRow"
+import ExpandableNationPointsInYearRow from "../_components/ExpandableNationPointsInYearRow"
 import Button from "@/components/ui/Button";
 
 export default function MostNationPointsInYearTable({
@@ -28,7 +28,7 @@ export default function MostNationPointsInYearTable({
         <div>
             <Table>
                 <TableHead>
-                    <TableColumn>{t("no")}</TableColumn>
+                    <TableColumn className="pr-2 sm:pr-0">{t("no")}</TableColumn>
                     <TableColumn>{t("rider")}</TableColumn>
                     <TableColumn>{t("points")}</TableColumn>
                     <TableColumn></TableColumn>
@@ -47,7 +47,7 @@ export default function MostNationPointsInYearTable({
                     }
                 </TableBody>
             </Table>
-            {rowAmount < filteredNationSeasonsFromYear.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 15)}>{t("showMore")}</Button>}
+            {rowAmount < filteredNationSeasonsFromYear.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 30)}>{t("showMore")}</Button>}
         </div>
     )
 }

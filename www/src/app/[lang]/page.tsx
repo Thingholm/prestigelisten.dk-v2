@@ -1,14 +1,14 @@
 import { getAllRiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import HeroSection from "./HeroSection";
-import ActiveAndDanishRidersSection from "./ActiveAndDanishRidersSection";
+import ActiveAndDanishRidersSection from "./_sections/ActiveAndDanishRidersSection";
 import { getAllNationPointsWithRiderCount } from "@/db/nationPoints";
-import NationsSection from "./NationsSection";
+import NationsSection from "./_sections/NationsSection";
 import { getGreatestSeasons, getTop10AlltimeEachSeason } from "@/db/seasons";
 import { getPointSystem } from "@/db/pointSystem";
-import GreatestSeasonsSection from "./GreatestSeasonsSection";
-import TopAlltimeEachSeasonSection from "./TopAlltimeEachSeasonSection";
+import GreatestSeasonsSection from "./_sections/GreatestSeasonsSection";
+import TopAlltimeEachSeasonSection from "./_sections/TopAlltimeEachSeasonSection";
 import { getRiders3YearRollingRankings } from "@/db/riders3YearRollingRankings";
-import Riders3YearRollingRankingsSection from "./Riders3YearRollingRankingsSection";
+import Riders3YearRollingRankingsSection from "./_sections/Riders3YearRollingRankingsSection";
 
 export default async function HomePage() {
     const riderPointsWithNationsAndTeams = await getAllRiderPointsWithNationAndTeam();
