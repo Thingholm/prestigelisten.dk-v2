@@ -21,6 +21,9 @@ const allResultsFromYearQuery = () => supabase
                 nations (
                     *
                 )
+            ),
+            race_classes (
+                *
             )
         ),
         riders (

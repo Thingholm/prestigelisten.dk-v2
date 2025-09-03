@@ -29,17 +29,262 @@
             "22": "Olympic champion (amateur)",
             "23": "Olympic champion (amateur) in ITT"
         },
+        "metaRaces": {
+            "225": "Olympic championship in ITT",
+            "226": "Olympic 12-hour race",
+            "227": "World championship",
+            "228": "World championship in ITT",
+            "229": "European championship",
+            "230": "European championship in ITT",
+            "231": "Olympic championship",
+            "289": "World championship (amateur)"
+        },
         "suffixes": {
             "1": "st",
             "2": "nd",
             "3": "rd",
             "other": "th"
         },
+        "nations": {
+            "dz": {
+                "name": "Algeria",
+                "adjective": "Algerian"
+            },
+            "ar": {
+                "name": "Argentina",
+                "adjective": "Argentine"
+            },
+            "au": {
+                "name": "Australia",
+                "adjective": "Australian"
+            },
+            "bh": {
+                "name": "Bahrain",
+                "adjective": "Bahraini"
+            },
+            "by": {
+                "name": "Belarus",
+                "adjective": "Belarusian"
+            },
+            "be": {
+                "name": "Belgium",
+                "adjective": "Belgian"
+            },
+            "br": {
+                "name": "Brazil",
+                "adjective": "Brazilian"
+            },
+            "bg": {
+                "name": "Bulgaria",
+                "adjective": "Bulgarian"
+            },
+            "ca": {
+                "name": "Canada",
+                "adjective": "Canadian"
+            },
+            "co": {
+                "name": "Colombia",
+                "adjective": "Colombian"
+            },
+            "cr": {
+                "name": "Costa Rica",
+                "adjective": "Costa Rican"
+            },
+            "dk": {
+                "name": "Denmark",
+                "adjective": "Danish"
+            },
+            "ec": {
+                "name": "Ecuador",
+                "adjective": "Ecuadorian"
+            },
+            "er": {
+                "name": "Eritrea",
+                "adjective": "Eritrean"
+            },
+            "ee": {
+                "name": "Estland",
+                "adjective": "Estonian"
+            },
+            "ph": {
+                "name": "Philippines",
+                "adjective": "Filipino"
+            },
+            "fi": {
+                "name": "Finland",
+                "adjective": "Finnish"
+            },
+            "fr": {
+                "name": "France",
+                "adjective": "French"
+            },
+            "de": {
+                "name": "Germany",
+                "adjective": "German"
+            },
+            "gr": {
+                "name": "Greece",
+                "adjective": "Greek"
+            },
+            "ie": {
+                "name": "Ireland",
+                "adjective": "Irish"
+            },
+            "il": {
+                "name": "Israel",
+                "adjective": "Israeli"
+            },
+            "it": {
+                "name": "Italy",
+                "adjective": "Italian"
+            },
+            "jp": {
+                "name": "Japan",
+                "adjective": "Japanese"
+            },
+            "kz": {
+                "name": "Kasakhstan",
+                "adjective": "Kazakh"
+            },
+            "kr": {
+                "name": "Korea",
+                "adjective": "Korean"
+            },
+            "cn": {
+                "name": "China",
+                "adjective": "Chinese"
+            },
+            "hr": {
+                "name": "Croatia",
+                "adjective": "Croatian"
+            },
+            "lv": {
+                "name": "Latvia",
+                "adjective": "Latvian"
+            },
+            "lu": {
+                "name": "Luxembourg",
+                "adjective": "Luxembourgish"
+            },
+            "lt": {
+                "name": "Lithuania",
+                "adjective": "Lithuanian"
+            },
+            "mx": {
+                "name": "Mexico",
+                "adjective": "Mexican"
+            },
+            "md": {
+                "name": "Moldova",
+                "adjective": "Moldovan"
+            },
+            "nl": {
+                "name": "Netherlands",
+                "adjective": "Dutch"
+            },
+            "nz": {
+                "name": "New Zealand",
+                "adjective": "New Zealand"
+            },
+            "no": {
+                "name": "Norway",
+                "adjective": "Norwegian"
+            },
+            "at": {
+                "name": "Austria",
+                "adjective": "Austrian"
+            },
+            "dd": {
+                "name": "East Germany",
+                "adjective": "East German"
+            },
+            "pl": {
+                "name": "Poland",
+                "adjective": "Polish"
+            },
+            "pt": {
+                "name": "Portugal",
+                "adjective": "Portuguese"
+            },
+            "ru": {
+                "name": "Russia",
+                "adjective": "Russian"
+            },
+            "ch": {
+                "name": "Switzerland",
+                "adjective": "Swiss"
+            },
+            "se": {
+                "name": "Sweden",
+                "adjective": "Swedish"
+            },
+            "es": {
+                "name": "Spain",
+                "adjective": "Spanish"
+            },
+            "sk": {
+                "name": "Slovakia",
+                "adjective": "Slovak"
+            },
+            "si": {
+                "name": "Slovenia",
+                "adjective": "Slovenian"
+            },
+            "su": {
+                "name": "Soviet Union",
+                "adjective": "Soviet"
+            },
+            "gb": {
+                "name": "Great Britain",
+                "adjective": "British"
+            },
+            "cz": {
+                "name": "Czech Republic",
+                "adjective": "Czech"
+            },
+            "ae": {
+                "name": "UAE",
+                "adjective": "Emirati"
+            },
+            "tk": {
+                "name": "Turkey",
+                "adjective": "Turkish"
+            },
+            "ua": {
+                "name": "Ukraine",
+                "adjective": "Ukrainian"
+            },
+            "us": {
+                "name": "USA",
+                "adjective": "American"
+            },
+            "hu": {
+                "name": "Hungary",
+                "adjective": "Hungarian"
+            },
+            "ve": {
+                "name": "Venezuela",
+                "adjective": "Venezuelan"
+            },
+            "uz": {
+                "name": "Uzbekistan",
+                "adjective": "Uzbekistani"
+            },
+            "za": {
+                "name": "South Africa",
+                "adjective": "South African"
+            }
+        },
         "at": "at",
         "in": "in",
+        "stage": "stage",
         "stageIn": "Stage in",
         "stageInLower": "stage in",
-        "place": "place"
+        "place": "place",
+        "champion": "champion",
+        "championITT": "champion in ITT",
+        "championship": " championship",
+        "championshipITT": " championship in ITT"
     },
     "resultTypes": {
         "win": "Win",
@@ -140,12 +385,6 @@
         "otherLeadersJersey": "Other day in leader's jersey",
         "daysInLeadersJersey": "Days in leader's jersey",
         "dayInLeadersJersey": "Day in leader's jersey"
-    },
-    "suffixes": {
-        "1": "st",
-        "2": "nd",
-        "3": "rd",
-        "other": "th"
     },
     "nations": {
         "dz": {
@@ -377,6 +616,12 @@
             "adjective": "South African"
         }
     },
+    "suffixes": {
+        "1": "st",
+        "2": "nd",
+        "3": "rd",
+        "other": "th"
+    },
     "chartTooltips": {
         "year": "Year",
         "placement": "Placement",
@@ -521,7 +766,8 @@
             "nationWithMostPoints": "Nations with most points in {year}",
             "ridersRankings": "Greatest riders in {year}",
             "nationsRankings": "Greatest nations in {year}",
-            "greatestRidersFromYear": "Greatest riders born in {year}"
+            "greatestRidersFromYear": "Greatest riders born in {year}",
+            "resultsFromYear": "Results from {year}"
         },
         "noRidersBornInYear": "No riders born in {year}"
     },

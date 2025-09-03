@@ -28,17 +28,262 @@
             "22": "Olympisk mester (amatør)",
             "23": "Olympisk mester (amatør) i enkeltstart"
         },
+        "metaRaces": {
+            "225": "OL i enkeltstart",
+            "226": "OL 12 timers løb",
+            "227": "VM i linjeløb",
+            "228": "VM i enkeltstart",
+            "229": "EM i linjeløb",
+            "230": "EM i enkeltstart",
+            "231": "OL i linjeløb",
+            "289": "VM (amatør)"
+        },
         "suffixes": {
             "1": ".",
             "2": ".",
             "3": ".",
             "other": "."
         },
+        "nations": {
+            "dz": {
+                "name": "Algeriet",
+                "adjective": "Algerisk"
+            },
+            "ar": {
+                "name": "Argentina",
+                "adjective": "Argentinsk"
+            },
+            "au": {
+                "name": "Australien",
+                "adjective": "Australisk"
+            },
+            "bh": {
+                "name": "Bahrain",
+                "adjective": "Bahrainsk"
+            },
+            "by": {
+                "name": "Belarus",
+                "adjective": "Belarusisk"
+            },
+            "be": {
+                "name": "Belgien",
+                "adjective": "Belgisk"
+            },
+            "br": {
+                "name": "Brasilien",
+                "adjective": "Brasiliansk"
+            },
+            "bg": {
+                "name": "Bulgarien",
+                "adjective": "Bulgarsk"
+            },
+            "ca": {
+                "name": "Canada",
+                "adjective": "Canadisk"
+            },
+            "co": {
+                "name": "Colombia",
+                "adjective": "Colombiansk"
+            },
+            "cr": {
+                "name": "Costa Rica",
+                "adjective": "Costa Ricansk"
+            },
+            "dk": {
+                "name": "Danmark",
+                "adjective": "Dansk"
+            },
+            "ec": {
+                "name": "Ecuador",
+                "adjective": "Ecuadoriansk"
+            },
+            "er": {
+                "name": "Eritrea",
+                "adjective": "Eritreansk"
+            },
+            "ee": {
+                "name": "Estland",
+                "adjective": "Estisk"
+            },
+            "ph": {
+                "name": "Filipinerne",
+                "adjective": "Filipinsk"
+            },
+            "fi": {
+                "name": "Finland",
+                "adjective": "Finlandsk"
+            },
+            "fr": {
+                "name": "Frankrig",
+                "adjective": "Fransk"
+            },
+            "de": {
+                "name": "Tyskland",
+                "adjective": "Tysk"
+            },
+            "gr": {
+                "name": "Grækenland",
+                "adjective": "Græsk"
+            },
+            "ie": {
+                "name": "Irland",
+                "adjective": "Irsk"
+            },
+            "il": {
+                "name": "Israel",
+                "adjective": "Israelisk"
+            },
+            "it": {
+                "name": "Italien",
+                "adjective": "Italiensk"
+            },
+            "jp": {
+                "name": "Japan",
+                "adjective": "Japansk"
+            },
+            "kz": {
+                "name": "Kasakhstan",
+                "adjective": "Kasakhisk"
+            },
+            "kr": {
+                "name": "Korea",
+                "adjective": "Koreansk"
+            },
+            "cn": {
+                "name": "Kina",
+                "adjective": "Kinesisk"
+            },
+            "hr": {
+                "name": "Kroatien",
+                "adjective": "Kroatisk"
+            },
+            "lv": {
+                "name": "Letland",
+                "adjective": "Lettisk"
+            },
+            "lu": {
+                "name": "Luxembourg",
+                "adjective": "Luxemburgsk"
+            },
+            "lt": {
+                "name": "Litauen",
+                "adjective": "Litauisk"
+            },
+            "mx": {
+                "name": "Mexico",
+                "adjective": "Mexicansk"
+            },
+            "md": {
+                "name": "Moldova",
+                "adjective": "Moldovsk"
+            },
+            "nl": {
+                "name": "Nederlandene",
+                "adjective": "Nederlandsk"
+            },
+            "nz": {
+                "name": "New Zealand",
+                "adjective": "New Zealandsk"
+            },
+            "no": {
+                "name": "Norge",
+                "adjective": "Norsk"
+            },
+            "at": {
+                "name": "Østrig",
+                "adjective": "Østrigsk"
+            },
+            "dd": {
+                "name": "Østtyskland",
+                "adjective": "Østtysk"
+            },
+            "pl": {
+                "name": "Polen",
+                "adjective": "Polsk"
+            },
+            "pt": {
+                "name": "Portugal",
+                "adjective": "Portugisisk"
+            },
+            "ru": {
+                "name": "Rusland",
+                "adjective": "Russisk"
+            },
+            "ch": {
+                "name": "Schweiz",
+                "adjective": "Schweizisk"
+            },
+            "se": {
+                "name": "Sverige",
+                "adjective": "Svensk"
+            },
+            "es": {
+                "name": "Spanien",
+                "adjective": "Spansk"
+            },
+            "sk": {
+                "name": "Slovakiet",
+                "adjective": "Slovakisk"
+            },
+            "si": {
+                "name": "Slovenien",
+                "adjective": "Slovenisk"
+            },
+            "su": {
+                "name": "Sovjetunionen",
+                "adjective": "Sovjetisk"
+            },
+            "gb": {
+                "name": "Storbritannien",
+                "adjective": "Britisk"
+            },
+            "cz": {
+                "name": "Tjekkiet",
+                "adjective": "Tjekkisk"
+            },
+            "ae": {
+                "name": "UAE",
+                "adjective": "Emiratisk"
+            },
+            "tk": {
+                "name": "Tyrkiet",
+                "adjective": "Tyrkisk"
+            },
+            "ua": {
+                "name": "Ukraina",
+                "adjective": "Ukrainsk"
+            },
+            "us": {
+                "name": "USA",
+                "adjective": "Amerikansk"
+            },
+            "hu": {
+                "name": "Ungarn",
+                "adjective": "Ungarsk"
+            },
+            "ve": {
+                "name": "Venezuela",
+                "adjective": "Venezuelansk"
+            },
+            "uz": {
+                "name": "Usbekistan",
+                "adjective": "Usbekisk"
+            },
+            "za": {
+                "name": "Sydafrika",
+                "adjective": "Sydafrikansk"
+            }
+        },
         "at": "til",
         "in": "i",
+        "stage": "etape",
         "stageIn": "Etape i",
         "stageInLower": "etape i",
-        "place": "plads"
+        "place": "plads",
+        "champion": "mester",
+        "championITT": "mester i enkeltstart",
+        "championship": "e mesterskaber",
+        "championshipITT": "e mester i enkeltstart"
     },
     "resultTypes": {
         "win": "Sejr",
@@ -139,12 +384,6 @@
         "otherLeadersJersey": "Øvrig dag i førertrøjen",
         "daysInLeadersJersey": "Dage i førertrøjen",
         "dayInLeadersJersey": "Dag i førertrøjen"
-    },
-    "suffixes": {
-        "1": ".",
-        "2": ".",
-        "3": ".",
-        "other": "."
     },
     "nations": {
         "dz": {
@@ -376,6 +615,13 @@
             "adjective": "Sydafrikansk"
         }
     },
+    "suffixes": {
+        "1": ".",
+        "2": ".",
+        "3": ".",
+        "other": "."
+    },
+    
     "chartTooltips": {
         "year": "År",
         "placement": "Placering",
@@ -520,7 +766,8 @@
             "nationWithMostPoints": "Nationer med flest point optjent i {year}",
             "ridersRankings": "Største ryttere i {year}",
             "nationsRankings": "Største nationer i {year}",
-            "greatestRidersFromYear": "Største ryttere født i {year}"
+            "greatestRidersFromYear": "Største ryttere født i {year}",
+            "resultsFromYear": "Resultater i {year}"
         },
         "noRidersBornInYear": "Ingen ryttere født i {year}"
     },

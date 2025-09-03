@@ -1,10 +1,15 @@
 import { useTranslations } from "next-intl";
 import { raceClassesWithRenames } from "../constants/raceClasses";
+import { getResultRaceName } from "./raceName";
 
 type GroupedResult = {
     races: {
         meta_races: {
+            id: number;
             name: string;
+            nations: {
+                code: string;
+            }
         },
         race_class_id: number;
     };
@@ -47,7 +52,7 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
         }
     }
 
-    resultName += groupedResult.races.meta_races.name
+    resultName += getResultRaceName(groupedResult.races.meta_races, t)
     return resultName;
 }
 
@@ -61,6 +66,24 @@ export function getGroupedResultNameWithCount(groupedResult: GroupedResult, t: R
     return resultName;
 }
 
+type Result = {
+    result_type_id: number;
+    stage: number | null;
+    placement: number | null;
+}
+
+export function getOnlyResultName(result: Result, t: ReturnType<typeof useTranslations>) {
+    if ([2, 3, 4].includes(result.result_type_id) && result.placement) {
+        return `${result.placement}${t(`suffixes.${getSuffix(result.placement)}`)}`
+    }
+
+    if (result.result_type_id == 7 && result.stage) {
+        return `${result.stage}${t(`suffixes.${getSuffix(result.stage)}`)} ${t("stage")}`
+    }
+
+    return t(`resultTypes.${result.result_type_id}`)
+}
+
 
 function getSuffix(number: number) {
     if (10 < number && number < 14) return "other";
@@ -71,5 +94,4 @@ function getSuffix(number: number) {
     if (["1", "2", "3"].includes(lastChar)) return lastChar;
 
     return  "other";
-
 }
