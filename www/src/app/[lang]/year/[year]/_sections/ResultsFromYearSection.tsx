@@ -66,7 +66,7 @@ export default function ResultsFromYearSection({
                         .sort((a, b) => (a.stage ?? 0) - (b.stage ?? 0))
                         .sort((a, b) => getResultTypeSortValue(a.result_type_id) - getResultTypeSortValue(b.result_type_id))
                         .map(result => (
-                            <li>
+                            <li key={result.id}>
                                 <span>{getOnlyResultName(result, tResultNames)} - </span>
                                 <Link href={getRiderUrl(result.riders)} className="hover:underline">
                                     <FlagSpan code={result.riders.nations.code} className="mr-2"/> 

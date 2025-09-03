@@ -46,11 +46,13 @@ export default async function YearPage({
                 nationSeasonsFromYear={nationSeasonsFromYear}
             />
             <GreatestRidersBornInYearSection ridersFromYear={ridersFromYear} year={year}/>
-            <ResultsFromYearSection
-                year={year}
-                resultsFromYear={resultsFromYear}
-                pointSystem={pointSystem}
-            />
+            {resultsFromYear.length > 0 &&
+                <ResultsFromYearSection
+                    year={year}
+                    resultsFromYear={resultsFromYear}
+                    pointSystem={pointSystem}
+                />
+            }
         </div>
     )
 }
