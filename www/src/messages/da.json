@@ -788,7 +788,7 @@
             "placementThisYear": "Placering blandt hold i {year}"
         },
         "titles": {
-            "greatestRiders": "Største ryttere all time",
+            "greatestRiders": "Største ryttere på holdet",
             "teamsWithGreatestRiders": "Hold med de største ryttere",
             "mostPoints": "Hold med flest point optjent i {year}",
             "greatestRidersOnTeam": "Største ryttere på {team}",

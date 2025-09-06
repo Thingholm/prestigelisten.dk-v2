@@ -29,7 +29,7 @@ export default function NationNameCell({
     return (
         <TableCell className={`${className}`} href={isLink ? getNationUrl(nation) : undefined}>
             <FlagSpan code={nation.code} />
-            <span className={`${isMain ? "!font-medium" : ""}`}>{nationName}</span>
+            <span className={`${isMain ? "!font-semibold" : ""}`}>{nationName}</span>
         </TableCell>
     );
 }

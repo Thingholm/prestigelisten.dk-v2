@@ -23,7 +23,11 @@ type Nation = {
     name: string;
 }
 
-export function getNationUrl(nation: Nation) {
+export function getNationUrl(nation: Nation | null) {
+    if (!nation) {
+        return urls["nations"];
+    }
+    
     return `${urls["nation"]}/${nation.id}/${nation.name.replaceAll(" ", "_").toLowerCase()}`;
 }
 

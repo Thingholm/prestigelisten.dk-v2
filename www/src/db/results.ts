@@ -2,7 +2,7 @@ import { supabase } from "@/utils/supabase/client";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
-export const getAllResultsFromYear = (year: number) =>unstable_cache(async () => {
+export const getAllResultsFromYear = (year: number) => unstable_cache(async () => {
         const { data, error } = await allResultsFromYearQuery().eq("year", year);
 
         if (error) throw error;

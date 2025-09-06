@@ -788,7 +788,7 @@
             "placementThisYear": "Placement among teams in {year}"
         },
         "titles": {
-            "greatestRiders": "Greatest riders all time",
+            "greatestRiders": "Greatest riders on the team",
             "teamsWithGreatestRiders": "Teams with the greatest riders",
             "mostPoints": "Teams with most points in {year}",
             "greatestRidersOnTeam": "Greatest riders on {team}",
