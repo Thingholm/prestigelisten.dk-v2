@@ -69,7 +69,7 @@ export default function ProfileSection({
                 {teamWithRiders.riders.sort((a, b) => (b.rider_seasons[0]?.points_all_time || 0) - (a.rider_seasons[0]?.points_all_time || 0))
                     .slice(0,7)
                     .map(rider => (
-                        <p>
+                        <p key={rider.id}>
                             <Link href={getRiderUrl(rider)} className="font-medium hover:underline">{getRiderName(rider)}</Link>
                             <span className="opacity-70 font-light"> - {t("no")} {formatNumber(rider.rider_seasons[0]?.rank_all_time)}</span>
                         </p>

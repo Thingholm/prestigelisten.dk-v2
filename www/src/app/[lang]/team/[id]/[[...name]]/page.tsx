@@ -2,6 +2,7 @@ import { getPointSystem } from "@/db/pointSystem";
 import { getTeamsWithRiders, getTeamWithRiders } from "@/db/team";
 import ProfileSection from "./_sections/ProfileSection";
 import { rankBy } from "@/lib/helpers/rank";
+import TeamsTablesSection from "./_sections/TeamsTablesSection";
 
 export default async function TeamPage({
     params,
@@ -41,6 +42,11 @@ export default async function TeamPage({
                 teamWithRiders={teamWithRiders} 
                 teamsRankedAllTime={teamsRankedAllTime} 
                 teamsRankedForYear={teamsRankedForYear}
+            />
+            <TeamsTablesSection 
+                teamsRankedAllTime={teamsRankedAllTime} 
+                teamsRankedForYear={teamsRankedForYear}
+                teamId={id}
             />
         </div>
     )
