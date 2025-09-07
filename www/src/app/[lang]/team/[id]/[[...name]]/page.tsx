@@ -5,6 +5,7 @@ import { rankBy } from "@/lib/helpers/rank";
 import TeamsTablesSection from "./_sections/TeamsTablesSection";
 import GreatestRidersSection from "./_sections/GreatestRidersSection";
 import { getActiveRiderPointsLookup } from "@/db/riderPoints";
+import ResultsForYearSection from "./_sections/ResultsForYearSection";
 
 export default async function TeamPage({
     params,
@@ -53,6 +54,11 @@ export default async function TeamPage({
                 teamId={id}
             />
             <GreatestRidersSection teamWithRiders={teamWithRiders} rankedActiveRiderPointsLookup={rankedActiveRiderPointsLookup}/>
+            <ResultsForYearSection
+                currentYear={currentYear}
+                teamWithRiders={teamWithRiders}
+                pointSystem={pointSystem}
+            />
         </div>
     )
 }

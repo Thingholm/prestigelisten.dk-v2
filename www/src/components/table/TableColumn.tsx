@@ -7,7 +7,7 @@ export default function TableColumn({
 }>) {
     return (
         <th
-            className={`${className}`}
+            className={`${className} not-last:pr-1 `}
         >
             {children}
         </th>

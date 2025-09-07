@@ -69,7 +69,7 @@ export function getTeamUrl(team: Team | null) {
         return urls["teams"];
     }
 
-    return `${urls["team"]}/${team.id}/${team.name.replaceAll(" ", "_").toLowerCase()}`;
+    return `${urls["team"]}/${team.id}/${team.name.replaceAll(" ", "_").replaceAll(".", "").toLowerCase()}`;
 }
 
 export function getListNationsUrl() {

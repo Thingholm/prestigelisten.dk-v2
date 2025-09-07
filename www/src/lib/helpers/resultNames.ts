@@ -9,19 +9,19 @@ type GroupedResult = {
             name: string;
             nations: {
                 code: string;
-            }
+            } | null;
         },
         race_class_id: number;
     };
     result_type_id: number;
-    results: unknown[];
+    results?: unknown[] | undefined;
     placement: number | null;
 }
 
 export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType<typeof useTranslations>, showPlacement?: boolean) {
     let resultName = "";
 
-    const resultCount = groupedResult.results.length;
+    const resultCount = groupedResult.results?.length ?? 0;
 
     const isGold = groupedResult.result_type_id == 12;
 
@@ -57,7 +57,7 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
 }
 
 export function getGroupedResultNameWithCount(groupedResult: GroupedResult, t: ReturnType<typeof useTranslations>, showPlacement?: boolean) {
-    const resultCount = groupedResult.results.length;
+    const resultCount = groupedResult.results?.length ?? 0;
 
     let resultName = resultCount > 1 ? `${resultCount}x ` : ``
 

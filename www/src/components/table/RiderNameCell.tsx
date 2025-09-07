@@ -17,6 +17,7 @@ export default function RiderNameCell({
     rider,
     className = "",
     showFlagBreakpoint,
+    isCell = true,
     isLink = true,
     secondarySpan,
     movement
@@ -38,12 +39,8 @@ export default function RiderNameCell({
         always: "",
     };
 
-    return (
-        <TableCell 
-            className={`${className}`} 
-            href={isLink ? getRiderUrl(rider) : undefined}
-            secondarySpan={secondarySpan}
-        >
+    const content = () => (
+        <>
             <FlagSpan code={rider.nations?.code} className={`${showFlagBreakpoint ? `${flagSpanVariants[showFlagBreakpoint]}` : "!hidden"}`}/>
             <span className="font-semibold">{rider.last_name.toUpperCase()}</span>
             {rider.first_name && 
@@ -52,6 +49,21 @@ export default function RiderNameCell({
             {movement &&
                 <MovementIcon movement={movement} />
             }
-        </TableCell>
-    );
+        </>
+    )
+
+    if (isCell) {
+        return (
+            <TableCell 
+                className={`${className}`} 
+                href={isLink ? getRiderUrl(rider) : undefined}
+                secondarySpan={secondarySpan}
+            >
+                {content()}
+            </TableCell>
+        );
+    }
+
+    return content();
+
 }

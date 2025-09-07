@@ -59,7 +59,10 @@ const teamWithRidersQuery = supabase
                             *
                         )
                     )
-                )           
+                ),
+                race_dates (
+                    *
+                )      
             )
         ),
         nations (
