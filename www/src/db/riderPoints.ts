@@ -28,6 +28,28 @@ const riderPointsWithNationAndTeamQuery = supabase
 
 export type RiderPointsWithNationAndTeam = QueryData<typeof riderPointsWithNationAndTeamQuery>
 
+export const getActiveRiderPointsLookup = unstable_cache(async () => {
+    const { data, error } = await activeRiderPointsLookupQuery;
+
+    if (error) { throw error; }
+
+    return data as ActiveRiderPointsLookup;
+}, ["getActiveRiders"], { revalidate: 60 * 60 });
+
+const activeRiderPointsLookupQuery = supabase
+    .from("rider_points")
+    .select(`
+        id,
+        points,
+        rider_id,
+        riders!inner (
+            active
+        )
+    `)
+    .eq("riders.active", true);
+    
+export type ActiveRiderPointsLookup = QueryData<typeof activeRiderPointsLookupQuery>
+
 export const getRidersFromYear = async (year: number) => await unstable_cache(async () => {
     const currentYear = new Date().getFullYear();
     const { data, error } = await  ridersFromYearQuery()

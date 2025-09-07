@@ -3,6 +3,8 @@ import { getTeamsWithRiders, getTeamWithRiders } from "@/db/team";
 import ProfileSection from "./_sections/ProfileSection";
 import { rankBy } from "@/lib/helpers/rank";
 import TeamsTablesSection from "./_sections/TeamsTablesSection";
+import GreatestRidersSection from "./_sections/GreatestRidersSection";
+import { getActiveRiderPointsLookup } from "@/db/riderPoints";
 
 export default async function TeamPage({
     params,
@@ -13,8 +15,10 @@ export default async function TeamPage({
     const currentYear = new Date().getFullYear();
 
     const teamWithRiders = await getTeamWithRiders(id);
-
     const teamsWithRiders = await getTeamsWithRiders();
+    const pointSystem = await getPointSystem();
+    const activeRiderPointsLookup = await getActiveRiderPointsLookup();
+
     const teamsWithPoints = teamsWithRiders?.map(team => {
         const pointsForYear = team.riders.reduce((sum, rider) => {
             return sum + (rider.rider_seasons[0]?.points_for_year || 0);
@@ -33,7 +37,7 @@ export default async function TeamPage({
     const teamsRankedAllTime = rankBy(teamsWithPoints, "pointsAllTime");
     const teamsRankedForYear = rankBy(teamsWithPoints, "pointsForYear");
 
-    const pointSystem = await getPointSystem();
+    const rankedActiveRiderPointsLookup = rankBy(activeRiderPointsLookup, "points");
 
     return (
         <div>
@@ -48,6 +52,7 @@ export default async function TeamPage({
                 teamsRankedForYear={teamsRankedForYear}
                 teamId={id}
             />
+            <GreatestRidersSection teamWithRiders={teamWithRiders} rankedActiveRiderPointsLookup={rankedActiveRiderPointsLookup}/>
         </div>
     )
 }
