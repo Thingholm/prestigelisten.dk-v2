@@ -7,7 +7,7 @@ type GroupedResult = {
         meta_races: {
             id: number;
             name: string;
-            nations: {
+            nations?: {
                 code: string;
             } | null;
         },

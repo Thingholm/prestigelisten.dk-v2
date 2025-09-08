@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 type MetaRace = {
     id: number;
     name: string;
-    nations: {
+    nations?: {
         code: string;
     } | null;
 }

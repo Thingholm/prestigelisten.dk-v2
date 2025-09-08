@@ -16,3 +16,22 @@ const minRiderBirthYearQuery = supabase
     .maybeSingle();
 
 export type MinRiderBirthYear = QueryData<typeof minRiderBirthYearQuery>;
+
+export const getRiders = unstable_cache(async () => {
+    const { data, error } = await ridersQuery;
+
+    if (error) { throw error; }
+
+    return data as Riders;
+})
+
+const ridersQuery = supabase
+    .from("riders")
+    .select(`
+        *,
+        nations (
+            *
+        )
+    `)
+
+export type Riders = QueryData<typeof ridersQuery>;

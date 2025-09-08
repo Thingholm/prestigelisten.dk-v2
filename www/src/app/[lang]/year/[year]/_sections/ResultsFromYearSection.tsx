@@ -7,7 +7,7 @@ import Select from "@/components/ui/Select"
 import { PointSystem } from "@/db/pointSystem"
 import { ResultsFromYear } from "@/db/results"
 import { getRaceName } from "@/lib/helpers/raceName";
-import { getGroupedResultName, getOnlyResultName } from "@/lib/helpers/resultNames";
+import { getOnlyResultName } from "@/lib/helpers/resultNames";
 import { getResultTypeSortValue } from "@/lib/helpers/resultType";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getRiderUrl } from "@/lib/helpers/urls";

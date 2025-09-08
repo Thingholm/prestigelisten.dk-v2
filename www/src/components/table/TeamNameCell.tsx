@@ -1,8 +1,7 @@
 import { ScreenBreakpoint } from "@/lib/constants/screenBreakpoints";
-import TableCell, { SecondarySpanProps } from "./TableCell";
+import TableCell from "./TableCell";
 import FlagSpan from "./FlagSpan";
-import { getRiderUrl, getTeamUrl } from "@/lib/helpers/urls";
-import MovementIcon from "../ui/MovementIcon";
+import { getTeamUrl } from "@/lib/helpers/urls";
 
 type Team = {
     id: number,

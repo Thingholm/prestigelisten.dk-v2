@@ -1,6 +1,6 @@
 import { Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import { TeamsWithPoints } from "../_sections/TeamsTablesSection";
-import { rankBy, Ranked } from "@/lib/helpers/rank";
+import { Ranked } from "@/lib/helpers/rank";
 import { getTranslations } from "next-intl/server";
 import TeamNameCell from "@/components/table/TeamNameCell";
 
@@ -15,7 +15,7 @@ export default async function TeamsTable({
 }>) {
     const t = await getTranslations("tableColumns");
 
-    let slicedTeams = rankedTeams.slice(0, 15);
+    const slicedTeams = rankedTeams.slice(0, 15);
     let currentTeam = rankedTeams.find(team => team.id == teamId);
 
     if (currentTeam?.[rankKey] == 0) {

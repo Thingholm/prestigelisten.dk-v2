@@ -35,3 +35,19 @@ const allResultsFromYearQuery = () => supabase
     `)
 
     export type ResultsFromYear = QueryData<ReturnType<typeof allResultsFromYearQuery>>
+
+export const getResultsInRaceRange = (raceIds: number[]) => unstable_cache(async () => {
+    const { data, error } = await resultsInRaceRangeQuery().in("race_id", raceIds);
+
+    if (error) throw error;
+    return data as ResultsFromYear;
+},
+["resultsInRaceRange", raceIds.toString()], { revalidate: 1 })();
+
+const resultsInRaceRangeQuery = () => supabase
+    .from("results")
+    .select(`
+        *
+    `)
+
+export type ResultsInRaceRange = QueryData<ReturnType<typeof resultsInRaceRangeQuery>>
