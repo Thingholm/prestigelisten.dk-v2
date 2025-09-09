@@ -7,7 +7,6 @@ import { groupResultsByKey } from "@/lib/helpers/groupResults";
 import { rankBy } from "@/lib/helpers/rank";
 import { getRiders } from "@/db/rider";
 import MostPointsInRaceSection from "./_sections/MostPointsInRaceSection";
-import { bench } from "@/utils/benchmark";
 
 export default async function RacePage({
     params,

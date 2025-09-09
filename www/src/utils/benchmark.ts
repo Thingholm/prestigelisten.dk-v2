@@ -1,6 +1,6 @@
 import { performance } from "perf_hooks";
 
-export const bench = (fn: () => any, label: string) => {
+export const bench = <T>(fn: () => T, label: string) => {
     const t0 = performance.now();
     const res = fn();
     const t1 = performance.now();
