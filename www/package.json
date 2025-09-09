@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.27.12",
+    "@heroui/system": "^2.4.7",
+    "@heroui/theme": "^2.4.6",
+    "@heroui/tooltip": "^2.2.8",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.55.0",
     "flag-icons": "^7.5.0",

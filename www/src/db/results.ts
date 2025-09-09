@@ -42,7 +42,7 @@ export const getResultsInRaceRange = (raceIds: number[]) => unstable_cache(async
     if (error) throw error;
     return data as ResultsFromYear;
 },
-["resultsInRaceRange", raceIds.toString()], { revalidate: 1 })();
+["resultsInRaceRange", raceIds.toString()], { revalidate: 60 * 60 })();
 
 const resultsInRaceRangeQuery = () => supabase
     .from("results")
@@ -51,3 +51,18 @@ const resultsInRaceRangeQuery = () => supabase
     `)
 
 export type ResultsInRaceRange = QueryData<ReturnType<typeof resultsInRaceRangeQuery>>
+
+export const getFirstRaceYear = unstable_cache(async () => {
+    const { data, error } = await firstRaceYearQuery;
+
+    if (error) throw error;
+
+    return data as FirstRaceYear;
+}, ["firstRaceYear"], { revalidate: 60 * 60 * 24 * 365})
+
+const firstRaceYearQuery = supabase
+    .from("results")
+    .select("year.min()")
+    .single()
+
+export type FirstRaceYear = QueryData<typeof firstRaceYearQuery>;
