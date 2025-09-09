@@ -51,3 +51,34 @@ export function groupResults<T extends Result>(results: T[], pointSystem: PointS
         .sort((a, b) => b.results.length - a.results.length)
         .sort((a, b) => b.points - a.points);
 }
+
+export type GroupedByKey<T, K> = {
+    key: K;
+    results: (T & { points: number })[];
+    points: number;
+};
+
+export function groupResultsByKey<T extends Result, K>(results: T[], pointSystem: PointSystem, keySelector: (result: T) => K): GroupedByKey<T, K>[] {
+    const resultsWithPoints = getResultsWithPoints(results, pointSystem);
+
+    const groupsMap = new Map<string, GroupedByKey<T, K>>();
+
+    for (const result of resultsWithPoints) {
+        const rawKey = keySelector(result);
+        const keyString = typeof rawKey === "object" ? JSON.stringify(rawKey) : String(rawKey);
+
+        if (!groupsMap.has(keyString)) {
+        groupsMap.set(keyString, {
+            key: rawKey,
+            results: [],
+            points: 0,
+        });
+        }
+
+        const group = groupsMap.get(keyString)!;
+        group.results.push(result);
+        group.points += result.points;
+    }
+
+    return Array.from(groupsMap.values());
+}
