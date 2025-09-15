@@ -674,6 +674,10 @@
         "searchTeams": "Hold",
         "searchRaces": "Løb"
     },
+    "navigationButtons": {
+        "prev": "Forrige",
+        "next": "Næste"
+    },
     "homepage": {
         "quote": "Cycling isn't a game, it's a sport. Tough, hard and unpitying, and it requires great sacrifices. One plays football, or tennis, or hockey. One doesn't play at cycling.",
         "author": "Jean De Gribaldy",

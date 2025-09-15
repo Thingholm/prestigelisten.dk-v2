@@ -19,11 +19,13 @@ export default function Container({
 }>) {
     const Heading = () => {
         return (
-            <h3 className={`font-bold text-xl sm:text-2xl mb-3 relative inline-block group lg:text-nowrap`}>
-                {title}
-                {href && <IoArrowForward className="ml-3 inline-block"/>}
-                {href && <div className={`absolute h-0.75 -bottom-0.5 w-0 ${dark ? "bg-white" : "bg-secondary-950"} duration-200 group-hover:w-full rounded-full`}></div>}
-            </h3>
+            <div className="block">
+                <h3 className={`font-bold text-xl sm:text-2xl mb-3 relative inline-block group lg:text-nowrap`}>
+                    {title}
+                    {href && <IoArrowForward className="ml-3 inline-block"/>}
+                    {href && <div className={`absolute h-0.75 -bottom-0.5 w-0 ${dark ? "bg-white" : "bg-secondary-950"} duration-200 group-hover:w-full rounded-full`}></div>}
+                </h3>
+            </div>
         )
     }
 

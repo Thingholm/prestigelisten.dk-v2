@@ -8,6 +8,7 @@ import { PointSystem } from "@/db/pointSystem"
 import { ResultsFromYear } from "@/db/results"
 import { getRaceName } from "@/lib/helpers/raceName";
 import { getOnlyResultName } from "@/lib/helpers/resultNames";
+import { sortResults } from "@/lib/helpers/results";
 import { getResultTypeSortValue } from "@/lib/helpers/resultType";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getRiderUrl } from "@/lib/helpers/urls";
@@ -60,11 +61,7 @@ export default function ResultsFromYearSection({
                     ))}
                 </Select>
                 <ul className="gap-0.5 flex flex-col">
-                    {resultsFromYear
-                        .filter(result => result.race_id == selectedRace.id)
-                        .sort((a, b) => (a.placement ?? 0) - (b.placement ?? 0))
-                        .sort((a, b) => (a.stage ?? 0) - (b.stage ?? 0))
-                        .sort((a, b) => getResultTypeSortValue(a.result_type_id) - getResultTypeSortValue(b.result_type_id))
+                    {sortResults(resultsFromYear.filter(result => result.race_id == selectedRace.id))
                         .map(result => (
                             <li key={result.id}>
                                 <span>{getOnlyResultName(result, tResultNames)} - </span>

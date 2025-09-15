@@ -74,7 +74,7 @@ type Result = {
 
 export function getOnlyResultName(result: Result, t: ReturnType<typeof useTranslations>) {
     if ([2, 3, 4].includes(result.result_type_id) && result.placement) {
-        return `${result.placement}${t(`suffixes.${getSuffix(result.placement)}`)}`
+        return `${result.placement}${t(`suffixes.${getSuffix(result.placement)}`)} ${t("place")}`
     }
 
     if (result.result_type_id == 7 && result.stage) {

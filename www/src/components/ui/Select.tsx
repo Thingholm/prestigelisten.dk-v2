@@ -1,13 +1,13 @@
 import { ChangeEventHandler } from "react";
 
-export default function Select({
+export default function Select<T extends string | number>({
     value,
     onChange,
     disabled = false,
     className,
     children,
 }: Readonly<{
-    value: number
+    value: T
     onChange: ChangeEventHandler<HTMLSelectElement>
     disabled?: boolean
     className?: string

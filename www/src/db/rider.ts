@@ -23,7 +23,7 @@ export const getRiders = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Riders;
-})
+}, ["riders"], { revalidate: 60 * 60})
 
 const ridersQuery = supabase
     .from("riders")
