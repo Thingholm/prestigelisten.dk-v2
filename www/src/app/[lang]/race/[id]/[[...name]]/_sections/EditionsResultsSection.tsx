@@ -3,31 +3,20 @@
 import NavigatorSection from "@/components/NavigatorSection";
 import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import { PointSystem } from "@/db/pointSystem";
-import { ResultsInRaceRange } from "@/db/results";
 import { urls } from "@/lib/constants/urls";
 import { getResultPoints } from "@/lib/helpers/pointSystem";
 import { getOnlyResultName } from "@/lib/helpers/resultNames";
 import { sortResults } from "@/lib/helpers/results";
-import { Tables } from "@/utils/supabase/database.types";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
-
-type Result = (ResultsInRaceRange[number] & {
-        races: (Tables<"races"> & {
-            race_classes: Tables<"race_classes">
-        }),
-        riders: (Tables<"riders"> & {
-            nations: Tables<"nations">
-        }),
-        result_types: Tables<"result_types">
-    })[]
+import { Result } from "../page";
 
 export default function EditionsResultsSection({
     results,
     pointSystem
 }: Readonly<{
-    results: Result,
+    results: Result[],
     pointSystem: PointSystem
 }>) {
     const t = useTranslations("racePage.resultsEachEdition")
@@ -40,7 +29,7 @@ export default function EditionsResultsSection({
     const [selectedYear, setSelectedYear] = useState(resultYears[0])
 
     const resultsForYear = results.filter(result => result.year == selectedYear);
-    
+
     return (
         <NavigatorSection
             options={resultYears}

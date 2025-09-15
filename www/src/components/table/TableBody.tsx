@@ -4,7 +4,7 @@ export default function TableBody({
     children,
     className = "",
 }: Readonly<{
-    children: ReactElement<React.ComponentProps<"tr">>[] | ReactElement<React.ComponentProps<"tr">>;
+    children?: ReactElement<React.ComponentProps<"tr">>[] | ReactElement<React.ComponentProps<"tr">>;
     className?: string;
 }>) {
     return (

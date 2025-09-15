@@ -5,3 +5,11 @@ export function getResultTypeSortValue(resultTypeId: number) {
 
     return resultTypeId;
 }
+
+export function getGeneralResultType(resultTypeId: number) {
+    if (8 <= resultTypeId && resultTypeId <= 11) {
+        return 99;
+    }
+
+    return resultTypeId;
+}

@@ -10,9 +10,10 @@ type Result = {
     placement?: number | null;
 }
 
-type GroupedResult<T> =  {
+export type GroupedResult<T> =  {
     results: (T & { points: number })[];
     points: number;
+    result_type_id: number
 }
 
 export function groupResults<T extends Result>(results: T[], pointSystem: PointSystem, distinctPlacement: boolean = false ) {
@@ -24,7 +25,7 @@ export function groupResults<T extends Result>(results: T[], pointSystem: PointS
         let resultTypeId = result.result_type_id 
 
         if (8 <= resultTypeId && resultTypeId <= 11) {
-            resultTypeId = 100;
+            resultTypeId = 99;
         }
 
         if (distinctPlacement && 2 <= resultTypeId && resultTypeId <= 4 && result.placement) {
@@ -37,6 +38,7 @@ export function groupResults<T extends Result>(results: T[], pointSystem: PointS
             groupsMap.set(key, {
                 ...result,
                 results: [],
+                result_type_id: resultTypeId,
                 points: 0
             })
         }
