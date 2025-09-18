@@ -52,7 +52,29 @@ export default function ListSection({
 
     const [filter, setFilter] = useState(searchParamsToFilterMapper(searchParams, defaultFilter))
     const [rowAmount, setRowAmount] = useState(defaultRowAmount)
-    const rankedAndFilteredRiders = rankBy(riderPoints, "points")
+
+    const filterRiders = (riderPoints: RiderPointsWithNationAndTeam) => {
+        return riderPoints.filter(rider => {
+            if (filter.status == "active" && !rider.riders.active) return false;
+            if (filter.status == "inactive" && rider.riders.active) return false;
+
+            if (filter.isSingleYear && rider.riders.year !== filter.bornBeforeOrIn) return false;
+
+            if (filter.bornAfterOrIn != defaultFilter.bornAfterOrIn || filter.bornBeforeOrIn != defaultFilter.bornBeforeOrIn ) {
+                if (!rider.riders.year) {
+                    return false;
+                }
+
+                if (!filter.isSingleYear && (rider.riders.year < filter.bornAfterOrIn || rider.riders.year > filter.bornBeforeOrIn)) return false;
+            }
+
+            if (filter.nations.some(nation => nation) && !filter.nations.includes(rider.riders.nation_id)) return false;
+
+            return true;
+        })
+    }
+
+    const rankedAndFilteredRiders = rankBy(filterRiders(riderPoints), "points")
 
     useEffect(() => {
         setRowAmount(defaultRowAmount)
