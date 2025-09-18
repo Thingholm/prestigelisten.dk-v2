@@ -14,6 +14,7 @@ import StatusFilterSubsection from "./StatusFilterSubsection";
 import { useRouter, useSearchParams } from "next/navigation";
 import { filterToSearchParamsMapper, searchParamsToFilterMapper } from "@/lib/mappers/filterSearchParamsMapper";
 import { IoReload } from "react-icons/io5";
+import RidersSearchBar from "../_components/RiderSearchBar";
 
 export type RidersFilter = {
     status: "all" | "active" | "inactive";
@@ -52,6 +53,7 @@ export default function ListSection({
 
     const [filter, setFilter] = useState(searchParamsToFilterMapper(searchParams, defaultFilter))
     const [rowAmount, setRowAmount] = useState(defaultRowAmount)
+    const [highlightedRiderId, setHighlightedRiderId] = useState<number | null>(null);
 
     const filterRiders = (riderPoints: RiderPointsWithNationAndTeam) => {
         return riderPoints.filter(rider => {
@@ -78,6 +80,7 @@ export default function ListSection({
 
     useEffect(() => {
         setRowAmount(defaultRowAmount)
+        setHighlightedRiderId(null);
 
         const params = filterToSearchParamsMapper(filter, defaultFilter).toString();
 
@@ -122,8 +125,17 @@ export default function ListSection({
                     </Button>
                 </div>
             </div>
+            <RidersSearchBar
+                riders={rankedAndFilteredRiders}
+                setHighlightedRiderId={setHighlightedRiderId}
+                setRange={setRowAmount}
+            />
             <div className="w-full">
-                <ListTable riderPoints={rankedAndFilteredRiders} rowAmount={rowAmount}/>
+                <ListTable 
+                    riderPoints={rankedAndFilteredRiders} 
+                    rowAmount={rowAmount} 
+                    highlightedRiderId={highlightedRiderId}
+                />
                 {rowAmount < rankedAndFilteredRiders.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 100)}>{t("showMore")}</Button>}
             </div>
         </Section>

@@ -5,10 +5,12 @@ import { useTranslations } from "next-intl";
 
 export default function ListTable({
     riderPoints,
-    rowAmount
+    rowAmount,
+    highlightedRiderId
 }: Readonly<{
     riderPoints: Ranked<RiderPointsWithNationAndTeam[number]>[],
-    rowAmount: number
+    rowAmount: number,
+    highlightedRiderId: number | null
 }>) {
     const t = useTranslations("tableColumns");
     
@@ -23,7 +25,11 @@ export default function ListTable({
             </TableHead>
             <TableBody>
                 {riderPoints.slice(0, rowAmount).map(rider => (
-                    <TableRow key={rider.id}>
+                    <TableRow 
+                        key={rider.id} 
+                        id={`rider-${rider.id}`} 
+                        isHighlighted={rider.id == highlightedRiderId}
+                    >
                         <TableCell>{rider.rank}</TableCell>
                         <RiderNameCell rider={rider.riders} showFlagBreakpoint="sm"/>
                         <NationNameCell nation={rider.riders.nations} className="hidden sm:table-cell"/>

@@ -14,6 +14,7 @@ export default function TableRow({
     isFaded = false,
     hasBorder = true,
     responsiveSlice,
+    id,
 }: Readonly<{
     children: ReactElement<React.ComponentProps<"td">>[] | ReactElement<React.ComponentProps<"td">>;
     className?: string;
@@ -21,6 +22,7 @@ export default function TableRow({
     isFaded?: boolean;
     hasBorder?: boolean;
     responsiveSlice?: ResponsiveSliceProps;
+    id?: string;
 }>) {
     const paramClassList = [];
 
@@ -35,7 +37,7 @@ export default function TableRow({
         : "";
 
     return (
-        <tr className={`${paramClassList.join(" ")} border-t-gray-200 ${responsiveSliceClass} ${className}`}>
+        <tr className={`${paramClassList.join(" ")} border-t-gray-200 ${responsiveSliceClass} ${className}`} id={id}>
             {children}
         </tr>
     );
