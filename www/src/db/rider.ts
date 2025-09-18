@@ -17,6 +17,21 @@ const minRiderBirthYearQuery = supabase
 
 export type MinRiderBirthYear = QueryData<typeof minRiderBirthYearQuery>;
 
+export const getMaxRiderBirthYear = unstable_cache(async () => {
+    const { data, error } = await maxRiderBirthYearQuery;
+
+    if (error) { throw error; }
+
+    return data as MaxRiderBirthYear;
+}, ["maxRiderBirthYear"], { revalidate: 60 * 60})
+
+const maxRiderBirthYearQuery = supabase
+    .from("riders")
+    .select("year.max()")
+    .maybeSingle();
+
+export type MaxRiderBirthYear = QueryData<typeof maxRiderBirthYearQuery>;
+
 export const getRiders = unstable_cache(async () => {
     const { data, error } = await ridersQuery;
 

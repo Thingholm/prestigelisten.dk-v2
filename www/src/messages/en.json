@@ -878,7 +878,8 @@
             "allStatuses": "All",
             "activeOnly": "Only active riders",
             "inactiveOnly": "Only inactive riders",
-            "search": "Search"
+            "search": "Search",
+            "resetFilter": "Reset"
         }
     },
     "nationPage": {

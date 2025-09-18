@@ -4,22 +4,102 @@ import Section from "@/components/layout/Section";
 import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import ListTable from "../_tables/ListTable";
 import { rankBy } from "@/lib/helpers/rank";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
+import BirthYearsFilterSubsection from "./BirthYearsFilterSubsection";
+import { Tables } from "@/utils/supabase/database.types";
+import NationsFilterSubsection from "./NationsFilterSubsection";
+import StatusFilterSubsection from "./StatusFilterSubsection";
+import { useRouter, useSearchParams } from "next/navigation";
+import { filterToSearchParamsMapper, searchParamsToFilterMapper } from "@/lib/mappers/filterSearchParamsMapper";
+import { IoReload } from "react-icons/io5";
+
+export type RidersFilter = {
+    status: "all" | "active" | "inactive";
+    isSingleYear: boolean;
+    bornBeforeOrIn: number;
+    bornAfterOrIn: number;
+    nations: (number | undefined)[];
+}
+
+const defaultRowAmount = 100;
 
 export default function ListSection({
-    riderPoints
+    riderPoints,
+    minBirthYear,
+    maxBirthYear,
+    nations
 }: Readonly<{
-    riderPoints: RiderPointsWithNationAndTeam
+    riderPoints: RiderPointsWithNationAndTeam,
+    minBirthYear: number,
+    maxBirthYear: number,
+    nations: Tables<"nations">[]
 }>) {
     const t = useTranslations("tableColumns");
+    const tList = useTranslations("lists.riders")
 
-    const [rowAmount, setRowAmount] = useState(100)
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
+    const defaultFilter: RidersFilter = {
+        status: "all",
+        isSingleYear: false,
+        bornBeforeOrIn: maxBirthYear,
+        bornAfterOrIn: minBirthYear,
+        nations: [undefined]
+    }
+
+    const [filter, setFilter] = useState(searchParamsToFilterMapper(searchParams, defaultFilter))
+    const [rowAmount, setRowAmount] = useState(defaultRowAmount)
     const rankedAndFilteredRiders = rankBy(riderPoints, "points")
 
+    useEffect(() => {
+        setRowAmount(defaultRowAmount)
+
+        const params = filterToSearchParamsMapper(filter, defaultFilter).toString();
+
+        const currentSearch = window.location.search.slice(1);
+
+        if (params != currentSearch) {
+            const newUrl = params 
+                ? `${window.location.pathname}?${params}`
+                : window.location.pathname
+            
+            window.history.replaceState({}, '', newUrl)
+        }
+    }, [filter, router])
+
+    const handleReset = () => {
+        setFilter(defaultFilter);
+    }
+
     return (
-        <Section>
+        <Section className="flex-col">
+            <div className="flex gap-x-96 md:gap-x-24 gap-y-8 flex-wrap lg:justify-between">
+                <BirthYearsFilterSubsection 
+                    filter={filter} 
+                    setFilter={setFilter}
+                    minBirthYear={minBirthYear}
+                    maxBirthYear={maxBirthYear}
+                />
+                <NationsFilterSubsection
+                    filter={filter}
+                    setFilter={setFilter}
+                    nations={nations}
+                />
+                <StatusFilterSubsection filter={filter} setFilter={setFilter}/>
+                <div>
+                    <Button 
+                        className="flex items-center gap-2"
+                        onClick={handleReset}
+                        color="secondary"
+                    >
+                        <IoReload />
+                        <span>{tList("resetFilter")}</span>
+                    </Button>
+                </div>
+            </div>
             <div className="w-full">
                 <ListTable riderPoints={rankedAndFilteredRiders} rowAmount={rowAmount}/>
                 {rowAmount < rankedAndFilteredRiders.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 100)}>{t("showMore")}</Button>}

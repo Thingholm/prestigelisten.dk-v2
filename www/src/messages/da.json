@@ -879,7 +879,8 @@
             "allStatuses": "Alle",
             "activeOnly": "Kun aktive ryttere",
             "inactiveOnly": "Kun inaktive ryttere",
-            "search": "Søg"
+            "search": "Søg",
+            "resetFilter": "Nulstil"
         }
 
     },
