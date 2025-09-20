@@ -6,7 +6,7 @@ import { getGroupedResultName } from "@/lib/helpers/resultNames"
 import { useTranslations } from "next-intl"
 import ResultNameListItem from "../ResultNameListItem"
 
-type Result = {
+export type Result = {
     result_type_id: number;
     races: {
         race_class_id: number;

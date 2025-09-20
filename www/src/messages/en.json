@@ -854,6 +854,7 @@
             "title": "Prestigelisten - Riders over 3-year spans",
             "mostPoints": "Riders with most points over 3-year spans",
             "greatestRiders": "Greatest riders over a 3-year span each year",
+            "span": "Span",
             "active": "Only active riders"
         },
         "riderAge": {

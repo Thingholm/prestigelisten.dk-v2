@@ -853,8 +853,9 @@
         },
         "riders3YearSpans": {
             "title": "Prestigelisten - Ryttere over 3-årig perioder",
-            "mostPoints": "Flest point optjent i 3-åriger perioder",
+            "mostPoints": "Flest point optjent i 3-årige perioder",
             "greatestRiders": "Største ryttere over en 3-årig periode hvert år",
+            "span": "Periode",
             "active": "Kun aktive ryttere"
         },
         "riderAge": {
