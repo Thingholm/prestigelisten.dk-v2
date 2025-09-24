@@ -62,6 +62,10 @@ export const routing = defineRouting({
             en: '/list/riders/ages',
             da: '/listen/ryttere/alderstrin',
         },
+        '/list/riders/ages/[age]': {
+            en: '/list/riders/ages/[age]',
+            da: '/listen/ryttere/alderstrin/[age]',
+        },
         '/list/riders/greatest_seasons': {
             en: '/list/riders/greatest_seasons',
             da: '/listen/ryttere/største_sæsoner',

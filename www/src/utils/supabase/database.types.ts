@@ -819,6 +819,13 @@ export type Database = {
             foreignKeyName: "results_rider_season_id_fkey"
             columns: ["rider_season_id"]
             isOneToOne: false
+            referencedRelation: "rider_points_by_age"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "results_rider_season_id_fkey"
+            columns: ["rider_season_id"]
+            isOneToOne: false
             referencedRelation: "rider_seasons"
             referencedColumns: ["id"]
           },
@@ -1298,6 +1305,52 @@ export type Database = {
           rider_id: number | null
         }
         Relationships: []
+      }
+      rider_points_by_age: {
+        Row: {
+          age: number | null
+          id: number | null
+          points: number | null
+          rider_id: number | null
+          year: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "rider_decade_rankings"
+            referencedColumns: ["rider_id"]
+          },
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "riders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "top_3_active_riders_per_country"
+            referencedColumns: ["rider_id"]
+          },
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "top_3_inactive_riders_per_country"
+            referencedColumns: ["rider_id"]
+          },
+          {
+            foreignKeyName: "rider_seasons_rider_id_fkey"
+            columns: ["rider_id"]
+            isOneToOne: false
+            referencedRelation: "top_3_riders_per_country"
+            referencedColumns: ["rider_id"]
+          },
+        ]
       }
       rider_ranks_yearly_acc_by_age: {
         Row: {
