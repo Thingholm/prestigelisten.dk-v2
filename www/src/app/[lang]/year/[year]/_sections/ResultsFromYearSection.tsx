@@ -9,7 +9,6 @@ import { ResultsFromYear } from "@/db/results"
 import { getRaceName } from "@/lib/helpers/raceName";
 import { getOnlyResultName } from "@/lib/helpers/resultNames";
 import { sortResults } from "@/lib/helpers/results";
-import { getResultTypeSortValue } from "@/lib/helpers/resultType";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getRiderUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl"

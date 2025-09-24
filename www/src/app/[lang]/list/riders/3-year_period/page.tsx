@@ -19,15 +19,13 @@ export default async function Page({
         spanEndYear = new Date().getFullYear();
     }
 
-    console.log(await searchParams)
-
     const riderRankingsForSpan = await getRiders3YearRollingRankingsByEndYear(spanEndYear);
     const pointSystem = await getPointSystem();
     const firstResultYear = (await getFirstRaceYear()).min;
 
     return (
         <div>
-            <Section>
+            <Section className="!pb-0">
                 <PageHeading>{t("title")}</PageHeading>
             </Section>
             <GreatestRidersEachSpanSection 

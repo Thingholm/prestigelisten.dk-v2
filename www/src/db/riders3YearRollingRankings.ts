@@ -1,6 +1,5 @@
 import { supabase } from "@/utils/supabase/client";
 import { Tables } from "@/utils/supabase/database.types";
-import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getRiders3YearRollingRankings = unstable_cache(async () => {
@@ -40,7 +39,7 @@ export const getRiders3YearRollingRankingsByEndYear = async (endYear: number) =>
 
     if (error) { throw error; }
 
-    return data as Riders3YearRollingRankingsWithResults[];
+    return data as unknown as Riders3YearRollingRankingsWithResults[];
 }, ["riders3YearRollingRankingsByEndYear", endYear.toString()], { revalidate: 1 })();
 
 const riders3YearRollingRankingsByEndYearQuery = () => supabase

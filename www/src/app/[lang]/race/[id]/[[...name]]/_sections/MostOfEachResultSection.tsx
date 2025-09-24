@@ -8,7 +8,6 @@ import Container from "@/components/layout/Container";
 import { useTranslations } from "next-intl";
 import Select from "@/components/ui/Select";
 import { ChangeEvent, useState } from "react";
-import { getRiderName } from "@/lib/helpers/riderName";
 import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
 import Button from "@/components/ui/Button";
 

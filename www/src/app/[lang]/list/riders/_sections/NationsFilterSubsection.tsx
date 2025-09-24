@@ -28,10 +28,10 @@ export default function NationsFilterSubsection({
             newNationsFilter = [parseInt(e.target.value)]
         }
 
-        setFilter(s => ({
+        setFilter({
             ...filter,
             nations: newNationsFilter
-        }))
+        })
     }
 
     const handleRemoveNation = (index: number) => {

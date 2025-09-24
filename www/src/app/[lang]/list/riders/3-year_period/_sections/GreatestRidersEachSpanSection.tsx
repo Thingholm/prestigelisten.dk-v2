@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/layout/Container"
 import Section from "@/components/layout/Section"
 import { PointSystem } from "@/db/pointSystem"
 import { Riders3YearRollingRankingsWithResults } from "@/db/riders3YearRollingRankings"
@@ -32,31 +31,28 @@ export default function GreatestRidersEachSpanSection({
     }
 
     return (
-        <Section>
-            <Container title={t("mostPoints")}>
-                <div className="flex items-center mb-4 gap-2 font-semibold">
-                    <p>{t("span")}: </p>
-                    <Select
-                        onChange={handleSpanChange}
-                        value={spanEndYear}
-                    >
-                        {[...Array(currentYear - firstResultYear + 1)].map((_, index) => {
-                            const year = currentYear - index;
+        <Section className="flex-col">
+            <div className="flex items-center mb-2 gap-2 font-semibold">
+                <p>{t("span")}: </p>
+                <Select
+                    onChange={handleSpanChange}
+                    value={spanEndYear}
+                >
+                    {[...Array(currentYear - firstResultYear + 1)].map((_, index) => {
+                        const year = currentYear - index;
 
-                            return (
-                                <option 
-                                    value={year}
-                                    key={year}
-                                >
-                                    {year - 2}-{year}
-                                </option>
-                            )
-                        })}
-                    </Select>
-                    </div>
-                
-                <GreatestRidersEachSpanTable riderRankingsForSpan={riderRankingsForSpan} pointSystem={pointSystem}/>
-            </Container>
+                        return (
+                            <option 
+                                value={year}
+                                key={year}
+                            >
+                                {year - 2}-{year}
+                            </option>
+                        )
+                    })}
+                </Select>
+            </div>
+            <GreatestRidersEachSpanTable riderRankingsForSpan={riderRankingsForSpan} pointSystem={pointSystem}/>
         </Section>
     )
 }

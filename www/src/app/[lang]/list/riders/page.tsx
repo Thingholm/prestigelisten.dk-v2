@@ -5,11 +5,7 @@ import { getTranslations } from "next-intl/server";
 import ListSection from "./_sections/ListSection";
 import { getMaxRiderBirthYear, getMinRiderBirthYear } from "@/db/rider";
 
-export default async function RidersListPage({
-
-}: Readonly<{
-
-}>) {
+export default async function RidersListPage() {
     const t = await getTranslations("lists.riders");
     const tNations = await getTranslations("nations");
 

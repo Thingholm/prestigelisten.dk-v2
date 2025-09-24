@@ -5,8 +5,9 @@ import { PointSystem } from "@/db/pointSystem";
 import { Riders3YearRollingRankingsWithResults } from "@/db/riders3YearRollingRankings";
 import { useTranslations } from "next-intl";
 import ExpandableRidersEachSpanRow from "../_components/ExpandableRidersEachSpanRow";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
+import { useSearchParams } from "next/navigation";
 
 export default function GreatestRidersEachSpanTable({
     riderRankingsForSpan,
@@ -16,8 +17,14 @@ export default function GreatestRidersEachSpanTable({
     pointSystem: PointSystem
 }>) {
     const t = useTranslations("tableColumns");
+
+    const searchParams = useSearchParams();
     
-    const [rowAmount, setRowAmount] = useState(15);
+    const [rowAmount, setRowAmount] = useState(20);
+
+    useEffect(() => {
+        setRowAmount(20);
+    }, [searchParams])
 
     return (
         <div>
@@ -38,7 +45,7 @@ export default function GreatestRidersEachSpanTable({
                 </TableHead>
                 <TableBody>
                     {riderRankingsForSpan.slice(0, rowAmount).map(span => (
-                        <ExpandableRidersEachSpanRow riderRankingForSpan={span} pointSystem={pointSystem}/>
+                        <ExpandableRidersEachSpanRow riderRankingForSpan={span} pointSystem={pointSystem} key={`${span.rider_id}-${span.year}`}/>
                     ))}
                 </TableBody>
             </Table>
