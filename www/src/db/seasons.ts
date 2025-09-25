@@ -40,8 +40,35 @@ const greatestSeasonsQuery = supabase
     .order("points_for_year", { ascending: false })
     .limit(15);
     
-export type GreatestSeasons = QueryData<typeof greatestSeasonsQuery>;
+export const getAllGreatestSeasons = unstable_cache(async () => {
+    const { data, error } = await allGreatestSeasonsQuery;
 
+    if (error) { throw error; }
+
+    return data as GreatestSeasons;
+}, ["allGreatestSeasons"], { revalidate: 1 });
+
+const allGreatestSeasonsQuery = supabase
+    .from("rider_seasons")
+    .select(`
+        *,
+        riders (
+            *,
+            nations (
+                *
+            )
+        ),
+        results (
+            *
+        )
+    `)
+    .not('points_for_year', 'is', null)
+    .order("points_for_year", { ascending: false })
+    .gte("points_for_year", 100);
+
+export type GreatestSeasons = QueryData<typeof allGreatestSeasonsQuery>;
+
+    
 export const getTop10AlltimeEachSeason = unstable_cache(async () => {
     const { data, error } = await greatestTop10AlltimeEachSeasonQuery;
 

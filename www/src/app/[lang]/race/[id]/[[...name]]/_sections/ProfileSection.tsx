@@ -2,7 +2,7 @@ import { EntityProfileSection, ProfileAttribute, ProfileDetails, ProfileHighligh
 import RaceLogo from "@/components/entityPage/RaceLogo";
 import FlagSpan from "@/components/table/FlagSpan";
 import { PointSystem } from "@/db/pointSystem";
-import { Race } from "@/db/race";
+import { MetaRace } from "@/db/race";
 import { ResultsInRaceRange } from "@/db/results";
 import { urls } from "@/lib/constants/urls";
 import { getRaceName } from "@/lib/helpers/raceName";
@@ -16,10 +16,10 @@ export default function ProfileSection({
     latestEditionRaceClass,
     pointSystem
 }: Readonly<{
-    race: Race
+    race: MetaRace
     firstEdition?: ResultsInRaceRange[number]
     latestEdition?: ResultsInRaceRange[number]
-    latestEditionRaceClass?: Race["races"][number]["race_classes"]
+    latestEditionRaceClass?: MetaRace["races"][number]["race_classes"]
     pointSystem: PointSystem
 }>) {
     const t = useTranslations("racePage");

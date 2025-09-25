@@ -2,7 +2,7 @@
 
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { Race } from "@/db/race";
+import { MetaRace } from "@/db/race";
 import { ResultsInRaceRange } from "@/db/results";
 import { raceClassColors } from "@/lib/constants/colors";
 import { Tooltip } from "@heroui/tooltip";
@@ -13,7 +13,7 @@ export default function RaceTimelineSection({
     results,
     firstRaceYear
 }: Readonly<{
-    metaRace: Race,
+    metaRace: MetaRace,
     results: ResultsInRaceRange,
     firstRaceYear: number
 }>) {

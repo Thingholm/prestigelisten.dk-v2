@@ -20,10 +20,10 @@ export default function GreatestRidersEachSpanTable({
 
     const searchParams = useSearchParams();
     
-    const [rowAmount, setRowAmount] = useState(20);
+    const [rowAmount, setRowAmount] = useState(25);
 
     useEffect(() => {
-        setRowAmount(20);
+        setRowAmount(25);
     }, [searchParams])
 
     return (

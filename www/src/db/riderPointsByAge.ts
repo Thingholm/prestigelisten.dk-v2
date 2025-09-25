@@ -1,6 +1,5 @@
 import { supabase } from "@/utils/supabase/client";
 import { Tables } from "@/utils/supabase/database.types";
-import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getRiderPointsByAge = async (age: number) => await unstable_cache(async () => {

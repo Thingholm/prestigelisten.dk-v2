@@ -7,7 +7,7 @@ export const getRace = (raceId: number) => unstable_cache(async () => {
 
     if (error) { throw error; }
 
-    return data as Race;
+    return data as MetaRace;
 }, ["race", raceId.toString()], { revalidate: 60 * 60 })();
 
 const raceQuery = supabase
@@ -28,5 +28,23 @@ const raceQuery = supabase
         )
     `)
     
+export type MetaRace = QueryData<typeof raceQuery>[number];
 
-export type Race = QueryData<typeof raceQuery>[number];
+export const getRaces = unstable_cache(async () => {
+    const { data, error } = await racesQuery;
+
+    if (error) { throw error; }
+
+    return data as Race[];
+}, ["races"], { revalidate: 60 * 60 * 24 })
+
+const racesQuery = supabase
+    .from("races")
+    .select(`
+        *,
+        meta_races (
+            *
+        )    
+    `)
+
+export type Race = QueryData<typeof racesQuery>[number];
