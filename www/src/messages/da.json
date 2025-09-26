@@ -841,7 +841,7 @@
     },
     "lists": {
         "nations": {
-            "sortBy": "Sortér efter",
+            "sortBy": "Rangér efter",
             "filterBy": "Filtrér efter",
             "title": "Prestigelisten - Nationer",
             "points": "Point",

@@ -50,3 +50,11 @@ const ridersQuery = supabase
     `)
 
 export type Riders = QueryData<typeof ridersQuery>;
+
+export const getRidersRange = (ids: number[]) => unstable_cache(async () => {
+    const { data, error } = await ridersQuery.in("id", ids);
+
+    if (error) { throw error; }
+
+    return data as Riders;
+}, ["ridersInRange", ids.toString()], { revalidate: 60 * 60 })();

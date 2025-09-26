@@ -840,7 +840,7 @@
     },
     "lists": {
         "nations": {
-            "sortBy": "Sort by",
+            "sortBy": "Rank by",
             "filterBy": "Filter by",
             "title": "Prestigelisten - Nations",
             "points": "Points",
