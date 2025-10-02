@@ -892,7 +892,8 @@
             "activePoints": "Points (only active riders)",
             "numberOfRidersWithPoints": "Number of riders with points",
             "resultCount": "Number of point scoring results",
-            "greatestRiders": "Greatest riders from {nation}"
+            "greatestRiders": "Greatest riders from {nation}",
+            "no": "no."
         },
         "charts": {
             "yearlyPoints": "Points gained each year",

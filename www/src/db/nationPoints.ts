@@ -20,3 +20,22 @@ export type NationPointsWithRiderCount = Array<Omit<QueryData<typeof nationPoint
     name: string;
     code: string;
 }>;
+
+export const getNationPoints = unstable_cache(async () => {
+    const { data, error } = await nationPointsQuery;
+
+    if (error) { throw error; }
+
+    return data as NationPoints[];
+}, ["nationPoints"], { revalidate: 60 * 60 });
+
+const nationPointsQuery = supabase
+    .from("nation_points")
+    .select(`
+        *,
+        nations (
+            *
+        )    
+    `);
+
+export type NationPoints = QueryData<typeof nationPointsQuery>[number]

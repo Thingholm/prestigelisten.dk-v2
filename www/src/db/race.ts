@@ -43,7 +43,10 @@ const racesQuery = supabase
     .select(`
         *,
         meta_races (
-            *
+            *,
+            nations (
+                *
+            )
         )    
     `)
 

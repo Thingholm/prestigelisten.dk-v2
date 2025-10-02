@@ -5,3 +5,4 @@ export { default as ProfileTitle } from "./ProfileTitle";
 export { default as ProfileAttribute } from "./ProfileAttribute";
 export { default as ProfileHighlightSection } from "./ProfileHighlightSection";
 export { default as TeamLogo } from "./TeamLogo";
+export { default as NationFlag } from "./NationFlag"
