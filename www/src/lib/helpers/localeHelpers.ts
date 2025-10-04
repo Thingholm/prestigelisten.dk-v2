@@ -1,5 +1,16 @@
-export function formatNumber(number?: number | null, locale: string = 'da-DK'): string | null {
+export function formatNumber(
+    number?: number | null, 
+    decimals?: number,
+    locale: string = 'da-DK'
+): string | null {
     if (!number) return null;
 
-    return new Intl.NumberFormat(locale).format(number);
+    const options: Intl.NumberFormatOptions = {};
+
+    if (decimals !== undefined) {
+        options.minimumFractionDigits = 0;
+        options.maximumFractionDigits = decimals;
+    }
+
+    return new Intl.NumberFormat(locale, options).format(number);
 }

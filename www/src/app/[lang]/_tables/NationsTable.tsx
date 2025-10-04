@@ -33,7 +33,7 @@ export default function NationsTable({
                             {nation.rider_count}
                         </TableCell>
                         <TableCell 
-                            secondarySpan={{content: nation.ative_points_per_rider, inlineBreakpoint: "always"}}
+                            secondarySpan={{content: nation.active_points_per_rider, inlineBreakpoint: "always"}}
                             className="hidden md:table-cell"
                         >
                             {nation.points_per_rider}

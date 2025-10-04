@@ -2,10 +2,9 @@ import { EntityProfileSection, NationFlag, ProfileAttribute, ProfileDetails, Pro
 import { NationPoints } from "@/db/nationPoints";
 import { NationWithRiders } from "@/db/nations";
 import { Race } from "@/db/race";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { urls } from "@/lib/constants/urls";
 import { formatNumber } from "@/lib/helpers/localeHelpers";
-import { rankBy, Ranked } from "@/lib/helpers/rank";
+import { Ranked } from "@/lib/helpers/rank";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getRiderUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";

@@ -5,7 +5,7 @@ import ProfileSection from "./_sections/ProfileSection";
 import { getNationPoints } from "@/db/nationPoints";
 import { rankBy } from "@/lib/helpers/rank";
 import { GetRidersWithPreviousNationality } from "@/db/prevNationalities";
-import { getAllRiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import ChartsSection from "./_sections/ChartsSection";
 
 export default async function NationPage({
     params,
@@ -33,6 +33,11 @@ export default async function NationPage({
                 nation={nation} 
                 rankedActiveNationPoints={rankedActiveNationPoints}
                 races={races}
+            />
+            <ChartsSection 
+                nation={nation} 
+                races={races}
+                pointSystem={pointSystem}
             />
         </div>
     )

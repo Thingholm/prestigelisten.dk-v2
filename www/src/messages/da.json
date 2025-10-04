@@ -635,9 +635,9 @@
         "numberOfResults": "Antal resultater",
         "categories": {
             "gc": "Klassement",
-            "stageWins": "Etapesejre",
-            "oneDayRaces": "Endagsløb",
-            "championships": "Mesterskaber",
+            "stageWin": "Etapesejre",
+            "oneDayRace": "Endagsløb",
+            "championship": "Mesterskaber",
             "other": "Andre"
         }
     },

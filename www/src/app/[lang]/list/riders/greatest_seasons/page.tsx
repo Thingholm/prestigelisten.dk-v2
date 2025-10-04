@@ -1,11 +1,10 @@
 import Section from "@/components/layout/Section";
 import PageHeading from "@/components/ui/PageHeading";
 import { getPointSystem } from "@/db/pointSystem";
-import { getRaces, Race } from "@/db/race";
-import { getAllGreatestSeasons, GreatestSeasons } from "@/db/seasons"
+import { getRaces } from "@/db/race";
+import { getAllGreatestSeasons } from "@/db/seasons"
 import { getTranslations } from "next-intl/server";
 import GreatestSeasonsSection from "./_sections/GreatestSeasonsSection";
-import { getResultPoints, getResultsWithPoints } from "@/lib/helpers/pointSystem";
 import { Tables } from "@/utils/supabase/database.types";
 import { rankBy } from "@/lib/helpers/rank";
 

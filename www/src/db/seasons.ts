@@ -59,7 +59,13 @@ const allGreatestSeasonsQuery = supabase
             )
         ),
         results (
-            *
+            *,
+            races (
+                *,
+                meta_races (
+                    *
+                )
+            )
         )
     `)
     .not('points_for_year', 'is', null)

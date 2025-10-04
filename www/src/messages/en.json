@@ -635,9 +635,9 @@
         "numberOfResults": "Number of results",
         "categories": {
             "gc": "Classification",
-            "stageWins": "Stage wins",
-            "oneDayRaces": "One day races",
-            "championships": "Championships",
+            "stageWin": "Stage wins",
+            "oneDayRace": "One day races",
+            "championship": "Championships",
             "other": "Other"
         }
     },
