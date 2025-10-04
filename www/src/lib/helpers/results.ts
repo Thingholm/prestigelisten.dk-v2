@@ -1,5 +1,6 @@
 import { Tables } from "@/utils/supabase/database.types";
 import { getResultTypeSortValue } from "./resultType"
+import { Race } from "@/db/race";
 
 type Result = {
     placement: number | null,
@@ -7,20 +8,21 @@ type Result = {
     result_type_id: number
 }
 
-type GroupedResult = Tables<"results"> & {
+type GroupedResult<T = Tables<'results'> & { races: Race }> = Tables<"results"> & {
     points: number;
     races: Tables<"races"> & {
         meta_races: Tables<"meta_races">
     };
-    results: unknown[]
+    results: T[]
 }
+
 export function sortResults<T extends Result>(results: T[]) {
     return results.sort((a, b) => (a.placement ?? 0) - (b.placement ?? 0))
         .sort((a, b) => (a.stage ?? 0) - (b.stage ?? 0))
         .sort((a, b) => getResultTypeSortValue(a.result_type_id) - getResultTypeSortValue(b.result_type_id))
 }
 
-export function sortGroupedResults(results: GroupedResult[]) {
+export function sortGroupedResults<T = Tables<'results'> & { races: Race }>(results: GroupedResult<T>[]) {
     return results.sort((a, b) => {
         if (b.points !== a.points) return b.points - a.points;
 

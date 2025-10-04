@@ -17,29 +17,15 @@ import { useTranslations } from "next-intl";
 
 export default function ChartsSection({
     nation,
-    races,
-    pointSystem
+    pointSystem,
+    flatResults
 }: Readonly<{
     nation: NationWithRiders,
-    races: Race[],
-    pointSystem: PointSystem
+    pointSystem: PointSystem,
+    flatResults: (Tables<'results'> & { races: Race })[]
 }>) {
     const t = useTranslations("nationPage.charts");
     const currentYear = new Date().getFullYear();
-
-
-    const flatResults = nation.riders
-        .flatMap(rider => rider.results)
-        .reduce<(Tables<'results'> & { races: Race })[]>((results, result) => {
-            const race = races.find(race => race.id == result.race_id);
-
-            if (!race) return results;
-
-            if ([12, 13, 14, 15].includes(race.race_class_id)) return results;
-
-            return [...results, {...result, races: race}]
-        }, [])
-
 
     const resultsGroupedByYear = groupResultsByKey(flatResults, pointSystem,r => r.year);
     const resultsGroupedByCategory = groupResultsByKey(

@@ -10,10 +10,9 @@ type Result = {
     placement?: number | null;
 }
 
-export type GroupedResult<T> =  {
+export type GroupedResult<T extends Result> = T & {
     results: (T & { points: number })[];
     points: number;
-    result_type_id: number
 }
 
 export function groupResults<T extends Result>(results: T[], pointSystem: PointSystem, distinctPlacement: boolean = false ) {

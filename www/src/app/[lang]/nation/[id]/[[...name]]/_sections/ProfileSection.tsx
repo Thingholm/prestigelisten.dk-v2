@@ -67,7 +67,7 @@ export default function ProfileSection({
                 </ProfileDetails>
             </ProfileMainSection>
 
-            <ProfileHighlightSection title={t("greatestRiders", { nation: nation.name })}>
+            <ProfileHighlightSection title={t("greatestRiders", { nation: tNations(`${nation.code}.name`) })}>
                 {nation.riders.sort((a, b) => (b.rider_seasons[0]?.points_all_time || 0) - (a.rider_seasons[0]?.points_all_time || 0))
                     .slice(0,7)
                     .map(rider => (
