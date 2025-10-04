@@ -8,6 +8,7 @@ import { GetRidersWithPreviousNationality } from "@/db/prevNationalities";
 import ChartsSection from "./_sections/ChartsSection";
 import GreatestResultsSection from "./_sections/GreatestResultsSection";
 import { Tables } from "@/utils/supabase/database.types";
+import RidersSection from "./_sections/RidersSection";
 
 export default async function NationPage({
     params,
@@ -58,6 +59,7 @@ export default async function NationPage({
                 pointSystem={pointSystem}
                 results={flatResults}
             />
+            <RidersSection nation={nation}/>
         </div>
     )
 }
