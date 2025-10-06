@@ -8,7 +8,7 @@ export const getNationWithRiders = (nationId: number) => unstable_cache(async ()
     if (error) { throw error; }
 
     return data as NationWithRiders;
-}, ["nationWithRiders", nationId.toString()], { revalidate: 60 * 60 })();
+}, ["nationWithRiders", nationId.toString()], { revalidate: 60 * 60 });
 
 const nationWithRidersQuery = supabase
     .from("nations")
@@ -22,9 +22,6 @@ const nationWithRidersQuery = supabase
             results (
                 *
             )
-        ),
-        teams (
-            *
         ),
         meta_races (
             *

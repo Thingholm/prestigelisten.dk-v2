@@ -10,6 +10,8 @@ import GreatestResultsSection from "./_sections/GreatestResultsSection";
 import { Tables } from "@/utils/supabase/database.types";
 import RidersSection from "./_sections/RidersSection";
 import ResultsEachYearSection from "./_sections/ResultsEachYearSection";
+import RacesAndTeamsSection from "./_sections/RacesAndTeamsSection";
+import { getTeamsFromNation } from "@/db/team";
 
 export default async function NationPage({
     params,
@@ -18,11 +20,12 @@ export default async function NationPage({
 }>) {
     const id = (await params).id;
 
-    const nation = await getNationWithRiders(id);
+    const nation = await getNationWithRiders(id)();
     const races = await getRaces();
     const pointSystem = await getPointSystem();
     const nationPoints = await getNationPoints();
-    const ridersWithPreviousNationality = await GetRidersWithPreviousNationality(id);
+    const ridersWithPreviousNationality = await GetRidersWithPreviousNationality(id)();
+    const teams = await getTeamsFromNation(id)();
 
     nation.riders = [
         ...nation.riders,
@@ -75,6 +78,11 @@ export default async function NationPage({
                 nation={nation} 
                 pointSystem={pointSystem} 
                 results={flatResultsWithNc}
+            />
+            <RacesAndTeamsSection 
+                nation={nation} 
+                races={races}
+                teams={teams}
             />
         </div>
     )

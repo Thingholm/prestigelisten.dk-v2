@@ -51,8 +51,6 @@ export default function ResultsEachYearSection({
             "points"
         );
 
-        console.log(riderSeasonsForYear)
-
     const getYearlyMovement = () => {
         if (!season) {
             return "-";

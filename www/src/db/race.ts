@@ -47,7 +47,10 @@ const racesQuery = supabase
             nations (
                 *
             )
-        )    
+        ),
+        race_classes (
+            *
+        )
     `)
 
 export type Race = QueryData<typeof racesQuery>[number];

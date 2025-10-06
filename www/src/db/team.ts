@@ -73,3 +73,25 @@ const teamWithRidersQuery = supabase
     .eq("riders.results.year", new Date().getFullYear());
 
 export type TeamWithRiders = QueryData<typeof teamWithRidersQuery>[number];
+
+export const getTeamsFromNation = (nationId: number) => unstable_cache(async () => {
+    const { data, error } = await teamsFromNationQuery.eq("nation_id", nationId);
+
+    if (error) { throw error; }
+    console.log(data)
+    return data
+}, ["teamsFromNation", nationId.toString()], { revalidate: 60 * 60 });
+
+const teamsFromNationQuery = supabase
+    .from("teams")
+    .select(`
+        *,
+        riders (
+            *,
+            rider_points (
+                *
+            )
+        )
+    `)
+
+export type TeamFromNation = QueryData<typeof teamsFromNationQuery>[number];

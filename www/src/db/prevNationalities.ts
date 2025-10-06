@@ -17,7 +17,7 @@ export const GetRidersWithPreviousNationality = (nationId: number) => unstable_c
             )
         }
     })) as PreviousNationalityData[]
-})()
+})
 
 const ridersWithPreviousNationalityQuery = supabase
     .from("prev_nationalities")
