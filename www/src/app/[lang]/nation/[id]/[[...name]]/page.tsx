@@ -21,11 +21,11 @@ export default async function NationPage({
     const id = (await params).id;
 
     const nation = await getNationWithRiders(id)();
+    const ridersWithPreviousNationality = await GetRidersWithPreviousNationality(id)();
+    const teams = await getTeamsFromNation(id)();
     const races = await getRaces();
     const pointSystem = await getPointSystem();
     const nationPoints = await getNationPoints();
-    const ridersWithPreviousNationality = await GetRidersWithPreviousNationality(id)();
-    const teams = await getTeamsFromNation(id)();
 
     nation.riders = [
         ...nation.riders,

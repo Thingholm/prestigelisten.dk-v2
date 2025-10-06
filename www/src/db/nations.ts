@@ -14,7 +14,7 @@ const nationWithRidersQuery = supabase
     .from("nations")
     .select(`
         *,
-        riders!inner (
+        riders (
             *,
             rider_seasons (
                 *

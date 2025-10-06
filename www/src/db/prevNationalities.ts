@@ -7,7 +7,7 @@ export const GetRidersWithPreviousNationality = (nationId: number) => unstable_c
 
     if (error) { throw error; }
 
-    return data.map(p => ({
+    const filteredData = data.map(p => ({
         ...p,
         riders: {
             ...p.riders,
@@ -16,19 +16,24 @@ export const GetRidersWithPreviousNationality = (nationId: number) => unstable_c
                 && result.year <= (p.end_year ?? 9999)
             )
         }
-    })) as PreviousNationalityData[]
-})
+    }));
+
+    return filteredData as PreviousNationalityData[]
+}, ["ridersWithPreviousNationality", nationId.toString()], { revalidate: 60 * 60 * 24})
 
 const ridersWithPreviousNationalityQuery = supabase
     .from("prev_nationalities")
     .select(`
         *,
-        riders!inner (
+        riders (
             *,
             rider_seasons (
                 *
             ),
             results (
+                *
+            ),
+            nations (
                 *
             )
         )

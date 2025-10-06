@@ -78,8 +78,8 @@ export const getTeamsFromNation = (nationId: number) => unstable_cache(async () 
     const { data, error } = await teamsFromNationQuery.eq("nation_id", nationId);
 
     if (error) { throw error; }
-    console.log(data)
-    return data
+
+    return data as TeamFromNation[];
 }, ["teamsFromNation", nationId.toString()], { revalidate: 60 * 60 });
 
 const teamsFromNationQuery = supabase
