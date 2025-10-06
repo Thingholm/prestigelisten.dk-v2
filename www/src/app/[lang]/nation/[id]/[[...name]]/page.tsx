@@ -9,6 +9,7 @@ import ChartsSection from "./_sections/ChartsSection";
 import GreatestResultsSection from "./_sections/GreatestResultsSection";
 import { Tables } from "@/utils/supabase/database.types";
 import RidersSection from "./_sections/RidersSection";
+import ResultsEachYearSection from "./_sections/ResultsEachYearSection";
 
 export default async function NationPage({
     params,
@@ -42,6 +43,16 @@ export default async function NationPage({
             return [...results, {...result, races: race}]
         }, [])
 
+    const flatResultsWithNc = nation.riders
+        .flatMap(rider => rider.results)
+        .reduce<(Tables<'results'> & { races: Race })[]>((results, result) => {
+            const race = races.find(race => race.id == result.race_id);
+
+            if (!race) return results;
+
+            return [...results, {...result, races: race}]
+        }, [])
+
     return (
         <div>
             <ProfileSection 
@@ -60,6 +71,11 @@ export default async function NationPage({
                 results={flatResults}
             />
             <RidersSection nation={nation}/>
+            <ResultsEachYearSection 
+                nation={nation} 
+                pointSystem={pointSystem} 
+                results={flatResultsWithNc}
+            />
         </div>
     )
 }
