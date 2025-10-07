@@ -77,7 +77,7 @@ export default function ResultCategoryDistribution({
                         <Cell key={index} fill={colors[entry.key]}/>
                     ))}
                 </Pie>
-                <Tooltip content={<CustomToolTip />}/>
+                <Tooltip content={<CustomToolTip />} wrapperStyle={{ zIndex: 1000 }}/>
                 <Legend/>
             </PieChart>
         </ResponsiveContainer>

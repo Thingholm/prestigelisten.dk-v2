@@ -75,7 +75,18 @@ const teamWithRidersQuery = supabase
 export type TeamWithRiders = QueryData<typeof teamWithRidersQuery>[number];
 
 export const getTeamsFromNation = (nationId: number) => unstable_cache(async () => {
-    const { data, error } = await teamsFromNationQuery.eq("nation_id", nationId);
+    const { data, error } = await supabase
+        .from("teams")
+        .select(`
+            *,
+            riders (
+                *,
+                rider_points (
+                    *
+                )
+            )
+        `)
+        .eq("nation_id", nationId);
 
     if (error) { throw error; }
 

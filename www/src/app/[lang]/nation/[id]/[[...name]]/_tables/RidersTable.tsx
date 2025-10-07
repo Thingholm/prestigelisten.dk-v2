@@ -4,13 +4,14 @@ import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, Tab
 import Button from "@/components/ui/Button";
 import { NationWithRiders } from "@/db/nations";
 import { Ranked } from "@/lib/helpers/rank";
+import { Tables } from "@/utils/supabase/database.types";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function RidersTable({
-    riders
+    riders,
 }: Readonly<{
-    riders: Ranked<NationWithRiders["riders"][number]>[]
+    riders: Ranked<NationWithRiders["riders"][number] & { nations: Tables<"nations">}>[],
 }>) {
     const t = useTranslations("tableColumns");
 
@@ -27,7 +28,7 @@ export default function RidersTable({
                 </TableHead>
                 <TableBody>
                     {riders.slice(0, rowAmount).map(rider => (
-                        <TableRow key={rider.id}>
+                        <TableRow key={rider.id} isFaded={rider.nations.id > 0}>
                             <TableCell>{rider.rank}</TableCell>
                             <RiderNameCell rider={rider} showFlagBreakpoint="always"/>
                             <YearCell year={rider.year}/>

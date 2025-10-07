@@ -32,7 +32,7 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
     
     const isStageWin = groupedResult.result_type_id == 7;
     const isChampionship = raceClassesWithRenames.includes(groupedResult.races.race_class_id);
-    const isPlacement = [2, 3, 4].includes(groupedResult.result_type_id) && (showPlacement != undefined && showPlacement != false) && groupedResult?.placement != null
+    const isPlacement = [2, 3, 4, 102, 103, 104, 105, 106, 107, 108, 109, 110].includes(groupedResult.result_type_id) && (showPlacement != undefined && showPlacement != false) && groupedResult?.placement != null
     const isNotWin = groupedResult.result_type_id != 1;
     const isDayInLeadersJersey = 8 <= groupedResult.result_type_id && groupedResult.result_type_id <= 11;
 

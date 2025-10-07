@@ -63,7 +63,7 @@ export default function YearlyResultCategoryDistributionChart({
                 <Bar dataKey="championship" stackId={1} fill="#11c8ed"/>
                 <Bar dataKey="other" stackId={1} fill="#fff"/>
                 <Brush dataKey="key"/>
-                <Tooltip cursor={{fill: "#808080"}} content={<CustomToolTip />}/>
+                <Tooltip cursor={{fill: "#808080"}} content={<CustomToolTip />} wrapperStyle={{ zIndex: 1000 }}/>
             </BarChart>
         </ResponsiveContainer>
     )

@@ -37,7 +37,7 @@ export default function RacesTable({
                             const raceClassName = tRaceClasses(`${race.race_class_id}${raceClassesToBeAbbreviated.includes(race.race_class_id) ? "abbr" : ""}`)
 
                             return (
-                                <TableRow key={race.id}>
+                                <TableRow key={race.id} isFaded={!race.active}>
                                     <TableCell href={getRaceUrl(race.meta_races)} className="text-pretty">{getRaceName(race.meta_races, tResultNames)}</TableCell>
                                     <TableCell href={`${urls["pointSystem"]}#${race.race_class_id}`}>{raceClassName}</TableCell>
                                 </TableRow>

@@ -78,7 +78,7 @@ export default function YearlyPointsChart({
                 />
                 <Bar  dataKey="points" fill="#fee402"/>
                 <Brush dataKey="key"/>
-                <Tooltip cursor={{fill: "#808080"}} content={<CustomToolTip />}/>
+                <Tooltip cursor={{fill: "#808080"}} content={<CustomToolTip />} wrapperStyle={{ zIndex: 1000 }}/>
             </BarChart>
         </ResponsiveContainer>
     )

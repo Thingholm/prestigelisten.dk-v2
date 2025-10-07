@@ -3,11 +3,29 @@ import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const GetRidersWithPreviousNationality = (nationId: number) => unstable_cache(async () => {
-    const { data, error } = await ridersWithPreviousNationalityQuery.eq("nation_id", nationId);
+    const { data, error } = await supabase
+        .from("prev_nationalities")
+        .select(`
+            *,
+            riders (
+                *,
+                rider_seasons (
+                    *
+                ),
+                results (
+                    *
+                ),
+                nations (
+                    *
+                )
+            )
+        `)
+        .eq("riders.rider_seasons.year", new Date().getFullYear())
+        .eq("nation_id", nationId);
 
     if (error) { throw error; }
 
-    const filteredData = data.map(p => ({
+    const filteredData = data.filter(rider => rider.riders.nation_id != nationId).map(p => ({
         ...p,
         riders: {
             ...p.riders,
@@ -38,7 +56,6 @@ const ridersWithPreviousNationalityQuery = supabase
             )
         )
     `)
-    .eq("riders.rider_seasons.year", new Date().getFullYear())
 
 
 export type PreviousNationalityData = QueryData<typeof ridersWithPreviousNationalityQuery>[number]

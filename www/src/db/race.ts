@@ -50,6 +50,9 @@ const racesQuery = supabase
         ),
         race_classes (
             *
+        ),
+        results (
+            year.max()
         )
     `)
 

@@ -6,6 +6,7 @@ import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, Tab
 import { NationWithRiders } from "@/db/nations";
 import { PointSystem } from "@/db/pointSystem";
 import { Race } from "@/db/race";
+import { nationalsRaceClassIds } from "@/lib/constants/raceClasses";
 import { groupResults, groupResultsByKey } from "@/lib/helpers/groupResults";
 import { formatNumber } from "@/lib/helpers/localeHelpers";
 import { rankBy } from "@/lib/helpers/rank";
@@ -34,7 +35,8 @@ export default function ResultsEachYearSection({
 
     const [selectedYear, setSelectedYear] = useState<number>(maxYear);
 
-    const groupedResultsForYear = groupResults(results.filter(result => result.year == selectedYear), pointSystem);
+    const groupedResultsForYear = groupResults(results.filter(result => result.year == selectedYear), pointSystem, true);
+    console.log(groupedResultsForYear)
     const season = nation.nation_seasons.find(season => season.year == selectedYear);
     const riderSeasonsForYear = rankBy(
             groupResultsByKey(
@@ -77,10 +79,11 @@ export default function ResultsEachYearSection({
                     <p className="font-semibold text-lg mb-2">{t("results")}</p>
                     <ul>
                         {sortGroupedResults(groupedResultsForYear)
+                            .filter(group => !nationalsRaceClassIds.includes(group.races.race_class_id))
                             .map(group => (
                                 <ResultNameListItem
                                     key={group.id}
-                                    resultName={getGroupedResultName(group, tResultNames)}
+                                    resultName={getGroupedResultName(group, tResultNames, true)}
                                     metaRace={group.races.meta_races}
                                     count={group.results.length}
                                     points={group.points}

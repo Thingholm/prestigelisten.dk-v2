@@ -1,4 +1,4 @@
-import { getNationWithRiders } from "@/db/nations";
+import { getNationWithRiders, NationWithRiders } from "@/db/nations";
 import { getPointSystem } from "@/db/pointSystem";
 import { getRaces, Race } from "@/db/race";
 import ProfileSection from "./_sections/ProfileSection";
@@ -12,6 +12,13 @@ import RidersSection from "./_sections/RidersSection";
 import ResultsEachYearSection from "./_sections/ResultsEachYearSection";
 import RacesAndTeamsSection from "./_sections/RacesAndTeamsSection";
 import { getTeamsFromNation } from "@/db/team";
+import { nationalsRaceClassIds } from "@/lib/constants/raceClasses";
+
+export type Nation = Omit<NationWithRiders, "riders"> & {
+    riders: (NationWithRiders["riders"][number] & {
+        nations: Tables<"nations"> | null
+    })[]
+}
 
 export default async function NationPage({
     params,
@@ -28,7 +35,7 @@ export default async function NationPage({
     const nationPoints = await getNationPoints();
 
     nation.riders = [
-        ...nation.riders,
+        ...nation.riders.map(riders => ({...riders, nations: null})),
         ...ridersWithPreviousNationality.map(riders => riders.riders)
     ]
 
@@ -41,7 +48,7 @@ export default async function NationPage({
 
             if (!race) return results;
 
-            if ([12, 13, 14, 15].includes(race.race_class_id)) return results;
+            if (nationalsRaceClassIds.includes(race.race_class_id)) return results;
 
             return [...results, {...result, races: race}]
         }, [])
@@ -73,7 +80,7 @@ export default async function NationPage({
                 pointSystem={pointSystem}
                 results={flatResults}
             />
-            <RidersSection nation={nation}/>
+            <RidersSection nation={nation as Nation}/>
             <ResultsEachYearSection 
                 nation={nation} 
                 pointSystem={pointSystem} 

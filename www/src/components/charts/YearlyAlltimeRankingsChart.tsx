@@ -50,7 +50,7 @@ export default function YearlyAlltimeRankingsChart({
                     dot={false}
                 />
                 <Brush dataKey="year"/>
-                <Tooltip content={<CustomToolTip />} />
+                <Tooltip content={<CustomToolTip />} wrapperStyle={{ zIndex: 1000 }}/>
             </LineChart>
         </ResponsiveContainer>
     )

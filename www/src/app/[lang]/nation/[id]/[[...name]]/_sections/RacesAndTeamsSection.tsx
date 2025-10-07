@@ -19,10 +19,22 @@ export default async function RacesAndTeamsSection({
     const t = await getTranslations("nationPage.racesAndTeamsTables");
     const tNations = await getTranslations("nations")
 
+    const filteredRaces = Object.values(
+        races.filter(race => race.meta_races.nation_id == nation.id).reduce((acc, race) => {
+            const metaRaceId = race.meta_race_id;
+            
+            if (!acc[metaRaceId] || (race.results[0]?.max ?? 0) > (acc[metaRaceId].results[0]?.max ?? 0)) {
+            acc[metaRaceId] = race;
+            }
+
+            return acc;
+        }, {} as Record<number, typeof filteredRaces[0]>)
+    ) as Race[];
+
     return (
         <Section color="gray" className="gap-x-12 flex-col lg:flex-row">
             <Container title={t("pointGivingRaces", { nation: tNations(`${nation.code}.name`) })} isCard>
-                <RacesTable races={races.filter(race => race.meta_races.nation_id == nation.id)}/>
+                <RacesTable races={filteredRaces}/>
             </Container>
             <Container title={t("teamsWithPoints", { nation: tNations(`${nation.code}.name`) })} isCard>
                 <TeamsTable teams={teams}/>

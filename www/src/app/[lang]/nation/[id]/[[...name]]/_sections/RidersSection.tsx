@@ -1,19 +1,14 @@
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { NationWithRiders } from "@/db/nations";
 import { useTranslations } from "next-intl";
 import RidersTable from "../_tables/RidersTable";
 import { rankBy } from "@/lib/helpers/rank";
-import { Tables } from "@/utils/supabase/database.types";
+import { Nation } from "../page";
 
 export default function RidersSection({
     nation,
 }: Readonly<{
-    nation: Omit<NationWithRiders, "riders"> & {
-        riders: (NationWithRiders["riders"][number] & {
-            nations: Tables<"nations"> | null
-        })[]
-    }
+    nation: Nation
 }>) {
     const t = useTranslations("nationPage.tables");
     const tNations = useTranslations("nations");
@@ -21,7 +16,7 @@ export default function RidersSection({
     const riders = nation.riders.map(rider => ({
         ...rider,
         points: rider.rider_seasons[0]?.points_all_time ?? 0,
-        nations: rider.nations ?? { name: nation.name, code: nation.code }
+        nations: rider.nations ?? { id: 0, name: nation.name, code: nation.code, active: true },
     }))
 
     return (
