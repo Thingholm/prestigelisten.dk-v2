@@ -728,7 +728,9 @@
         "riders": "Riders",
         "races": "Races",
         "latestPointSystem": "Current/latest point system",
-        "and": "and"
+        "and": "and",
+        "active": "Active",
+        "inactive": "Inactive"
     },
     "searchBar": {
         "placeholder": "Search..."

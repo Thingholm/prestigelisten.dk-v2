@@ -728,7 +728,9 @@
         "riders": "Ryttere",
         "races": "Løb",
         "latestPointSystem": "Aktuel/seneste pointklasse",
-        "and": "og"
+        "and": "og",
+        "active": "Aktive",
+        "inactive": "Inaktive"
     },
     "searchBar": {
         "placeholder": "Søg..."
