@@ -58,3 +58,49 @@ export const getRidersRange = (ids: number[]) => unstable_cache(async () => {
 
     return data as Riders;
 }, ["ridersInRange", ids.toString()], { revalidate: 60 * 60 })();
+
+export const getRider = (id: number) => unstable_cache(async () => {
+    const { data, error } = await supabase
+        .from("riders")
+        .select(`
+            *,
+            rider_points (*),
+            results (
+                *,
+                races (
+                    *,
+                    meta_races (*)
+                )
+            ),
+            nations (*),
+            teams (*),
+            rider_seasons (*),
+            image_metadata (*)
+        `)
+        .eq("id", id)
+        .maybeSingle();
+
+    if (error) { throw error; }
+
+    return data as Rider;
+}, ["rider", id.toString()], { revalidate: 60 * 60 })
+
+const riderQuery = supabase
+    .from("riders")
+    .select(`
+        *,
+        rider_points (*),
+        results (
+            *,
+            races (
+                *,
+                meta_races (*)
+            )
+        ),
+        nations (*),
+        teams (*),
+        rider_seasons (*),
+        image_metadata (*)
+    `)
+
+export type Rider = QueryData<typeof riderQuery>[number];

@@ -36,7 +36,6 @@ export default function ResultsEachYearSection({
     const [selectedYear, setSelectedYear] = useState<number>(maxYear);
 
     const groupedResultsForYear = groupResults(results.filter(result => result.year == selectedYear), pointSystem, true);
-    console.log(groupedResultsForYear)
     const season = nation.nation_seasons.find(season => season.year == selectedYear);
     const riderSeasonsForYear = rankBy(
             groupResultsByKey(

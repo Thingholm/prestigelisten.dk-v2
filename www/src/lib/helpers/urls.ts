@@ -1,3 +1,4 @@
+import { RidersFilter } from "@/app/[lang]/list/riders/_sections/ListSection";
 import { urls } from "../constants/urls";
 
 type Rider = {
@@ -91,4 +92,19 @@ export function getRaceUrl(race: MetaRace) {
 
 export function getRiders3YearRollingRankingsUrl() {
     return urls["listRiders3YearPeriod"];
+}
+
+export function getRidersListUrl(filter?: Partial<RidersFilter>): string {
+    const params = new URLSearchParams();
+
+    if (filter) {
+        if (filter.status) params.set("status", filter.status);
+        if (filter.isSingleYear) params.set("isSingleYear", filter.isSingleYear.toString());
+        if (filter.bornBeforeOrIn) params.set("bornBeforeOrIn", filter.bornBeforeOrIn.toString());
+        if (filter.bornAfterOrIn) params.set("bornAfterOrIn", filter.bornAfterOrIn.toString());
+        if (filter.nations) filter.nations.forEach(nation => nation && params.append("nations", nation.toString()))
+    }
+
+    const query = params.toString();
+    return query ? `${urls["listRiders"]}?${query}` : urls["listRiders"];
 }
