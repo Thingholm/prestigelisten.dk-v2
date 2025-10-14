@@ -6,6 +6,8 @@ import { getPointSystem } from "@/db/pointSystem";
 import { groupResults } from "@/lib/helpers/groupResults";
 import { sortGroupedResults } from "@/lib/helpers/results";
 import ChartSection from "./_sections/ChartSection";
+import ResultsEachYearSection from "./_sections/ResultsEachYearSection";
+import { getRiderCountEachSeason } from "@/db/seasons";
 
 export default async function RiderPage({
     params,
@@ -16,6 +18,7 @@ export default async function RiderPage({
 
     const rider = await getRider(id)();
     const pointSystem = await getPointSystem();
+    const riderCountEachSeason = await getRiderCountEachSeason();
 
     const rankedRiders = rankBy((await getAllRiderPointsWithNationAndTeam()), "points");
     const rankedActiveRiders = rankBy(rankedRiders.filter(r => r.riders.active), "points");
@@ -33,6 +36,11 @@ export default async function RiderPage({
                 groupedResults={groupedResults}
             />
             <ChartSection rider={rider} pointSystem={pointSystem}/>
+            <ResultsEachYearSection 
+                rider={rider} 
+                pointSystem={pointSystem} 
+                riderCountEachSeason={riderCountEachSeason}
+            />
         </div>
     )
 }

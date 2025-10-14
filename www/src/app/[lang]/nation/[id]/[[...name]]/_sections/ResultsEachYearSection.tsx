@@ -6,6 +6,7 @@ import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, Tab
 import { NationWithRiders } from "@/db/nations";
 import { PointSystem } from "@/db/pointSystem";
 import { Race } from "@/db/race";
+import { NationCount } from "@/db/seasons";
 import { nationalsRaceClassIds } from "@/lib/constants/raceClasses";
 import { groupResults, groupResultsByKey } from "@/lib/helpers/groupResults";
 import { formatNumber } from "@/lib/helpers/localeHelpers";
@@ -19,11 +20,13 @@ import { useState } from "react";
 export default function ResultsEachYearSection({
     nation,
     pointSystem,
-    results
+    results,
+    nationCountEachSeason
 }: Readonly<{
     nation: NationWithRiders,
     pointSystem: PointSystem,
-    results: (Tables<'results'> & { races: Race })[]
+    results: (Tables<'results'> & { races: Race })[],
+    nationCountEachSeason: NationCount[]
 }>) {
     const t = useTranslations("nationPage.resultsEachYear");
     const tResultNames = useTranslations("getResultNames");
@@ -59,7 +62,8 @@ export default function ResultsEachYearSection({
 
         const previousSeason = nation.nation_seasons.find(season => season.year == selectedYear - 1);
         if (!previousSeason || !previousSeason.rank_all_time) {
-            return `+${season.rank_all_time}`;
+            const nationCountForSeason = nationCountEachSeason.find(nationCount => nationCount.year == selectedYear)?.row_count ?? season.rank_all_time;
+            return `+${nationCountForSeason - season.rank_all_time}`;
         }
 
         const movement = previousSeason.rank_all_time - season.rank_all_time

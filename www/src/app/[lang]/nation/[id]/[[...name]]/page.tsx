@@ -13,6 +13,7 @@ import ResultsEachYearSection from "./_sections/ResultsEachYearSection";
 import RacesAndTeamsSection from "./_sections/RacesAndTeamsSection";
 import { getTeamsFromNation } from "@/db/team";
 import { nationalsRaceClassIds } from "@/lib/constants/raceClasses";
+import { getNationCountEachSeason } from "@/db/seasons";
 
 export type Nation = Omit<NationWithRiders, "riders"> & {
     riders: (NationWithRiders["riders"][number] & {
@@ -33,6 +34,7 @@ export default async function NationPage({
     const races = await getRaces();
     const pointSystem = await getPointSystem();
     const nationPoints = await getNationPoints();
+    const nationCountEachSeason = await getNationCountEachSeason();
 
     nation.riders = [
         ...nation.riders.map(riders => ({...riders, nations: null})),
@@ -85,6 +87,7 @@ export default async function NationPage({
                 nation={nation} 
                 pointSystem={pointSystem} 
                 results={flatResultsWithNc}
+                nationCountEachSeason={nationCountEachSeason}
             />
             <RacesAndTeamsSection 
                 nation={nation} 

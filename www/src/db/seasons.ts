@@ -139,3 +139,29 @@ const allNationSeasonsFromYearQuery = () => supabase
     `)
 
 export type NationSeasonsFromYear = QueryData<ReturnType<typeof allNationSeasonsFromYearQuery>>; 
+
+export const getRiderCountEachSeason = unstable_cache(async () => {
+    const { data, error } = await supabase.rpc('get_rider_season_counts_by_year')
+;
+
+    if (error) { throw error; }
+
+    return data as RiderCount[];
+}, ["riderCountEachSeason"], { revalidate: 60 * 60 })
+
+const riderCountQuery = supabase.rpc('get_rider_season_counts_by_year');
+
+export type RiderCount = QueryData<typeof riderCountQuery>[number];
+
+export const getNationCountEachSeason = unstable_cache(async () => {
+    const { data, error } = await supabase.rpc('get_nation_season_counts_by_year')
+;
+
+    if (error) { throw error; }
+
+    return data as NationCount[];
+}, ["nationCountEachSeason"], { revalidate: 60 * 60 })
+
+const NationCountQuery = supabase.rpc('get_nation_season_counts_by_year');
+
+export type NationCount = QueryData<typeof NationCountQuery>[number];

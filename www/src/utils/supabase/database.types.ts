@@ -1494,6 +1494,20 @@ export type Database = {
       }
     }
     Functions: {
+      get_nation_season_counts_by_year: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          row_count: number
+          year: number
+        }[]
+      }
+      get_rider_season_counts_by_year: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          row_count: number
+          year: number
+        }[]
+      }
       get_riders_count_by_nation: {
         Args: Record<PropertyKey, never>
         Returns: {
