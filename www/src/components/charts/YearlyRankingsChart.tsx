@@ -29,6 +29,8 @@ export default function YearlyRankingsChart({
         };
     }
 
+    console.log(data)
+
     return (
         <ResponsiveContainer height={400} width="100%">
             <LineChart data={data}>

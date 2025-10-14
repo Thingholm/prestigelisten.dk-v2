@@ -5,6 +5,7 @@ import ProfileSection from "./_sections/ProfileSection";
 import { getPointSystem } from "@/db/pointSystem";
 import { groupResults } from "@/lib/helpers/groupResults";
 import { sortGroupedResults } from "@/lib/helpers/results";
+import ChartSection from "./_sections/ChartSection";
 
 export default async function RiderPage({
     params,
@@ -31,6 +32,7 @@ export default async function RiderPage({
                 nationRank={rankedNationRiders.find(r => r.rider_id == rider.id)?.rank}
                 groupedResults={groupedResults}
             />
+            <ChartSection rider={rider} pointSystem={pointSystem}/>
         </div>
     )
 }

@@ -29,9 +29,11 @@ type YearlyPointsAndResults = {
 }[]
 
 export default function YearlyPointsChart({
-    yearlyPointsAndResults
+    yearlyPointsAndResults,
+    isDistinctPlacements = false
 }: Readonly<{
-    yearlyPointsAndResults: YearlyPointsAndResults
+    yearlyPointsAndResults: YearlyPointsAndResults,
+    isDistinctPlacements?: boolean
 }>) {
     const t = useTranslations("chartTooltips");
     const tResultNames = useTranslations("getResultNames");
@@ -48,7 +50,7 @@ export default function YearlyPointsChart({
                         .map(result => (
                             <ul key={result.id}>
                                 <ResultNameListItem
-                                    resultName={getGroupedResultName(result, tResultNames, false)}
+                                    resultName={getGroupedResultName(result, tResultNames, isDistinctPlacements)}
                                     metaRace={result.races.meta_races}
                                     count={result.results.length}
                                     points={result.points}
