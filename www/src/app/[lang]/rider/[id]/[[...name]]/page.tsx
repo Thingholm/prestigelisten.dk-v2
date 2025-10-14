@@ -8,6 +8,7 @@ import { sortGroupedResults } from "@/lib/helpers/results";
 import ChartSection from "./_sections/ChartSection";
 import ResultsEachYearSection from "./_sections/ResultsEachYearSection";
 import { getRiderCountEachSeason } from "@/db/seasons";
+import TablesSection from "./_sections/TablesSection";
 
 export default async function RiderPage({
     params,
@@ -40,6 +41,11 @@ export default async function RiderPage({
                 rider={rider} 
                 pointSystem={pointSystem} 
                 riderCountEachSeason={riderCountEachSeason}
+            />
+            <TablesSection
+                rider={rider}
+                rankedRidersByNation={rankedNationRiders}
+                rankedRidersByYear={rankedYearRiders}
             />
         </div>
     )
