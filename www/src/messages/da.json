@@ -730,7 +730,8 @@
         "latestPointSystem": "Aktuel/seneste pointklasse",
         "and": "og",
         "active": "Aktive",
-        "inactive": "Inaktive"
+        "inactive": "Inaktive",
+        "years": "År"
     },
     "searchBar": {
         "placeholder": "Søg..."

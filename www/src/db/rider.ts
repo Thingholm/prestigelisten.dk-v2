@@ -69,7 +69,10 @@ export const getRider = (id: number) => unstable_cache(async () => {
                 *,
                 races (
                     *,
-                    meta_races (*)
+                    meta_races (
+                        *,
+                        nations (code)
+                    )
                 )
             ),
             nations (*),
@@ -94,7 +97,10 @@ const riderQuery = supabase
             *,
             races (
                 *,
-                meta_races (*)
+                meta_races (
+                    *,
+                    nations (*)
+                )            
             )
         ),
         nations (*),

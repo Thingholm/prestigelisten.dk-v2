@@ -730,7 +730,8 @@
         "latestPointSystem": "Current/latest point system",
         "and": "and",
         "active": "Active",
-        "inactive": "Inactive"
+        "inactive": "Inactive",
+        "years": "Years"
     },
     "searchBar": {
         "placeholder": "Search..."

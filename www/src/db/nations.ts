@@ -33,3 +33,13 @@ const nationWithRidersQuery = supabase
     .eq("riders.rider_seasons.year", new Date().getFullYear())
 
 export type NationWithRiders = QueryData<typeof nationWithRidersQuery>[number]
+
+export const getNations = unstable_cache(async () => {
+    const { data, error } = await supabase
+        .from("nations")
+        .select("*")
+
+    if (error) { throw error; }
+
+    return data;
+}, ["nations"], { revalidate: 60 * 60 });
