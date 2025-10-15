@@ -13,23 +13,25 @@ type Props = {
 }
 
 export default function RiderImage({ 
-    rider 
+    rider,
+    className
 }: Readonly<{
-    rider: Rider
+    rider: Rider,
+    className?: string
 }>) {
     const t = useTranslations("riderPage.profile");
     const [imgSrc, setImgSrc] = useState(`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/rider_portraits//${rider.id}.jpg`);
 
     return (
-        <div className={`${rider.image_metadata?.[0] ? "sm:pt-5" : ""}`}>
-            <Image 
+        <div className={`${className}`}>
+            <Image
                 src={imgSrc} 
                 onError={() => setImgSrc(`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/rider_portraits//nopicture.jpg`)}
                 width={200}
                 height={200}
                 alt={`${rider.first_name} ${rider.last_name} portræt`}
                 className="rounded-2xl aspect-square"
-                style={{height: 200, width: 200}}
+                style={!className ? {height: 200, width: 200} : {}}
             />
             {rider.image_metadata?.[0] && 
                 <p className="text-sm text-gray-500 mt-1">

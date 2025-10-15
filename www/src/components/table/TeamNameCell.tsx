@@ -18,7 +18,7 @@ export default function TeamNameCell({
     isLink = true,
     isMain = false,
 }: Readonly<{
-    team: Team;
+    team?: Team | null;
     className?: string;
     showFlagBreakpoint?: ScreenBreakpoint | "always";
     isCell?: boolean;
@@ -33,6 +33,12 @@ export default function TeamNameCell({
         "2xl": "2xl:!hidden",
         always: "",
     };
+
+    if (!team) {
+        return (
+            <TableCell className={`${className}`}>-</TableCell>
+        )
+    }
 
     return (
         <TableCell 

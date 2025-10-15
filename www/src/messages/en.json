@@ -1005,7 +1005,8 @@
     "comparePage": {
         "title": "Compare riders or nations on Prestigelisten",
         "riders": "Riders",
-        "nations": "Nations",
+        "nations": "Remove",
+        "remove": "Fjern",
         "rider": {
             "title": "Compare riders",
             "agePointsTitle": "Points gained at each age",

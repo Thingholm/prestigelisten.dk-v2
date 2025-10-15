@@ -46,7 +46,8 @@ const ridersQuery = supabase
         *,
         nations (
             *
-        )
+        ),
+        rider_points (*)
     `)
 
 export type Riders = QueryData<typeof ridersQuery>;

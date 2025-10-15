@@ -5,7 +5,7 @@ export default function YearCell({
     year,
     className = "",
 }: { 
-    year: number | null
+    year?: number | null
     className?: string
 }) {
     return (

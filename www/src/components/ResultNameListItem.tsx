@@ -10,15 +10,17 @@ export default function ResultNameListItem({
     resultName,
     metaRace,
     count,
-    points
+    points,
+    className
 }: Readonly<{
     resultName: string
     metaRace: MetaRace
     count?: number
-    points?: number
+    points?: number,
+    className?: string
 }>) {
     return (
-        <li className="relative">
+        <li className={`${className} relative`}>
             {count && count > 1 && 
                 <span className="absolute right-full mr-2 opacity-70">{count}x</span>
             }

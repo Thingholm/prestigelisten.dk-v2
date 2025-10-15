@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
-type SearchData = {
+export type SearchData = {
     id: number;
     value: string;
     index?: number;
@@ -68,7 +68,7 @@ export default function SearchBar({
                 className="w-full p-2 rounded-lg shadow-sm focus:outline-none bg-gray-100 focus:bg-gray-200"
                 disabled={disabled}
             />
-            <button onClick={handleReset} className="absolute hover:cursor-pointer hover:bg-gray-300 top-0 right-0 p-2 rounded-lg">
+            <button onClick={handleReset} className={`${disabled ? "hidden" : ""} absolute hover:cursor-pointer hover:bg-gray-300 top-0 right-0 p-2 rounded-lg`}>
                 <IoClose size={22}/>
             </button>
             {isFocused && query.length > 1 && !disabled && <ul className="absolute w-full mt-2 rounded-lg shadow-lg divide-y divide-gray-300 bg-gray-200 z-20">

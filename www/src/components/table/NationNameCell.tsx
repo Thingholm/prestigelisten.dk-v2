@@ -15,16 +15,24 @@ export default function NationNameCell({
     isMain = false,
     isLink = true,
 }: Readonly<{
-    nation: Nation;
+    nation?: Nation;
     className?: string;
     isMain?: boolean;
     isLink?: boolean;
 }>) {
     const t = useTranslations("nations");
-    const nationName = (nation.code && nation.code != "xx") 
-        ? t(`${nation.code}.name`)
-        : nation.name;
+    const nationName = nation
+        ? ((nation.code && nation.code != "xx") 
+            ? t(`${nation.code}.name`)
+            : nation.name)
+        : "-";
         
+
+    if (!nation) {
+        return (
+            <TableCell className={className}>-</TableCell>
+        )
+    }
 
     return (
         <TableCell className={`${className}`} href={isLink ? getNationUrl(nation) : undefined}>
