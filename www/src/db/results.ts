@@ -66,3 +66,32 @@ const firstRaceYearQuery = supabase
     .single()
 
 export type FirstRaceYear = QueryData<typeof firstRaceYearQuery>;
+
+export const getResultsThisYear = unstable_cache(async () => {
+    const { data, error } = await resultsThisYearQuery;
+
+    if (error) throw error;
+
+    return data as ResultWithRaceDate[];
+}, ["resultsThisYear"], { revalidate: 60* 60 });
+
+const resultsThisYearQuery = supabase
+    .from("results")
+    .select(`
+        *,
+        race_dates (*),
+        races (
+            *,
+            meta_races (
+                *
+            )
+        ),
+        riders (
+            *,
+            nations (*)
+        )
+    `)
+    .not("race_date_id", "is", null)
+    .eq("year", new Date().getFullYear());
+
+export type ResultWithRaceDate = QueryData<typeof resultsThisYearQuery>[number];

@@ -16,6 +16,7 @@ type GroupedResult = {
     result_type_id: number;
     results?: unknown[] | undefined;
     placement: number | null;
+    stage: number | null;
 }
 
 export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType<typeof useTranslations>, showPlacement?: boolean) {
@@ -37,7 +38,7 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
     const isDayInLeadersJersey = 8 <= groupedResult.result_type_id && groupedResult.result_type_id <= 11;
 
     if (isStageWin) {
-        resultName += `${t(resultCount > 1 ? "stageInLower" : "stageIn")} `
+        resultName += showPlacement ? `${groupedResult.stage}${t(`suffixes.${getSuffix(groupedResult.stage!)}`)} ${t("stageInLower")} ` : `${t(resultCount > 1 ? "stageInLower" : "stageIn")} `
     } else if (isPlacement) {
         resultName += `${groupedResult.placement}${t(`suffixes.${getSuffix(groupedResult.placement!)}`)} ${t("place")} ${t(isChampionship ? "at" : "in")} `
     } else if (isDayInLeadersJersey) {
