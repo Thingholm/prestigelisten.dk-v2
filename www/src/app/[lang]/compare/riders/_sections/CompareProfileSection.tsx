@@ -18,7 +18,11 @@ export default function CompareProfileSection({
             <div className="w-1/3 flex-col flex items-start md:items-end text-end">
                 {rider1 &&
                     <div key={rider1.id} className="flex flex-col items-end">
-                        <RemoveCompareableEntityButton id={rider1.id} ids={riderIds}/>
+                        <RemoveCompareableEntityButton 
+                            id={rider1.id} 
+                            ids={riderIds}
+                            param="riders"
+                        />
                         <RiderImage rider={rider1} className="w-32 sm:w-36 md:w-auto"/>
                         <h2 className="text-2xl font-bold mb-2">{getRiderName(rider1) ?? ""}</h2>
                     </div>
@@ -28,7 +32,11 @@ export default function CompareProfileSection({
             <div className="w-1/3 flex-col flex items-end md:items-start">
                 {rider2 &&
                     <div key={rider2.id}>
-                        <RemoveCompareableEntityButton id={rider2.id} ids={riderIds}/>
+                        <RemoveCompareableEntityButton 
+                            id={rider2.id} 
+                            ids={riderIds}
+                            param="riders"
+                        />
                         <RiderImage rider={rider2} className="w-32 sm:w-36 md:w-auto"/>
                         <h2 className="text-2xl font-bold mb-2">{getRiderName(rider2) ?? ""}</h2>
                     </div>

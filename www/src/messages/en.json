@@ -1036,6 +1036,7 @@
             "points": "Points",
             "placement": "Placement all time",
             "placementActive": "Placement (only active)",
+            "pointsActive": "Points (only active)",
             "numberOfResults": "Number of results",
             "numberOfRidersWithPoints": "Number of riders with points",
             "pointsPerRider": "Points per rider",

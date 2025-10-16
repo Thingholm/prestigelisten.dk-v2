@@ -1037,6 +1037,7 @@
             "points": "Point",
             "placement": "Placering all time",
             "placementActive": "Placering (kun aktive)",
+            "pointsActive": "Point (kun aktive)",
             "numberOfResults": "Antal resultater",
             "numberOfRidersWithPoints": "Antal ryttere med point",
             "pointsPerRider": "Point pr. rytter",

@@ -66,30 +66,30 @@ export default function CompareChartSection({
     }, []).sort((a, b) => a.age - b.age);
 
     const CustomToolTip = ({ active, payload, label}: TooltipProps<ValueType, NameType>) => {
-    if (active && payload && payload.length) {
-        const rider1Season = rider1.rider_seasons.find(season => season.year == rider1.year + label);
-        const rider2Season = rider2.rider_seasons.find(season => season.year == rider2.year + label);
+        if (active && payload && payload.length) {
+            const rider1Season = rider1.rider_seasons.find(season => season.year == rider1.year + label);
+            const rider2Season = rider2.rider_seasons.find(season => season.year == rider2.year + label);
 
-        return (
-            <ChartTooltip>
-                <p className="font-semibold text-white">{t("age")}: {label}</p>
-                <div className={`text-white mt-2 mb-1 ${rider1Season ? "" : "opacity-50"}`}>
-                    <p style={{ color: "#2dc702" }}>{getRiderName(rider1)}</p>
-                    <p>{t("pointsGained")}: {formatNumber(payload.find(p => p.dataKey  == rider1.id)?.value as number) ?? 0}</p>
-                    <p>{t("pointsAllTime")}: {formatNumber(rider1Season?.points_all_time) ?? 0} </p>
-                    <p>{t("placementAlltime")}: {formatNumber(rider1Season?.rank_all_time) ?? "-"}</p>
-                </div>
+            return (
+                <ChartTooltip>
+                    <p className="font-semibold text-white">{t("age")}: {label}</p>
+                    <div className={`text-white mt-2 mb-1 ${rider1Season ? "" : "opacity-50"}`}>
+                        <p style={{ color: "#2dc702" }}>{getRiderName(rider1)}</p>
+                        <p>{t("pointsGained")}: {formatNumber(payload.find(p => p.dataKey  == rider1.id)?.value as number) ?? 0}</p>
+                        <p>{t("pointsAllTime")}: {formatNumber(rider1Season?.points_all_time) ?? 0} </p>
+                        <p>{t("placementAlltime")}: {formatNumber(rider1Season?.rank_all_time) ?? "-"}</p>
+                    </div>
 
-                <div className={`text-white mt-2 mb-1 ${rider2Season ? "" : "opacity-50"}`}>
-                    <p style={{ color: "#da291c" }}>{getRiderName(rider2)}</p>
-                    <p>{t("pointsGained")}: {formatNumber(payload.find(p => p.dataKey  == rider2.id)?.value as number) ?? 0}</p>
-                    <p>{t("pointsAllTime")}: {formatNumber(rider2Season?.points_all_time) ?? 0} </p>
-                    <p>{t("placementAlltime")}: {formatNumber(rider2Season?.rank_all_time) ?? "-"}</p>                
-                </div>
-            </ChartTooltip>
-        )
+                    <div className={`text-white mt-2 mb-1 ${rider2Season ? "" : "opacity-50"}`}>
+                        <p style={{ color: "#da291c" }}>{getRiderName(rider2)}</p>
+                        <p>{t("pointsGained")}: {formatNumber(payload.find(p => p.dataKey  == rider2.id)?.value as number) ?? 0}</p>
+                        <p>{t("pointsAllTime")}: {formatNumber(rider2Season?.points_all_time) ?? 0} </p>
+                        <p>{t("placementAlltime")}: {formatNumber(rider2Season?.rank_all_time) ?? "-"}</p>                
+                    </div>
+                </ChartTooltip>
+            )
+        }
     }
-}
 
     return (
         <Section>

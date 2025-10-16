@@ -7,10 +7,12 @@ import { IoRemoveCircleOutline } from "react-icons/io5";
 
 export default function RemoveCompareableEntityButton({
     id,
-    ids
+    ids,
+    param
 }: Readonly<{
     id: number,
-    ids: number[]
+    ids: number[],
+    param: string
 }>) {
     const t = useTranslations("comparePage");
 
@@ -19,7 +21,7 @@ export default function RemoveCompareableEntityButton({
     const handleClick = () => {
         const params = new URLSearchParams();
 
-        params.set("riders", ids.filter(x => x != id).join(","))
+        params.set(param, ids.filter(x => x != id).join(","))
 
         router.push(`${window.location.pathname}?${params}`)
     }

@@ -1,6 +1,6 @@
 import { NationNameCell, Table, TableBody, TableCell, TableRow, TeamNameCell, YearCell } from "@/components/table";
 import { Rider, Riders } from "@/db/rider";
-import CompareProperties from "../_components/CompareProperties";
+import CompareProperties from "../../_components/CompareProperties";
 import { Ranked } from "@/lib/helpers/rank";
 import { groupResultsByKey } from "@/lib/helpers/groupResults";
 import { getResultCategory } from "@/lib/helpers/resultCategory";

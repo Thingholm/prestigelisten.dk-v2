@@ -43,3 +43,41 @@ export const getNations = unstable_cache(async () => {
 
     return data;
 }, ["nations"], { revalidate: 60 * 60 });
+
+export const getNation = (nationId: number) => unstable_cache(async () => {
+    const { data, error } = await supabase
+        .from("nations")
+        .select(`
+            *,
+            nation_seasons (
+                *
+            ),
+            riders (
+                results (
+                    *
+                )
+            )
+        `)
+        .eq("id", nationId)
+        .single();
+
+    if (error) { throw error; }
+
+    return data as Nation;
+}, ["nation", nationId.toString()], { revalidate: 60 * 60 });
+
+const nationQuery = supabase
+    .from("nations")
+    .select(`
+        *,
+        nation_seasons (
+            *
+        ),
+        riders (
+            results (
+                *
+            )
+        )
+    `)
+
+export type Nation = QueryData<typeof nationQuery>[number]
