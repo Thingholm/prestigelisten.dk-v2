@@ -23,7 +23,7 @@ export default function RankingsTableSection({
 
     return (
         <div className="mt-2">
-            <p className="font-semibold">{settings.showActiveRanking ? t("placementActive") : t("alltimePlacement")}</p>
+            <p className="font-semibold">{settings.showActiveRankingTable ? t("placementActive") : t("alltimePlacement")}</p>
             <Table className="text-sm">
                 <TableHead>
                     <TableColumn>{tTableColumns("placement")}</TableColumn>

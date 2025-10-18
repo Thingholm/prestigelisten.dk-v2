@@ -60,7 +60,7 @@ export default function RankingsSectionWithLatestResult({
                         title={t("allTime")}
                     />
                 }
-                {settings.showActiveRankingTable && activeRank && 
+                {settings.showActiveRanking && activeRank && 
                     <RankDisplay 
                         rank={activeRank} 
                         oldRank={oldActiveRank}

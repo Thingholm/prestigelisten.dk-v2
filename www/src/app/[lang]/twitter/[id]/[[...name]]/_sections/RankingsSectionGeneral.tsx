@@ -27,7 +27,7 @@ export default function RankingsSectionGeneral({
             <p className="font-semibold">{t("placementsOnPrestigeList")}</p>
             <div className="flex justify-between gap-2 mt-1">
                 {settings.showAllTimeRanking && alltimeRank && <RankDisplay rank={alltimeRank} title={t("allTime")}/>}
-                {settings.showActiveRankingTable && activeRank && <RankDisplay rank={activeRank} title={t("active")}/>}
+                {settings.showActiveRanking && activeRank && <RankDisplay rank={activeRank} title={t("active")}/>}
                 {settings.showNationsRanking && nationRank && <RankDisplay rank={nationRank} title={tNations(`${rider.nations.code}.name`)}/>}
                 {settings.showBirthYearRanking && yearRank && rider.year && <RankDisplay rank={yearRank} title={t("fromYear", { year: rider.year })}/>}
             </div>

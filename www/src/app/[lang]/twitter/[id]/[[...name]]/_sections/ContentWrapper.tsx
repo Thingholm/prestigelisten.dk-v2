@@ -6,6 +6,9 @@ import React, { useRef, useState } from "react";
 import TwitterCard from "./TwitterCard";
 import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { PointSystem } from "@/db/pointSystem";
+import Toolbox from "./Toolbox";
+import Button from "@/components/ui/Button";
+import handleSnapshot from "@/lib/helpers/snapshot";
 
 export type Settings = {
     textSize: number;
@@ -56,6 +59,19 @@ export default function ContentWrapper({
                 riderPoints={riderPoints}
                 pointSystem={pointSystem}
             />
+            <div className="flex flex-col gap-y-2">      
+                <Toolbox
+                    settings={settings}
+                    setSettings={setSettings}
+                    rider={rider}
+                    rankingEvolutions={rankingEvolutions}
+                />
+                <div className="flex flex-col gap-y-2">
+                    <Button onClick={() => handleSnapshot(ref as React.RefObject<HTMLDivElement>, rider.id, false)}>Download</Button>
+                    <Button onClick={() => handleSnapshot(ref as React.RefObject<HTMLDivElement>, rider.id, true)}>Upload</Button>
+                    <Button href={`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/twitter-images/${rider.id}.jpg`} target="_blank">Revalidér billede</Button>
+                </div>
+            </div>
         </div>
     )
 }

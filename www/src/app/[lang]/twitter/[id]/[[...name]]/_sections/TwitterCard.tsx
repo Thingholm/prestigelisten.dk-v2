@@ -45,7 +45,7 @@ export default function TwitterCard({
                 }
                 <RankingsTableSection
                     rider={rider}
-                    riderPoints={settings.showActiveRanking 
+                    riderPoints={settings.showActiveRankingTable 
                         ? (rankingEvolution
                             ? rankingEvolution.rankings.filter(rp => rp.riders.active)
                             : riderPoints.filter(rp => rp.riders.active)
