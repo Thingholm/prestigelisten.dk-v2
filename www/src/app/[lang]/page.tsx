@@ -9,6 +9,8 @@ import GreatestSeasonsSection from "./_sections/GreatestSeasonsSection";
 import TopAlltimeEachSeasonSection from "./_sections/TopAlltimeEachSeasonSection";
 import { getRiders3YearRollingRankings } from "@/db/riders3YearRollingRankings";
 import Riders3YearRollingRankingsSection from "./_sections/Riders3YearRollingRankingsSection";
+import { getResultsThisYear } from "@/db/results";
+import LatestResultsSection from "./_sections/LatestResultsSection";
 
 export default async function HomePage() {
     const riderPointsWithNationsAndTeams = await getAllRiderPointsWithNationAndTeam();
@@ -17,10 +19,16 @@ export default async function HomePage() {
     const pointSystem = await getPointSystem();
     const top10AlltimeEachSeason = await getTop10AlltimeEachSeason();
     const riders3YearRollingRankings = await getRiders3YearRollingRankings();
+    const results = await getResultsThisYear();
 
     return (
         <div>
             <HeroSection riderPointsWithNationsAndTeams={riderPointsWithNationsAndTeams}/>
+            <LatestResultsSection
+                results={results}
+                riderPoints={riderPointsWithNationsAndTeams}
+                pointSystem={pointSystem}
+            />
             <ActiveAndDanishRidersSection riderPointsWithNationAndTeam={riderPointsWithNationsAndTeams} />
             <NationsSection nationPointsWithRiderCount={nationPointsWithRiderCount} />
             <GreatestSeasonsSection greatestSeasons={greatestSeasons} pointSystem={pointSystem} />

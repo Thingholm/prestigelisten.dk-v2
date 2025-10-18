@@ -1053,7 +1053,7 @@
         }
     },
     "twitterCard": {
-        "points": "Point",
+        "points": "Points",
         "allTime": "All time",
         "active": "Active",
         "fromYear": "From {year}",
