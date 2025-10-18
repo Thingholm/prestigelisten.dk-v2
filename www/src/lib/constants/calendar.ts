@@ -1,0 +1,2 @@
+export const monthNames = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+export const daysOfWeekHeaders = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
