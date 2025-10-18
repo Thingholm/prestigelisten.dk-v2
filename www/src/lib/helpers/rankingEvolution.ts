@@ -1,7 +1,8 @@
 import { PointSystem } from "@/db/pointSystem";
-import { groupResultsByKey } from "./groupResults";
+import { GroupedByKey, groupResultsByKey } from "./groupResults";
 import { rankBy, Ranked } from "./rank";
 import { Tables } from "@/utils/supabase/database.types";
+import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 
 export type ResultWithRaceDate = Tables<"results"> & {
     races: Tables<"races"> & {
@@ -18,10 +19,20 @@ export type ResultWithRaceDate = Tables<"results"> & {
     }
 }
 
-export function calculateRankingEvolution(results: ResultWithRaceDate[], riderPoints: Tables<"rider_points">[], pointSystem: PointSystem) {
+export type RankingEvolution = {
+    results: GroupedByKey<ResultWithRaceDate & {
+        points: number;
+    }, number>[];
+    rankings: Ranked<RiderPointsWithNationAndTeam[number]>[];
+    prevRankings: Ranked<RiderPointsWithNationAndTeam[number]>[] | null;
+    key: string | undefined;
+    points: number;
+}
+
+export function calculateRankingEvolution(results: ResultWithRaceDate[], riderPoints: (RiderPointsWithNationAndTeam[number])[], pointSystem: PointSystem): RankingEvolution[] {
     const groupedResultsByDate = groupResultsByKey(results, pointSystem, r => r.race_dates?.date ?? "other").sort((a, b) => Date.parse(b.key ?? "") - Date.parse(a.key ?? ""));
 
-    let prevRankings: Ranked<Tables<"rider_points">>[] | null;
+    let prevRankings: Ranked<RiderPointsWithNationAndTeam[number]>[] | null;
     const rankingsByDate = groupedResultsByDate.map(group => {
         const groupedByRider = groupResultsByKey(group.results, pointSystem, r => r.rider_id);
 

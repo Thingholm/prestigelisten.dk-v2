@@ -15,6 +15,7 @@ export default function TableRow({
     hasBorder = true,
     responsiveSlice,
     id,
+    style
 }: Readonly<{
     children: ReactElement<React.ComponentProps<"td">>[] | ReactElement<React.ComponentProps<"td">>;
     className?: string;
@@ -23,6 +24,7 @@ export default function TableRow({
     hasBorder?: boolean;
     responsiveSlice?: ResponsiveSliceProps;
     id?: string;
+    style?: React.CSSProperties | undefined;
 }>) {
     const paramClassList = [];
 
@@ -37,7 +39,11 @@ export default function TableRow({
         : "";
 
     return (
-        <tr className={`${paramClassList.join(" ")} border-t-gray-200 ${responsiveSliceClass} ${className}`} id={id}>
+        <tr 
+            style={style}
+            className={`${paramClassList.join(" ")} border-t-gray-200 ${responsiveSliceClass} ${className}`} 
+            id={id}
+        >
             {children}
         </tr>
     );

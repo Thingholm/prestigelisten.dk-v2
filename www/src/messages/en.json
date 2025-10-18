@@ -1060,6 +1060,7 @@
         "alltimePlacement": "All time placement",
         "placementActive": "Placement among active riders",
         "greatestResults": "Greatest results",
-        "placementsOnPrestigeList": "Placements on Prestigelisten"
+        "placementsOnPrestigeList": "Placements on Prestigelisten",
+        "and": "and"
     }
 }   

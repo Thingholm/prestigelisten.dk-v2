@@ -1,10 +1,7 @@
 import { RiderNameCell, SecondaryCellSpan, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table"
-import { ResultWithRaceDate } from "@/db/results";
-import { GroupedByKey } from "@/lib/helpers/groupResults";
-import { Ranked } from "@/lib/helpers/rank";
+import { RankingEvolution } from "@/lib/helpers/rankingEvolution";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { getRaceUrl } from "@/lib/helpers/urls";
-import { Tables } from "@/utils/supabase/database.types";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import React from "react";
@@ -12,15 +9,7 @@ import React from "react";
 export default async function LatestResultsTable({
     latestResultsGroups
 }: Readonly<{
-    latestResultsGroups: {
-        results: GroupedByKey<ResultWithRaceDate & {
-            points: number;
-        }, number>[];
-        rankings: Ranked<Tables<"rider_points">>[];
-        prevRankings: Ranked<Tables<"rider_points">>[] | null;
-        key: string | undefined;
-        points: number;
-    }[]
+    latestResultsGroups: RankingEvolution[]
 }>) {
     const t = await getTranslations("tableColumns");
     const tResultNames = await getTranslations("getResultNames");
