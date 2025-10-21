@@ -11,6 +11,7 @@ import { getRiders3YearRollingRankings } from "@/db/riders3YearRollingRankings";
 import Riders3YearRollingRankingsSection from "./_sections/Riders3YearRollingRankingsSection";
 import { getResultsThisYear } from "@/db/results";
 import LatestResultsSection from "./_sections/LatestResultsSection";
+import CalendarSection from "./_sections/CalendarSection";
 
 export default async function HomePage() {
     const riderPointsWithNationsAndTeams = await getAllRiderPointsWithNationAndTeam();
@@ -29,6 +30,7 @@ export default async function HomePage() {
                 riderPoints={riderPointsWithNationsAndTeams}
                 pointSystem={pointSystem}
             />
+            <CalendarSection/>
             <ActiveAndDanishRidersSection riderPointsWithNationAndTeam={riderPointsWithNationsAndTeams} />
             <NationsSection nationPointsWithRiderCount={nationPointsWithRiderCount} />
             <GreatestSeasonsSection greatestSeasons={greatestSeasons} pointSystem={pointSystem} />
