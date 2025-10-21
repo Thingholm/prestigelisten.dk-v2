@@ -1,0 +1,110 @@
+"use client";
+
+import { urls } from "@/lib/constants/urls";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useState } from "react";
+import DropdownGroup from "./DropdownGroup";
+import DropdownItem from "./DropdownItem";
+import { getRidersListUrl } from "@/lib/helpers/urls";
+
+export default function DesktopNav() {
+    const t = useTranslations("navigation")
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState([false, false]);
+
+    return (
+        <nav className="text-primary-500 gap-x-8 hidden lg:flex">
+            <Link href={urls["about"]} className="relative group/item w-fit">
+                <span>{t("about")}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
+            </Link>
+            <Link href={urls["pointSystem"]} className="relative group/item w-fit">
+                <span>{t("pointSystem")}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
+            </Link>
+            <DropdownGroup
+                title={t("lists")}
+                isOpen={isDropdownOpen[0]}
+                setIsOpen={(value: boolean) => setIsDropdownOpen(prev => [value, prev[1]])}
+            >
+                <DropdownItem
+                    href={getRidersListUrl()}
+                    title={t("ridersAlltime")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={getRidersListUrl({ status: "active" })}
+                    title={t("active")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={getRidersListUrl({ nations: [14] })}
+                    title={t("danish")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={urls["listNations"]}
+                    title={t("nations")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={urls["team"]}
+                    title={t("teams")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={urls["listRiders3YearPeriod"]}
+                    title={t("3YearPeriod")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={urls["listRidersGreatestSeasons"]}
+                    title={t("greatestSeasons")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={urls["year"]}
+                    title={t("mostPointsEachYear")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={urls["listRidersAges"]}
+                    title={t("greatestByAge")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+                <DropdownItem
+                    href={getRidersListUrl({ isSingleYear: true })}
+                    title={t("greatestByYear")}
+                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                />
+            </DropdownGroup>
+            <DropdownGroup
+                title={t("more")}
+                isOpen={isDropdownOpen[1]}
+                setIsOpen={(value: boolean) => setIsDropdownOpen(prev => [prev[0], value])}
+            >
+                <DropdownItem
+                    href={urls["rawData"]}
+                    title={t("rawData")}
+                    onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
+                />
+                <DropdownItem
+                    href={urls["quiz"]}
+                    title={t("quiz")}
+                    onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
+                />
+                <DropdownItem
+                    href={urls["calendar"]}
+                    title={t("raceCalendar")}
+                    onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
+                />
+                <DropdownItem
+                    href={urls["compare"]}
+                    title={t("compare")}
+                    onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
+                />
+            </DropdownGroup>
+        </nav>
+    )
+}

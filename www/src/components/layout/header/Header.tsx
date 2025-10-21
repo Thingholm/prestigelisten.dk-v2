@@ -1,0 +1,27 @@
+import { urls } from "@/lib/constants/urls";
+import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+import DesktopNav from "./DesktopNav";
+import { getNavSearchbarData } from "@/db/navSearhbar";
+import Button from "@/components/ui/Button";
+import { getRidersListUrl } from "@/lib/helpers/urls";
+import NavSearchBar from "./NavSearchBar";
+
+export default async function Header() {
+    const t = await getTranslations("navigation");
+
+    const searchData = await getNavSearchbarData();
+
+    return (
+        <header className="fixed top-0 left-0 w-full bg-secondary-950 py-2 px-6 sm:px-16 z-50 flex items-center justify-between">
+            {/* TODO: Translations */}
+            <h1 className="text-primary-500 uppercase text-3xl font-bold"><Link href={urls["home"]}>Prestigelisten</Link></h1> 
+            <DesktopNav/>
+            <div className="hidden lg:flex items-center gap-x-2">
+                <NavSearchBar searchBarData={searchData}/>
+                <div className="w-[1px] bg-primary-500 h-8"></div>
+                <Button href={getRidersListUrl()}>{t("seeList")}</Button>
+            </div>
+        </header>
+    )
+}

@@ -18,4 +18,6 @@ export const urls: Record<string, string> = {
     compare: "/compare",
     compareRiders: "/compare/riders",
     compareNations: "/compare/nations",
+    rawData: "https://docs.google.com/spreadsheets/d/14JS3ioc3jaFTDX2wuHRniE3g3S2yyg1QkfJ7FiNgAE8/edit#gid=1348170666",
+    quiz: "https://docs.google.com/spreadsheets/d/14JS3ioc3jaFTDX2wuHRniE3g3S2yyg1QkfJ7FiNgAE8/edit#gid=768297916"
 }

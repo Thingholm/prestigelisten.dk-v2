@@ -245,7 +245,7 @@
                 "name": "UAE",
                 "adjective": "Emiratisk"
             },
-            "tk": {
+            "tr": {
                 "name": "Tyrkiet",
                 "adjective": "Tyrkisk"
             },
@@ -587,7 +587,7 @@
             "name": "UAE",
             "adjective": "Emiratisk"
         },
-        "tk": {
+        "tr": {
             "name": "Tyrkiet",
             "adjective": "Tyrkisk"
         },
@@ -669,6 +669,8 @@
         "raceCalendar": "Løbskalender",
         "contact": "Kontakt",
         "developer": "Hjemmesiden er designet og udviklet af Rasmus Thingholm. Kontakt på ",
+        "search": "Søg...",
+        "searchFull": "Søg efter ryttere, nationer, løb eller hold...",
         "searchRiders": "Ryttere",
         "searchNations": "Nationer",
         "searchTeams": "Hold",

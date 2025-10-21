@@ -3,6 +3,7 @@ import "./globals.css";
 import "../../../node_modules/flag-icons/css/flag-icons.min.css";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import Header from "@/components/layout/header/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +26,10 @@ export default async function RootLayout({
         <body
             className={`font-inter antialiased overflow-x-hidden text-sm sm:text-[0.938rem] flex flex-col min-h-screen`}
         >
-          {children}
+          <Header/>
+          <div className="pt-[3.25rem]">
+            {children}
+          </div>
         </body>
       </NextIntlClientProvider>
     </html>

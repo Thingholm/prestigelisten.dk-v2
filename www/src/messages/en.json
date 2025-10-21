@@ -246,7 +246,7 @@
                 "name": "UAE",
                 "adjective": "Emirati"
             },
-            "tk": {
+            "tr": {
                 "name": "Turkey",
                 "adjective": "Turkish"
             },
@@ -588,7 +588,7 @@
             "name": "UAE",
             "adjective": "Emirati"
         },
-        "tk": {
+        "tr": {
             "name": "Turkey",
             "adjective": "Turkish"
         },
@@ -669,6 +669,8 @@
         "raceCalendar": "Race calendar",
         "contact": "Contact",
         "developer": "The website is designed and developed by Rasmus Thingholm. Contact at ",
+        "search": "Search...",
+        "searchFull": "Search for riders, nations, races or teams...",
         "searchRiders": "Riders",
         "searchNations": "Nations",
         "searchTeams": "Teams",
