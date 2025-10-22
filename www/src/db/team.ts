@@ -8,7 +8,7 @@ export const getTeamsWithRiders = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data;
-}, ["teamsWithRiders"], { revalidate: 2 });
+}, ["teamsWithRiders"], { revalidate: 60 * 60 });
 
 const teamsWithRidersQuery = supabase
     .from("teams")

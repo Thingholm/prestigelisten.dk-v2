@@ -46,7 +46,7 @@ export const getAllGreatestSeasons = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as GreatestSeasons;
-}, ["allGreatestSeasons"], { revalidate: 1 });
+}, ["allGreatestSeasons"], { revalidate: 60 * 60 });
 
 const allGreatestSeasonsQuery = supabase
     .from("rider_seasons")
@@ -70,7 +70,7 @@ const allGreatestSeasonsQuery = supabase
     `)
     .not('points_for_year', 'is', null)
     .order("points_for_year", { ascending: false })
-    .gte("points_for_year", 100);
+    .gte("points_for_year", 150);
 
 export type GreatestSeasons = QueryData<typeof allGreatestSeasonsQuery>;
 

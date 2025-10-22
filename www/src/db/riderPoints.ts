@@ -59,7 +59,7 @@ export const getRidersFromYear = async (year: number) => await unstable_cache(as
     if (error) { throw error; }
 
     return data as RidersFromYear;
-}, ["getRidersFromYear", year.toString()], { revalidate: 5 })()
+}, ["getRidersFromYear", year.toString()], { revalidate: 60 * 60 })()
 
 const ridersFromYearQuery = () => supabase
     .from("rider_points")
