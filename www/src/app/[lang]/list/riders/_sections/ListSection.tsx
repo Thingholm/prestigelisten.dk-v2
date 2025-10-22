@@ -95,6 +95,10 @@ export default function ListSection({
         }
     }, [filter, router])
 
+    useEffect(() => {
+        setFilter(searchParamsToFilterMapper(searchParams, defaultFilter));
+    }, [searchParams])
+
     const handleReset = () => {
         setFilter(defaultFilter);
     }
