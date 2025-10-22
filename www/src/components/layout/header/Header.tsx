@@ -6,6 +6,8 @@ import { getNavSearchbarData } from "@/db/navSearhbar";
 import Button from "@/components/ui/Button";
 import { getRidersListUrl } from "@/lib/helpers/urls";
 import NavSearchBar from "./NavSearchBar";
+import MobileNav from "./MobileNav";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 export default async function Header() {
     const t = await getTranslations("navigation");
@@ -15,13 +17,15 @@ export default async function Header() {
     return (
         <header className="fixed top-0 left-0 w-full bg-secondary-950 py-2 px-6 sm:px-16 z-50 flex items-center justify-between">
             {/* TODO: Translations */}
-            <h1 className="text-primary-500 uppercase text-3xl font-bold"><Link href={urls["home"]}>Prestigelisten</Link></h1> 
+            <h1 className="text-primary-500 uppercase text-2xl lg:text-3xl font-bold"><Link href={urls["home"]}>Prestigelisten</Link></h1> 
             <DesktopNav/>
             <div className="hidden lg:flex items-center gap-x-2">
+                <LocaleSwitcher/>
                 <NavSearchBar searchBarData={searchData}/>
                 <div className="w-[1px] bg-primary-500 h-8"></div>
-                <Button href={getRidersListUrl()}>{t("seeList")}</Button>
+                <Button href={getRidersListUrl()} className="!py-1.5">{t("seeList")}</Button>
             </div>
+            <MobileNav searchData={searchData}/>
         </header>
     )
 }
