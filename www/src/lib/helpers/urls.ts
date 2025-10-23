@@ -11,7 +11,7 @@ export function getRiderUrl(rider: Rider) {
     let url = urls["rider"];
 
     if (rider.first_name) {
-        url += `/${rider.id}/${rider.first_name.replaceAll(" ", "_").toLowerCase()}_${rider.last_name.replaceAll(" ", "_").toLowerCase()}`
+        url += `/${rider.id}/${rider.first_name.replaceAll(" ", "_").toLowerCase()}_${rider.last_name.replaceAll(" ", "_").toLowerCase()}`.replaceAll(".", "")
     } else {
         url += `/${rider.id}/${rider.last_name.replaceAll(" ", "_").toLowerCase()}`
     }

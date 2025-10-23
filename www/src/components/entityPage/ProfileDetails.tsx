@@ -8,7 +8,7 @@ export default function ProfileDetails({
     children: [ReactElement<typeof ProfileTitle>, ...(ReactElement<typeof ProfileAttribute> | false)[]]
 }>) {
     return (
-        <div className="ml-4 mb-4 text-center sm:text-start">
+        <div className="ml-4 text-center sm:text-start">
             {children}
         </div>
     )
