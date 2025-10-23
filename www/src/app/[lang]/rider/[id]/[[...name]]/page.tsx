@@ -4,13 +4,13 @@ import { rankBy } from "@/lib/helpers/rank";
 import ProfileSection from "./_sections/ProfileSection";
 import { getPointSystem } from "@/db/pointSystem";
 import { groupResults } from "@/lib/helpers/groupResults";
-import { sortGroupedResults } from "@/lib/helpers/results";
 import ChartSection from "./_sections/ChartSection";
 import ResultsEachYearSection from "./_sections/ResultsEachYearSection";
 import { getRiderCountEachSeason } from "@/db/seasons";
 import TablesSection from "./_sections/TablesSection";
 import AllResultsSection from "./_sections/AllResultsSection";
 import { getNations } from "@/db/nations";
+import { getRidersPreviousNationalities } from "@/db/prevNationalities";
 
 export default async function RiderPage({
     params,
@@ -23,13 +23,15 @@ export default async function RiderPage({
     const pointSystem = await getPointSystem();
     const riderCountEachSeason = await getRiderCountEachSeason();
     const nations = await getNations();
+    const previousNationalities = await getRidersPreviousNationalities(id)();
+    console.log(previousNationalities)
 
     const rankedRiders = rankBy((await getAllRiderPointsWithNationAndTeam()), "points");
     const rankedActiveRiders = rankBy(rankedRiders.filter(r => r.riders.active), "points");
     const rankedNationRiders = rankBy(rankedRiders.filter(r => r.riders.nation_id == rider.nation_id), "points");
     const rankedYearRiders = rankBy(rankedRiders.filter(r => r.riders.year == rider.year), "points");
 
-    const groupedResults = sortGroupedResults(groupResults(rider.results, pointSystem));
+    const groupedResults = groupResults(rider.results, pointSystem);
 
     return (
         <div>
@@ -38,6 +40,7 @@ export default async function RiderPage({
                 activeRank={rankedActiveRiders.find(r => r.rider_id == rider.id)?.rank}
                 nationRank={rankedNationRiders.find(r => r.rider_id == rider.id)?.rank}
                 groupedResults={groupedResults}
+                previousNationalities={previousNationalities}
             />
             <ChartSection rider={rider} pointSystem={pointSystem}/>
             <ResultsEachYearSection 

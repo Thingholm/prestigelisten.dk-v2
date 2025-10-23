@@ -57,5 +57,37 @@ const ridersWithPreviousNationalityQuery = supabase
         )
     `)
 
-
 export type PreviousNationalityData = QueryData<typeof ridersWithPreviousNationalityQuery>[number]
+
+export const getRidersPreviousNationalities = (riderId: number) => unstable_cache(async () => {
+    const { data, error } = await supabase
+        .from("prev_nationalities")
+        .select(`
+            *,
+            riders (
+                *
+            ),
+            nations (
+                *
+            )
+        `)
+        .eq("rider_id", riderId);
+
+    if (error) { throw error; }
+    
+    return data;
+}, ["ridersPreviousNationalities", riderId.toString()], { revalidate: 60 * 60 });
+
+const ridersPreviousNationalitiesQuery = supabase
+    .from("prev_nationalities")
+    .select(`
+        *,
+        riders (
+            *
+        ),
+        nations (
+            *
+        )
+    `);
+
+export type RidersPreviousNationality = QueryData<typeof ridersPreviousNationalitiesQuery>[number]

@@ -22,14 +22,14 @@ export default function ProfileChartsWrapper({
     return(
         <div className="w-full flex flex-col items-center">
             <select 
-                className="bg-secondary-900 mb-4 text-lg rounded-md px-1 py-0.5"
+                className="bg-secondary-900 mb-4 text-lg rounded-md px-1 py-0.5 max-w-[calc(100vw-4rem)]"
                 value={currentChartIndex} 
                 onChange={e => setCurrentChartIndex(parseInt(e.target.value))}
             >
                 {
                     charts.map((_, index) => {
                         return (
-                            <option value={index} key={`${initialChartIndex}-${index}`}>
+                            <option value={index} key={`${initialChartIndex}-${index}`} className="text-pretty">
                                 {charts[index].title}
                             </option>
                         )
