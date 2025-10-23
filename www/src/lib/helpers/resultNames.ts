@@ -19,7 +19,7 @@ type GroupedResult = {
     stage: number | null;
 }
 
-export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType<typeof useTranslations>, showPlacement?: boolean) {
+export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType<typeof useTranslations>, showPlacement?: boolean, showStage?: boolean) {
     let resultName = "";
 
     const resultCount = groupedResult.results?.length ?? 0;
@@ -31,7 +31,7 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
         return resultName;
     }
     
-    const isStageWin = groupedResult.result_type_id == 7;
+    const isStageWin = groupedResult.result_type_id == 7 && showStage;
     const isChampionship = raceClassesWithRenames.includes(groupedResult.races.race_class_id);
     const isPlacement = [2, 3, 4, 102, 103, 104, 105, 106, 107, 108, 109, 110].includes(groupedResult.result_type_id) && (showPlacement != undefined && showPlacement != false) && groupedResult?.placement != null
     const isNotWin = groupedResult.result_type_id != 1;
