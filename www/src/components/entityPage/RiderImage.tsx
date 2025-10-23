@@ -1,16 +1,10 @@
 "use client";
 
-import { Tables } from "@/data/database.types"
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Rider } from "@/db/rider";
-
-type Props = {
-    rider: Tables<"riders">;
-    className?: string | undefined;
-}
 
 export default function RiderImage({ 
     rider,

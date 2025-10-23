@@ -16,7 +16,7 @@ type GroupedResult = {
     result_type_id: number;
     results?: unknown[] | undefined;
     placement: number | null;
-    stage: number | null;
+    stage?: number | null;
 }
 
 export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType<typeof useTranslations>, showPlacement?: boolean, showStage?: boolean) {

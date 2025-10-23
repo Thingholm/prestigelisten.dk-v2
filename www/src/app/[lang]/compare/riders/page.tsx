@@ -1,6 +1,5 @@
 import { getRider, getRiders } from "@/db/rider";
 import RiderSearchSection from "./_sections/RiderSearchSection";
-import Section from "@/components/layout/Section";
 import ComparePropertiesSection from "./_sections/ComparePropertiesSection";
 import { rankBy } from "@/lib/helpers/rank";
 import { getPointSystem } from "@/db/pointSystem";

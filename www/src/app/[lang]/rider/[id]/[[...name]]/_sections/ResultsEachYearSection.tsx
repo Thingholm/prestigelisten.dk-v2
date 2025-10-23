@@ -5,7 +5,7 @@ import ResultNameListItem from "@/components/ResultNameListItem";
 import { PointSystem } from "@/db/pointSystem";
 import { Rider } from "@/db/rider";
 import { RiderCount } from "@/db/seasons";
-import { groupResults, groupResultsByKey } from "@/lib/helpers/groupResults";
+import { groupResults } from "@/lib/helpers/groupResults";
 import { formatNumber } from "@/lib/helpers/localeHelpers";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { sortGroupedResults } from "@/lib/helpers/results";

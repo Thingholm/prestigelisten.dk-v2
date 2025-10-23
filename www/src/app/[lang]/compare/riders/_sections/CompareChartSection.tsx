@@ -27,9 +27,9 @@ export default function CompareChartSection({
     rider1: Rider,
     rider2: Rider
 }>) {
-    if (!rider1.year || !rider2.year) return null;
-
     const t = useTranslations("comparePage.rider");
+
+    if (!rider1.year || !rider2.year) return null;
 
     const data = [
         ...connectDataNulls(

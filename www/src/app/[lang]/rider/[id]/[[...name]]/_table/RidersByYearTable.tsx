@@ -1,5 +1,5 @@
 
-import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
+import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import { Rider } from "@/db/rider";
 import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { Ranked } from "@/lib/helpers/rank";

@@ -1,7 +1,5 @@
-import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
 import ResultNameListItem from "@/components/ResultNameListItem";
-import { Table, TableBody, TableCell, TableRow } from "@/components/table";
 import { PointSystem } from "@/db/pointSystem";
 import { Rider } from "@/db/rider";
 import { sectionClasses } from "@/lib/constants/colors";

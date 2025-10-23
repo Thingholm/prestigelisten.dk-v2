@@ -52,7 +52,7 @@ export default function RaceSpan({
         hover,
     ]);
 
-    const formatDate = (date: Date, tMonths: any) => {
+    const formatDate = (date: Date, tMonths: ReturnType<typeof useTranslations>) => {
         const day = date.getDate();
         const month = tMonths(date.toLocaleString('en-US', { month: 'long' }).toLowerCase());
         const year = date.getFullYear();

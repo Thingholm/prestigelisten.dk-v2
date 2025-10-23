@@ -6,7 +6,7 @@ import SearchBar, { SearchData } from "@/components/ui/SearchBar";
 import { Riders } from "@/db/rider";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { useTranslations } from "next-intl";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function RiderSearchSection({
     riders,

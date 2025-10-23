@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import MobileNavItem from "./MobileNavItem";
 import { urls } from "@/lib/constants/urls";
-import { IoChevronDown, IoChevronForward } from "react-icons/io5";
+import { IoChevronForward } from "react-icons/io5";
 import { getRidersListUrl } from "@/lib/helpers/urls";
 import Button from "@/components/ui/Button";
 import NavSearchBar from "./NavSearchBar";

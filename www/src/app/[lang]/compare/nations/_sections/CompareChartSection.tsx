@@ -4,7 +4,6 @@ import ChartTooltip from "@/components/charts/ChartTooltip";
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
 import { Nation } from "@/db/nations";
-import { connectDataNulls } from "@/lib/helpers/chartDataHelper";
 import { formatNumber } from "@/lib/helpers/localeHelpers";
 import { useTranslations } from "next-intl";
 import { Brush, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
@@ -101,7 +100,7 @@ export default function CompareChartSection({
                         <LineChart data={allTimeData}>
                             <CartesianGrid strokeOpacity={0.5}/>
                             <XAxis dataKey="year" tick={{fill: "#000"}}/>
-                            <YAxis label={{ value: t("placementLabel"), angle: -90, position: "insideLeft", offset: 1}}  tick={{fill: "#000"}} type="number" reversed domain={[1, (dataMin: any) => (Math.round(dataMin * 1.05))]} interval={"preserveStart"}/>
+                            <YAxis label={{ value: t("placementLabel"), angle: -90, position: "insideLeft", offset: 1}}  tick={{fill: "#000"}} type="number" reversed domain={[1, (dataMin: number) => (Math.round(dataMin * 1.05))]} interval={"preserveStart"}/>
                             <Line type="monotone" dataKey={nation1.id} stroke="#2dc702" strokeWidth={2} dot={false}/>
                             <Line type="monotone" dataKey={nation2.id} stroke="#da291c" strokeWidth={2} dot={false}/>
                             <Brush dataKey="year"/>

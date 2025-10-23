@@ -6,7 +6,6 @@ import RankingsSectionGeneral from "./RankingsSectionGeneral";
 import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import RankingsSectionWithLatestResult from "./RankingsSectionWithLatestResult";
 import RankingsTableSection from "./RankingsTableSection";
-import { rankBy } from "@/lib/helpers/rank";
 import { PointSystem } from "@/db/pointSystem";
 import GroupedResults from "./GroupedResults";
 

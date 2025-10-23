@@ -4,7 +4,7 @@ import RiderImage from "@/components/entityPage/RiderImage";
 import { useTranslations } from "use-intl";
 import FlagSpan from "@/components/table/FlagSpan";
 
-export default function({
+export default function Profile({
     rider,
     settings,
 }: Readonly<{

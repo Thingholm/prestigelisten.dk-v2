@@ -44,7 +44,7 @@ export default function NavSearchBar({
     }, []);
 
     const handleLinkClick = () => {
-        setShowSearchBar && setShowSearchBar(false);
+        setShowSearchBar(false);
         setSearchValue("");
     }
 

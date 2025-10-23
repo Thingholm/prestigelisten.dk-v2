@@ -1,5 +1,4 @@
 import { Rider } from "@/db/rider";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { Settings } from "./ContentWrapper";
 import { RankingEvolution } from "@/lib/helpers/rankingEvolution";
 import { useTranslations } from "next-intl";
