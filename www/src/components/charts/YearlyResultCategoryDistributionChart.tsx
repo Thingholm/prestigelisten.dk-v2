@@ -23,7 +23,6 @@ export default function YearlyResultCategoryDistributionChart({
 
     const CustomToolTip = ({ active, payload, label}: TooltipProps<ValueType, NameType>) => {
         if (active && payload && payload.length) {
-            console.log(payload)
             return (
                 <ChartTooltip>
                     <p className="font-semibold">{t("year")}: {label}</p>

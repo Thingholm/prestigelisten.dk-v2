@@ -24,7 +24,6 @@ export default async function RiderPage({
     const riderCountEachSeason = await getRiderCountEachSeason();
     const nations = await getNations();
     const previousNationalities = await getRidersPreviousNationalities(id)();
-    console.log(previousNationalities)
 
     const rankedRiders = rankBy((await getAllRiderPointsWithNationAndTeam()), "points");
     const rankedActiveRiders = rankBy(rankedRiders.filter(r => r.riders.active), "points");
