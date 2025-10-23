@@ -12,6 +12,8 @@ import Riders3YearRollingRankingsSection from "./_sections/Riders3YearRollingRan
 import { getResultsThisYear } from "@/db/results";
 import LatestResultsSection from "./_sections/LatestResultsSection";
 import CalendarSection from "./_sections/CalendarSection";
+import { getDecadeRankings } from "@/db/decade";
+import DecadeSection from "./_sections/DecadeSection";
 
 export default async function HomePage() {
     const riderPointsWithNationsAndTeams = await getAllRiderPointsWithNationAndTeam();
@@ -21,6 +23,7 @@ export default async function HomePage() {
     const top10AlltimeEachSeason = await getTop10AlltimeEachSeason();
     const riders3YearRollingRankings = await getRiders3YearRollingRankings();
     const results = await getResultsThisYear();
+    const decadeRankings = await getDecadeRankings();
 
     return (
         <div>
@@ -36,6 +39,7 @@ export default async function HomePage() {
             <GreatestSeasonsSection greatestSeasons={greatestSeasons} pointSystem={pointSystem} />
             <TopAlltimeEachSeasonSection top10AlltimeEachSeason={top10AlltimeEachSeason} />
             <Riders3YearRollingRankingsSection riders3YearRollingRankings={riders3YearRollingRankings} />
+            <DecadeSection decadeRankings={decadeRankings}/>
         </div>
     );
 }
