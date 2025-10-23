@@ -98,7 +98,7 @@ export default function RaceSpan({
                     style={floatingStyles}
                     className={`bg-secondary-950 text-white z-50 flex flex-col px-4 py-2 rounded-md mt-1 text-center shadow-lg`}
                 >
-                    <p className="text-sm opacity-70 mb-3">{formatDate(raceItem.race.startDate, tMonths)} - {formatDate(raceItem.race.endDate, tMonths)}</p>
+                    <p className="text-sm opacity-70 mb-3">{formatDate(raceItem.race.startDate, tMonths)}{raceItem.race.startDate.getMonth() == raceItem.race.endDate.getMonth() && raceItem.race.startDate.getDate() == raceItem.race.endDate.getDate() ? "" : ` - ${formatDate(raceItem.race.endDate, tMonths)}`}</p>
                     <p className="font-bold">{getRaceName(metaRace, tResultNames)}</p>
                     <p className="text-sm opacity-70 mb-3">{tRaceClasses(raceItem.race.race_class_id.toString())}</p>
                     <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center">

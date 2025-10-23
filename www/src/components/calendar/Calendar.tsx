@@ -32,7 +32,7 @@ export default function Calendar({
     calendar: RaceEvent[],
     pointSystem: PointSystem
 }>) {
-        const t = useTranslations("calendar");
+    const t = useTranslations("calendar");
 
     const [currentDisplayDate, setCurrentDisplayDate] = useState(() => {
         const today = new Date();
@@ -40,11 +40,15 @@ export default function Calendar({
     });
 
     const parsedRaces = useMemo(() => {
-        return calendar.map(race => ({ 
-            ...race, 
-            startDate: new Date(race.startDate), 
-            endDate: new Date(race.endDate) 
-        }));
+        return calendar.map(race => { 
+            const start = new Date(race.startDate);
+            const end = new Date(race.endDate);
+
+            start.setHours(0, 0, 0, 0);
+            end.setHours(23, 59, 59, 999);
+
+            return { ...race, startDate: start, endDate: end };
+        });
     }, []);
 
     const year = currentDisplayDate.getFullYear();
