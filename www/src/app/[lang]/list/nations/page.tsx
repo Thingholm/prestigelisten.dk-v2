@@ -27,7 +27,7 @@ export default async function Page() {
         nation.top_inactive_rider3_id,
     ].filter(x => x != null));
 
-    const riders = await getRidersRange(allRiderIds);
+    const riders = await getRidersRange(allRiderIds)();
 
     nationPoints = nationPoints.map(nation => ({
         ...nation,

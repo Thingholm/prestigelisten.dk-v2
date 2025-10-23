@@ -19,7 +19,7 @@ export default async function Page({
         spanEndYear = new Date().getFullYear();
     }
 
-    const riderRankingsForSpan = await getRiders3YearRollingRankingsByEndYear(spanEndYear);
+    const riderRankingsForSpan = await getRiders3YearRollingRankingsByEndYear(spanEndYear)();
     const pointSystem = await getPointSystem();
     const firstResultYear = (await getFirstRaceYear()).min;
 

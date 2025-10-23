@@ -35,7 +35,7 @@ export const getTeamWithRiders = (teamId: number) => unstable_cache(async () => 
     if (error) { throw error; }
 
     return data as TeamWithRiders;
-}, ["teamWithRiders", teamId.toString()], { revalidate: 60 * 60 })();
+}, ["teamWithRiders", teamId.toString()], { revalidate: 60 * 60 });
 
 const teamWithRidersQuery = supabase
     .from("teams")

@@ -15,7 +15,7 @@ export default async function AgePage({
 
     const t = await getTranslations("lists.riderAge");
 
-    const riderPointsByAge = await getRiderPointsByAge(age);
+    const riderPointsByAge = await getRiderPointsByAge(age)();
     const minRiderAge = await getMinRiderAge();
     const maxRiderAge = await getMaxRiderAge();
 

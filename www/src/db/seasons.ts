@@ -99,13 +99,13 @@ const greatestTop10AlltimeEachSeasonQuery = supabase
 
 export type Top10AlltimeEachSeason = QueryData<typeof greatestTop10AlltimeEachSeasonQuery>;
 
-export const getAllRiderSeasonsFromYear = async (year: number) => await unstable_cache(async () => {
+export const getAllRiderSeasonsFromYear = (year: number) => unstable_cache(async () => {
     const { data, error } = await  allRiderSeasonsFromYearQuery().eq("year", year);
 
     if (error) { throw error; }
 
     return data as RiderSeasonsFromYear;
-}, ["allRiderSeasonsFromYear", year.toString()], { revalidate: 60 * 60 })()
+}, ["allRiderSeasonsFromYear", year.toString()], { revalidate: 60 * 60 })
 
 const allRiderSeasonsFromYearQuery = () => supabase
     .from("rider_seasons")
@@ -121,13 +121,13 @@ const allRiderSeasonsFromYearQuery = () => supabase
 
 export type RiderSeasonsFromYear = QueryData<ReturnType<typeof allRiderSeasonsFromYearQuery>>;
 
-export const getAllNationSeasonsFromYear = async (year: number) => await unstable_cache(async () => {
+export const getAllNationSeasonsFromYear = (year: number) => unstable_cache(async () => {
     const { data, error } = await  allNationSeasonsFromYearQuery().eq("year", year);
 
     if (error) { throw error; }
 
     return data as NationSeasonsFromYear;
-}, ["allNationSeasonsFromYear", year.toString()], { revalidate: 60 * 60 })()
+}, ["allNationSeasonsFromYear", year.toString()], { revalidate: 60 * 60 })
 
 const allNationSeasonsFromYearQuery = () => supabase
     .from("nation_seasons")

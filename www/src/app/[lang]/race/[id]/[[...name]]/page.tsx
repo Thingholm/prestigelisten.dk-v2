@@ -30,12 +30,12 @@ export default async function RacePage({
 }>) {
     const id = (await params).id;
 
-    const race = await getRace(id);
+    const race = await getRace(id)();
     const riders = await getRiders();
     const pointSystem = await getPointSystem();
     const resultTypes = await getResultTypes();
     const firstRaceYear = (await getFirstRaceYear()).min;
-    const results = (await getResultsInRaceRange(race.races.map(r => r.id))).map(result => ({
+    const results = (await getResultsInRaceRange(race.races.map(r => r.id))()).map(result => ({
         ...result,
         races: race.races.find(r => r.id == result.race_id)!,
         riders: riders.find(rider => rider.id == result.rider_id)!,

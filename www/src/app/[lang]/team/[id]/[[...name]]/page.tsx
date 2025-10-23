@@ -15,7 +15,7 @@ export default async function TeamPage({
     const id = (await params).id;
     const currentYear = new Date().getFullYear();
 
-    const teamWithRiders = await getTeamWithRiders(id);
+    const teamWithRiders = await getTeamWithRiders(id)();
     const teamsWithRiders = await getTeamsWithRiders();
     const pointSystem = await getPointSystem();
     const activeRiderPointsLookup = await getActiveRiderPointsLookup();

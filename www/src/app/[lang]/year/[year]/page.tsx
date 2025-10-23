@@ -19,10 +19,10 @@ export default async function YearPage({
 
     const minYear = (await getMinRiderBirthYear()).min;
 
-    const resultsFromYear = await getAllResultsFromYear(year);
-    const riderSeasonsFromYear = await getAllRiderSeasonsFromYear(year);
-    const nationSeasonsFromYear = await getAllNationSeasonsFromYear(year);
-    const ridersFromYear = await getRidersFromYear(year);
+    const resultsFromYear = await getAllResultsFromYear(year)();
+    const riderSeasonsFromYear = await getAllRiderSeasonsFromYear(year)();
+    const nationSeasonsFromYear = await getAllNationSeasonsFromYear(year)();
+    const ridersFromYear = await getRidersFromYear(year)();
 
     const pointSystem = await getPointSystem();
 

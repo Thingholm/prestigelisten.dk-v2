@@ -50,7 +50,7 @@ const activeRiderPointsLookupQuery = supabase
     
 export type ActiveRiderPointsLookup = QueryData<typeof activeRiderPointsLookupQuery>
 
-export const getRidersFromYear = async (year: number) => await unstable_cache(async () => {
+export const getRidersFromYear = (year: number) => unstable_cache(async () => {
     const currentYear = new Date().getFullYear();
     const { data, error } = await  ridersFromYearQuery()
         .eq("riders.year", year)
@@ -59,7 +59,7 @@ export const getRidersFromYear = async (year: number) => await unstable_cache(as
     if (error) { throw error; }
 
     return data as RidersFromYear;
-}, ["getRidersFromYear", year.toString()], { revalidate: 60 * 60 })()
+}, ["getRidersFromYear", year.toString()], { revalidate: 60 * 60 })
 
 const ridersFromYearQuery = () => supabase
     .from("rider_points")

@@ -2,13 +2,13 @@ import { supabase } from "@/utils/supabase/client";
 import { Tables } from "@/utils/supabase/database.types";
 import { unstable_cache } from "next/cache";
 
-export const getRiderPointsByAge = async (age: number) => await unstable_cache(async () => {
+export const getRiderPointsByAge = (age: number) => unstable_cache(async () => {
     const { data, error } = await riderPointsByAgeQuery().eq("age", age);
 
     if (error) { throw error; }
 
     return data as RiderPointsByAge[];
-}, ["riderPointsByAge", age.toString()], { revalidate: 60 * 60 })()
+}, ["riderPointsByAge", age.toString()], { revalidate: 60 * 60 })
 
 const riderPointsByAgeQuery = () => supabase
     .from("rider_points_by_age")

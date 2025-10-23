@@ -34,13 +34,13 @@ export type Riders3YearRollingRankings = {
     rank_for_3_year_span: number;
 };
 
-export const getRiders3YearRollingRankingsByEndYear = async (endYear: number) => await unstable_cache(async () => {
+export const getRiders3YearRollingRankingsByEndYear = (endYear: number) => unstable_cache(async () => {
     const { data, error } = await riders3YearRollingRankingsByEndYearQuery().eq("year", endYear).in("riders.results.year", [endYear, endYear - 1, endYear - 2]);
 
     if (error) { throw error; }
 
     return data as unknown as Riders3YearRollingRankingsWithResults[];
-}, ["riders3YearRollingRankingsByEndYear", endYear.toString()], { revalidate: 60 * 60 })();
+}, ["riders3YearRollingRankingsByEndYear", endYear.toString()], { revalidate: 60 * 60 });
 
 const riders3YearRollingRankingsByEndYearQuery = () => supabase
     .from("riders_3_year_rolling_rankings")
