@@ -3,7 +3,7 @@ import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getNationWithRiders = (nationId: number) => unstable_cache(async () => {
-    const { data, error } = await nationWithRidersQuery.eq("id", nationId).single();
+    const { data, error } = await nationWithRidersQuery.eq("id", nationId).maybeSingle();
 
     if (error) { throw error; }
 
@@ -59,7 +59,7 @@ export const getNation = (nationId: number) => unstable_cache(async () => {
             )
         `)
         .eq("id", nationId)
-        .single();
+        .maybeSingle();
 
     if (error) { throw error; }
 

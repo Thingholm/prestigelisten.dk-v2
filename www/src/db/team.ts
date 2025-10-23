@@ -30,7 +30,7 @@ const teamsWithRidersQuery = supabase
 export type TeamsWithRiders = QueryData<typeof teamsWithRidersQuery>;
 
 export const getTeamWithRiders = (teamId: number) => unstable_cache(async () => {
-    const { data, error } = await teamWithRidersQuery.eq("id", teamId).single();
+    const { data, error } = await teamWithRidersQuery.eq("id", teamId).maybeSingle();
 
     if (error) { throw error; }
 

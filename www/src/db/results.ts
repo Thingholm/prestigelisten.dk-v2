@@ -68,7 +68,7 @@ export const getFirstRaceYear = unstable_cache(async () => {
 const firstRaceYearQuery = supabase
     .from("results")
     .select("year.min()")
-    .single()
+    .maybeSingle()
 
 export type FirstRaceYear = QueryData<typeof firstRaceYearQuery>;
 

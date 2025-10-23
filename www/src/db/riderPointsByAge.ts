@@ -44,7 +44,7 @@ export const getMinRiderAge = unstable_cache(async () => {
 const minRiderAgeQuery = supabase
     .from("rider_points_by_age")
     .select("age.min()")
-    .single();
+    .maybeSingle();
 
     
 export const getMaxRiderAge = unstable_cache(async () => {
@@ -58,4 +58,4 @@ export const getMaxRiderAge = unstable_cache(async () => {
 const maxRiderAgeQuery = supabase
     .from("rider_points_by_age")
     .select("age.max()")
-    .single();
+    .maybeSingle();

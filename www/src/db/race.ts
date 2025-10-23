@@ -3,7 +3,7 @@ import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getRace = (raceId: number) => unstable_cache(async () => {
-    const { data, error } = await raceQuery.eq("id", raceId).single();
+    const { data, error } = await raceQuery.eq("id", raceId).maybeSingle();
 
     if (error) { throw error; }
 
