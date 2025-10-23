@@ -38,7 +38,7 @@ export const getMinRiderAge = unstable_cache(async () => {
 
     if (error) { throw error; }
 
-    return data.min;
+    return data?.min ?? 0;
 }, ["minRiderAge"], { revalidate: 60 * 60 * 24 * 365})
 
 const minRiderAgeQuery = supabase
@@ -52,7 +52,7 @@ export const getMaxRiderAge = unstable_cache(async () => {
 
     if (error) { throw error; }
 
-    return data.max;
+    return data?.max ?? 0;
 }, ["maxRiderAge"], { revalidate: 60 * 60 * 24 * 365})
 
 const maxRiderAgeQuery = supabase
