@@ -3,14 +3,14 @@ import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getNationWithRiders = (nationId: number) => unstable_cache(async () => {
-    const { data, error } = await nationWithRidersQuery.eq("id", nationId).maybeSingle();
+    const { data, error } = await nationWithRidersQuery().eq("id", nationId).maybeSingle();
 
     if (error) { throw error; }
 
     return data as NationWithRiders;
 }, ["nationWithRiders", nationId.toString()], { revalidate: 60 * 60 });
 
-const nationWithRidersQuery = supabase
+const nationWithRidersQuery = () => supabase
     .from("nations")
     .select(`
         *,
@@ -32,7 +32,7 @@ const nationWithRidersQuery = supabase
     `)
     .eq("riders.rider_seasons.year", new Date().getFullYear())
 
-export type NationWithRiders = QueryData<typeof nationWithRidersQuery>[number]
+export type NationWithRiders = QueryData<ReturnType<typeof nationWithRidersQuery>>[number]
 
 export const getNations = unstable_cache(async () => {
     const { data, error } = await supabase

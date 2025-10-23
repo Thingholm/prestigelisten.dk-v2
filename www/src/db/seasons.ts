@@ -3,14 +3,14 @@ import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getGreatestSeasons = unstable_cache(async () => {
-    const { data, error } = await greatestSeasonsQuery;
+    const { data, error } = await greatestSeasonsQuery();
 
     if (error) { throw error; }
 
     return data;
 }, ["greatestSeasons"], { revalidate: 60 * 60 });
 
-const greatestSeasonsQuery = supabase
+const greatestSeasonsQuery = () => supabase
     .from("rider_seasons")
     .select(`
         *,
@@ -41,14 +41,14 @@ const greatestSeasonsQuery = supabase
     .limit(15);
     
 export const getAllGreatestSeasons = unstable_cache(async () => {
-    const { data, error } = await allGreatestSeasonsQuery;
+    const { data, error } = await allGreatestSeasonsQuery();
 
     if (error) { throw error; }
 
     return data as GreatestSeasons;
 }, ["allGreatestSeasons"], { revalidate: 60 * 60 });
 
-const allGreatestSeasonsQuery = supabase
+const allGreatestSeasonsQuery = () => supabase
     .from("rider_seasons")
     .select(`
         *,
@@ -72,18 +72,18 @@ const allGreatestSeasonsQuery = supabase
     .order("points_for_year", { ascending: false })
     .gte("points_for_year", 150);
 
-export type GreatestSeasons = QueryData<typeof allGreatestSeasonsQuery>;
+export type GreatestSeasons = QueryData<ReturnType<typeof allGreatestSeasonsQuery>>;
 
     
 export const getTop10AlltimeEachSeason = unstable_cache(async () => {
-    const { data, error } = await greatestTop10AlltimeEachSeasonQuery;
+    const { data, error } = await greatestTop10AlltimeEachSeasonQuery();
 
     if (error) { throw error; }
 
     return data;
 }, ["top10AlltimeEachSeason"], { revalidate: 60 * 60 })
 
-const greatestTop10AlltimeEachSeasonQuery = supabase
+const greatestTop10AlltimeEachSeasonQuery = () => supabase
     .from("rider_seasons")
     .select(`
         *,
@@ -97,7 +97,7 @@ const greatestTop10AlltimeEachSeasonQuery = supabase
     .lte("rank_all_time", 10)
     .gte("year", new Date().getFullYear() - 10);
 
-export type Top10AlltimeEachSeason = QueryData<typeof greatestTop10AlltimeEachSeasonQuery>;
+export type Top10AlltimeEachSeason = QueryData<ReturnType<typeof greatestTop10AlltimeEachSeasonQuery>>;
 
 export const getAllRiderSeasonsFromYear = (year: number) => unstable_cache(async () => {
     const { data, error } = await  allRiderSeasonsFromYearQuery().eq("year", year);

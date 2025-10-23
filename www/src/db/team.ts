@@ -3,14 +3,14 @@ import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getTeamsWithRiders = unstable_cache(async () => {
-    const { data, error } = await teamsWithRidersQuery;
+    const { data, error } = await teamsWithRidersQuery();
 
     if (error) { throw error; }
 
     return data;
 }, ["teamsWithRiders"], { revalidate: 60 * 60 });
 
-const teamsWithRidersQuery = supabase
+const teamsWithRidersQuery = () => supabase
     .from("teams")
     .select(`
         *,
@@ -27,17 +27,17 @@ const teamsWithRidersQuery = supabase
     `)
     .eq("riders.rider_seasons.year", new Date().getFullYear())
     
-export type TeamsWithRiders = QueryData<typeof teamsWithRidersQuery>;
+export type TeamsWithRiders = QueryData<ReturnType<typeof teamsWithRidersQuery>>;
 
 export const getTeamWithRiders = (teamId: number) => unstable_cache(async () => {
-    const { data, error } = await teamWithRidersQuery.eq("id", teamId).maybeSingle();
+    const { data, error } = await teamWithRidersQuery().eq("id", teamId).maybeSingle();
 
     if (error) { throw error; }
 
     return data as TeamWithRiders;
 }, ["teamWithRiders", teamId.toString()], { revalidate: 60 * 60 });
 
-const teamWithRidersQuery = supabase
+const teamWithRidersQuery = () => supabase
     .from("teams")
     .select(`
         *,
@@ -72,7 +72,7 @@ const teamWithRidersQuery = supabase
     .eq("riders.rider_seasons.year", new Date().getFullYear())
     .eq("riders.results.year", new Date().getFullYear());
 
-export type TeamWithRiders = QueryData<typeof teamWithRidersQuery>[number];
+export type TeamWithRiders = QueryData<ReturnType<typeof teamWithRidersQuery>>[number];
 
 export const getTeamsFromNation = (nationId: number) => unstable_cache(async () => {
     const { data, error } = await supabase

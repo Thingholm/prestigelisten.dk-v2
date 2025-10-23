@@ -3,44 +3,44 @@ import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getMinRiderBirthYear = unstable_cache(async () => {
-    const { data, error } = await minRiderBirthYearQuery;
+    const { data, error } = await minRiderBirthYearQuery();
 
     if (error) { throw error; }
 
     return data as MinRiderBirthYear;
 }, ["minRiderBirthYear"], { revalidate: 60 * 60 * 24 * 30})
 
-const minRiderBirthYearQuery = supabase
+const minRiderBirthYearQuery = () => supabase
     .from("riders")
     .select("year.min()")
     .maybeSingle();
 
-export type MinRiderBirthYear = QueryData<typeof minRiderBirthYearQuery>;
+export type MinRiderBirthYear = QueryData<ReturnType<typeof minRiderBirthYearQuery>>;
 
 export const getMaxRiderBirthYear = unstable_cache(async () => {
-    const { data, error } = await maxRiderBirthYearQuery;
+    const { data, error } = await maxRiderBirthYearQuery();
 
     if (error) { throw error; }
 
     return data as MaxRiderBirthYear;
 }, ["maxRiderBirthYear"], { revalidate: 60 * 60})
 
-const maxRiderBirthYearQuery = supabase
+const maxRiderBirthYearQuery = () => supabase
     .from("riders")
     .select("year.max()")
     .maybeSingle();
 
-export type MaxRiderBirthYear = QueryData<typeof maxRiderBirthYearQuery>;
+export type MaxRiderBirthYear = QueryData<ReturnType<typeof maxRiderBirthYearQuery>>;
 
 export const getRiders = unstable_cache(async () => {
-    const { data, error } = await ridersQuery;
+    const { data, error } = await ridersQuery();
 
     if (error) { throw error; }
 
     return data as Riders;
 }, ["riders"], { revalidate: 60 * 60})
 
-const ridersQuery = supabase
+const ridersQuery = () => supabase
     .from("riders")
     .select(`
         *,
@@ -50,7 +50,7 @@ const ridersQuery = supabase
         rider_points (*)
     `)
 
-export type Riders = QueryData<typeof ridersQuery>;
+export type Riders = QueryData<ReturnType<typeof ridersQuery>>;
 
 export const getRidersRange = (ids: number[]) => unstable_cache(async () => {
     const { data, error } = await supabase

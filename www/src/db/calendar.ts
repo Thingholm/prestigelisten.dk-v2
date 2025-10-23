@@ -3,14 +3,14 @@ import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const getCalendar = unstable_cache(async () => {
-    const { data, error } = await calendarQuery;
+    const { data, error } = await calendarQuery();
 
     if (error) { throw error; }
 
     return data as Calendar;
 }, ["calendar"], { revalidate: 60 * 60 * 24 * 30 });
 
-const calendarQuery = supabase
+const calendarQuery = () => supabase
     .from("calendar")
     .select(`
         *,
@@ -20,4 +20,4 @@ const calendarQuery = supabase
         )    
     `);
 
-export type Calendar = QueryData<typeof calendarQuery>
+export type Calendar = QueryData<ReturnType<typeof calendarQuery>>

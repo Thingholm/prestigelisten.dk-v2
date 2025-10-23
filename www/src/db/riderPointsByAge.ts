@@ -34,28 +34,28 @@ export type RiderPointsByAge = {
 };
 
 export const getMinRiderAge = unstable_cache(async () => {
-    const { data, error } = await minRiderAgeQuery;
+    const { data, error } = await minRiderAgeQuery();
 
     if (error) { throw error; }
 
     return data?.min ?? 0;
 }, ["minRiderAge"], { revalidate: 60 * 60 * 24 * 365})
 
-const minRiderAgeQuery = supabase
+const minRiderAgeQuery = () => supabase
     .from("rider_points_by_age")
     .select("age.min()")
     .maybeSingle();
 
     
 export const getMaxRiderAge = unstable_cache(async () => {
-    const { data, error } = await maxRiderAgeQuery;
+    const { data, error } = await maxRiderAgeQuery();
 
     if (error) { throw error; }
 
     return data?.max ?? 0;
 }, ["maxRiderAge"], { revalidate: 60 * 60 * 24 * 365})
 
-const maxRiderAgeQuery = supabase
+const maxRiderAgeQuery = () => supabase
     .from("rider_points_by_age")
     .select("age.max()")
     .maybeSingle();

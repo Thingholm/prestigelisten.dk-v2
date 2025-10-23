@@ -58,29 +58,29 @@ const resultsInRaceRangeQuery = () => supabase
 export type ResultsInRaceRange = QueryData<ReturnType<typeof resultsInRaceRangeQuery>>
 
 export const getFirstRaceYear = unstable_cache(async () => {
-    const { data, error } = await firstRaceYearQuery;
+    const { data, error } = await firstRaceYearQuery();
 
     if (error) throw error;
 
     return data as FirstRaceYear;
 }, ["firstRaceYear"], { revalidate: 60 * 60 * 24 * 365})
 
-const firstRaceYearQuery = supabase
+const firstRaceYearQuery = () => supabase
     .from("results")
     .select("year.min()")
     .maybeSingle()
 
-export type FirstRaceYear = QueryData<typeof firstRaceYearQuery>;
+export type FirstRaceYear = QueryData<ReturnType<typeof firstRaceYearQuery>>;
 
 export const getResultsThisYear = unstable_cache(async () => {
-    const { data, error } = await resultsThisYearQuery;
+    const { data, error } = await resultsThisYearQuery();
 
     if (error) throw error;
 
     return data as ResultWithRaceDate[];
 }, ["resultsThisYear"], { revalidate: 60* 60 });
 
-const resultsThisYearQuery = supabase
+const resultsThisYearQuery = () => supabase
     .from("results")
     .select(`
         *,
@@ -99,4 +99,4 @@ const resultsThisYearQuery = supabase
     .not("race_date_id", "is", null)
     .eq("year", new Date().getFullYear());
 
-export type ResultWithRaceDate = QueryData<typeof resultsThisYearQuery>[number];
+export type ResultWithRaceDate = QueryData<ReturnType<typeof resultsThisYearQuery>>[number];

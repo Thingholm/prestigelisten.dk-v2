@@ -3,14 +3,14 @@ import { Tables } from "@/utils/supabase/database.types";
 import { unstable_cache } from "next/cache";
 
 export const getRiders3YearRollingRankings = unstable_cache(async () => {
-    const { data, error } = await riders3YearRollingRankingsQuery;
+    const { data, error } = await riders3YearRollingRankingsQuery();
 
     if (error) { throw error; }
 
     return data as unknown as Riders3YearRollingRankings[];
 }, ["riders3YearRollingRankings"], { revalidate: 60 * 60 });
 
-const riders3YearRollingRankingsQuery = supabase
+const riders3YearRollingRankingsQuery = () => supabase
     .from("riders_3_year_rolling_rankings")
     .select(`
         *,
