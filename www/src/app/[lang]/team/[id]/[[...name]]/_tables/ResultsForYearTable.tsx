@@ -58,7 +58,7 @@ export default function ResultsForYearTable({
                                     {getGroupedResultName(result, tResultNames)}
                                 </Link>
                                 <SecondaryCellSpan breakpoint="md">
-                                    <RiderNameCell rider={result.riders}/>
+                                    <RiderNameCell rider={result.riders} isCell={false}/>
                                 </SecondaryCellSpan>
                             </TableCell>
                             <RiderNameCell rider={result.riders} showFlagBreakpoint="always" className="hidden md:table-cell"/>
