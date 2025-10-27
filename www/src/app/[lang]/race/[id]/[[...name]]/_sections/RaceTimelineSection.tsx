@@ -46,7 +46,7 @@ export default function RaceTimelineSection({
                         span.endYear = results.findLast(() => true)?.year ?? currentYear
                     }
                 } else if (spanString.includes("<")) {
-                    span.startYear = results[0].year ?? 1876;
+                    span.startYear = results[0]?.year ?? 1876;
                     span.endYear = parseInt(spanString.replace("<","")) - 1;
                 } else {
                     span.startYear = parseInt(spanString);
@@ -55,7 +55,7 @@ export default function RaceTimelineSection({
 
                 return span;
             }) ?? [{
-                startYear: results[0].year ?? 1876,
+                startYear: results[0]?.year ?? currentYear,
                 endYear: (race.active ? currentYear : results.findLast(() => true)?.year ?? currentYear)
             }]
 

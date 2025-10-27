@@ -47,7 +47,7 @@ export default async function RacePage({
     const firstEdition = sortedResults[0];
     const latestEdition = sortedResults[sortedResults.length - 1];
 
-    const latestEditionRaceClass = race.races.find(r => r.id == latestEdition?.race_id)?.race_classes;
+    const latestEditionRaceClass = race.races.find(r => r.id == latestEdition?.race_id)?.race_classes ?? race.races[0].race_classes;
 
     const groupResultsByRider = rankBy(groupResultsByKey(results, pointSystem, r => r.riders), "points");
     const groupResultsByNation = rankBy(groupResultsByKey(results, pointSystem, r => r.riders?.nations), "points");
@@ -67,11 +67,15 @@ export default async function RacePage({
             <RaceTimelineSection
                 metaRace={race}
                 results={results}
-                firstRaceYear={firstRaceYear}
+                firstRaceYear={firstRaceYear ?? new Date().getFullYear()}
             />
-            <MostPointsInRaceSection groupResultsByRider={groupResultsByRider} groupResultsByNation={groupResultsByNation}/>
-            <EditionsResultsSection results={results} pointSystem={pointSystem}/>
-            <MostOfEachResultSection groupedResults={groupResultsByRiderThenResult} resultTypes={resultTypesForRace}/>
+            {sortedResults.length > 0 &&
+                <>
+                    <MostPointsInRaceSection groupResultsByRider={groupResultsByRider} groupResultsByNation={groupResultsByNation}/>
+                    <EditionsResultsSection results={results} pointSystem={pointSystem}/>
+                    <MostOfEachResultSection groupedResults={groupResultsByRiderThenResult} resultTypes={resultTypesForRace}/>
+                </>
+            }
         </div>
     )
 }
