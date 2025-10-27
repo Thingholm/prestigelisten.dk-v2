@@ -15,6 +15,7 @@ import CalendarSection from "./_sections/CalendarSection";
 import { getDecadeRankings } from "@/db/decade";
 import DecadeSection from "./_sections/DecadeSection";
 import Loading from "./loading";
+import SocialMediaSection from "./_sections/SocialMediaSection";
 
 export default async function HomePage() {
     const riderPointsWithNationsAndTeams = await getAllRiderPointsWithNationAndTeam();
@@ -41,6 +42,7 @@ export default async function HomePage() {
             <TopAlltimeEachSeasonSection top10AlltimeEachSeason={top10AlltimeEachSeason} />
             <Riders3YearRollingRankingsSection riders3YearRollingRankings={riders3YearRollingRankings} />
             <DecadeSection decadeRankings={decadeRankings}/>
+            <SocialMediaSection/>
         </div>
     );
 }

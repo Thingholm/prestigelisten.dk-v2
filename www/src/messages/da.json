@@ -688,6 +688,7 @@
         "description3": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har forsøgt at udfærdige pointgivningen, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det, at der var mindre konkurrence for 100 år siden, udligner det mindre antal prestigefyldte løb, hvori det var muligt at score point.",
         "exploreButton": "Udforsk Prestigelisten",
         "moreButton": "Mere om listen...",
+        "socialMediaText": "Følg med på X og Instagram, hvor vi skriver om udvikling på Prestigelisten, statistik, quiz og meget mere.",
         "tableTitles": {
             "allTimePoints": "All time største ryttere",
             "latestResults": "Seneste pointgivende resultater",
@@ -698,7 +699,8 @@
             "greatestSeasons": "Største individuelle sæsoner",
             "greatestAlltimeEachYear": "Største ryttere hvert år",
             "greatest3YearSpan": "Største ryttere over en 3-årig periode",
-            "greatestByDecade": "Største ryttere hvert årti"
+            "greatestByDecade": "Største ryttere hvert årti",
+            "socialMedia": "Følg os på X og Instagram"
         }
     },
     "tableColumns": {

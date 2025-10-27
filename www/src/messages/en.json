@@ -688,6 +688,7 @@
         "description3": "The primary purpose of Prestigelisten is to provide the opportunity to compare riders over time. We have tried to formulate the point allocation so that neither current nor oldest riders are favored too much. We have tried to balance it so that the fact that there was less competition 100 years ago balances out the smaller number of prestigious races in which it was possible to score points.",
         "exploreButton": "Explore Prestigelisten",
         "moreButton": "More about the list...",
+        "socialMediaText": "Follow us on X and Instagram, where we post about changes on Prestigelisten, statistics, quiz and much more.",
         "tableTitles": {
             "allTimePoints": "All time greatest riders",
             "latestResults": "Latest point scoring results",
@@ -698,7 +699,8 @@
             "greatestSeasons": "Greatest individual seasons",
             "greatestAlltimeEachYear": "Greatest riders each year",
             "greatest3YearSpan": "Greatest riders over a 3-year span",
-            "greatestByDecade": "Greatest riders each decade"
+            "greatestByDecade": "Greatest riders each decade",
+            "socialMedia": "Follow us on X and Instagram"
         }
     },
     "tableColumns": {
