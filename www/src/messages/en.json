@@ -646,7 +646,7 @@
         "riders": "Riders",
         "races": "Races",
         "calendar": "Calendar",
-        "about": "About Prestigelisten",
+        "about": "About",
         "pointSystem": "Point system",
         "lists": "Lists",
         "compare": "Compare",
@@ -1007,8 +1007,8 @@
     "comparePage": {
         "title": "Compare riders or nations on Prestigelisten",
         "riders": "Riders",
-        "nations": "Remove",
-        "remove": "Fjern",
+        "nations": "Nations",
+        "remove": "Remove",
         "rider": {
             "title": "Compare riders",
             "agePointsTitle": "Points gained at each age",
