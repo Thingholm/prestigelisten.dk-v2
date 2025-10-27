@@ -13,7 +13,7 @@ export default function Card({
 
     return (
         <div
-            className={`flex justify-between px-6 py-4 rounded-xl text-secondary-950 ${colorClass} ${className}`}
+            className={`flex justify-between px-4 sm:px-6 py-4 rounded-xl text-secondary-950 ${colorClass} ${className}`}
         >
             {children}
         </div>
