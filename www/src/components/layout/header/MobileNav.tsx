@@ -43,12 +43,12 @@ export default function MobileNav({
                         onClick={() => setShowNav(false)}
                         title={t("pointSystem")}
                     />
-                    <button className={`relative hover:cursor-pointer hover:underline`} onClick={() => setShowLists(s => !s)}>
+                    <button className={`relative pr-5 sm:pr-0 hover:cursor-pointer hover:underline`} onClick={() => setShowLists(s => !s)}>
                         <span>{t("lists")}</span>
-                        <IoChevronForward className={`${showLists ? "rotate-90" : ""} absolute top-1 -right-4 sm:-right-5`}/>
+                        <IoChevronForward className={`${showLists ? "rotate-90" : ""} absolute top-1 right-0 sm:-right-5`}/>
                     </button>
                     {showLists && 
-                        <div className="relative flex flex-col items-end">
+                        <div className="relative flex flex-col items-end pr-5 sm:pr-0">
                             <MobileNavItem
                                 href={getRidersListUrl()}
                                 title={t("ridersAlltime")}
@@ -99,7 +99,7 @@ export default function MobileNav({
                                 title={t("greatestByYear")}
                                 onClick={() => setShowNav(false)}
                             />
-                            <div className="absolute w-0.5 h-[calc(100%-0.9rem)] -right-[0.85rem] top-2 bg-secondary-950"></div>
+                            <div className="absolute w-0.5 h-[calc(100%-0.9rem)] right-[0.35rem] sm:-right-[0.85rem] top-2 bg-secondary-950"></div>
                         </div>
                     }
                     <MobileNavItem
