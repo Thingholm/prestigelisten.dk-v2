@@ -64,7 +64,7 @@ export default function Button({
                 href={href}
                 target={target}
                 onClick={onClick}
-                className={`px-4 py-2 text-center select-none rounded-md ${fill ? "w-full" : ""} ${variantClass} ${className} ${disabled ? "opacity-50 pointer-events-none" : ""}`}
+                className={`px-4 py-2 hover:cursor-pointer text-center select-none rounded-md ${fill ? "w-full" : ""} ${variantClass} ${className} ${disabled ? "opacity-50 pointer-events-none" : ""}`}
             >
                 {children}
             </a>
@@ -75,7 +75,7 @@ export default function Button({
         <button
             onClick={onClick}
             disabled={disabled}
-            className={`px-4 py-2 rounded-md select-none ${fill ? "w-full" : ""} ${variantClass} ${className} ${disabled ? "opacity-50 pointer-events-none" : ""}`}
+            className={`px-4 py-2 hover:cursor-pointer rounded-md select-none ${fill ? "w-full" : ""} ${variantClass} ${className} ${disabled ? "opacity-50 pointer-events-none" : ""}`}
         >
         {   children}
         </button>
