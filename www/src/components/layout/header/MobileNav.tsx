@@ -30,7 +30,7 @@ export default function MobileNav({
                 <div className={`absolute h-1 w-full bg-primary-500 rounded-full duration-200 ${showNav ? "rotate-225 top-4" : "top-2.5"}`}></div>
                 <div className={`absolute h-1 right-0 bg-primary-500 rounded-full duration-200 ${showNav ? "-rotate-225 w-full top-4" : "w-3/4 top-5"}`}></div>
             </button>     
-            <div className={`${showNav ? "right-0" : "-right-full"} max-w-[90vw] sm:w-md text-end overflow-y-auto top-[3.32rem] sm:top-[3.35rem] duration-150 absolute lg:hidden bg-white h-[calc(100vh-3.32rem)] sm:h-[calc(100vh-3.35rem)] px-3 sm:px-16 pt-2 items-end flex flex-col z-10`}>
+            <div className={`${showNav ? "right-0" : "-right-full"} max-w-[90vw] sm:w-md text-end overflow-y-auto top-[2.81rem] sm:top-[3.35rem] duration-150 absolute lg:hidden bg-white h-[calc(100vh-3.32rem)] sm:h-[calc(100vh-3.35rem)] px-3 sm:px-16 pt-2 items-end flex flex-col z-10`}>
                 <NavSearchBar searchBarData={searchData} isMobile/>
                 <nav className="flex flex-col items-end mt-2 w-full">
                     <MobileNavItem
@@ -126,7 +126,7 @@ export default function MobileNav({
                     <LocaleSwitcher isMobile/>
                 </nav>
             </div>
-            <div className={`${showNav ? "left-0" : "left-full"} top-[3.32rem] sm:top-[3.35rem] absolute lg:hidden`}>
+            <div className={`${showNav ? "left-0" : "left-full"} top-[2.81rem] sm:top-[3.35rem] absolute lg:hidden`}>
                 <div 
                     className={`${showNav ? "opacity-50" : "opacity-0"} duration-150 bg-secondary-950 absolute top-0 left-0 w-screen h-screen`}
                     onClick={() => setShowNav(false)}
