@@ -6,15 +6,17 @@ import { getRiderName } from "@/lib/helpers/riderName";
 import { getNationUrl, getRaceUrl, getRiderUrl, getTeamUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
 
 export default function NavSearchBar({
     searchBarData,
-    isMobile = false
+    isMobile = false,
+    setShowNav,
 }: Readonly<{
     searchBarData: NavSearchbarData,
-    isMobile?: boolean
+    isMobile?: boolean,
+    setShowNav?: Dispatch<SetStateAction<boolean>>;
 }>) {
     const t = useTranslations("navigation");
     const tNations = useTranslations("nations");
@@ -44,6 +46,9 @@ export default function NavSearchBar({
     }, []);
 
     const handleLinkClick = () => {
+        if (setShowNav) {
+            setShowNav(false);
+        }
         setShowSearchBar(false);
         setSearchValue("");
     }
