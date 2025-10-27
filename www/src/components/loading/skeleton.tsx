@@ -1,4 +1,4 @@
-export default function Skeleton({
+export default async function Skeleton({
     className,
     isDark = false
 }: Readonly<{

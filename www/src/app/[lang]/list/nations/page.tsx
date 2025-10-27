@@ -4,6 +4,7 @@ import { getAllNationPointsWithRiderCount, NationPointsWithRiderCount } from "@/
 import { getRidersRange, Riders } from "@/db/rider";
 import { getTranslations } from "next-intl/server";
 import ListSection from "./_sections/ListSection";
+import TableSkeleton from "@/components/loading/TableSkeleton";
 
 export type NationPointsWithRiders = (NationPointsWithRiderCount[number] & {
     riders: Riders,

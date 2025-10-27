@@ -1,7 +1,7 @@
 import Section from "@/components/layout/Section";
 import Skeleton from "../skeleton";
 
-export default function EntityPageSkeleton() {
+export default async function EntityPageSkeleton() {
     return (
         <div>
             <Section className="flex flex-wrap">
@@ -20,7 +20,7 @@ export default function EntityPageSkeleton() {
             </Section>
             <Section color="secondary" className="gap-x-6">
                 <Skeleton className="h-[28rem] w-full !rounded-2xl" isDark/>
-                <Skeleton className="h-[28rem] w-full !rounded-2xl" isDark/>
+                <Skeleton className="h-[28rem] w-full !rounded-2xl hidden sm:block" isDark/>
             </Section>
             <Section>
                 <Skeleton className="h-[30rem] w-full !rounded-2xl"/>
