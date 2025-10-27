@@ -27,7 +27,7 @@ export default async function RootLayout({
             className={`font-inter antialiased overflow-x-hidden text-sm sm:text-[0.938rem] flex flex-col min-h-screen`}
         >
           <Header/>
-          <div className="pt-[3.25rem]">
+          <div className="pt-11 sm:pt-[3.25rem]">
             {children}
           </div>
         </body>

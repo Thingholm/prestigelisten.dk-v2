@@ -13,7 +13,7 @@ export default function Section({
 
     return (
         <section
-            className={`flex justify-between pt-6 pb-6 px-6 sm:px-16 gap-y-6 ${colorClass} ${className}`}
+            className={`flex justify-between pt-6 pb-6 px-3 sm:px-16 gap-y-6 ${colorClass} ${className}`}
         >
             {children}
         </section>
