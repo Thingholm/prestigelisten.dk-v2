@@ -4,6 +4,7 @@ import "../../../node_modules/flag-icons/css/flag-icons.min.css";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import Header from "@/components/layout/header/Header";
+import Footer from "@/components/layout/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,9 +28,10 @@ export default async function RootLayout({
             className={`font-inter antialiased overflow-x-hidden text-sm sm:text-[0.938rem] flex flex-col min-h-screen`}
         >
           <Header/>
-          <div className="pt-11 sm:pt-[3.25rem]">
+          <div className="flex-1 pt-11 sm:pt-[3.25rem]">
             {children}
           </div>
+          <Footer/>
         </body>
       </NextIntlClientProvider>
     </html>
