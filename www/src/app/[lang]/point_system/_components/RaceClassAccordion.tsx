@@ -37,10 +37,10 @@ export default function RaceClassAccordion({
     races.sort((a, b) => a.meta_races.name.localeCompare(b.meta_races.name))
 
     const activeRaces = races.filter(race => race.race_class_id == raceClass.id && race.active);
-    const inactiveRaces = races.filter(race => race.race_class_id == raceClass.id && !race.active).sort((a, b) => b.results[0].max - a.results[0].max);
+    const inactiveRaces = races.filter(race => race.race_class_id == raceClass.id && !race.active).sort((a, b) => a.meta_races.name.localeCompare(b.meta_races.name)).sort((a, b) => b.results[0].max - a.results[0].max);
 
     return (
-        <div className="bg-gray-100 shadow-sm w-full relative -left-2 rounded-xl" id={raceClass.id.toString()}>
+        <div className="bg-gray-100 shadow-sm w-full relative -left-2 rounded-xl scroll-mt-20" id={raceClass.id.toString()}>
             <button className="flex items-center justify-between w-full hover:cursor-pointer rounded-xl hover:bg-gray-50 py-3 px-4" onClick={() => setIsOpen(!isOpen)}>
                 <span className="font-bold">{t(raceClass.id.toString())}</span>
                 <IoChevronDown className={`duration-150 ${isOpen ? "rotate-180" : ""}`}/>
