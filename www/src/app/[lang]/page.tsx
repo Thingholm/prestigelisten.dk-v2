@@ -14,6 +14,7 @@ import LatestResultsSection from "./_sections/LatestResultsSection";
 import CalendarSection from "./_sections/CalendarSection";
 import { getDecadeRankings } from "@/db/decade";
 import DecadeSection from "./_sections/DecadeSection";
+import Loading from "./loading";
 
 export default async function HomePage() {
     const riderPointsWithNationsAndTeams = await getAllRiderPointsWithNationAndTeam();
