@@ -1,6 +1,7 @@
 import { RiderNameCell, SecondaryCellSpan, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table"
 import FlagSpan from "@/components/table/FlagSpan"
 import { formatDate } from "@/lib/helpers/dateFormatter"
+import { getRaceFlagCode } from "@/lib/helpers/raceFlags"
 import { getGroupedResultName } from "@/lib/helpers/resultNames"
 import { getRaceUrl } from "@/lib/helpers/urls"
 import { Tables } from "@/utils/supabase/database.types"
@@ -54,7 +55,7 @@ export default function ResultsForYearTable({
                             <TableCell>{result.points}</TableCell>
                             <TableCell>
                                 <Link href={getRaceUrl(result.races.meta_races)} className="hover:underline font-semibold">
-                                    <FlagSpan code={result.races.meta_races.nations?.code}/>
+                                    <FlagSpan code={getRaceFlagCode(result.races.meta_races)}/>
                                     {getGroupedResultName(result, tResultNames)}
                                 </Link>
                                 <SecondaryCellSpan breakpoint="md">

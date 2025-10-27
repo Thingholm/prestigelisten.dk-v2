@@ -7,6 +7,7 @@ import { NationWithRiders } from "@/db/nations";
 import { PointSystem } from "@/db/pointSystem";
 import { Race } from "@/db/race";
 import { groupResults, groupResultsByKey } from "@/lib/helpers/groupResults";
+import { getRaceFlagCode } from "@/lib/helpers/raceFlags";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getRaceUrl, getRiderUrl } from "@/lib/helpers/urls";
@@ -83,7 +84,7 @@ export default function GreatestResultsTable({
                                         <TableCell>{group.results.length}</TableCell>
                                         <TableCell className="min-w-52">
                                             <Link href={getRaceUrl(group.races.meta_races)} className="hover:underline">
-                                                <FlagSpan code={group.races.meta_races.nations?.code}/>
+                                                <FlagSpan code={getRaceFlagCode(group.races.meta_races)}/>
                                                 {getGroupedResultName(group, tResultNames)}
                                             </Link>
                                             </TableCell>

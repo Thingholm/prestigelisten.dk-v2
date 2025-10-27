@@ -3,6 +3,7 @@ import TableCell from "./TableCell";
 import FlagSpan from "./FlagSpan";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import React from "react";
+import { getRaceFlagCode } from "@/lib/helpers/raceFlags";
 
 type MetaRace = {
     id: number,
@@ -42,7 +43,7 @@ export default function RaceCell({
             className={`${className}`} 
             href={isLink ? getRaceUrl(metaRace) : undefined}
         >
-            <FlagSpan code={metaRace.nations?.code} className={`${showFlagBreakpoint ? `${flagSpanVariants[showFlagBreakpoint]}` : "!hidden"}`}/>
+            <FlagSpan code={getRaceFlagCode(metaRace)} className={`${showFlagBreakpoint ? `${flagSpanVariants[showFlagBreakpoint]}` : "!hidden"}`}/>
             <span className={`${isMain ? "!font-semibold" : ""}`}>{children}</span>
         </TableCell>
     );

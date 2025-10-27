@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@
 import FlagSpan from "@/components/table/FlagSpan";
 import { PointSystem } from "@/db/pointSystem";
 import { Race } from "@/db/race";
+import { getRaceFlagCode } from "@/lib/helpers/raceFlags";
 import { getRaceName } from "@/lib/helpers/raceName";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import { Tables } from "@/utils/supabase/database.types";
@@ -73,7 +74,7 @@ export default function RaceClassAccordion({
                                     href={getRaceUrl(race.meta_races)} 
                                     className="hover:underline"
                                 >                                    
-                                    <FlagSpan code={race.meta_races.nations?.code}/>
+                                    <FlagSpan code={getRaceFlagCode(race.meta_races)}/>
                                     <span>{getRaceName(race.meta_races, tResultNames)} {race.active_span_string}</span>
                                 </Link>
                             ))}
@@ -89,7 +90,7 @@ export default function RaceClassAccordion({
                                     href={getRaceUrl(race.meta_races)} 
                                     className="hover:underline"
                                 >
-                                    <FlagSpan code={race.meta_races.nations?.code}/>
+                                    <FlagSpan code={getRaceFlagCode(race.meta_races)}/>
                                     <span>{getRaceName(race.meta_races, tResultNames)} {race.active_span_string}</span>
                                 </Link>
                             ))}

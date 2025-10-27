@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button";
 import { PointSystem } from "@/db/pointSystem";
 import { Rider } from "@/db/rider";
 import { GroupedResult, groupResultsByKey } from "@/lib/helpers/groupResults";
+import { getRaceFlagCode } from "@/lib/helpers/raceFlags";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { sortGroupedResults } from "@/lib/helpers/results";
 import { getRaceUrl, getYearUrl } from "@/lib/helpers/urls";
@@ -48,7 +49,7 @@ export default function AllResultsTable({
                                 <TableCell>{group.results.length}</TableCell>
                                 <TableCell className="font-medium">
                                     <Link href={getRaceUrl(group.races.meta_races)} className="hover:underline">
-                                        <FlagSpan code={nations.find(nation => nation.id == group.races.meta_races.nation_id)?.code}/>
+                                        <FlagSpan code={getRaceFlagCode({id: group.races.meta_races.id, nations: nations.find(nation => nation.id == group.races.meta_races.nation_id)})}/>
                                         {getGroupedResultName(group, tResultNames, true)}
                                     </Link>
                                 </TableCell>

@@ -6,6 +6,6 @@ export default function FlagSpan({
     className?: string;
 }>) {
     return (
-        <span className={`fi fi-${code} mr-1 rounded-xs shadow-md ${className}`}></span>
+        <span className={`fi fi-${code} mr-1 rounded-xs shadow-md ${className} bg-white`}></span>
     );
 }
