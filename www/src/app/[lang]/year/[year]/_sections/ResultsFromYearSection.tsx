@@ -37,7 +37,7 @@ export default function ResultsFromYearSection({
         return racesAcc;
     }, [])
     .sort((a, b) => a.meta_races.name.localeCompare(b.meta_races.name))
-    .sort((a, b) => a.race_classes.sorting_index - b.race_classes.sorting_index);
+    .sort((a, b) => (a.race_classes?.sorting_index ?? 0) - (b.race_classes?.sorting_index ?? 0));
 
     const [selectedRace, setSelectedRace] = useState<ResultsFromYear[number]["races"]>(races[0]);
 
