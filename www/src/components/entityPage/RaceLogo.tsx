@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { getRaceName } from "@/lib/helpers/raceName";
 
 type MetaRace = {
     id: number;
@@ -20,14 +21,16 @@ export default function RaceLogo({
     metaRace: MetaRace
 }>) {
     const t = useTranslations("racePage.profile");
+    const tResultNames = useTranslations("getResultNames");
+
     const [noLogo, setNoLogo] = useState(false);
     
         const imgSrc = `https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/race_logos//${metaRace.id}.png`;
         
         if (noLogo) return (
             <div style={{width: 200, height: 200}} className="bg-gray-100 rounded-2xl mb-4 text-center flex items-center overflow-hidden">
-                <h2 className="text-wrap font-bold text-3xl text-center w-full">
-                    {metaRace.name}
+                <h2 className="text-pretty font-bold text-2xl text-center w-full">
+                    {getRaceName(metaRace, tResultNames)}
                 </h2>
             </div>
         )

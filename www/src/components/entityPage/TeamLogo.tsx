@@ -19,7 +19,7 @@ export default function TeamLogo({
     
     if (noLogo) return (
         <div style={{width: 200, height: 200}} className="bg-gray-100 rounded-2xl mb-4 flex items-center justify-center">
-            <h2 className="text-wrap font-bold text-3xl text-center ">
+            <h2 className="text-pretty font-bold text-2xl text-center w-full">
                 {team.name}
             </h2>
         </div>
