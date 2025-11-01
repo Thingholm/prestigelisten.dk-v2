@@ -1,0 +1,26 @@
+﻿using Prestigelisten.Core.Enums;
+
+namespace Prestigelisten.Core.Models;
+
+public class Result
+{
+    public int Id { get; set; }
+
+    public int Year { get; set; }
+
+    public int? Placement { get; set; }
+
+    public int? Stage { get; set; }
+
+    public required int SheetIndex { get; set; }
+
+    public ResultType ResultType { get; set; }
+
+    public required Race Race { get; set; }
+
+    public required Rider Rider { get; set; }
+
+    public required RiderSeason RiderSeason { get; set; }
+
+    public required NationSeason NationSeason { get; set; }
+}
