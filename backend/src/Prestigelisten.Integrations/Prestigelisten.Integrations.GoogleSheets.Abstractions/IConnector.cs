@@ -4,5 +4,14 @@ namespace Prestigelisten.Integrations.GoogleSheets.Abstractions;
 
 public interface IConnector
 {
-    ValueRange? GetAllTimeSheetValues();
+    /// <summary>
+    /// Retrieves all rows from riders all time list sheet in Google Sheets
+    /// <returns></returns>
+    List<List<string>> GetRidersAllTimeSheetValues();
+
+    /// <summary>
+    /// Retrieves all rows from riders active list sheet in Google Sheets
+    /// </summary>
+    /// <returns></returns>
+    List<List<string>> GetRidersActiveSheetValues();
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Prestigelisten.Persistence;
 using Prestigelisten.Integrations.GoogleSheets;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions;
+using Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,11 +22,9 @@ builder.Services.AddGoogleSheetsIntegration(builder.Configuration);
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
-var connector = scope.ServiceProvider.GetRequiredService<IConnector>();
+var ridersService = scope.ServiceProvider.GetRequiredService<IRidersService>();
 
-var isConnected = await connector.TestConnectionAsync();
-Console.WriteLine($"Connection test: {(isConnected ? "Success" : "Failed")}");
-
+var riders = ridersService.GetAllRiders();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
