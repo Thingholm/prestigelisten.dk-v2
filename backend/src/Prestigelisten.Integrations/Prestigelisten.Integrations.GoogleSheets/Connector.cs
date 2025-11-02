@@ -54,7 +54,11 @@ public class Connector : IConnector
             .Spreadsheets.Values.Get(_options.SpreadsheetId, _options.RidersAllTimeSheet.Range)
             .Execute();
 
-        return ConvertValuesToStrings(response.Values);
+        var convetedValues = ConvertValuesToStrings(response.Values);
+
+        var columnsCount = convetedValues.FirstOrDefault()?.Count ?? 0;
+
+        return convetedValues.Where(row => row.Count == columnsCount).ToList();
     }
 
     public List<List<string>> GetRidersActiveSheetValues()
@@ -65,22 +69,35 @@ public class Connector : IConnector
             .Spreadsheets.Values.Get(_options.SpreadsheetId, _options.RidersActiveSheet.Range)
             .Execute();
 
-        return ConvertValuesToStrings(response.Values);
+        var convetedValues = ConvertValuesToStrings(response.Values);
+
+        var columnsCount = convetedValues.FirstOrDefault()?.Count ?? 0;
+
+        return convetedValues.Where(row => row.Count == columnsCount).ToList();
     }
 
-    private static List<List<string>> ConvertValuesToStrings(IList<IList<object>>? values)
+    public List<List<string>> GetNationsSheetValues()
+    {
+        _logger.LogInformation("Retrieving nations list from Google Sheets");
+
+        var response = _sheetsService
+            .Spreadsheets.Values.Get(_options.SpreadsheetId, _options.NationsSheet.Range)
+            .Execute();
+
+        var convetedValues = ConvertValuesToStrings(response.Values).ToList();
+
+        var columnsCount = convetedValues[1]?.Count ?? 0;
+
+        return convetedValues.Where(row => row.Count == columnsCount).ToList();
+    }
+
+    private static IEnumerable<List<string>> ConvertValuesToStrings(IList<IList<object>>? values)
     {
         if (values is null)
         {
             return [];
         }
 
-        var convertedList = values.Select(row =>
-            row.Select(cell => cell?.ToString() ?? string.Empty).ToList()
-        );
-
-        var columnsCount = convertedList.FirstOrDefault()?.Count ?? 0;
-
-        return convertedList.Where(row => row.Count == columnsCount).ToList();
+        return values.Select(row => row.Select(cell => cell?.ToString() ?? string.Empty).ToList());
     }
 }

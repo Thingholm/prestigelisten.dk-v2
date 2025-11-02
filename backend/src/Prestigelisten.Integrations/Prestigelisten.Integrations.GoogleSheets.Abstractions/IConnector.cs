@@ -14,4 +14,10 @@ public interface IConnector
     /// </summary>
     /// <returns></returns>
     List<List<string>> GetRidersActiveSheetValues();
+
+    /// <summary>
+    /// Retrieves all rows from nations list sheet in Google Sheets
+    /// </summary>
+    /// <returns></returns>
+    List<List<string>> GetNationsSheetValues();
 }

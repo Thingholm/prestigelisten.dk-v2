@@ -13,6 +13,8 @@ public class GoogleSheetsOptions
     public required RidersAllTimeSheetDetails RidersAllTimeSheet { get; set; }
 
     public required RidersActiveSheetDetails RidersActiveSheet { get; set; }
+
+    public required NationsSheetDetails NationsSheet { get; set; }
 }
 
 public class RidersAllTimeSheetDetails
@@ -47,4 +49,16 @@ public class RidersActiveColumnIndexes
     public int Year { get; set; }
 
     public int Team { get; set; }
+}
+
+public class NationsSheetDetails
+{
+    public required string Range { get; set; }
+
+    public required NationsColumnIndexes ColumnIndexes { get; set; }
+}
+
+public class NationsColumnIndexes
+{
+    public int Name { get; set; }
 }

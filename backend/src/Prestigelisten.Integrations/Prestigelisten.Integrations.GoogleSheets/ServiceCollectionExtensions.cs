@@ -9,13 +9,18 @@ namespace Prestigelisten.Integrations.GoogleSheets;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddGoogleSheetsIntegration(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddGoogleSheetsIntegration(
+        this IServiceCollection services,
+        IConfiguration configuration
+    )
     {
         services.Configure<GoogleSheetsOptions>(
-            configuration.GetSection(GoogleSheetsOptions.SectionName));
+            configuration.GetSection(GoogleSheetsOptions.SectionName)
+        );
 
         services.AddScoped<IConnector, Connector>();
         services.AddScoped<IRidersService, RidersService>();
+        services.AddScoped<INationsService, NationsService>();
 
         return services;
     }
