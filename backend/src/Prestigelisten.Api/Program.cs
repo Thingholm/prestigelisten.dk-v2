@@ -25,9 +25,12 @@ var app = builder.Build();
 using var scope = app.Services.CreateScope();
 var ridersService = scope.ServiceProvider.GetRequiredService<IRidersService>();
 var nationsService = scope.ServiceProvider.GetRequiredService<INationsService>();
+var resultsService = scope.ServiceProvider.GetRequiredService<IResultsService>();
+var connector = scope.ServiceProvider.GetRequiredService<IConnector>();
 
 var riders = ridersService.GetAllRiders();
 var nations = nationsService.GetAllNations();
+var results = resultsService.GetAllResults();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

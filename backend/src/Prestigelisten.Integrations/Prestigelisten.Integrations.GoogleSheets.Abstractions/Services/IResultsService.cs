@@ -1,0 +1,12 @@
+﻿using Prestigelisten.Integrations.GoogleSheets.Abstractions.Models;
+
+namespace Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
+
+public interface IResultsService
+{
+    /// <summary>
+    /// Retrieves all rows from results list
+    /// </summary>
+    /// <returns></returns>
+    List<GoogleSheetsResult> GetAllResults();
+}

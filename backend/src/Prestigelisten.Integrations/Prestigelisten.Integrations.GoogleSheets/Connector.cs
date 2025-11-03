@@ -91,6 +91,20 @@ public class Connector : IConnector
         return convetedValues.Where(row => row.Count == columnsCount).ToList();
     }
 
+    public List<List<string>> GetResultsSheetValues(bool isAllYears = true)
+    {
+        _logger.LogInformation("Retrieving results");
+
+        var response = _sheetsService
+            .Spreadsheets.Values.Get(
+                _options.SpreadsheetId,
+                isAllYears ? _options.ResultsSheet.Range : _options.ResultsSheet.CurrentYearRange
+            )
+            .Execute();
+
+        return ConvertValuesToStrings(response.Values).ToList();
+    }
+
     private static IEnumerable<List<string>> ConvertValuesToStrings(IList<IList<object>>? values)
     {
         if (values is null)

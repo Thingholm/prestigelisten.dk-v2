@@ -21,6 +21,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IConnector, Connector>();
         services.AddScoped<IRidersService, RidersService>();
         services.AddScoped<INationsService, NationsService>();
+        services.AddScoped<IResultsService, ResultsService>();
 
         return services;
     }
