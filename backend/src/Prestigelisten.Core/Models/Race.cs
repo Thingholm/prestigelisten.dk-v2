@@ -1,6 +1,6 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class Race
+public class Race : IEntity
 {
     public int Id { get; set; }
 

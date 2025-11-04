@@ -1,14 +1,14 @@
 ﻿namespace Prestigelisten.Integrations.GoogleSheets.Services;
 
-public class NationsService : INationsService
+public class GoogleSheetsNationsService : IGoogleSheetsNationsService
 {
     private readonly IConnector _connector;
-    private readonly ILogger<NationsService> _logger;
+    private readonly ILogger<GoogleSheetsNationsService> _logger;
     private readonly IOptions<GoogleSheetsOptions> _options;
 
-    public NationsService(
+    public GoogleSheetsNationsService(
         IConnector connector,
-        ILogger<NationsService> logger,
+        ILogger<GoogleSheetsNationsService> logger,
         IOptions<GoogleSheetsOptions> options
     )
     {

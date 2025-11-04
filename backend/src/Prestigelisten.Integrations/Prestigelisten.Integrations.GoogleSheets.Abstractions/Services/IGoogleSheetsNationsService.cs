@@ -2,11 +2,11 @@
 
 namespace Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 
-public interface IRidersService
+public interface IGoogleSheetsNationsService
 {
     /// <summary>
-    /// Retrieves all rows from riders all time list and riders active list and merges them to one list
+    /// Retrieves all rows from nations lists
     /// </summary>
     /// <returns></returns>
-    List<GoogleSheetsRider> GetAllRiders();
+    List<GoogleSheetsNation> GetAllNations();
 }

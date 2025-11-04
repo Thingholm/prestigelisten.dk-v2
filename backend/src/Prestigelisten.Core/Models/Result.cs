@@ -2,7 +2,7 @@
 
 namespace Prestigelisten.Core.Models;
 
-public class Result
+public class Result : IEntity
 {
     public int Id { get; set; }
 

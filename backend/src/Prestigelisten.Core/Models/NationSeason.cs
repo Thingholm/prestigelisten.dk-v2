@@ -1,8 +1,8 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class NationSeason
+public class NationSeason : IEntity
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public int Year { get; set; }
 

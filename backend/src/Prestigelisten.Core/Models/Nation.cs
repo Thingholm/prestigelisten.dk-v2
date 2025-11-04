@@ -2,7 +2,7 @@
 
 namespace Prestigelisten.Core.Models;
 
-public class Nation
+public class Nation : IEntity
 {
     public int Id { get; set; }
 

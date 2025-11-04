@@ -1,8 +1,8 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class RiderSeason
+public class RiderSeason : IEntity
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public required Rider Rider { get; set; }
 

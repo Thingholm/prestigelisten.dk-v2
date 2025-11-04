@@ -2,7 +2,7 @@
 
 namespace Prestigelisten.Core.Models;
 
-public class PointSystem
+public class PointSystem : IEntity
 {
     public int Id { get; set; }
 

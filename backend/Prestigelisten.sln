@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prestigelisten.Integrations
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prestigelisten.Integrations.GoogleSheets.Abstractions", "src\Prestigelisten.Integrations\Prestigelisten.Integrations.GoogleSheets.Abstractions\Prestigelisten.Integrations.GoogleSheets.Abstractions.csproj", "{A33F4B54-2274-440B-83A8-89481BA2741E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prestigelisten.Tests", "Prestigelisten.Tests\Prestigelisten.Tests.csproj", "{08D66C3B-05B1-47E1-BE95-2A722833F4DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{A33F4B54-2274-440B-83A8-89481BA2741E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A33F4B54-2274-440B-83A8-89481BA2741E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A33F4B54-2274-440B-83A8-89481BA2741E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08D66C3B-05B1-47E1-BE95-2A722833F4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08D66C3B-05B1-47E1-BE95-2A722833F4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08D66C3B-05B1-47E1-BE95-2A722833F4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08D66C3B-05B1-47E1-BE95-2A722833F4DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

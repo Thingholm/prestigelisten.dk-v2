@@ -1,6 +1,6 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class Calendar
+public class Calendar : IEntity
 {
     public int Id { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class Team
+public class Team : IEntity
 {
     public int Id { get; set; }
 

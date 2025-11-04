@@ -2,11 +2,11 @@
 
 namespace Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 
-public interface INationsService
+public interface IGoogleSheetsResultsService
 {
     /// <summary>
-    /// Retrieves all rows from nations lists
+    /// Retrieves all rows from results list
     /// </summary>
     /// <returns></returns>
-    List<GoogleSheetsNation> GetAllNations();
+    List<GoogleSheetsResult> GetAllResults();
 }

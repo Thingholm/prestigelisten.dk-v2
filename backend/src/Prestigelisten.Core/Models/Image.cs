@@ -1,6 +1,6 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class Image
+public class Image : IEntity
 {
     public int Id { get; set; }
 

@@ -2,15 +2,15 @@
 
 namespace Prestigelisten.Integrations.GoogleSheets.Services;
 
-public class ResultsService : IResultsService
+public class GoogleSheetsResultsService : IGoogleSheetsResultsService
 {
     private readonly IConnector _connector;
-    private readonly ILogger<ResultsService> _logger;
+    private readonly ILogger<GoogleSheetsResultsService> _logger;
     private readonly IOptions<GoogleSheetsOptions> _options;
 
-    public ResultsService(
+    public GoogleSheetsResultsService(
         IConnector connector,
-        ILogger<ResultsService> logger,
+        ILogger<GoogleSheetsResultsService> logger,
         IOptions<GoogleSheetsOptions> options
     )
     {

@@ -1,14 +1,14 @@
 ﻿namespace Prestigelisten.Integrations.GoogleSheets.Services;
 
-public class RidersService : IRidersService
+public class GoogleSheetsRidersService : IGoogleSheetsRidersService
 {
     private readonly IConnector _connector;
-    private readonly ILogger<RidersService> _logger;
+    private readonly ILogger<GoogleSheetsRidersService> _logger;
     private readonly IOptions<GoogleSheetsOptions> _options;
 
-    public RidersService(
+    public GoogleSheetsRidersService(
         IConnector connector,
-        ILogger<RidersService> logger,
+        ILogger<GoogleSheetsRidersService> logger,
         IOptions<GoogleSheetsOptions> options
     )
     {

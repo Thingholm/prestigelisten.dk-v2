@@ -1,6 +1,6 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class Rider
+public class Rider : IEntity
 {
     public int Id { get; set; }
 

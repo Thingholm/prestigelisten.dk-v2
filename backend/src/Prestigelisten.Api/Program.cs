@@ -23,9 +23,9 @@ builder.Services.AddGoogleSheetsIntegration(builder.Configuration);
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
-var ridersService = scope.ServiceProvider.GetRequiredService<IRidersService>();
-var nationsService = scope.ServiceProvider.GetRequiredService<INationsService>();
-var resultsService = scope.ServiceProvider.GetRequiredService<IResultsService>();
+var ridersService = scope.ServiceProvider.GetRequiredService<IGoogleSheetsRidersService>();
+var nationsService = scope.ServiceProvider.GetRequiredService<IGoogleSheetsNationsService>();
+var resultsService = scope.ServiceProvider.GetRequiredService<IGoogleSheetsResultsService>();
 var connector = scope.ServiceProvider.GetRequiredService<IConnector>();
 
 var riders = ridersService.GetAllRiders();

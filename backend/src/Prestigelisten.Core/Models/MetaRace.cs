@@ -1,6 +1,6 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class MetaRace
+public class MetaRace : IEntity
 {
     public int Id { get; set; }
 

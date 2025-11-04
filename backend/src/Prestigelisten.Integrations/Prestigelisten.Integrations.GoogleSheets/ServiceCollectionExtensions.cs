@@ -19,9 +19,9 @@ public static class ServiceCollectionExtensions
         );
 
         services.AddScoped<IConnector, Connector>();
-        services.AddScoped<IRidersService, RidersService>();
-        services.AddScoped<INationsService, NationsService>();
-        services.AddScoped<IResultsService, ResultsService>();
+        services.AddScoped<IGoogleSheetsRidersService, GoogleSheetsRidersService>();
+        services.AddScoped<IGoogleSheetsNationsService, GoogleSheetsNationsService>();
+        services.AddScoped<IGoogleSheetsResultsService, GoogleSheetsResultsService>();
 
         return services;
     }
