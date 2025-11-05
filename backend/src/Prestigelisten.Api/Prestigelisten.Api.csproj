@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Prestigelisten.Application\Prestigelisten.Application.csproj" />
+    <ProjectReference Include="..\Prestigelisten.Core\Prestigelisten.Core.csproj" />
     <ProjectReference Include="..\Prestigelisten.Integrations\Prestigelisten.Integrations.GoogleSheets.Abstractions\Prestigelisten.Integrations.GoogleSheets.Abstractions.csproj" />
     <ProjectReference Include="..\Prestigelisten.Integrations\Prestigelisten.Integrations.GoogleSheets\Prestigelisten.Integrations.GoogleSheets.csproj" />
     <ProjectReference Include="..\Prestigelisten.Persistence\Prestigelisten.Persistence.csproj" />

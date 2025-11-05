@@ -19,4 +19,8 @@ public class Rider : IEntity
     public int Points { get; set; }
 
     public Image? Image { get; set; }
+
+    // Not mapped by EF Core
+    public string FullName =>
+        string.IsNullOrWhiteSpace(FirstName) ? LastName : $"{FirstName} {LastName}";
 }

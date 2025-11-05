@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Prestigelisten.Application;
+using Prestigelisten.Application.Services;
 using Prestigelisten.Integrations.GoogleSheets;
-using Prestigelisten.Integrations.GoogleSheets.Abstractions;
-using Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 using Prestigelisten.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,18 +19,15 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddGoogleSheetsIntegration(builder.Configuration);
+builder.Services.AddRepositories();
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
-var ridersService = scope.ServiceProvider.GetRequiredService<IGoogleSheetsRidersService>();
-var nationsService = scope.ServiceProvider.GetRequiredService<IGoogleSheetsNationsService>();
-var resultsService = scope.ServiceProvider.GetRequiredService<IGoogleSheetsResultsService>();
-var connector = scope.ServiceProvider.GetRequiredService<IConnector>();
+var riderService = scope.ServiceProvider.GetRequiredService<IRiderService>();
 
-var riders = ridersService.GetAllRiders();
-var nations = nationsService.GetAllNations();
-var results = resultsService.GetAllResults();
+var updates = await riderService.SyncRidersFromGoogleSheetsAsync();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
