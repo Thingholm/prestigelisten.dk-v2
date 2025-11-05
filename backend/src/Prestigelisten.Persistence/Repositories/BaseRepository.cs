@@ -1,10 +1,11 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Prestigelisten.Core.Models;
+using Prestigelisten.Core.Repositories;
 
 namespace Prestigelisten.Persistence.Repositories;
 
-public class BaseRepository<T>
+public class BaseRepository<T> : IBaseRepository<T>
     where T : class, IEntity
 {
     protected readonly AppDbContext _context;
@@ -21,7 +22,7 @@ public class BaseRepository<T>
         return _dbSet.AsQueryable();
     }
 
-    public virtual IReadOnlyList<T> GetAllAsync()
+    public virtual IReadOnlyList<T> GetAll()
     {
         return SetupQueryable().ToList();
     }
