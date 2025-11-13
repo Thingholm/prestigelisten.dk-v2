@@ -8,5 +8,5 @@ public interface IGoogleSheetsResultsService
     /// Retrieves all rows from results list
     /// </summary>
     /// <returns></returns>
-    List<GoogleSheetsResult> GetAllResults();
+    Task<List<GoogleSheetsResult>> GetAllResultsAsync();
 }

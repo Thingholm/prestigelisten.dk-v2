@@ -16,4 +16,6 @@ public class Nation : IEntity
     public int Points { get; set; }
 
     public int ActivePoints { get; set; }
+
+    public List<NationSeason> Seasons { get; set; } = [];
 }

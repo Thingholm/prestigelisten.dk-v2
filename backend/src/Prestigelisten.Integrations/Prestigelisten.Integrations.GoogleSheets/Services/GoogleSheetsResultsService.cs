@@ -19,10 +19,10 @@ public class GoogleSheetsResultsService : IGoogleSheetsResultsService
         _options = options;
     }
 
-    public List<GoogleSheetsResult> GetAllResults()
+    public async Task<List<GoogleSheetsResult>> GetAllResultsAsync()
     {
         var sheetValues = _connector.GetResultsSheetValues();
-        var resultPlaceholders = GetResultPlaceholdersFromCSV();
+        var resultPlaceholders = await GetResultPlaceholdersFromCSVAsync();
 
         var headRow = sheetValues.FirstOrDefault();
         var results = new List<GoogleSheetsResult>();
@@ -45,9 +45,15 @@ public class GoogleSheetsResultsService : IGoogleSheetsResultsService
                     continue;
                 }
 
+                var (raceName, resultType, placement, stage) =
+                    GoogleSheetsResultHelper.ParseResultString(resultName);
+
                 var result = new GoogleSheetsResult
                 {
-                    Result = resultName,
+                    Name = raceName,
+                    ResultType = resultType,
+                    Placement = placement,
+                    Stage = stage,
                     Year = year,
                     RiderName = resultCell,
                     ColumnIndex = i,
@@ -70,13 +76,9 @@ public class GoogleSheetsResultsService : IGoogleSheetsResultsService
         return results;
     }
 
-    public List<ResultPlaceholder> GetResultPlaceholdersFromCSV()
+    public async Task<List<ResultPlaceholder>> GetResultPlaceholdersFromCSVAsync()
     {
-        var rows = CSVHelper
-            .ReadAsStringAsync("Data/result-placeholder.csv")
-            .GetAwaiter()
-            .GetResult()
-            .Split("\n");
+        var rows = (await CSVHelper.ReadAsStringAsync("Data/result-placeholder.csv")).Split("\n");
 
         var resultPlaceholders = new List<ResultPlaceholder>();
         foreach (var row in rows.Skip(1))

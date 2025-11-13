@@ -22,7 +22,7 @@ public class BaseRepository<T> : IBaseRepository<T>
         return _dbSet.AsQueryable();
     }
 
-    public virtual IReadOnlyList<T> GetAll()
+    public virtual IEnumerable<T> GetAll()
     {
         return SetupQueryable().ToList();
     }
@@ -32,9 +32,14 @@ public class BaseRepository<T> : IBaseRepository<T>
         return SetupQueryable().FirstOrDefault(entity => entity.Id == id);
     }
 
-    public virtual IReadOnlyList<T> Find(Expression<Func<T, bool>> predicate)
+    public virtual IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
     {
         return SetupQueryable().Where(predicate).ToList();
+    }
+
+    public virtual T? FindFirstOrDefault(Expression<Func<T, bool>> predicate)
+    {
+        return SetupQueryable().FirstOrDefault(predicate);
     }
 
     public virtual void Add(T entity)
@@ -52,7 +57,7 @@ public class BaseRepository<T> : IBaseRepository<T>
         _dbSet.Update(entity);
     }
 
-    public virtual void UpdateOrAdd(T entity)
+    public virtual void AddOrUpdate(T entity)
     {
         var existingEntity = GetById(entity.Id);
 
@@ -73,6 +78,11 @@ public class BaseRepository<T> : IBaseRepository<T>
     public virtual void RemoveRange(IEnumerable<T> entities)
     {
         _dbSet.RemoveRange(entities);
+    }
+
+    public virtual void RemoveAll()
+    {
+        _dbSet.RemoveRange(_dbSet);
     }
 
     public virtual async Task<int> SaveChangesAsync()

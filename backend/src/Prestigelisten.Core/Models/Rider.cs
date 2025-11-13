@@ -20,6 +20,10 @@ public class Rider : IEntity
 
     public Image? Image { get; set; }
 
+    public List<RiderSeason> Seasons { get; set; } = [];
+
+    public List<PreviousNationality> PreviousNationalities { get; set; } = [];
+
     // Not mapped by EF Core
     public string FullName =>
         string.IsNullOrWhiteSpace(FirstName) ? LastName : $"{FirstName} {LastName}";

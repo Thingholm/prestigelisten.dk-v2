@@ -11,4 +11,10 @@ public class Race : IEntity
     public required RaceClass RaceClass { get; set; }
 
     public required MetaRace MetaRace { get; set; }
+
+    // Not mapped by EF Core
+    public string NameWithActiveSpanString =>
+        string.IsNullOrWhiteSpace(ActiveSpanString)
+            ? MetaRace.Name
+            : $"{MetaRace.Name} {ActiveSpanString}";
 }

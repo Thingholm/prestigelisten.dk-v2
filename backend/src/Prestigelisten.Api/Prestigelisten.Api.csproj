@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Prestigelisten.Persistence\Prestigelisten.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

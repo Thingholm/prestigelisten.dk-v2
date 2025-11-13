@@ -19,15 +19,16 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddGoogleSheetsIntegration(builder.Configuration);
-builder.Services.AddRepositories();
+builder.Services.AddDbExtensions(builder.Configuration);
 builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
 var riderService = scope.ServiceProvider.GetRequiredService<IRiderService>();
+var resultService = scope.ServiceProvider.GetRequiredService<IResultService>();
 
-var updates = await riderService.SyncRidersFromGoogleSheetsAsync();
+var updates = await resultService.SyncAllResults();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -74,7 +74,7 @@ public class RiderService : IRiderService
 
             if (isNewRider || isUpdatedRider)
             {
-                _riders.UpdateOrAdd(rider);
+                _riders.AddOrUpdate(rider);
             }
         }
 

@@ -6,11 +6,13 @@ namespace Prestigelisten.Core.Repositories;
 public interface IBaseRepository<T>
     where T : class, IEntity
 {
-    IReadOnlyList<T> GetAll();
+    IEnumerable<T> GetAll();
 
     T? GetById(int id);
 
-    IReadOnlyList<T> Find(Expression<Func<T, bool>> predicate);
+    IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+
+    T? FindFirstOrDefault(Expression<Func<T, bool>> predicate);
 
     void Add(T entity);
 
@@ -18,9 +20,11 @@ public interface IBaseRepository<T>
 
     void Update(T entity);
 
-    void UpdateOrAdd(T entity);
+    void AddOrUpdate(T entity);
 
     void Remove(T entity);
+
+    void RemoveAll();
 
     void RemoveRange(IEnumerable<T> entities);
 

@@ -4,6 +4,8 @@ public class NationSeason : IEntity
 {
     public int Id { get; set; }
 
+    public required Nation Nation { get; set; }
+
     public int Year { get; set; }
 
     public int? PointsForYear { get; set; }

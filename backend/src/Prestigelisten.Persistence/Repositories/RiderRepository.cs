@@ -10,6 +10,11 @@ public class RiderRepository(AppDbContext context)
 {
     protected override IQueryable<Rider> SetupQueryable()
     {
-        return base.SetupQueryable().Include(rider => rider.Nation).Include(rider => rider.Team);
+        return base.SetupQueryable()
+            .Include(rider => rider.Nation)
+            .ThenInclude(nation => nation.Seasons)
+            .Include(rider => rider.Team)
+            .Include(rider => rider.Seasons)
+            .Include(rider => rider.PreviousNationalities).ThenInclude(previousNationality => previousNationality.Nation);
     }
 }

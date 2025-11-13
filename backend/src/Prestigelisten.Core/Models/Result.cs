@@ -20,7 +20,9 @@ public class Result : IEntity
 
     public required Rider Rider { get; set; }
 
-    public required RiderSeason RiderSeason { get; set; }
+    public RaceDate? RaceDate { get; set; }
 
-    public required NationSeason NationSeason { get; set; }
+    public RiderSeason? RiderSeason { get; set; }
+
+    public NationSeason? NationSeason { get; set; }
 }

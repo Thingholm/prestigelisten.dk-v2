@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Prestigelisten.Persistence;
@@ -11,9 +12,11 @@ using Prestigelisten.Persistence;
 namespace Prestigelisten.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251106164344_AddedNationIdToNationSeasons")]
+    partial class AddedNationIdToNationSeasons
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -7224,17 +7227,13 @@ namespace Prestigelisten.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("NationSeasonId")
+                    b.Property<int>("NationSeasonId")
                         .HasColumnType("integer")
                         .HasColumnName("nation_season_id");
 
                     b.Property<int?>("Placement")
                         .HasColumnType("integer")
                         .HasColumnName("placement");
-
-                    b.Property<int?>("RaceDateId")
-                        .HasColumnType("integer")
-                        .HasColumnName("race_date_id");
 
                     b.Property<int>("RaceId")
                         .HasColumnType("integer")
@@ -7248,7 +7247,7 @@ namespace Prestigelisten.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("rider_id");
 
-                    b.Property<int?>("RiderSeasonId")
+                    b.Property<int>("RiderSeasonId")
                         .HasColumnType("integer")
                         .HasColumnName("rider_season_id");
 
@@ -7269,9 +7268,6 @@ namespace Prestigelisten.Persistence.Migrations
 
                     b.HasIndex("NationSeasonId")
                         .HasDatabaseName("ix_results_nation_season_id");
-
-                    b.HasIndex("RaceDateId")
-                        .HasDatabaseName("ix_results_race_date_id");
 
                     b.HasIndex("RaceId")
                         .HasDatabaseName("ix_results_race_id");
@@ -7897,12 +7893,9 @@ namespace Prestigelisten.Persistence.Migrations
                     b.HasOne("Prestigelisten.Core.Models.NationSeason", "NationSeason")
                         .WithMany()
                         .HasForeignKey("NationSeasonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("fk_results_nation_seasons_nation_season_id");
-
-                    b.HasOne("Prestigelisten.Core.Models.RaceDate", "RaceDate")
-                        .WithMany()
-                        .HasForeignKey("RaceDateId")
-                        .HasConstraintName("fk_results_race_dates_race_date_id");
 
                     b.HasOne("Prestigelisten.Core.Models.Race", "Race")
                         .WithMany()
@@ -7921,13 +7914,13 @@ namespace Prestigelisten.Persistence.Migrations
                     b.HasOne("Prestigelisten.Core.Models.RiderSeason", "RiderSeason")
                         .WithMany()
                         .HasForeignKey("RiderSeasonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("fk_results_rider_seasons_rider_season_id");
 
                     b.Navigation("NationSeason");
 
                     b.Navigation("Race");
-
-                    b.Navigation("RaceDate");
 
                     b.Navigation("Rider");
 

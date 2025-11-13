@@ -8,6 +8,7 @@ public static class Extensions
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<IRiderService, RiderService>();
+        services.AddScoped<IResultService, ResultService>();
 
         return services;
     }
