@@ -4,5 +4,5 @@ namespace Prestigelisten.Application.Services;
 
 public interface IResultService
 {
-    Task<SyncResultsResultDTO> SyncAllResults();
+    Task<List<Result>> SyncAllResults();
 }

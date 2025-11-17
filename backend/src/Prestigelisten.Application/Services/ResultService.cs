@@ -1,9 +1,11 @@
-﻿using System.Linq;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Prestigelisten.Application.Helpers;
+using Prestigelisten.Core.Models;
+using Prestigelisten.Integrations.GoogleSheets.Abstractions.Models;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 using Prestigelisten.Persistence;
+using System.Linq;
 
 namespace Prestigelisten.Application.Services;
 
@@ -39,33 +41,38 @@ public class ResultService : IResultService
         _logger = logger;
     }
 
-    public async Task<SyncResultsResultDTO> SyncAllResults()
+    public async Task<List<Result>> SyncAllResults()
     {
         var googleSheetsResults = await _googleSheetsResultsService.GetAllResultsAsync();
-
         if (googleSheetsResults.Count <= 0)
         {
             _logger.LogError("Failed to retrieve results from Google Sheets");
         }
 
-        var riders = _riders
-            .GetAll()
-            .ToDictionary(
-                rider => rider.FullName,
-                rider => rider,
-                StringComparer.OrdinalIgnoreCase
-            );
-        var races = _races
-            .GetAll()
-            .ToDictionary(
-                race => race.NameWithActiveSpanString,
-                race => race,
-                StringComparer.OrdinalIgnoreCase
-            );
+        var lookupData = GetLookupData();
+        _results.RemoveAll();
+        ResetRiderAndNationData(lookupData.Riders);
+
+        var newResults = ProcessSheetResults(googleSheetsResults, lookupData);
+
+        await _results.SaveChangesAsync();
+        await _riders.SaveChangesAsync();
+
+        return newResults;
+    }
+
+    private LookupData GetLookupData()
+    {
+        var riders = DictionaryHelper.ToLookup(_riders, rider => rider.FullName);
+        var races = DictionaryHelper.ToLookup(_races, race => race.NameWithActiveSpanString);
         var raceDates = _raceDates.GetAll();
         var pointSystem = _pointSystem.GetAll();
 
-        _results.RemoveAll();
+        return new LookupData(riders, races, raceDates, pointSystem);
+    }
+
+    private static void ResetRiderAndNationData(Dictionary<string, Rider> riders)
+    {
         foreach (var rider in riders.Values)
         {
             rider.Points = 0;
@@ -74,166 +81,123 @@ public class ResultService : IResultService
             rider.Nation.Points = 0;
             rider.Nation.ActivePoints = 0;
         }
+    }
 
-        var lowestYear = googleSheetsResults.Min(r => r.Year);
+    private List<Result> ProcessSheetResults(
+        List<GoogleSheetsResult> sheetResults,
+        LookupData lookupData
+    )
+    {
+        var newResults = new List<Result>();
 
-        var resultDTO = new SyncResultsResultDTO();
-        for (var year = lowestYear; year <= DateTime.UtcNow.Year; year++)
+        foreach (var sheetResult in sheetResults)
         {
-            foreach (var rider in riders.Values)
+            lookupData.Races.TryGetValue(sheetResult.Name, out var race);
+            if (race is null)
             {
-                var previousSeason = rider.Seasons.FirstOrDefault(season =>
-                    season.Year == year - 1
+                _logger.LogError(
+                    "Could not find race {race} - {year} ({result})",
+                    sheetResult.Name,
+                    sheetResult.Year,
+                    sheetResult.Placement
                 );
-                rider.Seasons.Add(
-                    new RiderSeason
-                    {
-                        Rider = rider,
-                        Year = year,
-                        PointsForYear = 0,
-                        PointsAllTime = previousSeason?.PointsAllTime ?? 0,
-                    }
-                );
-
-                var nationSeason = rider.Seasons.FirstOrDefault(season => season.Year == year);
-                if (nationSeason is not null)
-                {
-                    var previousNationSeason = rider.Nation.Seasons.FirstOrDefault(season =>
-                        season.Year == year - 1
-                    );
-                    rider.Nation.Seasons.Add(
-                        new NationSeason
-                        {
-                            Nation = rider.Nation,
-                            Year = year,
-                            PointsForYear = 0,
-                            PointsAllTime = previousNationSeason?.PointsAllTime ?? 0,
-                        }
-                    );
-                }
+                continue;
             }
 
-            foreach (
-                var sheetResult in googleSheetsResults.Where(sheetResult =>
-                    sheetResult.Year == year
-                )
-            )
+            lookupData.Riders.TryGetValue(sheetResult.RiderName, out var rider);
+            if (rider is null)
             {
-                races.TryGetValue(sheetResult.Name, out var race);
-                if (race is null)
-                {
-                    _logger.LogError(
-                        "Could not find race {race} - {year} ({result})",
-                        sheetResult.Name,
-                        sheetResult.Year,
-                        sheetResult.Placement
-                    );
-                    continue;
-                }
-
-                riders.TryGetValue(sheetResult.RiderName, out var rider);
-                if (rider is null)
-                {
-                    _logger.LogWarning(
-                        "Could not find rider {riderName} for result {year}: {result}",
-                        sheetResult.RiderName,
-                        sheetResult.Year,
-                        sheetResult.Name
-                    );
-                    continue;
-                }
-
-                var raceDate = raceDates.FirstOrDefault(rd =>
-                    rd.Date.Year == sheetResult.Year
-                    && rd.Stage == sheetResult.Stage
-                    && race.Equals(rd.Race)
+                _logger.LogWarning(
+                    "Could not find rider {riderName} for result {year}: {result}",
+                    sheetResult.RiderName,
+                    sheetResult.Year,
+                    sheetResult.Name
                 );
-
-                var result = new Result
-                {
-                    Race = race,
-                    Year = sheetResult.Year,
-                    Placement = sheetResult.Placement,
-                    Stage = sheetResult.Stage,
-                    SheetIndex = sheetResult.ColumnIndex,
-                    RaceDate = raceDate,
-                    Rider = rider,
-                    ResultType = sheetResult.ResultType,
-                };
-
-                var resultPoints =
-                    PointSystemHelper.GetPointSystemForResult(pointSystem, result)?.Points ?? 0;
-                rider.Points += resultPoints;
-
-                var riderSeason = rider.Seasons.FirstOrDefault(season =>
-                    season.Year == result.Year
-                );
-                if (riderSeason is null)
-                {
-                    var newRiderSeason = new RiderSeason
-                    {
-                        Rider = rider,
-                        Year = result.Year,
-                        PointsForYear = 0,
-                    };
-                    rider.Seasons.Add(newRiderSeason);
-                    riderSeason = newRiderSeason;
-                }
-
-                riderSeason.PointsForYear += resultPoints;
-                result.RiderSeason = riderSeason;
-
-                if (
-                    !_dbOptions.Value.NationalChampionshipsRaceClassIds.Contains(
-                        result.Race.RaceClass.Id
-                    )
-                )
-                {
-                    var prevNationality = rider.PreviousNationalities.FirstOrDefault(
-                        prevNationality =>
-                            (prevNationality.StartYear ?? 0) <= result.Year
-                            && (
-                                prevNationality.EndYear == null
-                                || prevNationality.EndYear >= result.Year
-                            )
-                    );
-                    var nation = prevNationality is not null
-                        ? prevNationality.Nation
-                        : rider.Nation;
-
-                    var nationSeason = rider.Nation.Seasons.FirstOrDefault(season =>
-                        season.Year == result.Year
-                    );
-                    if (nationSeason is null)
-                    {
-                        var newNationSeason = new NationSeason
-                        {
-                            Nation = rider.Nation,
-                            Year = result.Year,
-                            PointsForYear = 0,
-                        };
-                        rider.Nation.Seasons.Add(newNationSeason);
-                        nationSeason = newNationSeason;
-                    }
-
-                    rider.Nation.Points += resultPoints;
-                    if (rider.Active)
-                    {
-                        rider.Nation.ActivePoints += resultPoints;
-                    }
-                    nationSeason.PointsForYear += resultPoints;
-                    result.NationSeason = nationSeason;
-                }
-
-                resultDTO.AddedResults.Add(result);
-
-                _results.AddOrUpdate(result);
+                continue;
             }
+
+            var result = CreateResult(sheetResult, race, rider, lookupData.RaceDates);
+
+            var resultPoints = PointSystemHelper.GetPointSystemForResult(lookupData.PointSystem, result)?.Points ?? 0;
+
+            ProcessRiderPoints(result, rider, resultPoints);
+            ProcessNationPoints(result, rider, resultPoints);
+
+            newResults.Add(result);
+
+            _results.AddOrUpdate(result);
         }
 
-        await _results.SaveChangesAsync();
-        await _riders.SaveChangesAsync();
-
-        return resultDTO;
+        return newResults;
     }
+
+    private static Result CreateResult(
+        GoogleSheetsResult sheetResult,
+        Race race,
+        Rider rider,
+        IEnumerable<RaceDate> raceDates
+    )
+    {
+        var raceDate = raceDates.FirstOrDefault(rd =>
+            rd.Date.Year == sheetResult.Year
+            && rd.Stage == sheetResult.Stage
+            && race.Equals(rd.Race)
+        );
+
+        return new Result
+        {
+            Race = race,
+            Year = sheetResult.Year,
+            Placement = sheetResult.Placement,
+            Stage = sheetResult.Stage,
+            SheetIndex = sheetResult.ColumnIndex,
+            RaceDate = raceDate,
+            Rider = rider,
+            ResultType = sheetResult.ResultType,
+        };
+    }
+
+    private static void ProcessRiderPoints(Result result, Rider rider, int resultPoints)
+    {
+        rider.Points += resultPoints;
+
+        var riderSeason = SeasonHelper.GetOrCreate(
+            rider.Seasons,
+            result.Year,
+            () => new RiderSeason { Rider = rider, Year = result.Year, PointsForYear = 0 }
+        );
+
+        riderSeason.PointsForYear += resultPoints;
+        result.RiderSeason = riderSeason;
+    }
+
+    private void ProcessNationPoints(Result result, Rider rider, int resultPoints)
+    {
+        if (!_dbOptions.Value.NationalChampionshipsRaceClassIds.Contains(result.Race.RaceClass.Id))
+        {
+            var prevNationality = rider.PreviousNationalities.FirstOrDefault(prevNationality =>
+                (prevNationality.StartYear ?? 0) <= result.Year
+                && (prevNationality.EndYear == null || prevNationality.EndYear >= result.Year)
+            );
+            var nation = prevNationality is not null ? prevNationality.Nation : rider.Nation;
+
+            var nationSeason = SeasonHelper.GetOrCreate(
+                rider.Nation.Seasons,
+                result.Year,
+                () => new NationSeason { Nation = nation, Year = result.Year, PointsForYear = 0 }
+            );
+
+            rider.Nation.Points += resultPoints;
+            rider.Nation.ActivePoints += rider.Active ? resultPoints : 0;
+            nationSeason.PointsForYear += resultPoints;
+            result.NationSeason = nationSeason;
+        }
+    }
+
+    private record LookupData(
+        Dictionary<string, Rider> Riders,
+        Dictionary<string, Race> Races,
+        IEnumerable<RaceDate> RaceDates,
+        IEnumerable<PointSystem> PointSystem
+    );
 }

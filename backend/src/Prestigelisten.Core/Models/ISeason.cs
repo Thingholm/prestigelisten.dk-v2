@@ -1,11 +1,7 @@
 ﻿namespace Prestigelisten.Core.Models;
 
-public class RiderSeason : IEntity, ISeason
+public interface ISeason
 {
-    public int Id { get; set; }
-
-    public required Rider Rider { get; set; }
-
     public int Year { get; set; }
 
     public int? PointsForYear { get; set; }
