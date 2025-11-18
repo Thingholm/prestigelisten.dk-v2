@@ -18,6 +18,8 @@ public interface IBaseRepository<T>
 
     void AddRange(IEnumerable<T> entities);
 
+    void AddOrUpdateRange(IEnumerable<T> entities);
+
     void Update(T entity);
 
     void AddOrUpdate(T entity);

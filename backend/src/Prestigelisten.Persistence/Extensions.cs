@@ -18,6 +18,7 @@ public static class Extensions
         // Repositories
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
         services.AddScoped<IRiderRepository, RiderRepository>();
+        services.AddScoped<INationRepository, NationRepository>();
         services.AddScoped<IRaceRepository, RaceRepository>();
         services.AddScoped<IResultRepository, ResultRepository>();
         services.AddScoped<IPointSystemRepository, PointSystemRepository>();

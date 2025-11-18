@@ -1,11 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Prestigelisten.Application.Helpers;
-using Prestigelisten.Core.Models;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Models;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 using Prestigelisten.Persistence;
-using System.Linq;
 
 namespace Prestigelisten.Application.Services;
 
@@ -16,6 +14,7 @@ public class ResultService : IResultService
     private readonly IBaseRepository<RaceDate> _raceDates;
     private readonly IResultRepository _results;
     private readonly IPointSystemRepository _pointSystem;
+    private readonly ISeasonService _seasonService;
     private readonly IGoogleSheetsResultsService _googleSheetsResultsService;
     private readonly IOptions<DbOptions> _dbOptions;
     private readonly ILogger<ResultService> _logger;
@@ -26,6 +25,7 @@ public class ResultService : IResultService
         IBaseRepository<RaceDate> raceDateRepository,
         IResultRepository resultRepository,
         IPointSystemRepository pointSystemRepository,
+        ISeasonService seasonService,
         IGoogleSheetsResultsService googleSheetsResultsService,
         IOptions<DbOptions> dbOptions,
         ILogger<ResultService> logger
@@ -36,6 +36,7 @@ public class ResultService : IResultService
         _raceDates = raceDateRepository;
         _results = resultRepository;
         _pointSystem = pointSystemRepository;
+        _seasonService = seasonService;
         _googleSheetsResultsService = googleSheetsResultsService;
         _dbOptions = dbOptions;
         _logger = logger;
@@ -57,6 +58,8 @@ public class ResultService : IResultService
 
         await _results.SaveChangesAsync();
         await _riders.SaveChangesAsync();
+
+        await _seasonService.CalculateAllSeasonsPointsAndRanks();
 
         return newResults;
     }

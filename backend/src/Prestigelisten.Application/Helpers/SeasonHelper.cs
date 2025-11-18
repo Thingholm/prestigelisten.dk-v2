@@ -2,10 +2,10 @@
 
 public static class SeasonHelper
 {
-    public static TSeason GetOrCreate<TSeason>(ICollection<TSeason> seasons, int year, Func<TSeason> createNew) 
+    public static TSeason GetOrCreate<TSeason>(ICollection<TSeason> seasons, Func<TSeason, bool> finder, Func<TSeason> createNew) 
         where TSeason : ISeason
     {
-        var season = seasons.FirstOrDefault(s => s.Year == year);
+        var season = seasons.FirstOrDefault(finder);
 
         if (season is null)
         {
@@ -14,5 +14,11 @@ public static class SeasonHelper
         }
 
         return season;
+    }
+
+    public static TSeason GetOrCreate<TSeason>(ICollection<TSeason> seasons, int year, Func<TSeason> createNew)
+    where TSeason : ISeason
+    {
+        return GetOrCreate(seasons, s => s.Year == year, createNew);
     }
 }

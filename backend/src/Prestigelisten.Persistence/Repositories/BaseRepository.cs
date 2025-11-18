@@ -70,6 +70,14 @@ public class BaseRepository<T> : IBaseRepository<T>
         Update(entity);
     }
 
+    public virtual void AddOrUpdateRange(IEnumerable<T> entities)
+    {
+        foreach (var entity in entities)
+        {
+            AddOrUpdate(entity);
+        }
+    }
+
     public virtual void Remove(T entity)
     {
         _dbSet.Remove(entity);

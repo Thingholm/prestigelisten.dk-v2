@@ -9,6 +9,7 @@ public static class Extensions
     {
         services.AddScoped<IRiderService, RiderService>();
         services.AddScoped<IResultService, ResultService>();
+        services.AddScoped<ISeasonService, SeasonService>();
 
         return services;
     }
