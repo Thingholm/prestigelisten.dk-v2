@@ -1,4 +1,5 @@
 ﻿using Prestigelisten.Application.Helpers;
+using Prestigelisten.Core.Models;
 
 namespace Prestigelisten.Application.Services;
 
@@ -18,11 +19,75 @@ public class SeasonService : ISeasonService
 
     public async Task CalculateAllSeasonsPointsAndRanks()
     {
-        await CalculateNationSeasonsPointsAndRanks();
-        await CalculateRiderSeasonsPointsAndRanks();
+        await CalculateAllNationSeasonsPointsAndRanks();
+        await CalculateAllRiderSeasonsPointsAndRanks();
     }
 
-    private async Task CalculateNationSeasonsPointsAndRanks()
+    public async Task CalculateSeasonsPointsAndRanksForYear(int year)
+    {
+        await CalculateNationSeasonsPointsAndRanksForYear(year);
+        await CalculateRiderSeasonsPointsAndRanksForYear(year);
+    }
+
+    public async Task CalculateNationSeasonsPointsAndRanksForYear(int year)
+    {
+        var nationSeasons = _nationSeasonRepository.Find(ns => ns.Year == year).ToList();
+        var previousSeasons = _nationSeasonRepository
+            .Find(s => s.Year == year - 1)
+            .ToList()
+            .ToDictionary(s => s.Nation.Id, s => s);
+
+        RecalculateSeasonPoints(
+            nationSeasons,
+            previousSeasons,
+            season => season.Nation
+        );
+
+        RankCalculationHelper.CalculateRanks(nationSeasons, ns => ns.PointsAllTime, (ns, rank) => ns.RankAllTime = rank);
+        RankCalculationHelper.CalculateRanks(nationSeasons, ns => ns.PointsForYear, (ns, rank) => ns.RankForYear = rank);
+    }
+
+    public async Task CalculateRiderSeasonsPointsAndRanksForYear(int year)
+    {
+        var riderSeasons = _riderSeasonRepository.Find(rs => rs.Year == year).ToList();
+        var previousSeasons = _riderSeasonRepository
+            .Find(s => s.Year == year - 1)
+            .ToList()
+            .ToDictionary(s => s.Rider.Id, s => s);
+
+        RecalculateSeasonPoints(
+            riderSeasons,
+            previousSeasons,
+            season => season.Rider
+        );
+
+        RankCalculationHelper.CalculateRanks(riderSeasons, rs => rs.PointsAllTime, (rs, rank) => rs.RankAllTime = rank);
+        RankCalculationHelper.CalculateRanks(riderSeasons, rs => rs.PointsForYear, (rs, rank) => rs.RankForYear = rank);
+    }
+
+    private static void RecalculateSeasonPoints<TEntity, TSeason>(
+        List<TSeason> seasons,
+        Dictionary<int, TSeason> previousSeasons,
+        Func<TSeason, TEntity> getSeasonEntity
+    )
+        where TEntity : IEntity
+        where TSeason : ISeason
+    {
+        foreach (var season in seasons)
+        {
+            season.PointsAllTime = 0;
+
+            previousSeasons.TryGetValue(getSeasonEntity(season).Id, out var previousSeason);
+            if (previousSeason is not null)
+            {
+                season.PointsAllTime += previousSeason.PointsAllTime;
+            }
+
+            season.PointsAllTime += season.PointsForYear ?? 0;
+        }
+    }
+
+    private async Task CalculateAllNationSeasonsPointsAndRanks()
     {
         var nationSeasons = _nationSeasonRepository.GetAll().ToList();
         var nations = nationSeasons.Select(ns => ns.Nation).DistinctBy(n => n.Id).ToList();
@@ -42,7 +107,7 @@ public class SeasonService : ISeasonService
         await _nationSeasonRepository.SaveChangesAsync();
     }
 
-    private async Task CalculateRiderSeasonsPointsAndRanks()
+    private async Task CalculateAllRiderSeasonsPointsAndRanks()
     {
         var riderSeasons = _riderSeasonRepository.GetAll().ToList();
         var riders = riderSeasons.Select(rs => rs.Rider).DistinctBy(r => r.Id).ToList();
@@ -116,12 +181,12 @@ public class SeasonService : ISeasonService
     private static void CalculateRanksForAllSeasons<TSeason>(List<TSeason> seasons) 
         where TSeason : class, ISeason
     {
-        var lowestYear = seasons.Min(rs => rs.Year);
+        var lowestYear = seasons.Min(s => s.Year);
         for (int year = lowestYear; year <= DateTime.UtcNow.Year; year++)
         {
             var seasonsForYear = seasons.Where(ns => ns.Year == year).ToList();
-            RankCalculationHelper.CalculateRanks(seasonsForYear, ns => ns.PointsAllTime, (ns, rank) => ns.RankAllTime = rank);
-            RankCalculationHelper.CalculateRanks(seasonsForYear, ns => ns.PointsForYear, (ns, rank) => ns.RankForYear = rank);
+            RankCalculationHelper.CalculateRanks(seasonsForYear, s => s.PointsAllTime, (s, rank) => s.RankAllTime = rank);
+            RankCalculationHelper.CalculateRanks(seasonsForYear, s => s.PointsForYear, (s, rank) => s.RankForYear = rank);
         }
     }
 }
