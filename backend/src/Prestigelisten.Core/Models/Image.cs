@@ -1,4 +1,6 @@
-﻿namespace Prestigelisten.Core.Models;
+﻿using Prestigelisten.Core.Interfaces.Models;
+
+namespace Prestigelisten.Core.Models;
 
 public class Image : IEntity
 {

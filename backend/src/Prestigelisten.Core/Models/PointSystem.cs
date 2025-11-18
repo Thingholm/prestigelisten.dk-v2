@@ -1,4 +1,5 @@
 ﻿using Prestigelisten.Core.Enums;
+using Prestigelisten.Core.Interfaces.Models;
 
 namespace Prestigelisten.Core.Models;
 

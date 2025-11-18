@@ -1,4 +1,6 @@
-﻿namespace Prestigelisten.Application.Helpers;
+﻿using Prestigelisten.Core.Interfaces.Models;
+
+namespace Prestigelisten.Application.Helpers;
 
 public static class DictionaryHelper
 {

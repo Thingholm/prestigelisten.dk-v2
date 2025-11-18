@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Prestigelisten.Application.Interfaces.Services;
 using Prestigelisten.Application.Services;
 
 namespace Prestigelisten.Application;

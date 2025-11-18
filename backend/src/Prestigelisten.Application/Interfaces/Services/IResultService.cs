@@ -1,6 +1,6 @@
 ﻿using Prestigelisten.Application.DTOs;
 
-namespace Prestigelisten.Application.Services;
+namespace Prestigelisten.Application.Interfaces.Services;
 
 public interface IResultService
 {

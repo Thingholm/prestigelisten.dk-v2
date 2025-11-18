@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using Prestigelisten.Application.DTOs;
+using Prestigelisten.Application.Interfaces.Services;
+using Prestigelisten.Core.Interfaces.Repositories;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 
 namespace Prestigelisten.Application.Services;

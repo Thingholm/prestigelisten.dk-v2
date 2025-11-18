@@ -1,7 +1,7 @@
-﻿using System.Linq.Expressions;
-using Prestigelisten.Core.Models;
+﻿using Prestigelisten.Core.Interfaces.Models;
+using System.Linq.Expressions;
 
-namespace Prestigelisten.Core.Repositories;
+namespace Prestigelisten.Core.Interfaces.Repositories;
 
 public interface IBaseRepository<T>
     where T : class, IEntity

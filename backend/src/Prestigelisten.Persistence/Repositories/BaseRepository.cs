@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using Prestigelisten.Core.Models;
-using Prestigelisten.Core.Repositories;
+using Prestigelisten.Core.Interfaces.Models;
+using Prestigelisten.Core.Interfaces.Repositories;
 
 namespace Prestigelisten.Persistence.Repositories;
 

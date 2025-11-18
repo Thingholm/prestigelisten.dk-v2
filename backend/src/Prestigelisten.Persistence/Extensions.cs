@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Prestigelisten.Core.Repositories;
+using Prestigelisten.Core.Interfaces.Repositories;
 using Prestigelisten.Persistence.Repositories;
 
 namespace Prestigelisten.Persistence;

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Prestigelisten.Core.Interfaces.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Prestigelisten.Core.Models;
 

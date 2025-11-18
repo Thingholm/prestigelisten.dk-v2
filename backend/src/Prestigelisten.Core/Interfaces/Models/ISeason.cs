@@ -1,4 +1,4 @@
-﻿namespace Prestigelisten.Core.Models;
+﻿namespace Prestigelisten.Core.Interfaces.Models;
 
 public interface ISeason
 {

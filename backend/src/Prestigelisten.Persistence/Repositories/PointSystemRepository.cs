@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Prestigelisten.Core.Interfaces.Repositories;
 using Prestigelisten.Core.Models;
-using Prestigelisten.Core.Repositories;
 
 namespace Prestigelisten.Persistence.Repositories;
 

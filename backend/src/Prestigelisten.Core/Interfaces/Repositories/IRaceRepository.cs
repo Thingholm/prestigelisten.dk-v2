@@ -1,5 +1,5 @@
 ﻿using Prestigelisten.Core.Models;
 
-namespace Prestigelisten.Core.Repositories;
+namespace Prestigelisten.Core.Interfaces.Repositories;
 
 public interface IRaceRepository : IBaseRepository<Race> { }

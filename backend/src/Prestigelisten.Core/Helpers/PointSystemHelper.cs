@@ -1,4 +1,4 @@
-﻿namespace Prestigelisten.Application.Helpers;
+﻿namespace Prestigelisten.Core.Helpers;
 
 public static class PointSystemHelper
 {
