@@ -22,6 +22,8 @@ public static class Extensions
         services.AddScoped<IRaceRepository, RaceRepository>();
         services.AddScoped<IResultRepository, ResultRepository>();
         services.AddScoped<IPointSystemRepository, PointSystemRepository>();
+        services.AddScoped<IRiderSeasonRepository, RiderSeasonRepository>();
+        services.AddScoped<INationSeasonRepository, NationSeasonRepository>();
 
         return services;
     }

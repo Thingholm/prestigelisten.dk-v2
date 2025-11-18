@@ -1,20 +1,18 @@
 ﻿using Prestigelisten.Application.Interfaces.Services;
 using Prestigelisten.Core.Helpers;
-using Prestigelisten.Core.Interfaces.Models;
-using Prestigelisten.Core.Interfaces.Repositories;
 using Prestigelisten.Core.Interfaces.Services;
 
 namespace Prestigelisten.Application.Services;
 
 public class SeasonService : ISeasonService
 {
-    private readonly IBaseRepository<RiderSeason> _riderSeasonRepository;
-    private readonly IBaseRepository<NationSeason> _nationSeasonRepository;
+    private readonly IRiderSeasonRepository _riderSeasonRepository;
+    private readonly INationSeasonRepository _nationSeasonRepository;
     private readonly ISeasonComputationService _seasonComputationService;
 
     public SeasonService(
-        IBaseRepository<RiderSeason> riderSeasonRepository, 
-        IBaseRepository<NationSeason> nationSeasonRepository,
+        IRiderSeasonRepository riderSeasonRepository, 
+        INationSeasonRepository nationSeasonRepository,
         ISeasonComputationService seasonComputationService
     )
     {
@@ -51,6 +49,9 @@ public class SeasonService : ISeasonService
 
         RankCalculationHelper.CalculateRanks(nationSeasons, ns => ns.PointsAllTime, (ns, rank) => ns.RankAllTime = rank);
         RankCalculationHelper.CalculateRanks(nationSeasons, ns => ns.PointsForYear, (ns, rank) => ns.RankForYear = rank);
+
+        _nationSeasonRepository.AddOrUpdateRange(nationSeasons);
+        await _nationSeasonRepository.SaveChangesAsync();
     }
 
     public async Task CalculateRiderSeasonsPointsAndRanksForYear(int year)
@@ -69,6 +70,9 @@ public class SeasonService : ISeasonService
 
         RankCalculationHelper.CalculateRanks(riderSeasons, rs => rs.PointsAllTime, (rs, rank) => rs.RankAllTime = rank);
         RankCalculationHelper.CalculateRanks(riderSeasons, rs => rs.PointsForYear, (rs, rank) => rs.RankForYear = rank);
+
+        _riderSeasonRepository.AddOrUpdateRange(riderSeasons);
+        await _riderSeasonRepository.SaveChangesAsync();
     }
 
     private async Task CalculateAllNationSeasonsPointsAndRanks()
