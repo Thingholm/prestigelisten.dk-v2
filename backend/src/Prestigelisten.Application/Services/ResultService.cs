@@ -188,13 +188,13 @@ public class ResultService : IResultService
             var nation = prevNationality is not null ? prevNationality.Nation : rider.Nation;
 
             var nationSeason = SeasonHelper.GetOrCreate(
-                rider.Nation.Seasons,
+                nation.Seasons,
                 result.Year,
                 () => new NationSeason { Nation = nation, Year = result.Year, PointsForYear = 0 }
             );
 
-            rider.Nation.Points += resultPoints;
-            rider.Nation.ActivePoints += rider.Active ? resultPoints : 0;
+            nation.Points += resultPoints;
+            nation.ActivePoints += rider.Active ? resultPoints : 0;
             nationSeason.PointsForYear += resultPoints;
             result.NationSeason = nationSeason;
         }
