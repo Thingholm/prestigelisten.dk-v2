@@ -31,7 +31,8 @@ var riderService = scope.ServiceProvider.GetRequiredService<IRiderService>();
 var resultService = scope.ServiceProvider.GetRequiredService<IResultService>();
 var seasonService = scope.ServiceProvider.GetRequiredService<ISeasonService>();
 
-var updates = await resultService.SyncAllResults();
+await resultService.SyncLatestResults();
+//var updates = await resultService.SyncAllResults();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

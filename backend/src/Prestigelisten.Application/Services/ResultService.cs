@@ -47,7 +47,7 @@ public class ResultService : IResultService
 
     public async Task<List<Result>> SyncAllResults()
     {
-        var googleSheetsResults = await _googleSheetsResultsService.GetAllResultsAsync();
+        var googleSheetsResults = await _googleSheetsResultsService.GetResultsAsync();
         if (googleSheetsResults.Count <= 0)
         {
             _logger.LogError("Failed to retrieve results from Google Sheets");
@@ -67,14 +67,37 @@ public class ResultService : IResultService
         return newResults;
     }
 
-    private LookupData GetLookupData()
+    public async Task<List<Result>> SyncLatestResults()
+    {
+        var currentYear = DateTime.UtcNow.Year;
+
+        var googleSheetsResults = await _googleSheetsResultsService.GetResultsAsync(currentYear);
+        if (googleSheetsResults.Count <= 0)
+        {
+            _logger.LogError("Failed to retrieve results from Google Sheets");
+        }
+
+        var lookupData = GetLookupData(currentYear);
+
+        var newResults = ProcessSheetResults(googleSheetsResults, lookupData, lookupData.ExistingResultSheetIndices);
+
+        await _results.SaveChangesAsync();
+        await _riders.SaveChangesAsync();
+
+        await _seasonService.CalculateSeasonsPointsAndRanksForYear(currentYear);
+
+        return newResults;
+    }
+
+    private LookupData GetLookupData(int? year = null)
     {
         var riders = DictionaryHelper.ToLookup(_riders, rider => rider.FullName);
         var races = DictionaryHelper.ToLookup(_races, race => race.NameWithActiveSpanString);
         var raceDates = _raceDates.GetAll();
         var pointSystem = _pointSystem.GetAll();
+        var existingResultSheetIndices = _results.Find(result => result.Year == year).Select(result => result.SheetIndex).ToList();
 
-        return new LookupData(riders, races, raceDates, pointSystem);
+        return new LookupData(riders, races, raceDates, pointSystem, existingResultSheetIndices);
     }
 
     private static void ResetRiderAndNationData(Dictionary<string, Rider> riders)
@@ -91,7 +114,8 @@ public class ResultService : IResultService
 
     private List<Result> ProcessSheetResults(
         List<GoogleSheetsResult> sheetResults,
-        LookupData lookupData
+        LookupData lookupData,
+        List<int>? existingResultSheetIndices = null
     )
     {
         var newResults = new List<Result>();
@@ -119,6 +143,11 @@ public class ResultService : IResultService
                     sheetResult.Year,
                     sheetResult.Name
                 );
+                continue;
+            }
+
+            if (existingResultSheetIndices?.Contains(sheetResult.ColumnIndex) == true)
+            {
                 continue;
             }
 
@@ -204,6 +233,7 @@ public class ResultService : IResultService
         Dictionary<string, Rider> Riders,
         Dictionary<string, Race> Races,
         IEnumerable<RaceDate> RaceDates,
-        IEnumerable<PointSystem> PointSystem
+        IEnumerable<PointSystem> PointSystem,
+        List<int>? ExistingResultSheetIndices
     );
 }

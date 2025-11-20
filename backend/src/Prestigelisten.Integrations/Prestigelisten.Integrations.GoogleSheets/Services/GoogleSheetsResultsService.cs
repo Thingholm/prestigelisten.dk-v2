@@ -19,7 +19,7 @@ public class GoogleSheetsResultsService : IGoogleSheetsResultsService
         _options = options;
     }
 
-    public async Task<List<GoogleSheetsResult>> GetAllResultsAsync()
+    public async Task<List<GoogleSheetsResult>> GetResultsAsync(int? year = null)
     {
         var sheetValues = _connector.GetResultsSheetValues();
         var resultPlaceholders = await GetResultPlaceholdersFromCSVAsync();
@@ -28,9 +28,9 @@ public class GoogleSheetsResultsService : IGoogleSheetsResultsService
         var results = new List<GoogleSheetsResult>();
         foreach (var row in sheetValues.Skip(1))
         {
-            var year = int.TryParse(row[0], out var yearValue) ? yearValue : 0;
+            var rowYear = int.TryParse(row[0], out var yearValue) ? yearValue : 0;
 
-            if (year <= 0)
+            if (rowYear <= 0 || (year is not null && rowYear != year))
             {
                 continue;
             }
@@ -54,14 +54,14 @@ public class GoogleSheetsResultsService : IGoogleSheetsResultsService
                     ResultType = resultType,
                     Placement = placement,
                     Stage = stage,
-                    Year = year,
+                    Year = rowYear,
                     RiderName = resultCell,
                     ColumnIndex = i,
                 };
 
                 var resultPlaceholder = resultPlaceholders.FirstOrDefault(placeholder =>
                     placeholder.Result.Equals(resultName, StringComparison.OrdinalIgnoreCase)
-                    && placeholder.PlaceholderYear == year
+                    && placeholder.PlaceholderYear == rowYear
                 );
 
                 if (resultPlaceholder is not null)
