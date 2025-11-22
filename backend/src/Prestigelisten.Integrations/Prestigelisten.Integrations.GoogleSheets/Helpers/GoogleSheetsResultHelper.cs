@@ -1,6 +1,5 @@
 ﻿using System.Text.RegularExpressions;
 using Prestigelisten.Core.Enums;
-using Prestigelisten.Core.Models;
 
 namespace Prestigelisten.Integrations.GoogleSheets.Helpers;
 
@@ -146,7 +145,7 @@ public static class GoogleSheetsResultHelper
         return (raceName, ResultType.Win, null, null);
     }
 
-    public static string ExtractRaceName(string resultString)
+    private static string ExtractRaceName(string resultString)
     {
         if (resultString.Contains("mester"))
         {
