@@ -5,6 +5,7 @@
   </Folder>
   <Folder Name="/Prestigelisten.Tests/">
     <Project Path="src/Prestigelisten.Tests/Prestigelisten.Tests.Integrations.GoogleSheets/Prestigelisten.Tests.Integrations.GoogleSheets.csproj" Id="fad5048f-ccfb-4cd6-8764-3adc980879ef" />
+    <Project Path="src/Prestigelisten.Tests/Prestigelisten.Tests.TestHelpers/Prestigelisten.Tests.TestHelpers.csproj" Id="51113ddf-3492-4af4-a871-6aa3cf7658cb" />
   </Folder>
   <Project Path="src/Prestigelisten.Api/Prestigelisten.Api.csproj" />
   <Project Path="src/Prestigelisten.Application/Prestigelisten.Application.csproj" />
