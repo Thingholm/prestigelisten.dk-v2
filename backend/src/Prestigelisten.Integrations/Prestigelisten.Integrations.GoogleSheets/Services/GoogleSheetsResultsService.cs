@@ -5,18 +5,12 @@ namespace Prestigelisten.Integrations.GoogleSheets.Services;
 public class GoogleSheetsResultsService : IGoogleSheetsResultsService
 {
     private readonly IConnector _connector;
-    private readonly ILogger<GoogleSheetsResultsService> _logger;
-    private readonly IOptions<GoogleSheetsOptions> _options;
 
     public GoogleSheetsResultsService(
-        IConnector connector,
-        ILogger<GoogleSheetsResultsService> logger,
-        IOptions<GoogleSheetsOptions> options
+        IConnector connector
     )
     {
         _connector = connector;
-        _logger = logger;
-        _options = options;
     }
 
     public async Task<List<GoogleSheetsResult>> GetResultsAsync(int? year = null)
