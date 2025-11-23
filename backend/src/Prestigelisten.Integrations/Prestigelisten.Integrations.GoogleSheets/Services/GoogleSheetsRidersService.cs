@@ -22,14 +22,6 @@ public class GoogleSheetsRidersService : IGoogleSheetsRidersService
         var alltimeRiders = _connector.GetRidersAllTimeSheetValues();
         var activeRiders = _connector.GetRidersActiveSheetValues();
 
-        if (alltimeRiders is null || activeRiders is null)
-        {
-            _logger.LogError(
-                "Could not retrieve sheet values from riders alltime or riders active list"
-            );
-            return [];
-        }
-
         var mergedRidersList = new List<GoogleSheetsRider>();
         foreach (var rider in alltimeRiders.Skip(1))
         {
