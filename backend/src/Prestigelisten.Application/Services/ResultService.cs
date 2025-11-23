@@ -19,6 +19,7 @@ public class ResultService : IResultService
     private readonly IPointSystemRepository _pointSystem;
     private readonly ISeasonService _seasonService;
     private readonly IGoogleSheetsResultsService _googleSheetsResultsService;
+    private readonly IRiderService _riderService;
     private readonly IOptions<DbOptions> _dbOptions;
     private readonly ILogger<ResultService> _logger;
 
@@ -30,6 +31,7 @@ public class ResultService : IResultService
         IPointSystemRepository pointSystemRepository,
         ISeasonService seasonService,
         IGoogleSheetsResultsService googleSheetsResultsService,
+        IRiderService riderService,
         IOptions<DbOptions> dbOptions,
         ILogger<ResultService> logger
     )
@@ -41,12 +43,15 @@ public class ResultService : IResultService
         _pointSystem = pointSystemRepository;
         _seasonService = seasonService;
         _googleSheetsResultsService = googleSheetsResultsService;
+        _riderService = riderService;
         _dbOptions = dbOptions;
         _logger = logger;
     }
 
     public async Task<List<Result>> SyncAllResults()
     {
+        await _riderService.SyncRidersFromGoogleSheetsAsync();
+
         var googleSheetsResults = await _googleSheetsResultsService.GetResultsAsync();
         if (googleSheetsResults.Count <= 0)
         {
@@ -69,6 +74,8 @@ public class ResultService : IResultService
 
     public async Task<List<Result>> SyncLatestResults()
     {
+        await _riderService.SyncRidersFromGoogleSheetsAsync();
+
         var currentYear = DateTime.UtcNow.Year;
 
         var googleSheetsResults = await _googleSheetsResultsService.GetResultsAsync(currentYear);

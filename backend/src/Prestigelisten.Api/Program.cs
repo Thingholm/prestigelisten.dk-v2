@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Prestigelisten.Api.Endpoints;
 using Prestigelisten.Application;
 using Prestigelisten.Application.Interfaces.Services;
 using Prestigelisten.Core;
@@ -36,6 +37,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+var api = app.MapGroup("/api/v1");
+
+api.MapResultEndpoints();
 
 app.Run();

@@ -72,7 +72,7 @@ public class GoogleSheetsResultsService : IGoogleSheetsResultsService
 
     public async Task<List<ResultPlaceholder>> GetResultPlaceholdersFromCSVAsync()
     {
-        var rows = (await CSVHelper.ReadAsStringAsync("Data/result-placeholder.csv")).Split("\n");
+        var rows = (await CSVHelper.ReadAsStringAsync("Data/result-placeholders.csv")).Split("\n");
 
         var resultPlaceholders = new List<ResultPlaceholder>();
         foreach (var row in rows.Skip(1))
