@@ -9,8 +9,7 @@ public static class CSVHelper
 
     public static async Task<string> ReadAsStringAsync(string resourcePath)
     {
-        //var resourceName = $"{_namespace}.{resourcePath.Replace("/", ".")}";
-        var resourceName = "Prestigelisten.Integrations.GoogleSheets.Data.result-placeholders.csv";
+        var resourceName = $"{_namespace}.{resourcePath.Replace("/", ".")}";
 
         await using var stream = _assembly.GetManifestResourceStream(resourceName);
         if (stream is null)
