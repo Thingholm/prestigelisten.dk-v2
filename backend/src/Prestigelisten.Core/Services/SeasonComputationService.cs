@@ -28,7 +28,7 @@ public class SeasonComputationService : ISeasonComputationService
     }
 
     public void RecalculateSeasonPoints<TEntity, TSeason>(
-    List<TSeason> seasons,
+        List<TSeason> seasons,
         Dictionary<int, TSeason> previousSeasons,
         Func<TSeason, TEntity> getSeasonEntity
     )

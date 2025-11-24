@@ -202,4 +202,75 @@ public class SeasonComputationServiceTests
         nation2Season2025.RankAllTime.Should().Be(2);
         nation2Season2025.RankForYear.Should().BeNull();
     }
+
+    [Fact]
+    public void RecalculateSeasonPoints_WithPreviousSeason_ReturnsCorrectPoints()
+    {
+        var nation = _fixture.Build<Nation>()
+            .Without(r => r.Seasons)
+            .Create();
+
+        var previousSeasons = new Dictionary<int, NationSeason>
+        {
+            [nation.Id] = new NationSeason
+            {
+                Nation = nation,
+                Year = 2024,
+                PointsForYear = 200,
+                PointsAllTime = 200,
+            }
+        };
+
+        var seasons = new List<NationSeason>
+        {
+            new NationSeason
+            {
+                Nation = nation,
+                Year = 2025,
+                PointsForYear = 50,
+                PointsAllTime = 5000,
+            }
+        };
+
+        // Act
+        _sut.RecalculateSeasonPoints(
+            seasons, 
+            previousSeasons, 
+            season => season.Nation
+        );
+
+        // Assert
+        seasons[0].PointsAllTime.Should().Be(250);
+    }
+
+    [Fact]
+    public void RecalculateSeasonPoints_WithoutPreviousSeason_ReturnsCorrectPoints()
+    {
+        var rider = _fixture.Build<Rider>()
+            .Without(r => r.Seasons)
+            .Create();
+
+        var previousSeasons = new Dictionary<int, RiderSeason> { };
+
+        var seasons = new List<RiderSeason>
+        {
+            new RiderSeason
+            {
+                Rider = rider,
+                Year = 2025,
+                PointsForYear = 50,
+                PointsAllTime = 5000,
+            }
+        };
+
+        // Act
+        _sut.RecalculateSeasonPoints(
+            seasons,
+            previousSeasons,
+            season => season.Rider
+        );
+
+        // Assert
+        seasons[0].PointsAllTime.Should().Be(50);
+    }
 }
