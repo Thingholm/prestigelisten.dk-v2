@@ -145,7 +145,7 @@ public class RiderService : IRiderService
         var isNew = false;
         var isUpdated = false;
 
-        var rider = riders[fullName];
+        riders.TryGetValue(fullName, out var rider);
         if (rider is null)
         {
             var nameParts = fullName.Split(" ", StringSplitOptions.RemoveEmptyEntries);
