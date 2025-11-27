@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Prestigelisten.Api.Endpoints;
 using Prestigelisten.Application;
-using Prestigelisten.Application.Interfaces.Services;
 using Prestigelisten.Core;
 using Prestigelisten.Integrations.GoogleSheets;
 using Prestigelisten.Persistence;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         .UseSnakeCaseNamingConvention()
 );
 
-builder.Services.AddControllers();
-
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -24,6 +23,19 @@ builder.Services.AddGoogleSheetsIntegration(builder.Configuration);
 builder.Services.AddDbExtensions(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddCoreServices();
+
+builder.Services.AddAuthorization();
+
+builder.Services.AddAuthentication().AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = JsonWebKey.Create(builder.Configuration["Authentication:JwtPublicJwk"]!),
+        ValidIssuer = builder.Configuration["Authentication:ValidIssuer"],
+        ValidAudience = builder.Configuration["Authentication:ValidAudience"],
+    };
+});
 
 var app = builder.Build();
 
@@ -35,6 +47,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 var api = app.MapGroup("/api/v1");

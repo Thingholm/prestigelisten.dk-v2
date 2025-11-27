@@ -12,12 +12,14 @@ public static class ResultEndpoints
         resultsGroup.MapGet("/sync-all", SyncAllResults)
             .WithName("SyncAllResults")
             .Produces<List<Result>>(StatusCodes.Status200OK)
-            .Produces(StatusCodes.Status500InternalServerError);
+            .Produces(StatusCodes.Status500InternalServerError)
+            .RequireAuthorization();
 
         resultsGroup.MapGet("/sync-latest", SyncLatestResults)
             .WithName("SyncLatestResults")
             .Produces<List<Result>>(StatusCodes.Status200OK)
-            .Produces(StatusCodes.Status500InternalServerError);
+            .Produces(StatusCodes.Status500InternalServerError)
+            .RequireAuthorization();
 
         return resultsGroup;
     }
