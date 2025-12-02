@@ -15,7 +15,7 @@ export default function DesktopNav() {
     const [isDropdownOpen, setIsDropdownOpen] = useState([false, false]);
 
     return (
-        <nav className="text-primary-500 gap-x-6 xl:gap-x-8 hidden lg:flex">
+        <nav className="text-primary-500 gap-x-4 text-sm 2xl:text-base 2xl:gap-x-8 hidden xl:flex">
             <Link href={urls["pointSystem"]} className="relative group/item w-fit">
                 <span>{t("pointSystem")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>

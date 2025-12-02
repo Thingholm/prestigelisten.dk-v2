@@ -23,9 +23,9 @@ export default function MobileNav({
     const [showLists, setShowLists] = useState(false);
 
     return (
-        <div className="lg:hidden">
+        <div className="xl:hidden">
             <button 
-                className="lg:hidden relative w-9 h-8"
+                className="xl:hidden relative w-9 h-8"
                 onClick={() => setShowNav(s => !s)}
             >
                 <div className={`absolute h-1 w-full bg-primary-500 rounded-full duration-200 ${showNav ? "rotate-225 top-4" : "top-2.5"}`}></div>
