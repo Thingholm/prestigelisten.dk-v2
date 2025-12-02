@@ -123,7 +123,7 @@ export default function MobileNav({
                         onClick={() => setShowNav(false)}
                     />
                     <Button href={getRidersListUrl()} className="mt-2 mb-2">{t("seeList")}</Button>
-                    <LocaleSwitcher isMobile/>
+                    <LocaleSwitcher/>
                 </nav>
             </div>
             <div className={`${showNav ? "left-0" : "left-full"} top-[2.8125rem] sm:top-[3.35rem] absolute lg:hidden -z-20`}>
