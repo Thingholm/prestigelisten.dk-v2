@@ -632,7 +632,7 @@
         "amount": "Amount",
         "distributionOfPointsGained": "Distribution of points gained per category",
         "category": "Category",
-        "numberOfResults": "Number of results",
+        "numberOfResults": "Result count",
         "categories": {
             "gc": "Classification",
             "stageWin": "Stage wins",
@@ -722,12 +722,12 @@
         "greatestResults": "Greatest results",
         "pointsGained": "Points gained",
         "date": "Date",
-        "numberOfRiders": "Number of riders",
+        "numberOfRiders": "Rider count",
         "pointsPerRider": "Points per rider",
         "activeOnlySpan": "Active only",
         "showAll": "Show all...",
         "showMore": "Show more...",
-        "numberOfResults": "Number of results",
+        "numberOfResults": "Result count",
         "greatestRiders": "Greatest riders",
         "span": "Span",
         "amount": "Amount",
@@ -790,8 +790,8 @@
     "teamsPage": {
         "team": "Teams",
         "titles": {
-            "greatestRiders": "Teams with the greatest riders",
-            "mostPoints": "Teams with most points in {year}"
+            "greatestRiders": "All time points by currently signed riders",
+            "mostPoints": "Points earned in {year}"
         }
     },
     "teamPage": {
@@ -855,7 +855,7 @@
             "filterBy": "Filter by",
             "title": "Countries",
             "points": "Points",
-            "numberOfRiders": "Number of riders",
+            "numberOfRiders": "Rider count",
             "pointsPerRider": "Points per rider",
             "all": "All",
             "active": "Only active riders",
@@ -931,7 +931,7 @@
             "placementForYear": "Placement for {year}",
             "placementOnPrestigeList": "Placement on Prestigelisten",
             "movementOnPrestigeList": "Movement on Prestigelisten",
-            "numberOfResults": "Number of results",
+            "numberOfResults": "Result count",
             "mostPoints": "Riders with most points in {year}"
         },
         "racesAndTeamsTables": {
@@ -1026,7 +1026,7 @@
             "pointsAndResults": "Points/results",
             "placementAlltime": "Placement all time",
             "placementActive": "Placement (only active)",
-            "numberOfResults": "Number of results",
+            "numberOfResults": "Result count",
             "points": "Points",
             "categoryPoints": "Category points",
             "greatestResults": "Greatest results",
@@ -1045,7 +1045,7 @@
             "placement": "Placement all time",
             "placementActive": "Placement (only active)",
             "pointsActive": "Points (only active)",
-            "numberOfResults": "Number of results",
+            "numberOfResults": "Result count",
             "numberOfRidersWithPoints": "Number of riders with points",
             "pointsPerRider": "Points per rider",
             "results": "Results",
