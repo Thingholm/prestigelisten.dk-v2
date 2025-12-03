@@ -1,4 +1,4 @@
-import { RidersFilter } from "@/app/[lang]/list/riders/_sections/ListSection";
+import { RidersFilter } from "@/app/[lang]/rankings/riders/_sections/ListSection";
 import { urls } from "../constants/urls";
 
 type Rider = {

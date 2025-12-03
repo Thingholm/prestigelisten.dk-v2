@@ -46,28 +46,28 @@ export const routing = defineRouting({
             en: '/race/[race]/[[...name]]',
             da: '/løb/[race]/[[...name]]',
         },
-        '/list/riders': {
-            en: '/list/riders',
+        '/rankings/riders': {
+            en: '/rankings/riders',
             da: '/listen/ryttere',
         },
-        '/list/nations': {
-            en: '/list/nations',
+        '/rankings/nations': {
+            en: '/rankings/nations',
             da: '/listen/nationer',
         },
-        '/list/riders/3-year_period': {
-            en: '/list/riders/3-year_period',
+        '/rankings/riders/3-year_period': {
+            en: '/rankings/riders/3-year_period',
             da: '/listen/ryttere/3-årig_periode',
         },
-        '/list/riders/ages': {
-            en: '/list/riders/ages',
+        '/rankings/riders/ages': {
+            en: '/rankings/riders/ages',
             da: '/listen/ryttere/alderstrin',
         },
-        '/list/riders/ages/[age]': {
-            en: '/list/riders/ages/[age]',
+        '/rankings/riders/ages/[age]': {
+            en: '/rankings/riders/ages/[age]',
             da: '/listen/ryttere/alderstrin/[age]',
         },
-        '/list/riders/greatest_seasons': {
-            en: '/list/riders/greatest_seasons',
+        '/rankings/riders/greatest_seasons': {
+            en: '/rankings/riders/greatest_seasons',
             da: '/listen/ryttere/største_sæsoner',
         },
         '/nation': {
