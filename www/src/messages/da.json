@@ -649,7 +649,7 @@
         "about": "Om Prestigelisten",
         "pointSystem": "Pointsystem",
         "lists": "Ranglister",
-        "compare": "Sammenlign",
+        "compare": "Sammenlign ryttere",
         "searchPlaceholder": "Søg efter ryttere, nationer, hold eller løb...",
         "more": "Mere",
         "seeList": "Se listen",
@@ -684,12 +684,11 @@
     "homepage": {
         "quote": "Cycling isn't a game, it's a sport. Tough, hard and unpitying, and it requires great sacrifices. One plays football, or tennis, or hockey. One doesn't play at cycling.",
         "author": "Jean De Gribaldy",
-        "description1": "Velkommen til Mathias Jensens og Mathias Fisker Mundbjergs bud på en prestigeliste i landevejscyklingens verden.",
-        "description2": "Vi vil gerne begynde med at slå fast, at pointsystemet er baseret på en subjektiv vurdering, men en gennemdiskuteret og - mener vi selv - kvalificeret en af slagsen.",
-        "description3": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har forsøgt at udfærdige pointgivningen, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det, at der var mindre konkurrence for 100 år siden, udligner det mindre antal prestigefyldte løb, hvori det var muligt at score point.",
+        "description1": "Velkommen til - her har du vores bud på en rangering over ryttere med de mest prestigefyldte resultater i landevejscyklingens verden.",
+        "description2": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har tilstræbt at vægte pointsystemet, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det stigende antal prestigefyldte løb gennem de seneste 150 år udlignes af den forøgede konkurrence i verdenseliten.",
         "exploreButton": "Udforsk Prestigelisten",
         "moreButton": "Mere om listen...",
-        "socialMediaText": "Følg med på X og Instagram, hvor vi skriver om udvikling på Prestigelisten, statistik, quiz og meget mere.",
+        "socialMediaText": "Følg med på X, Facebook og Instagram, hvor vi løbende opdaterer om udviklingen på Prestigelisten, statistik, quiz og meget mere.",
         "tableTitles": {
             "allTimePoints": "All time største ryttere",
             "latestResults": "Seneste pointgivende resultater",
@@ -698,10 +697,10 @@
             "greatestDanishRiders": "Største danske ryttere",
             "greatestNations": "Største nationer",
             "greatestSeasons": "Største individuelle sæsoner",
-            "greatestAlltimeEachYear": "Største ryttere hvert år",
+            "greatestAlltimeEachYear": "Største ryttere all time efter hvert år",
             "greatest3YearSpan": "Største ryttere over en 3-årig periode",
-            "greatestByDecade": "Største ryttere hvert årti",
-            "socialMedia": "Følg os på X og Instagram"
+            "greatestByDecade": "Flest point i hvert årti",
+            "socialMedia": "Følg med på sociale medier"
         },
         "onlyActiveRiders": "Kun aktive ryttere"
     },

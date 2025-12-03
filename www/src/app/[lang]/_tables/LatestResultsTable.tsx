@@ -5,6 +5,7 @@ import { getRaceUrl } from "@/lib/helpers/urls";
 import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
 import React from "react";
+import { IoCaretUp } from "react-icons/io5";
 
 export default async function LatestResultsTable({
     latestResultsGroups
@@ -32,7 +33,7 @@ export default async function LatestResultsTable({
         <Table>
             <TableHead>
                 <TableColumn>{t("no")}</TableColumn>
-                <TableColumn className="hidden lg:table-cell">{t("change")}</TableColumn>
+                <TableColumn className="hidden lg:table-cell"><IoCaretUp className="fill-green-600 inline"/></TableColumn>
                 <TableColumn>{t("rider")}</TableColumn>
                 <TableColumn className="hidden md:table-cell">{t("result")}</TableColumn>
                 <TableColumn className="hidden sm:table-cell">{t("pointsGained")}</TableColumn>
