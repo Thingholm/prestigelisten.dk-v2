@@ -706,6 +706,7 @@
     },
     "tableColumns": {
         "no": "Nr.",
+        "allTime": "All time",
         "allTimeNo": "Nr. (All time)",
         "placement": "Placering",
         "name": "Navn",

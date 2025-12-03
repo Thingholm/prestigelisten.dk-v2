@@ -17,7 +17,7 @@ export default function TableRow({
     id,
     style
 }: Readonly<{
-    children: ReactElement<React.ComponentProps<"td">>[] | ReactElement<React.ComponentProps<"td">>;
+    children: (ReactElement<React.ComponentProps<"td">> | false)[] | ReactElement<React.ComponentProps<"td">>;
     className?: string;
     isHighlighted?: boolean;
     isFaded?: boolean;

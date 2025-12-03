@@ -706,6 +706,7 @@
     },
     "tableColumns": {
         "no": "No.",
+        "allTime": "All time",
         "allTimeNo": "No. (All time)",
         "placement": "Placement",
         "name": "Name",

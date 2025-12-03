@@ -54,6 +54,7 @@ export default function ListSection({
     const [filter, setFilter] = useState(searchParamsToFilterMapper(searchParams, defaultFilter))
     const [rowAmount, setRowAmount] = useState(defaultRowAmount)
     const [highlightedRiderId, setHighlightedRiderId] = useState<number | null>(null);
+    const isFiltered = JSON.stringify(filter) != JSON.stringify(defaultFilter);
 
     const filterRiders = (riderPoints: RiderPointsWithNationAndTeam) => {
         return riderPoints.filter(rider => {
@@ -76,6 +77,7 @@ export default function ListSection({
         })
     }
 
+    const alltimeRankingsLookupList = rankBy(riderPoints.map(rider => ({ id: rider.rider_id, points: rider.points })), "points");
     const rankedAndFilteredRiders = rankBy(filterRiders(riderPoints), "points")
 
     useEffect(() => {
@@ -137,8 +139,10 @@ export default function ListSection({
             <div className="w-full">
                 <ListTable 
                     riderPoints={rankedAndFilteredRiders} 
+                    alltimeRankingsLookupList={alltimeRankingsLookupList}
                     rowAmount={rowAmount} 
                     highlightedRiderId={highlightedRiderId}
+                    isFiltered={isFiltered}
                 />
                 {rowAmount < rankedAndFilteredRiders.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 100)}>{t("showMore")}</Button>}
             </div>
