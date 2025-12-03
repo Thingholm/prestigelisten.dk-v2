@@ -24,7 +24,7 @@ export default async function AgePage({
     return (
         <div>
             <Section className="!pb-0">
-                <PageHeading>{t("ageTitle", { age: age })}</PageHeading>
+                <PageHeading>{t("ageTitle")}</PageHeading>
             </Section>
             <SelectAgeSection
                 selectedAge={age}

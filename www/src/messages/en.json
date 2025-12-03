@@ -872,7 +872,7 @@
             "title": "Prestigelisten - Riders at each age",
             "age": "Age",
             "selectAge": "Select age",
-            "ageTitle": "Greatest riders at each age - {age} years"
+            "ageTitle": "Greatest riders at a certain age"
         },
         "greatestSeasons": {
             "title": "Greatest individual seasons"

@@ -873,7 +873,7 @@
             "title": "Prestigelisten - Ryttere på hvert alderstrin",
             "age": "Alder",
             "selectAge": "Vælg alder",
-            "ageTitle": "Største ryttere på hvert alderstrin - {age} år"
+            "ageTitle": "Største ryttere på hvert alderstrin"
         },
         "greatestSeasons": {
             "title": "Største individuelle sæsoner"
