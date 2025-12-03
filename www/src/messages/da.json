@@ -780,8 +780,8 @@
         "titles": {
             "riderWithMostPoints": "Ryttere med flest point optjent i {year}",
             "nationWithMostPoints": "Nationer med flest point optjent i {year}",
-            "ridersRankings": "Største ryttere i {year}",
-            "nationsRankings": "Største nationer i {year}",
+            "ridersRankings": "Største ryttere all time i {year}",
+            "nationsRankings": "Største nationer all time i {year}",
             "greatestRidersFromYear": "Største ryttere født i {year}",
             "resultsFromYear": "Resultater i {year}"
         },

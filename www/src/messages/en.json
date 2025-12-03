@@ -780,10 +780,10 @@
         "titles": {
             "riderWithMostPoints": "Riders with most points in {year}",
             "nationWithMostPoints": "Nations with most points in {year}",
-            "ridersRankings": "Greatest riders in {year}",
-            "nationsRankings": "Greatest nations in {year}",
+            "ridersRankings": "Greatest riders of all time in {year}",
+            "nationsRankings": "Greatest countries of all time in {year}",
             "greatestRidersFromYear": "Greatest riders born in {year}",
-            "resultsFromYear": "Results from {year}"
+            "resultsFromYear": "Results in {year}"
         },
         "noRidersBornInYear": "No riders born in {year}"
     },

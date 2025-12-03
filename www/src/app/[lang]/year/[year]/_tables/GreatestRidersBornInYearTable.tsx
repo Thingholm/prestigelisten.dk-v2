@@ -23,7 +23,7 @@ export default function GreatestRidersBornInYearTable({
             <Table>
                 <TableHead>
                     <TableColumn>{t("no")}</TableColumn>
-                    <TableColumn className="hidden sm:table-cell">{t("allTimeNo")}</TableColumn>
+                    <TableColumn className="hidden sm:table-cell">{t("allTime")}</TableColumn>
                     <TableColumn>{t("rider")}</TableColumn>
                     <TableColumn className="hidden md:table-cell">{t("nation")}</TableColumn>
                     <TableColumn>{t("points")}</TableColumn>            
