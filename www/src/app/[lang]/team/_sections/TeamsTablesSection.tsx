@@ -18,11 +18,11 @@ export default function TeamsTablesSection({
 
     return (
         <Section className="gap-x-12 flex-col lg:flex-row">
-            <Container title={t("titles.greatestRiders")}>
-                <TeamsTable teamsWithPoints={teamsWithPoints} rankKey="pointsAllTime" />
-            </Container>
             <Container title={t("titles.mostPoints", { year: new Date().getFullYear() })}>
                 <TeamsTable teamsWithPoints={teamsWithPoints} rankKey="pointsForYear" />
+            </Container>
+            <Container title={t("titles.greatestRiders")}>
+                <TeamsTable teamsWithPoints={teamsWithPoints} rankKey="pointsAllTime" />
             </Container>
         </Section>
     )
