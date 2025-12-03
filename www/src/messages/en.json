@@ -862,7 +862,7 @@
             "inactive": "Only inactive riders"
         },
         "riders3YearSpans": {
-            "title": "Prestigelisten - Riders over 3-year spans",
+            "title": "Points earned in 3 consecutive seasons",
             "mostPoints": "Riders with most points over 3-year spans",
             "greatestRiders": "Greatest riders over a 3-year span each year",
             "span": "Span",
