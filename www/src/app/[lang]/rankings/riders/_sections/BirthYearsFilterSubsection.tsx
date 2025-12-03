@@ -34,12 +34,13 @@ export default function BirthYearsFilterSubsection({
                 />
             </div>
             <div className="gap-2 flex flex-col">
-                <div className="gap-2 flex">
+                <div className="gap-2 flex items-center">
                     <label htmlFor="born-before-or-in">{t("bornIn")}<span className={filter.isSingleYear ? "hidden" : ""}> {t("orBefore")}</span></label>
                     <Select
                         name="born-before-or-in"
                         onChange={handleBirthYearChange}
                         value={filter.bornBeforeOrIn}
+                        className="px-2 py-1 sm:py-0 sm:px-1"
                     >
                         {[...Array(maxBirthYear - filter.bornAfterOrIn + 1)].map((i, index) => {
                             const year = maxBirthYear - index;
@@ -55,13 +56,13 @@ export default function BirthYearsFilterSubsection({
                         })}
                     </Select>
                 </div>
-                <div className="gap-2 flex">
+                <div className="gap-2 flex items-center">
                     <label htmlFor="born-after-or-in" className={`${filter.isSingleYear ? "hidden" : ""}`}> {t("bornIn")} {t("orAfter")}</label>
                     <Select 
                         name="born-after-or-in" 
                         onChange={handleBirthYearChange} 
                         disabled={filter.isSingleYear ? true : false} 
-                        className={filter.isSingleYear ? "hidden" : ""}
+                        className={`${filter.isSingleYear ? "hidden" : ""} px-2 py-1 sm:py-0 sm:px-1`}
                         value={filter.bornAfterOrIn}
                     >
                         {[...Array(filter.bornBeforeOrIn - minBirthYear + 1)].map((i, index) => {

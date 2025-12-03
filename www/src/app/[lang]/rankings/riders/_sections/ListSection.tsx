@@ -107,7 +107,7 @@ export default function ListSection({
 
     return (
         <Section className="flex-col">
-            <div className="flex gap-x-96 md:gap-x-24 gap-y-8 flex-wrap lg:justify-between">
+            <div className="flex gap-x-96 sm:gap-x-12 md:gap-x-24 gap-y-8 flex-wrap lg:justify-between">
                 <BirthYearsFilterSubsection 
                     filter={filter} 
                     setFilter={setFilter}
