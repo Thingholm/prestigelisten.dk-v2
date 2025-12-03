@@ -736,7 +736,8 @@
         "and": "og",
         "active": "Aktive",
         "inactive": "Inaktive",
-        "years": "År"
+        "years": "År",
+        "age": "Alder"
     },
     "searchBar": {
         "placeholder": "Søg..."

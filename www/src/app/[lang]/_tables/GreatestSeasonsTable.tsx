@@ -31,6 +31,7 @@ export default function GreatestSeasonsTable({
                 <TableColumn>{t("rider")}</TableColumn>
                 <TableColumn className="hidden lg:table-cell">{t("greatestResults")}</TableColumn>
                 <TableColumn>{t("season")}</TableColumn>
+                <TableColumn className="hidden sm:table-cell">{t("age")}</TableColumn>
                 <TableColumn>{t("points")}</TableColumn>
             </TableHead>
             <TableBody>
@@ -47,6 +48,7 @@ export default function GreatestSeasonsTable({
                             ))}
                         </TableCell>
                         <YearCell year={season.year} />
+                        <TableCell className="hidden sm:table-cell">{season.riders.year ? season.year - season.riders.year : "-"}</TableCell>
                         <TableCell>{season.points_for_year}</TableCell>
                     </TableRow>
                 ))}
