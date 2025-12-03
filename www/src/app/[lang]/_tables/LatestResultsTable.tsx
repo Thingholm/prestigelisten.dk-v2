@@ -2,7 +2,7 @@ import { RiderNameCell, SecondaryCellSpan, Table, TableBody, TableCell, TableCol
 import { RankingEvolution } from "@/lib/helpers/rankingEvolution";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { getRaceUrl } from "@/lib/helpers/urls";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
 import React from "react";
 
@@ -11,8 +11,22 @@ export default async function LatestResultsTable({
 }: Readonly<{
     latestResultsGroups: RankingEvolution[]
 }>) {
+    const locale = await getLocale();
+
     const t = await getTranslations("tableColumns");
     const tResultNames = await getTranslations("getResultNames");
+
+    const getDateString = (date: string | undefined) => {
+        if (!date) return "";
+
+        if (locale === "da") {
+            return `${date.split("-")[2]}-${date.split("-")[1]}`
+        }
+
+        if (locale === "en") {
+            return `${date.split("-")[1]}-${date.split("-")[2]}`
+        }
+    }
 
     return (
         <Table>
@@ -23,7 +37,7 @@ export default async function LatestResultsTable({
                 <TableColumn className="hidden md:table-cell">{t("result")}</TableColumn>
                 <TableColumn className="hidden sm:table-cell">{t("pointsGained")}</TableColumn>
                 <TableColumn className="hidden lg:table-cell">{t("points")}</TableColumn>
-                <TableColumn>{t("date")}</TableColumn>
+                <TableColumn>{t("date")} <SecondaryCellSpan>{t("dateFormatNoYear")}</SecondaryCellSpan></TableColumn>
             </TableHead>
             <TableBody>
                 {latestResultsGroups.map(date => (
@@ -66,7 +80,7 @@ export default async function LatestResultsTable({
                                             {date.rankings?.find(r => r.rider_id == riderGroup.key)?.points} 
                                             <SecondaryCellSpan>{date.prevRankings?.find(r => r.rider_id == riderGroup.key)?.points}</SecondaryCellSpan>
                                         </TableCell>
-                                        <TableCell className="text-nowrap">{`${riderGroup.results[0].race_dates?.date.split("-")[2]}-${riderGroup.results[0].race_dates?.date.split("-")[1]}`}</TableCell>
+                                        <TableCell className="text-nowrap">{getDateString(riderGroup.results[0].race_dates?.date)}</TableCell>
                                     </TableRow>
                                 )
                             })

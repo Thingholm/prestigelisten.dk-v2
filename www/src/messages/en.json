@@ -738,7 +738,8 @@
         "active": "Active",
         "inactive": "Inactive",
         "years": "Years",
-        "age": "Age"
+        "age": "Age",
+        "dateFormatNoYear": "mm-dd"
     },
     "searchBar": {
         "placeholder": "Search..."
