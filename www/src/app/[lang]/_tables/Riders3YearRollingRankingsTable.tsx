@@ -35,8 +35,7 @@ export default function Riders3YearRollingRankingsTable({
                     <TableHead>
                         {columns.map(year => (
                             <TableColumn key={`${year}-col`}>
-                                {year}
-                                <span className="opacity-50 pl-1.5 !font-normal">{year - 2}</span>
+                                {`${year - 2}-${year}`}
                             </TableColumn>                        
                         ))}
                     </TableHead>
