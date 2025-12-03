@@ -702,7 +702,8 @@
             "greatest3YearSpan": "Greatest riders over a 3-year span",
             "greatestByDecade": "Greatest riders each decade",
             "socialMedia": "Follow us on X and Instagram"
-        }
+        },
+        "onlyActiveRiders": "Only active riders"
     },
     "tableColumns": {
         "no": "No.",

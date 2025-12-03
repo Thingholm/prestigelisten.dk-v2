@@ -702,7 +702,8 @@
             "greatest3YearSpan": "Største ryttere over en 3-årig periode",
             "greatestByDecade": "Største ryttere hvert årti",
             "socialMedia": "Følg os på X og Instagram"
-        }
+        },
+        "onlyActiveRiders": "Kun aktive ryttere"
     },
     "tableColumns": {
         "no": "Nr.",
