@@ -103,7 +103,7 @@
                 "adjective": "Eritrean"
             },
             "ee": {
-                "name": "Estland",
+                "name": "Estonia",
                 "adjective": "Estonian"
             },
             "ph": {
@@ -143,7 +143,7 @@
                 "adjective": "Japanese"
             },
             "kz": {
-                "name": "Kasakhstan",
+                "name": "Kazakhstan",
                 "adjective": "Kazakh"
             },
             "kr": {
@@ -445,7 +445,7 @@
             "adjective": "Eritrean"
         },
         "ee": {
-            "name": "Estland",
+            "name": "Estonia",
             "adjective": "Estonian"
         },
         "ph": {
@@ -485,7 +485,7 @@
             "adjective": "Japanese"
         },
         "kz": {
-            "name": "Kasakhstan",
+            "name": "Kazakhstan",
             "adjective": "Kazakh"
         },
         "kr": {
@@ -853,7 +853,7 @@
         "nations": {
             "sortBy": "Rank by",
             "filterBy": "Filter by",
-            "title": "Prestigelisten - Nations",
+            "title": "Countries",
             "points": "Points",
             "numberOfRiders": "Number of riders",
             "pointsPerRider": "Points per rider",

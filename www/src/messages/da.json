@@ -250,7 +250,7 @@
                 "adjective": "Tyrkisk"
             },
             "ua": {
-                "name": "Ukraina",
+                "name": "Ukraine",
                 "adjective": "Ukrainsk"
             },
             "us": {
@@ -592,7 +592,7 @@
             "adjective": "Tyrkisk"
         },
         "ua": {
-            "name": "Ukraina",
+            "name": "Ukraine",
             "adjective": "Ukrainsk"
         },
         "us": {
@@ -854,7 +854,7 @@
         "nations": {
             "sortBy": "Rangér efter",
             "filterBy": "Filtrér efter",
-            "title": "Prestigelisten - Nationer",
+            "title": "Nationer",
             "points": "Point",
             "numberOfRiders": "Antal ryttere",
             "pointsPerRider": "Point pr. rytter",
