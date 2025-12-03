@@ -22,6 +22,7 @@ export default function ExpandableGreatestSeasonRow({
                 <RiderNameCell rider={season.riders} showFlagBreakpoint="sm"/>
                 <NationNameCell nation={season.riders.nations} className="hidden sm:table-cell"/>
                 <YearCell year={season.year}/>
+                <TableCell className="hidden md:table-cell">{season.riders.year ? season.year - season.riders.year : ""}</TableCell>
                 <TableCell>{season.points_for_year}</TableCell>
                 <ExpandCell isExpanded={isExpanded} setIsExpanded={setIsExpanded}/>
             </TableRow>
@@ -29,7 +30,7 @@ export default function ExpandableGreatestSeasonRow({
                 <ExpandedResultsRow
                     results={season.results}
                     pointSystem={pointSystem}
-                    columns={6}
+                    columns={7}
                 />
             }
         </>

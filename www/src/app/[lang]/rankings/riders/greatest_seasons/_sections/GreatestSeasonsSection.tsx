@@ -31,6 +31,7 @@ export default function GreatestSeasonsSection({
                         <TableColumn>{t("rider")}</TableColumn>
                         <TableColumn className="hidden sm:table-cell">{t("nation")}</TableColumn>
                         <TableColumn>{t("season")}</TableColumn>
+                        <TableColumn className="hidden md:table-cell">{t("age")}</TableColumn>
                         <TableColumn>{t("points")}</TableColumn>
                         <TableColumn></TableColumn>
                     </TableHead>
