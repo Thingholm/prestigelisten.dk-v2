@@ -13,7 +13,7 @@ export const urls: Record<string, string> = {
     nation: "/nation",
     about: "/about_prestigelisten",
     resultsThisYear: "/results_this_year",
-    pointSystem: "/point_system",
+    pointSystem: "/point_scale",
     rider: "/rider",
     compare: "/compare",
     compareRiders: "/compare/riders",

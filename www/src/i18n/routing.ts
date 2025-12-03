@@ -90,8 +90,8 @@ export const routing = defineRouting({
             en: '/results_this_year',
             da: '/pointgivende_resultater_i_år',
         },
-        '/point_system': {
-            en: '/point_system',
+        '/point_scale': {
+            en: '/point_scale',
             da: '/pointsystem',
         },
         '/rider': {
