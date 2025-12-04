@@ -1033,7 +1033,9 @@
             "pointsGained": "Points gained",
             "pointsAllTime": "Points all time",
             "placementForYear": "Placement for year",
-            "age": "Age"
+            "age": "Age",
+            "greatestSeasonYear": "Greatest season",
+            "greatestSeasonPoints": "Points in greatest season"
         },
         "nation": {
             "title": "Compare nations",

@@ -1034,7 +1034,9 @@
             "pointsGained": "Point optjent",
             "pointsAllTime": "Point all time",
             "placementForYear": "Placering for year",
-            "age": "Alder"
+            "age": "Alder",
+            "greatestSeasonYear": "Største sæson",
+            "greatestSeasonPoints": "Point i største sæson"
         },
         "nation": {
             "title": "Sammenlign nationer",
