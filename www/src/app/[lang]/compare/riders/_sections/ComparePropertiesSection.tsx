@@ -7,6 +7,7 @@ import { getResultCategory } from "@/lib/helpers/resultCategory";
 import { PointSystem } from "@/db/pointSystem";
 import Section from "@/components/layout/Section";
 import { getTranslations } from "next-intl/server";
+import { dayInLeadersJerseyResultTypeIds } from "@/lib/constants/resultTypes";
 
 export default async function ComparePropertiesSection({
     rider1,
@@ -93,8 +94,8 @@ export default async function ComparePropertiesSection({
                             reverseComparison
                         />
                         <CompareProperties
-                            value1={rider1?.results.length}
-                            value2={rider2?.results.length}
+                            value1={rider1?.results.filter(result => !dayInLeadersJerseyResultTypeIds.includes(result.result_type_id)).length}
+                            value2={rider2?.results.filter(result => !dayInLeadersJerseyResultTypeIds.includes(result.result_type_id)).length}
                             title={t("numberOfResults")}
                         />
                     </TableBody>
