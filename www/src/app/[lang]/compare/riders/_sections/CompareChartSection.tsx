@@ -145,7 +145,7 @@ export default function CompareChartSection({
                 </ResponsiveContainer>
             </Container>
 
-            <Container title={t("agePointsTitle")} className="text-center">
+            <Container title={t("ageAccumulatedPointsTitle")} className="text-center">
                 <ResponsiveContainer width="100%" height={450}>
                     <LineChart data={dataAlltimePoints}>
                         <CartesianGrid strokeOpacity={0.5}/>

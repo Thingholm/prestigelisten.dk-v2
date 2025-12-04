@@ -1019,6 +1019,7 @@
         "rider": {
             "title": "Sammenlign ryttere",
             "agePointsTitle": "Point optjent på hvert alderstrin",
+            "ageAccumulatedPointsTitle": "Akkumulerede point på hvert alderstrin",
             "removeRider": "Fjern rytter",
             "riderInformation": "Rytterinformation",
             "nationality": "Nationalitet",
