@@ -86,7 +86,7 @@ export function getOnlyResultName(result: Result, t: ReturnType<typeof useTransl
 }
 
 
-function getSuffix(number: number) {
+export function getSuffix(number: number) {
     if (10 < number && number < 14) return "other";
     const numberString = number.toString();
 

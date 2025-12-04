@@ -1,11 +1,12 @@
 import { PointSystem } from "@/db/pointSystem";
 import { RaceSpanItem } from "./Calendar";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { shift, useFloating, useHover, useInteractions } from "@floating-ui/react";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import { getRaceName } from "@/lib/helpers/raceName";
 import { useRouter } from "next/navigation";
+import { getSuffix } from "@/lib/helpers/resultNames";
 
 export default function RaceSpan({
     raceItem,
@@ -28,8 +29,10 @@ export default function RaceSpan({
     const tResultNames = useTranslations("getResultNames");
     const tRaceClasses = useTranslations("raceClasses");
     const tMonths = useTranslations("calendar.months");
+    const tSuffixes = useTranslations("suffixes");
 
     const [isOpen, setIsOpen] = useState(false);
+    const locale = useLocale();
     const router = useRouter();
 
     const metaRace = {id: raceItem.race.meta_race_id, name: raceItem.race.name};
@@ -53,10 +56,15 @@ export default function RaceSpan({
     ]);
 
     const formatDate = (date: Date, tMonths: ReturnType<typeof useTranslations>) => {
-        const day = date.getDate();
+        const day = `${date.getDate()}${tSuffixes(`${getSuffix(date.getDate())}`)}`;
         const month = tMonths(date.toLocaleString('en-US', { month: 'long' }).toLowerCase());
         const year = date.getFullYear();
-        return `${day}. ${month} ${year}`;
+
+        if (locale == "en") {
+            return `${month} ${day} ${year}`;
+        }
+
+        return `${day} ${month} ${year}`;
     }
 
     const handleClick = () => {
