@@ -5,11 +5,11 @@ type Result = {
     }
 }
 
-export type ResultCategory = "gc" | "stageWin" | "oneDayRace" | "championship" | "other";
+export type ResultCategory = "gc" | "stageWin" | "oneDayRace" | "championship" | "gtJerseys";
 
 export function getResultCategory(result: Result): ResultCategory {
     const gcRaceClassIds = [1, 2, 4, 6, 8, 10, 26];
-    const oneDayRaceRaceClassIds = [3, 5, 7, 9, 11];
+    const oneDayRaceRaceClassIds = [3, 5, 7, 9, 11, 24];
     const championshipRaceClassIds = [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27];
 
     if (oneDayRaceRaceClassIds.includes(result.races.race_class_id)) {
@@ -22,7 +22,7 @@ export function getResultCategory(result: Result): ResultCategory {
 
     if (gcRaceClassIds.includes(result.races.race_class_id)) {
         if (result.result_type_id == 5 || result.result_type_id == 6) {
-            return "other";
+            return "gtJerseys";
         }
 
         if (result.result_type_id == 7) {
@@ -32,5 +32,5 @@ export function getResultCategory(result: Result): ResultCategory {
         return "gc";
     }
 
-    return "other";
+    return "oneDayRace";
 }

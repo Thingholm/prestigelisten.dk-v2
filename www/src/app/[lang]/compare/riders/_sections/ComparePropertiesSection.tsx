@@ -127,9 +127,9 @@ export default async function ComparePropertiesSection({
                             title={tCategoryNames("championship")}
                         />
                         <CompareProperties
-                            value1={rider1Categories?.other}
-                            value2={rider2Categories?.other}
-                            title={tCategoryNames("other")}
+                            value1={rider1Categories?.gtJerseys}
+                            value2={rider2Categories?.gtJerseys}
+                            title={tCategoryNames("gtJerseys")}
                         />
                     </TableBody>
                 </Table>
