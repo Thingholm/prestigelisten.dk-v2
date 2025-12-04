@@ -1011,9 +1011,9 @@
         }
     },
     "comparePage": {
-        "title": "Compare riders or nations on Prestigelisten",
+        "title": "Compare riders or countries on Prestigelisten",
         "riders": "Riders",
-        "nations": "Nations",
+        "nations": "Countries",
         "remove": "Remove",
         "rider": {
             "title": "Compare riders",
