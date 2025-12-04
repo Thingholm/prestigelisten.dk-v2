@@ -1061,7 +1061,9 @@
             "pointsAllTime": "Point all time",
             "placementForYear": "Placering for år",
             "year": "År",
-            "placementLabel": "Placering"
+            "placementLabel": "Placering",
+            "greatestSeasonYear": "Største sæson",
+            "greatestSeasonPoints": "Point i største sæson"
         }
     },
     "twitterCard": {

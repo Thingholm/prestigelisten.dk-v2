@@ -1060,7 +1060,9 @@
             "pointsAllTime": "Points all time",
             "placementForYear": "Placement for year",
             "year": "Year",
-            "placementLabel": "Placement"
+            "placementLabel": "Placement",
+            "greatestSeasonYear": "Greatest season",
+            "greatestSeasonPoints": "Points in greatest season"
         }
     },
     "twitterCard": {
