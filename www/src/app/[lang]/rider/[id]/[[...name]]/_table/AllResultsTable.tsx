@@ -34,10 +34,9 @@ export default function AllResultsTable({
         <div className="w-full">
             <Table>
                 <TableHead>
-                    <TableColumn>{t("points")}</TableColumn>
-                    <TableColumn>{t("amount")}</TableColumn>
                     <TableColumn>{t("result")}</TableColumn>
                     <TableColumn className="hidden md:table-cell">{t("years")}</TableColumn>
+                    <TableColumn>{t("points")}</TableColumn>
                 </TableHead>
                 <TableBody>
                     {sortGroupedResults(groupedResults).slice(0, rowAmount).map(group => {
@@ -45,22 +44,22 @@ export default function AllResultsTable({
 
                         return (
                             <TableRow key={group.id}>
-                                <TableCell>{group.points}</TableCell>
-                                <TableCell>{group.results.length}</TableCell>
                                 <TableCell className="font-medium">
                                     <Link href={getRaceUrl(group.races.meta_races)} className="hover:underline">
                                         <FlagSpan code={getRaceFlagCode({id: group.races.meta_races.id, nations: nations.find(nation => nation.id == group.races.meta_races.nation_id)})}/>
+                                        {group.results.length > 1 && <span>{group.results.length}x </span>}
                                         {getGroupedResultName(group, tResultNames, true)}
                                     </Link>
                                 </TableCell>
                                 <TableCell className="hidden md:table-cell">
-                                    {groupedByYear.sort((a, b) => b.key - a.key).map((result, index) => (
+                                    {groupedByYear.sort((a, b) => a.key - b.key).map((result, index) => (
                                         <span key={result.key}>
                                             {index != 0 ? ", " : ""}
                                             <Link href={getYearUrl(result.key)} className="hover:underline">{result.key}<span className="opacity-70 font-light">{result.results.length > 1 ? ` (${result.results.length}x)` : ""}</span></Link>
                                         </span>
                                     ))}
                                 </TableCell>
+                                <TableCell>{group.points}</TableCell>
                             </TableRow>
                         )
                     })}
