@@ -1001,7 +1001,8 @@
             "pointsEntireCareer": "Point i hele karrieren",
             "placementForYear": "Placering for {year}",
             "placementOnPrestigeList": "Placering på Prestigelisten",
-            "movementOnPrestigeList": "Bevægelse på Prestigelisten"
+            "movementOnPrestigeList": "Bevægelse på Prestigelisten",
+            "resultCount": "Antal pointgivende resultater"    
         },
         "tables": {
             "greatestRidersFromNation": "Største ryttere fra {nation}",

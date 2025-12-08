@@ -1000,7 +1000,8 @@
             "pointsEntireCareer": "Points in entire career",
             "placementForYear": "Placement for {year}",
             "placementOnPrestigeList": "Placement on Prestigelisten",
-            "movementOnPrestigeList": "Movement on Prestigelisten"
+            "movementOnPrestigeList": "Movement on Prestigelisten",
+            "resultCount": "Total results"
         },
         "tables": {
             "greatestRidersFromNation": "Greatest riders from {nation}",
