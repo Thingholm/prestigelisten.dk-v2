@@ -63,16 +63,16 @@ export default function ChartSection({
 
     const charts = [
         {
-            title: t("yearlyRankings"),
-            component: <YearlyRankingsChart seasons={JSON.parse(JSON.stringify(rider.rider_seasons)).filter((season: Rider["rider_seasons"][number]) => season.points_for_year)}/>
+            title: t("yearlyPoints"),
+            component: <YearlyPointsChart yearlyPointsAndResults={resultsGroupedByYearGroupedByResult} isDistinctPlacements/>
         },
         {
             title: t("yearlyRankingsAcc"),
             component: <YearlyAlltimeRankingsChart seasons={rider.rider_seasons}/>
         },
         {
-            title: t("yearlyPoints"),
-            component: <YearlyPointsChart yearlyPointsAndResults={resultsGroupedByYearGroupedByResult} isDistinctPlacements/>
+            title: t("yearlyRankings"),
+            component: <YearlyRankingsChart seasons={JSON.parse(JSON.stringify(rider.rider_seasons)).filter((season: Rider["rider_seasons"][number]) => season.points_for_year)}/>
         },
         {
             title: t("yearlyCategoryPoints"),
@@ -89,7 +89,7 @@ export default function ChartSection({
             <div className="lg:mr-3 w-full">
                 <ProfileChartsWrapper
                     charts={[...charts]}
-                    initialChartIndex={2}
+                    initialChartIndex={0}
                     key={1}
                 />
             </div>
