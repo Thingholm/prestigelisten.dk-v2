@@ -718,13 +718,13 @@
         "season": "Season",
         "change": "Change",
         "results": "Results",
-        "result": "Result(s)",
+        "result": "Result",
         "greatestResults": "Greatest results",
         "pointsGained": "Points gained",
         "date": "Date",
         "numberOfRiders": "Rider count",
         "pointsPerRider": "Points per rider",
-        "activeOnlySpan": "Active only",
+        "activeOnlySpan": "Active riders",
         "showAll": "Show all...",
         "showMore": "Show more...",
         "numberOfResults": "Total results",
@@ -796,19 +796,19 @@
     },
     "teamPage": {
         "profile": {
-            "nation": "Nation",
-            "points": "Riders' points (total)",
-            "placementAllTeams": "Placement among teams with the greatest riders",
-            "numberOfResultsThisYear": "Number of point scoring results in {year}",
-            "pointsGainedThisYear": "Points gained in {year}",
-            "placementThisYear": "Placement among teams in {year}"
+            "nation": "Country",
+            "points": "Total points (current riders)",
+            "placementAllTeams": "Team ranking (total points of current squad)",
+            "numberOfResultsThisYear": "Prestigelisten results in {year}",
+            "pointsGainedThisYear": "Points earned in {year}",
+            "placementThisYear": "Team ranking ({year} results)"
         },
         "titles": {
-            "greatestRiders": "Greatest riders on the team",
-            "teamsWithGreatestRiders": "Teams with the greatest riders",
-            "mostPoints": "Teams with most points in {year}",
+            "greatestRiders": "Greatest current riders",
+            "teamsWithGreatestRiders": "Team ranking (current squads)",
+            "mostPoints": "Team ranking ({year} results)",
             "greatestRidersOnTeam": "Greatest riders on {team}",
-            "resultsThisYear": "Point scoring results in {year}"
+            "resultsThisYear": "Prestigelisten results in {year}"
         },
         "no": "No."
     },

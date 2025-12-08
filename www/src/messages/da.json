@@ -797,14 +797,14 @@
     "teamPage": {
         "profile": {
             "nation": "Nation",
-            "points": "Rytteres point (samlet)",
-            "placementAllTeams": "Placering blandt hold med de største ryttere",
+            "points": "Nuværende rytteres pointtotal",
+            "placementAllTeams": "Holdrangering (pointtotal for nuværende trup)",
             "numberOfResultsThisYear": "Antal pointgivende resultater i {year}",
             "pointsGainedThisYear": "Point optjent i {year}",
-            "placementThisYear": "Placering blandt hold i {year}"
+            "placementThisYear": "Holdrangering i {year}"
         },
         "titles": {
-            "greatestRiders": "Største ryttere på holdet",
+            "greatestRiders": "Største nuværende ryttere",
             "teamsWithGreatestRiders": "Hold med de største ryttere",
             "mostPoints": "Hold med flest point optjent i {year}",
             "greatestRidersOnTeam": "Største ryttere på {team}",
