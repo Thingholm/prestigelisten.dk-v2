@@ -1,6 +1,6 @@
 "use client";
 
-import { connectDataNulls } from "@/lib/helpers/chartDataHelper";
+import { calculateTickValues, connectDataNulls } from "@/lib/helpers/chartDataHelper";
 import { Tables } from "@/utils/supabase/database.types";
 import { useTranslations } from "next-intl";
 import { Brush, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
@@ -29,6 +29,8 @@ export default function YearlyAlltimeRankingsChart({
         };
     }
 
+    const {domain, ticks} = calculateTickValues(data.map(d => d.rank_all_time));
+
     return (
         <ResponsiveContainer height={400} width="100%">
             <LineChart data={data}>
@@ -39,7 +41,8 @@ export default function YearlyAlltimeRankingsChart({
                     label={{ value: t("placement"), angle: -90, position: "insideLeft", offset: 1}}  
                     tick={{fill: "#fff"}} 
                     type="number" 
-                    domain={[1, (dataMin: number) => (Math.round(dataMin * 1.05))]} 
+                    domain={domain}
+                    ticks={ticks} 
                     interval={"preserveStart"}
                 />
                 <Line 
