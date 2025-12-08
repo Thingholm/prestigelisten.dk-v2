@@ -3,14 +3,17 @@ import FlagSpan from "@/components/table/FlagSpan"
 import { formatDate } from "@/lib/helpers/dateFormatter"
 import { getRaceFlagCode } from "@/lib/helpers/raceFlags"
 import { getGroupedResultName } from "@/lib/helpers/resultNames"
-import { getRaceUrl } from "@/lib/helpers/urls"
+import { getRiderName } from "@/lib/helpers/riderName"
+import { getRaceUrl, getRiderUrl } from "@/lib/helpers/urls"
 import { Tables } from "@/utils/supabase/database.types"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 
 type ResultsWithPoints = Tables<"results"> & { 
     points: number, 
-    riders: Tables<"riders"> 
+    riders: Tables<"riders"> & {
+        nations?: Tables<"nations">
+    }
     races: Tables<"races"> & {
         meta_races: Tables<"meta_races"> & {
             nations: Tables<"nations"> | null
@@ -55,11 +58,12 @@ export default function ResultsForYearTable({
                             <TableCell>{result.points}</TableCell>
                             <TableCell>
                                 <Link href={getRaceUrl(result.races.meta_races)} className="hover:underline font-semibold">
-                                    <FlagSpan code={getRaceFlagCode(result.races.meta_races)}/>
-                                    {getGroupedResultName(result, tResultNames)}
+                                    <FlagSpan code={getRaceFlagCode(result.races.meta_races)} className="!hidden md:table-cell!"/>
+                                    <span className="md:ml-1">{getGroupedResultName(result, tResultNames)}</span>
                                 </Link>
                                 <SecondaryCellSpan breakpoint="md">
-                                    <RiderNameCell rider={result.riders} isCell={false}/>
+                                    <FlagSpan code={result.riders.nations?.code} className="mr-1"/>
+                                    <Link href={getRiderUrl(result.riders)}>{getRiderName(result.riders)}</Link>
                                 </SecondaryCellSpan>
                             </TableCell>
                             <RiderNameCell rider={result.riders} showFlagBreakpoint="always" className="hidden md:table-cell"/>
