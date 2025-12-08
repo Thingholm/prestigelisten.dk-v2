@@ -1,4 +1,5 @@
 import { RiderNameCell, SecondaryCellSpan, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table"
+import { getDateString } from "@/lib/helpers/dateFormatter";
 import { RankingEvolution } from "@/lib/helpers/rankingEvolution";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { getRaceUrl } from "@/lib/helpers/urls";
@@ -17,18 +18,6 @@ export default async function LatestResultsTable({
     const t = await getTranslations("tableColumns");
     const tResultNames = await getTranslations("getResultNames");
 
-    const getDateString = (date: string | undefined) => {
-        if (!date) return "";
-
-        if (locale === "da") {
-            return `${date.split("-")[2]}-${date.split("-")[1]}`
-        }
-
-        if (locale === "en") {
-            return `${date.split("-")[1]}-${date.split("-")[2]}`
-        }
-    }
-
     return (
         <Table>
             <TableHead>
@@ -38,7 +27,7 @@ export default async function LatestResultsTable({
                 <TableColumn className="hidden md:table-cell">{t("result")}</TableColumn>
                 <TableColumn className="hidden sm:table-cell">{t("pointsGained")}</TableColumn>
                 <TableColumn className="hidden lg:table-cell">{t("points")}</TableColumn>
-                <TableColumn>{t("date")} <SecondaryCellSpan>{t("dateFormatNoYear")}</SecondaryCellSpan></TableColumn>
+                <TableColumn>{t("date")} <SecondaryCellSpan isColumn>{t("dateFormatNoYear")}</SecondaryCellSpan></TableColumn>
             </TableHead>
             <TableBody>
                 {latestResultsGroups.map(date => (
@@ -81,7 +70,7 @@ export default async function LatestResultsTable({
                                             {date.rankings?.find(r => r.rider_id == riderGroup.key)?.points} 
                                             <SecondaryCellSpan>{date.prevRankings?.find(r => r.rider_id == riderGroup.key)?.points}</SecondaryCellSpan>
                                         </TableCell>
-                                        <TableCell className="text-nowrap">{getDateString(riderGroup.results[0].race_dates?.date)}</TableCell>
+                                        <TableCell className="text-nowrap">{getDateString(riderGroup.results[0].race_dates?.date, locale)}</TableCell>
                                     </TableRow>
                                 )
                             })
