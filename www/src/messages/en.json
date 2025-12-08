@@ -801,7 +801,8 @@
             "placementAllTeams": "Team ranking (total points of current squad)",
             "numberOfResultsThisYear": "Prestigelisten results in {year}",
             "pointsGainedThisYear": "Points earned in {year}",
-            "placementThisYear": "Team ranking ({year} results)"
+            "placementThisYear": "Team ranking ({year} results)",
+            "founded": "Founded"
         },
         "titles": {
             "greatestRiders": "Greatest current riders",

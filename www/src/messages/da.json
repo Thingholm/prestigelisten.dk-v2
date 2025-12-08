@@ -801,7 +801,8 @@
             "placementAllTeams": "Holdrangering (pointtotal for nuværende trup)",
             "numberOfResultsThisYear": "Antal pointgivende resultater i {year}",
             "pointsGainedThisYear": "Point optjent i {year}",
-            "placementThisYear": "Holdrangering i {year}"
+            "placementThisYear": "Holdrangering i {year}",
+            "founded": "Grundlagt"
         },
         "titles": {
             "greatestRiders": "Største nuværende ryttere",
