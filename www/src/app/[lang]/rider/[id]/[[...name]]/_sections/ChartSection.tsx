@@ -38,6 +38,7 @@ export default function ChartSection({
         })
     );
 
+
     const resultsGroupedByYearGroupedByResult = resultsGroupedByYear.map(group => ({...group, results: groupResults(group.results, pointSystem, true)}));
     const resultsGroupedByYearGroupedByCategory = resultsGroupedByYear.map(group => ({
         key: group.key,
@@ -49,12 +50,12 @@ export default function ChartSection({
             })), 
             pointSystem, 
             result => result.category
-        ).map(categoryGroup => [categoryGroup.key, categoryGroup.points / group.points * 100]))
+        ).map(categoryGroup => [categoryGroup.key, categoryGroup.points]))
     })) as {
         key: number;
         points: number;
         championship: number;
-        other: number;
+        gtJerseys: number;
         stageWin: number;
         gc: number;
         oneDayRace: number;
