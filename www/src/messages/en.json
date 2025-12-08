@@ -625,12 +625,12 @@
     },
     "chartTooltips": {
         "year": "Year",
-        "placement": "Placement",
+        "placement": "Ranking",
         "points": "Points",
-        "yearlyPoints": "Points gained each year",
+        "yearlyPoints": "Points earned each year",
         "yearlyResultsAmount": "Point scoring results for year",
         "amount": "Amount",
-        "distributionOfPointsGained": "Distribution of points gained per category",
+        "distributionOfPointsGained": "Points earned per type of result",
         "category": "Category",
         "numberOfResults": "Total results",
         "categories": {
@@ -712,6 +712,7 @@
         "name": "Name",
         "rider": "Rider",
         "points": "Points",
+        "pointsTotal": "Total points",
         "nation": "Country",
         "team": "Team",
         "year": "Born",
@@ -739,7 +740,8 @@
         "inactive": "Inactive",
         "years": "Years",
         "age": "Age",
-        "dateFormatNoYear": "mm-dd"
+        "dateFormatNoYear": "mm-dd",
+        "editions": "Edition(s)"
     },
     "searchBar": {
         "placeholder": "Search..."
@@ -973,34 +975,34 @@
     },
     "riderPage": {
         "profile": {
-            "nationality": "Nationality",
-            "year": "Year",
+            "nationality": "Country",
+            "year": "Born",
             "team": "Team",
-            "allTimePlacement": "All time placement",
-            "nationPlacement": "Placement (only {nation})",
-            "activePlacement": "Placement (only active)",
+            "allTimePlacement": "All time ranking",
+            "nationPlacement": "Ranking among riders from {nation}",
+            "activePlacement": "Placement (active riders)",
             "points": "Points",
-            "greatestResults": "Greatest results",
+            "greatestResults": "Top results",
             "source": "Source"
         },
         "charts": {
-            "yearlyRankings": "Yearly rankings",
-            "yearlyRankingsAcc": "All time rankings each year",
-            "yearlyPoints": "Points gained each year",
+            "yearlyRankings": "Season ranking",
+            "yearlyRankingsAcc": "Development all time",
+            "yearlyPoints": "Points earned each year",
             "yearlyResultsAmount": "Number of point scoring results each year",
-            "yearlyCategoryPoints": "Distribution of points gained each year by category",
-            "categoryPoints": "Distribution of points by category"
+            "yearlyCategoryPoints": "Points earned each year by type of result",
+            "categoryPoints": "Points distributed by type of result"
         },
         "resultsEachYear": {
-            "title": "Results each year",
+            "title": "Prestigelisten results by season",
             "results": "Results",
             "noResults": "No results",
             "highlights": "Highlights",
             "pointsInYear": "Points in {year}",
-            "pointsEntireCareer": "Points in entire career",
-            "placementForYear": "Placement for {year}",
-            "placementOnPrestigeList": "Placement on Prestigelisten",
-            "movementOnPrestigeList": "Movement on Prestigelisten",
+            "pointsEntireCareer": "Career points",
+            "placementForYear": "Season ranking",
+            "placementOnPrestigeList": "All time ranking",
+            "movementOnPrestigeList": "Development all time",
             "resultCount": "Total results"
         },
         "tables": {

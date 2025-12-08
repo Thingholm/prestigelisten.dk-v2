@@ -630,7 +630,7 @@
         "yearlyPoints": "Point optjent hvert år",
         "yearlyResultsAmount": "Pointgivende resultater i året",
         "amount": "Antal",
-        "distributionOfPointsGained": "Årlige point pr. kategori",
+        "distributionOfPointsGained": "Point optjent fordelt efter resultattype",
         "category": "Kategori",
         "numberOfResults": "Antal resultater",
         "categories": {
@@ -712,6 +712,7 @@
         "name": "Navn",
         "rider": "Rytter",
         "points": "Point",
+        "pointsTotal": "Point i alt",
         "nation": "Nation",
         "team": "Hold",
         "year": "Årgang",
@@ -739,7 +740,8 @@
         "inactive": "Inaktive",
         "years": "År",
         "age": "Alder",
-        "dateFormatNoYear": "dd-mm"
+        "dateFormatNoYear": "dd-mm",
+        "editions": "Udgave(r)"
     },
     "searchBar": {
         "placeholder": "Søg..."
@@ -978,19 +980,19 @@
             "year": "Årgang",
             "team": "Hold",
             "allTimePlacement": "Placering all time",
-            "nationPlacement": "Placering all time (Kun {nation})",
+            "nationPlacement": "Placering blandt ryttere fra {nation}",
             "activePlacement": "Placering (kun aktive)",
             "points": "Point",
             "greatestResults": "Største resultater",
             "source": "Kilde"
         },
         "charts": {
-            "yearlyRankings": "Årlig placering",
-            "yearlyRankingsAcc": "All time placering hvert år",
+            "yearlyRankings": "Placering på sæsonranglisten",
+            "yearlyRankingsAcc": "Udvikling i all time-placering",
             "yearlyPoints": "Point optjent hvert år",
             "yearlyResultsAmount": "Antal pointgivende resultater hvert år",
-            "yearlyCategoryPoints": "Årlige point pr. kategori",
-            "categoryPoints": "Fordeling af point pr. kategori"
+            "yearlyCategoryPoints": "Point optjent hvert år fordelt efter resultattype",
+            "categoryPoints": "Pointfordeling efter type af resultat"
         },
         "resultsEachYear": {
             "title": "Resultater hvert år",
@@ -998,10 +1000,10 @@
             "noResults": "Ingen resultater",
             "highlights": "Højdepunkter",
             "pointsInYear": "Point i {year}",
-            "pointsEntireCareer": "Point i hele karrieren",
-            "placementForYear": "Placering for {year}",
-            "placementOnPrestigeList": "Placering på Prestigelisten",
-            "movementOnPrestigeList": "Bevægelse på Prestigelisten",
+            "pointsEntireCareer": "Point all time",
+            "placementForYear": "Placering på sæsonranglisten",
+            "placementOnPrestigeList": "Placering all time",
+            "movementOnPrestigeList": "Udvikling all time",
             "resultCount": "Antal pointgivende resultater"    
         },
         "tables": {

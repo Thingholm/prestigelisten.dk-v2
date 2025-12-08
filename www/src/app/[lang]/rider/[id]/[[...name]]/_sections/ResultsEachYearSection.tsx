@@ -77,7 +77,7 @@ export default function ResultsEachYearSection({
                     <ul>
                         <li>{t("resultCount")}: <span className="font-medium">{resultCountForYear}</span></li>
                         <li>{t("pointsInYear", { year: selectedYear })}: <span className="font-medium">{formatNumber(season?.points_for_year ?? 0)}</span></li>
-                        <li>{t("placementForYear", { year: selectedYear })}: <span className="font-medium">{formatNumber(season?.rank_for_year) ?? "-"}</span></li>
+                        <li>{t("placementForYear")}: <span className="font-medium">{formatNumber(season?.rank_for_year) ?? "-"}</span></li>
                         <li>{t("pointsEntireCareer")}: <span className="font-medium">{formatNumber(season?.points_all_time ?? 0)}</span></li>
                         <li>{t("placementOnPrestigeList")}: <span className="font-medium">{formatNumber(season?.rank_all_time) ?? "-"}</span></li>
                         <li>{t("movementOnPrestigeList")}: <span className="font-medium">{getYearlyMovement()}</span></li>

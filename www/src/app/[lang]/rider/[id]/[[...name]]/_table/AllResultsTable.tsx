@@ -35,8 +35,8 @@ export default function AllResultsTable({
             <Table>
                 <TableHead>
                     <TableColumn>{t("result")}</TableColumn>
-                    <TableColumn className="hidden md:table-cell">{t("years")}</TableColumn>
-                    <TableColumn>{t("points")}</TableColumn>
+                    <TableColumn className="hidden md:table-cell">{t("editions")}</TableColumn>
+                    <TableColumn>{t("pointsTotal")}</TableColumn>
                 </TableHead>
                 <TableBody>
                     {sortGroupedResults(groupedResults).slice(0, rowAmount).map(group => {
