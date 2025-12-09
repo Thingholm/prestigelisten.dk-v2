@@ -913,12 +913,12 @@
             "no": "no."
         },
         "charts": {
-            "yearlyPoints": "Points gained each year",
+            "yearlyRankings": "Season ranking",
+            "yearlyRankingsAcc": "Development all time",
+            "yearlyPoints": "Points earned each year",
             "yearlyResultsAmount": "Number of point scoring results each year",
-            "yearlyRankings": "Yearly rankings",
-            "yearlyRankingsAcc": "All time rankings each year",
-            "yearlyCategoryPoints": "Distribution of points gained each year by category",
-            "categoryPoints": "Distribution of points by category"
+            "yearlyCategoryPoints": "Points earned each year by type of result",
+            "categoryPoints": "Points distributed by type of result"
         },
         "greatestResults": {
             "title": "Greatest results from riders from {nation}"

@@ -915,12 +915,12 @@
             "no": "nr."
         },
         "charts": {
+            "yearlyRankings": "Placering på sæsonranglisten",
+            "yearlyRankingsAcc": "Udvikling i all time-placering",
             "yearlyPoints": "Point optjent hvert år",
             "yearlyResultsAmount": "Antal pointgivende resultater hvert år",
-            "yearlyRankings": "Årlig placering",
-            "yearlyRankingsAcc": "All time placering hvert år",
-            "yearlyCategoryPoints": "Årlige point pr. kategori",
-            "categoryPoints": "Fordeling af point pr. kategori"
+            "yearlyCategoryPoints": "Point optjent hvert år fordelt efter resultattype",
+            "categoryPoints": "Pointfordeling efter type af resultat"
         },
         "greatestResults": {
             "title": "Største resultater af ryttere fra {nation}"
