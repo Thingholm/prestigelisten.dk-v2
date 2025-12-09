@@ -44,10 +44,12 @@ export function calculateTickValues(values: (number | null)[]) {
 
     const niceMax = Math.ceil(maxValue / niceStep) * niceStep;
 
-    const ticks = [1];
+    const rawTicks = [1];
     for (let tick = niceStep; tick <= niceMax; tick += niceStep) {
-        ticks.push(tick);
+        rawTicks.push(tick);
     }
+
+    const ticks = [...new Set(rawTicks)];
 
     return {
         domain: [1, niceMax],

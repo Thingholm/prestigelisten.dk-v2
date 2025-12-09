@@ -16,7 +16,7 @@ const colors = {
     "stageWin": "#14ed11", 
     "oneDayRace": "#d1062b", 
     "championship": "#11c8ed", 
-    "other": "#fff"
+    "gtJerseys": "#fff"
 }
 
 type GroupedResults = (Tables<"results"> & { 
