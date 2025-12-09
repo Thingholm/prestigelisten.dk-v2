@@ -40,7 +40,7 @@ export default function GreatestResultsTable({
         <div>
             <Table>
                 <TableHead>
-                    <TableColumn>{t("result")}</TableColumn>
+                    <TableColumn>{t("result(s)")}</TableColumn>
                     <TableColumn className="hidden lg:table-cell">{t("riders")}</TableColumn>
                     <TableColumn>{t("points")}</TableColumn>
                 </TableHead>

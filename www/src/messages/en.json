@@ -720,6 +720,7 @@
         "season": "Season",
         "change": "Change",
         "results": "Results",
+        "result(s)": "Result(s)",
         "result": "Result",
         "greatestResults": "Greatest results",
         "pointsGained": "Points gained",
@@ -735,16 +736,17 @@
         "span": "Span",
         "amount": "Amount",
         "number": "Number",
-        "riders": "Riders",
+        "riders": "Rider(s)",
         "races": "Races",
-        "latestPointSystem": "Current/latest point system",
+        "latestPointSystem": "Current/latest race category",
         "and": "and",
         "active": "Active",
         "inactive": "Inactive",
         "years": "Years",
         "age": "Age",
         "dateFormatNoYear": "mm-dd",
-        "editions": "Edition(s)"
+        "editions": "Edition(s)",
+        "totalPointsCurrentRiders": "Total points (current riders)"
     },
     "searchBar": {
         "placeholder": "Search..."
@@ -903,13 +905,13 @@
     "nationPage": {
         "noRiders": "{nation} has no riders with points yet.",
         "profile": {
-            "placement": "Placement",
+            "placement": "All time ranking",
             "points": "Points",
-            "activePlacement": "Placement (only active riders)",
-            "activePoints": "Points (only active riders)",
-            "numberOfRidersWithPoints": "Number of riders with points",
-            "resultCount": "Number of point scoring results",
-            "greatestRiders": "Greatest riders from {nation}",
+            "activePlacement": "Ranking (active riders only)",
+            "activePoints": "Points (active riders only)",
+            "numberOfRidersWithPoints": "Riders with points",
+            "resultCount": "Prestigelisten",
+            "greatestRiders": "Top results",
             "no": "no."
         },
         "charts": {
@@ -928,20 +930,20 @@
             "greatestActiveRiders": "Greatest active riders from {nation}"
         },
         "resultsEachYear": {
-            "title": "Results each year",
+            "title": "Prestigelisten results by season",
             "results": "Results",
             "noResults": "No results",
             "highlights": "Highlights",
             "pointsInYear": "Points in {year}",
-            "pointsAllTime": "Points all time",
-            "placementForYear": "Placement for {year}",
-            "placementOnPrestigeList": "Placement on Prestigelisten",
-            "movementOnPrestigeList": "Movement on Prestigelisten",
-            "numberOfResults": "Total results",
-            "mostPoints": "Riders with most points in {year}"
+            "pointsAllTime": "All time points",
+            "placementForYear": "Season ranking",
+            "placementOnPrestigeList": "All time ranking",
+            "movementOnPrestigeList": "Development all time",
+            "numberOfResults": "Prestigelisten results",
+            "mostPoints": "Points earned in {year}"
         },
         "racesAndTeamsTables": {
-            "pointGivingRaces": "Point giving races in {nation}",
+            "pointGivingRaces": "Prestigelisten races in {nation}",
             "teamsWithPoints": "Teams from {nation} with points"
         }
     },

@@ -720,6 +720,7 @@
         "season": "Sæson",
         "change": "Udvikling",
         "results": "Resultater",
+        "result(s)": "Resultat(er)",
         "result": "Resultat",
         "greatestResults": "Største resultater",
         "pointsGained": "Point optjent",
@@ -735,16 +736,17 @@
         "span": "Periode",
         "amount": "Antal",
         "number": "Antal",
-        "riders": "Ryttere",
+        "riders": "Rytter(e)",
         "races": "Løb",
-        "latestPointSystem": "Aktuel/seneste pointklasse",
+        "latestPointSystem": "Aktuel/seneste løbskategori",
         "and": "og",
         "active": "Aktive",
         "inactive": "Inaktive",
         "years": "År",
         "age": "Alder",
         "dateFormatNoYear": "dd-mm",
-        "editions": "Udgave(r)"
+        "editions": "Udgave(r)",
+        "totalPointsCurrentRiders": "Nuværende rytteres pointtotal"
     },
     "searchBar": {
         "placeholder": "Søg..."
@@ -905,9 +907,9 @@
     "nationPage": {
         "noRiders": "{nation} har ingen ryttere med point endnu.",
         "profile": {
-            "placement": "Placering",
+            "placement": "Rangering all time",
             "points": "Point",
-            "activePlacement": "Placering (kun aktive)",
+            "activePlacement": "Rangering (kun aktive)",
             "activePoints": "Point (kun aktive)",
             "numberOfRidersWithPoints": "Antal ryttere med point",
             "resultCount": "Antal pointgivende resultater",
@@ -930,21 +932,21 @@
             "greatestActiveRiders": "Største aktive ryttere fra {nation}"
         },
         "resultsEachYear": {
-            "title": "Resultater hvert år",
+            "title": "Pointgivende resultater pr. sæson",
             "results": "Resultater",
             "noResults": "Ingen resultater",
             "highlights": "Højdepunkter",
             "pointsInYear": "Point i {year}",
             "pointsAllTime": "Point all time",
-            "placementForYear": "Placering for {year}",
+            "placementForYear": "Placering all time",
             "placementOnPrestigeList": "Placering på Prestigelisten",
-            "movementOnPrestigeList": "Bevægelse på Prestigelisten",
-            "numberOfResults": "Antal resultater",
+            "movementOnPrestigeList": "Udvikling all time",
+            "numberOfResults": "Antal pointgivende resultater",
             "mostPoints": "Ryttere med flest point optjent i {year}"
         },
         "racesAndTeamsTables": {
             "pointGivingRaces": "Pointgivende løb i {nation}",
-            "teamsWithPoints": "Hold fra {nation} med point"
+            "teamsWithPoints": "Hold fra {nation}"
         }
     },
     "omPrestigelisten": {
