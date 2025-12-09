@@ -60,11 +60,11 @@ export default function MostOfEachResultSection({
                 </label>
                 <Table>
                     <TableHead>
-                        <TableColumn>{tTableColumns("amount")}</TableColumn>
+                        <TableColumn>{tTableColumns("number")}</TableColumn>
                         <TableColumn>{tTableColumns("rider")}</TableColumn>
                         <TableColumn className="hidden sm:table-cell">{tTableColumns("nation")}</TableColumn>
                         <TableColumn className="hidden lg:table-cell">{tTableColumns("editions")}</TableColumn>
-                        <TableColumn>{tTableColumns("points")}</TableColumn>
+                        <TableColumn>{tTableColumns("pointsTotal")}</TableColumn>
                     </TableHead>
                     <TableBody>
                         {resultsForResultType

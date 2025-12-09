@@ -729,9 +729,11 @@
         "showAll": "Vis alle...",
         "showMore": "Vis flere...",
         "numberOfResults": "Antal resultater",
+        "pointsScoringResults": "Pointgivende resultater",
         "greatestRiders": "Største ryttere",
         "span": "Periode",
         "amount": "Antal",
+        "number": "Antal",
         "riders": "Ryttere",
         "races": "Løb",
         "latestPointSystem": "Aktuel/seneste pointklasse",
@@ -819,9 +821,9 @@
     "racePage": {
         "profile": {
             "nation": "Nation",
-            "currentPointSystem": "Aktuel pointklasse",
-            "latestPointSystem": "Seneste pointklasse",
-            "active": "Aktiv (som pointgivende løb)",
+            "currentPointSystem": "Aktuel løbskategori",
+            "latestPointSystem": "Seneste løbskategori",
+            "active": "Aktivt (som pointgivende løb)",
             "activeAnswer": {
                 "yes": "Ja",
                 "no": "Nej"
@@ -833,8 +835,8 @@
         },
         "timeline": {
             "title": "Tidslinje",
-            "pointClasses": "Pointklasser",
-            "pointClass": "Pointklasse",
+            "pointClasses": "Løbskategorier",
+            "pointClass": "Løbskategori",
             "from": "Fra",
             "to": "Til",
             "active": "Aktivt"
@@ -845,11 +847,11 @@
         },
         "resultsEachEdition": {
             "title": "Resultater for hver udgave",
-            "pointClassForEdition": "Pointklasse for udgave",
+            "pointClassForEdition": "Udgavens løbskategori",
             "results": "Resultater"
         },
         "mostOfEachResultTypes": {
-            "title": "Ryttere med flest af hver type resultat",
+            "title": "Rekorder for hvert muligt resultat",
             "resultType": "Resultat"
         }
     },

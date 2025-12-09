@@ -729,9 +729,11 @@
         "showAll": "Show all...",
         "showMore": "Show more...",
         "numberOfResults": "Total results",
+        "pointsScoringResults": "Prestigelisten results",
         "greatestRiders": "Greatest riders",
         "span": "Span",
         "amount": "Amount",
+        "number": "Number",
         "riders": "Riders",
         "races": "Races",
         "latestPointSystem": "Current/latest point system",
@@ -817,23 +819,23 @@
     },
     "racePage": {
         "profile": {
-            "nation": "Nation",
-            "currentPointSystem": "Current point class",
-            "latestPointSystem": "Latest point class",
-            "active": "Active (as point scoring race)",
+            "nation": "Country",
+            "currentPointSystem": "Current race category",
+            "latestPointSystem": "Latest race category",
+            "active": "Active (as Prestigelisten race)",
             "activeAnswer": {
                 "yes": "Yes",
                 "no": "No"
             },
-            "firstEdition": "First point scoring edition",
-            "latestEdition": "Latest point scoring edition",
-            "pointSystem": "Point class for {race}",
+            "firstEdition": "First edition as Prestigelisten race",
+            "latestEdition": "Latest edition as Prestigelisten race",
+            "pointSystem": "Points scale for {race}",
             "source": "Source"
         },
         "timeline": {
             "title": "Timeline",
-            "pointClasses": "Point classes",
-            "pointClass": "Point class",
+            "pointClasses": "Race categories",
+            "pointClass": "Race category",
             "from": "From",
             "to": "To",
             "active": "Active"
@@ -843,13 +845,13 @@
             "mostPointsNations": "Nations with most points in the race"
         },
         "resultsEachEdition": {
-            "title": "Results each edition",
-            "pointClassForEdition": "Point class for edition",
+            "title": "Results",
+            "pointClassForEdition": "Race category for this edition",
             "results": "Results"
         },
         "mostOfEachResultTypes": {
-            "title": "Riders with most of each result type",
-            "resultType": "Result type"
+            "title": "Records for each possible result",
+            "resultType": "Result"
         }
     },
     "lists": {
