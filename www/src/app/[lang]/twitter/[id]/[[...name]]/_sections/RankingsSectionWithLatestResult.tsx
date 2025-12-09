@@ -49,7 +49,7 @@ export default function RankingsSectionWithLatestResult({
                         ))
                     }
                 </p>
-                <p className="text-nowrap pl-2">{latestResultGroup?.points} {t("points")}</p>
+                <p className="text-nowrap pl-2 lowercase">{latestResultGroup?.points} {t("points")}</p>
             </div>
             <div className="flex justify-between gap-2 mt-2">
                 {settings.showAllTimeRanking && alltimeRank && 

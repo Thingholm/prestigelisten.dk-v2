@@ -26,7 +26,7 @@ export default function RankingsTableSection({
             <p className="font-semibold">{settings.showActiveRankingTable ? t("placementActive") : t("alltimePlacement")}</p>
             <Table className="text-sm">
                 <TableHead>
-                    <TableColumn>{tTableColumns("placement")}</TableColumn>
+                    <TableColumn>{tTableColumns("no")}</TableColumn>
                     <TableColumn>{tTableColumns("rider")}</TableColumn>
                     <TableColumn>{tTableColumns("year")}</TableColumn>
                     <TableColumn>{tTableColumns("points")}</TableColumn>

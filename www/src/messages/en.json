@@ -1078,10 +1078,10 @@
         "points": "Points",
         "allTime": "All time",
         "active": "Active",
-        "fromYear": "From {year}",
-        "alltimePlacement": "All time placement",
-        "placementActive": "Placement among active riders",
-        "greatestResults": "Greatest results",
+        "fromYear": "Born in {year}",
+        "alltimePlacement": "All time ranking",
+        "placementActive": "Ranking (active riders)",
+        "greatestResults": "Top results",
         "placementsOnPrestigeList": "Placements on Prestigelisten",
         "and": "and"
     }
