@@ -36,7 +36,7 @@ export default function ListTable({
             </TableHead>
             <TableBody>
                 {riderPoints.slice(0, rowAmount).map(rider => {
-                    var alltimeRanking = alltimeRankingsLookupList.find(alltimeRanking => alltimeRanking.id == rider.rider_id)?.rank;
+                    const alltimeRanking = alltimeRankingsLookupList.find(alltimeRanking => alltimeRanking.id == rider.rider_id)?.rank;
 
                     return (
                         <TableRow 
