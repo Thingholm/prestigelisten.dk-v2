@@ -1,7 +1,7 @@
 "use client";
 
 import { urls } from "@/lib/constants/urls";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
 import DropdownGroup from "./DropdownGroup";
@@ -10,15 +10,12 @@ import { getRidersListUrl } from "@/lib/helpers/urls";
 
 export default function DesktopNav() {
     const t = useTranslations("navigation")
+    const locale = useLocale();
 
     const [isDropdownOpen, setIsDropdownOpen] = useState([false, false]);
 
     return (
-        <nav className="text-primary-500 gap-x-6 xl:gap-x-8 hidden lg:flex">
-            <Link href={urls["about"]} className="relative group/item w-fit">
-                <span>{t("about")}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
-            </Link>
+        <nav className="text-primary-500 gap-x-4 text-sm 2xl:text-base 2xl:gap-x-8 hidden xl:flex">
             <Link href={urls["pointSystem"]} className="relative group/item w-fit">
                 <span>{t("pointSystem")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
@@ -39,23 +36,20 @@ export default function DesktopNav() {
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
                 <DropdownItem
-                    href={getRidersListUrl({ nations: [14] })}
-                    title={t("danish")}
+                    href={getRidersListUrl({ isSingleYear: true })}
+                    title={t("greatestByYear")}
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
+                {locale == "da" &&
+                    <DropdownItem
+                        href={getRidersListUrl({ nations: [14] })}
+                        title={t("danish")}
+                        onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
+                    />
+                }
                 <DropdownItem
                     href={urls["listNations"]}
                     title={t("nations")}
-                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
-                />
-                <DropdownItem
-                    href={urls["team"]}
-                    title={t("teams")}
-                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
-                />
-                <DropdownItem
-                    href={urls["listRiders3YearPeriod"]}
-                    title={t("3YearPeriod")}
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
                 <DropdownItem
@@ -64,39 +58,36 @@ export default function DesktopNav() {
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
                 <DropdownItem
-                    href={urls["year"]}
-                    title={t("mostPointsEachYear")}
-                    onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
-                />
-                <DropdownItem
                     href={urls["listRidersAges"]}
                     title={t("greatestByAge")}
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
                 <DropdownItem
-                    href={getRidersListUrl({ isSingleYear: true })}
-                    title={t("greatestByYear")}
+                    href={urls["listRiders3YearPeriod"]}
+                    title={t("3YearPeriod")}
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
             </DropdownGroup>
+            <Link href={urls["calendar"]} className="relative group/item w-fit">
+                <span>{t("raceCalendar")}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
+            </Link>
+            <Link href={urls["year"]} className="relative group/item w-fit">
+                <span>{t("seasonOverview")}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
+            </Link>
+            <Link href={urls["team"]} className="relative group/item w-fit">
+                <span>{t("teams")}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
+            </Link>
             <DropdownGroup
                 title={t("more")}
                 isOpen={isDropdownOpen[1]}
                 setIsOpen={(value: boolean) => setIsDropdownOpen(prev => [prev[0], value])}
             >
                 <DropdownItem
-                    href={urls["rawData"]}
-                    title={t("rawData")}
-                    onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
-                />
-                <DropdownItem
                     href={urls["quiz"]}
                     title={t("quiz")}
-                    onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
-                />
-                <DropdownItem
-                    href={urls["calendar"]}
-                    title={t("raceCalendar")}
                     onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
                 />
                 <DropdownItem
@@ -105,6 +96,10 @@ export default function DesktopNav() {
                     onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
                 />
             </DropdownGroup>
+            <Link href={urls["about"]} className="relative group/item w-fit">
+                <span>{t("about")}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
+            </Link>
         </nav>
     )
 }

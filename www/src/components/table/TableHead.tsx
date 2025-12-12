@@ -4,7 +4,7 @@ export default function TableHead({
     children,
     className = "",
 }: Readonly<{
-    children: ReactElement<React.ComponentProps<"th">> | ReactElement<React.ComponentProps<"th">>[];
+    children: ReactElement<React.ComponentProps<"th">> | (ReactElement<React.ComponentProps<"th">> | false)[];
     className?: string;
 }>) {
     return (

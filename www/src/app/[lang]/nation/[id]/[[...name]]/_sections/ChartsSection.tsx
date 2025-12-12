@@ -53,12 +53,12 @@ export default function ChartsSection({
             })), 
             pointSystem, 
             result => result.category
-        ).map(categoryGroup => [categoryGroup.key, categoryGroup.points / group.points * 100]))
+        ).map(categoryGroup => [categoryGroup.key, categoryGroup.points]))
     })) as {
         key: number;
         points: number;
         championship: number;
-        other: number;
+        gtJerseys: number;
         stageWin: number;
         gc: number;
         oneDayRace: number;

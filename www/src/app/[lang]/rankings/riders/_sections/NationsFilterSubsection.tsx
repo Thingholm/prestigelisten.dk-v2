@@ -60,6 +60,7 @@ export default function NationsFilterSubsection({
                         <Select
                             onChange={e => handleNationChange(e, index)}
                             value={filter.nations?.[index] ?? "undefined"}
+                            className="px-8 py-1 sm:py-0 sm:px-1"
                         >
                             <option value="undefined">{filter.nations?.length > 1 ? t("selectNation") : t("allNations")}</option>
                             {nations.map(nation => {

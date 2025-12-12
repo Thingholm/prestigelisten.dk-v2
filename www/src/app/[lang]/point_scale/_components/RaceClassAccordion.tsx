@@ -40,6 +40,10 @@ export default function RaceClassAccordion({
     const activeRaces = races.filter(race => race.race_class_id == raceClass.id && race.active);
     const inactiveRaces = races.filter(race => race.race_class_id == raceClass.id && !race.active).sort((a, b) => a.meta_races.name.localeCompare(b.meta_races.name)).sort((a, b) => b.results[0].max - a.results[0].max);
 
+    if (activeRaces.length == 0 && inactiveRaces.length == 0) {
+        return null;
+    }
+
     return (
         <div className="bg-gray-100 shadow-sm w-full relative -left-2 rounded-xl scroll-mt-20" id={raceClass.id.toString()}>
             <button className="flex items-center justify-between w-full hover:cursor-pointer rounded-xl hover:bg-gray-50 py-3 px-4" onClick={() => setIsOpen(!isOpen)}>

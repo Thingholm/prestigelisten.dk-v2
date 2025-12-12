@@ -11,13 +11,15 @@ export default function ResultNameListItem({
     metaRace,
     count,
     points,
-    className
+    className,
+    showPoints = true
 }: Readonly<{
     resultName: string
     metaRace: MetaRace
     count?: number
     points?: number,
-    className?: string
+    className?: string,
+    showPoints?: boolean
 }>) {
     return (
         <li className={`${className} relative`}>
@@ -25,7 +27,7 @@ export default function ResultNameListItem({
                 <span className="absolute right-full mr-2 opacity-70">{count}x</span>
             }
             <Link href={getRaceUrl(metaRace)} className="font-medium hover:underline">{resultName}</Link>
-            {points &&
+            {points && showPoints &&
                 <span className="opacity-70 ml-2 font-light">- {points}p</span>
             }
         </li>

@@ -17,9 +17,9 @@ export default async function Header() {
     return (
         <header className="fixed top-0 left-0 w-full bg-secondary-950 py-1 sm:py-2 px-3 sm:px-16 z-50 flex items-center justify-between">
             {/* TODO: Translations */}
-            <h1 className="text-primary-500 uppercase text-2xl lg:text-3xl font-bold"><Link href={urls["home"]}>Prestigelisten</Link></h1> 
+            <h1 className="text-primary-500 uppercase text-2xl 2xl:text-3xl font-bold"><Link href={urls["home"]}>Prestigelisten</Link></h1> 
             <DesktopNav/>
-            <div className="hidden lg:flex items-center gap-x-2">
+            <div className="hidden xl:flex items-center gap-x-2">
                 <LocaleSwitcher/>
                 <NavSearchBar searchBarData={searchData}/>
                 <div className="w-[1px] bg-primary-500 h-8"></div>

@@ -20,6 +20,7 @@ export default async function TeamsTable({
             <TableHead>
                 <TableColumn>{t("no")}</TableColumn>
                 <TableColumn>{t("team")}</TableColumn>
+                <TableColumn className="hidden sm:table-cell">{t("numberOfRiders")}</TableColumn>
                 <TableColumn>{t("points")}</TableColumn>
             </TableHead>
             <TableBody>
@@ -31,6 +32,7 @@ export default async function TeamsTable({
                             showFlagBreakpoint="always"
                             isMain
                         />
+                        <TableCell className="hidden sm:table-cell">{team.riders.length}</TableCell>
                         <TableCell>{team[rankKey]}</TableCell>
                     </TableRow>
                 ))}

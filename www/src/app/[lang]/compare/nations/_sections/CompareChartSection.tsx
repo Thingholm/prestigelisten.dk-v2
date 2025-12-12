@@ -74,7 +74,7 @@ export default function CompareChartSection({
                     <p className="font-semibold text-white">{t("year")}: {label}</p>
                     <div className={`text-white mt-2 mb-1 ${nation1Season ? "" : "opacity-50"}`}>
                         <p style={{ color: "#2dc702" }}>{tNations(`${nation1.code}.name`)}</p>
-                        <p>{t("pointsGained")}: {formatNumber(nation2Season?.points_for_year) ?? 0}</p>
+                        <p>{t("pointsGained")}: {formatNumber(nation1Season?.points_for_year) ?? 0}</p>
                         <p>{t("pointsAllTime")}: {formatNumber(nation1Season?.points_all_time) ?? 0} </p>
                         <p>{t("placementForYear")}: {formatNumber(nation1Season?.rank_for_year) ?? "-"} </p>
                         <p>{t("placement")}: {formatNumber(nation1Season?.rank_all_time) ?? "-"}</p>

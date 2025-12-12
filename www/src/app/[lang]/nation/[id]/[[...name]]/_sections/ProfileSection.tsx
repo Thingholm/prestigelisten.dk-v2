@@ -73,7 +73,7 @@ export default function ProfileSection({
                     .map(rider => (
                         <p key={rider.id}>
                             <Link href={getRiderUrl(rider)} className="font-medium hover:underline">{getRiderName(rider)}</Link>
-                            <span className="opacity-70 font-light"> - {t("no")} {formatNumber(rider.rider_seasons[0]?.rank_all_time)}</span>
+                            <span> - {formatNumber(rider.rider_seasons[0]?.rank_all_time)}</span>
                         </p>
                     )
                 )}

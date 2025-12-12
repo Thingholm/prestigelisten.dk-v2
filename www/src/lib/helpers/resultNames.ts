@@ -73,20 +73,24 @@ type Result = {
     placement: number | null;
 }
 
-export function getOnlyResultName(result: Result, t: ReturnType<typeof useTranslations>) {
+export function getOnlyResultName(result: Result, t: ReturnType<typeof useTranslations>, stageNumberIsPrefix: boolean = true) {
     if ([2, 3, 4].includes(result.result_type_id) && result.placement) {
         return `${result.placement}${t(`suffixes.${getSuffix(result.placement)}`)} ${t("place")}`
     }
 
     if (result.result_type_id == 7 && result.stage) {
-        return `${result.stage}${t(`suffixes.${getSuffix(result.stage)}`)} ${t("stage")}`
+        if (stageNumberIsPrefix) {
+            return `${result.stage}${t(`suffixes.${getSuffix(result.stage)}`)} ${t("stage")}`
+        } else {
+            return `${t("stageCapitalized")} ${result.stage}`
+        }
     }
 
     return t(`resultTypes.${result.result_type_id}`)
 }
 
 
-function getSuffix(number: number) {
+export function getSuffix(number: number) {
     if (10 < number && number < 14) return "other";
     const numberString = number.toString();
 

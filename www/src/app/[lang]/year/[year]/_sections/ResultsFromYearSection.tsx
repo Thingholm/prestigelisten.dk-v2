@@ -14,6 +14,7 @@ import { getRiderUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl"
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
+import ResultsFromRaceEditionTable from "../_tables/ResultsFromRaceEditionTable";
 
 export default function ResultsFromYearSection({
     year,
@@ -59,21 +60,7 @@ export default function ResultsFromYearSection({
                         <option key={race.id} value={race.id}>{getRaceName(race.meta_races, tResultNames)}</option>
                     ))}
                 </Select>
-                <ul className="gap-0.5 flex flex-col">
-                    {sortResults(resultsFromYear.filter(result => result.race_id == selectedRace.id))
-                        .map(result => (
-                            <li key={result.id}>
-                                <span>{getOnlyResultName(result, tResultNames)} - </span>
-                                <Link href={getRiderUrl(result.riders)} className="hover:underline">
-                                    <FlagSpan code={result.riders.nations.code} className="mr-2"/> 
-                                    {getRiderName(result.riders)}
-                                </Link>
-                                <span> - </span>
-                                <span className="opacity-40">{pointSystem.find(ps => ps.result_type_id == result.result_type_id && ps.race_class_id == result.races.race_class_id)?.points}p</span>
-                            </li>
-                        ))
-                    }
-                </ul>
+                <ResultsFromRaceEditionTable results={sortResults(resultsFromYear.filter(result => result.race_id == selectedRace.id))} pointSystem={pointSystem}/>
             </Container>
         </Section>
     )

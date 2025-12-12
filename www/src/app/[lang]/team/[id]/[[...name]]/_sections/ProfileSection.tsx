@@ -38,6 +38,12 @@ export default function ProfileSection({
                         )}
                     </ProfileAttribute>
 
+                    <ProfileAttribute label={t("profile.founded")}>
+                        {/* TODO: Remove hardcoded string and add actual founded year property when added */}
+                        2010 (Eksempel)
+                        {/* {teamWithRiders.founded_year || "-"} */}
+                    </ProfileAttribute>
+
                     <ProfileAttribute label={t("profile.points")}>
                         {formatNumber(teamWithRiders.riders.reduce((acc, obj) => {
                             return acc + obj.rider_seasons[0].points_all_time || 0;
@@ -71,7 +77,7 @@ export default function ProfileSection({
                     .map(rider => (
                         <p key={rider.id}>
                             <Link href={getRiderUrl(rider)} className="font-medium hover:underline">{getRiderName(rider)}</Link>
-                            <span className="opacity-70 font-light"> - {t("no")} {formatNumber(rider.rider_seasons[0]?.rank_all_time)}</span>
+                            <span> - {formatNumber(rider.rider_seasons[0]?.rank_all_time)}</span>
                         </p>
                     )
                 )}

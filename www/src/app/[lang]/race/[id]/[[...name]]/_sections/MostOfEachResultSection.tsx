@@ -2,7 +2,7 @@
 
 import Section from "@/components/layout/Section";
 import { Result } from "../page";
-import { GroupedByKey, GroupedResult } from "@/lib/helpers/groupResults";
+import { GroupedByKey, GroupedResult, groupResults } from "@/lib/helpers/groupResults";
 import { Tables } from "@/utils/supabase/database.types";
 import Container from "@/components/layout/Container";
 import { useTranslations } from "next-intl";
@@ -10,6 +10,8 @@ import Select from "@/components/ui/Select";
 import { ChangeEvent, useState } from "react";
 import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
 import Button from "@/components/ui/Button";
+import Link from "next/link";
+import { getYearUrl } from "@/lib/helpers/urls";
 
 type GroupedResults = (Omit<GroupedResult<Result>, "results"> & {
   results: GroupedByKey<
@@ -58,11 +60,11 @@ export default function MostOfEachResultSection({
                 </label>
                 <Table>
                     <TableHead>
-                        <TableColumn>{tTableColumns("amount")}</TableColumn>
+                        <TableColumn>{tTableColumns("number")}</TableColumn>
                         <TableColumn>{tTableColumns("rider")}</TableColumn>
                         <TableColumn className="hidden sm:table-cell">{tTableColumns("nation")}</TableColumn>
-                        <TableColumn>{tTableColumns("year")}</TableColumn>
-                        <TableColumn>{tTableColumns("points")}</TableColumn>
+                        <TableColumn className="hidden lg:table-cell">{tTableColumns("editions")}</TableColumn>
+                        <TableColumn>{tTableColumns("pointsTotal")}</TableColumn>
                     </TableHead>
                     <TableBody>
                         {resultsForResultType
@@ -70,15 +72,38 @@ export default function MostOfEachResultSection({
                             .sort((a, b) => b.points - a.points)
                             .sort((a, b) => b.results.length - a.results.length)
                             .slice(0, rowAmount)
-                            .map(result => (
-                                <TableRow key={result.key.id}>
-                                    <TableCell>{result.results.length}</TableCell>
-                                    <RiderNameCell rider={result.key} showFlagBreakpoint="sm"/>
-                                    <NationNameCell nation={result.key.nations} className="hidden sm:table-cell"/>
-                                    <YearCell year={result.key.year}/>
-                                    <TableCell>{result.points}</TableCell>
-                                </TableRow>
-                            ))
+                            .map(result => {
+                                const resultsGroupedByYear = result.results.reduce((acc, curr) => {
+                                    const year = curr.year;
+                                    const existingYearIndex = acc.findIndex(r => r.year == year);
+
+                                    if (existingYearIndex === -1) {
+                                        acc.push({ year: year, count: 1 });
+                                    }
+                                    else {
+                                        acc[existingYearIndex].count += 1;
+                                    }
+
+                                    return acc;
+                                }, [] as {year: number, count: number}[]);
+
+                                return (
+                                    <TableRow key={result.key.id}>
+                                        <TableCell>{result.results.length}</TableCell>
+                                        <RiderNameCell rider={result.key} showFlagBreakpoint="sm" className="lg:text-nowrap"/>
+                                        <NationNameCell nation={result.key.nations} className="hidden sm:table-cell text-nowrap"/>
+                                        <TableCell className="hidden lg:table-cell">
+                                            {resultsGroupedByYear.map((r, index) => (
+                                                <span key={`${result.key}-${index}`}>
+                                                    {index > 0 && ", "}
+                                                    <Link href={getYearUrl(r.year)} className="hover:underline">{r.year}{r.count > 1 && <span className="opacity-70 font-light"> ({r.count}x)</span>}</Link>
+                                                </span>
+                                            ))}
+                                        </TableCell>
+                                        <TableCell>{result.points}</TableCell>
+                                    </TableRow>
+                                )
+                            })
                         }
                     </TableBody>
                 </Table>

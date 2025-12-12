@@ -21,8 +21,7 @@ export default function HeroSection({
                 <p className="font-bold text-lg mb-2">{t("quote")}</p>
                 <p className="italic mb-8">- {t("author")}</p>
                 <p className="mb-4">{t("description1")}</p>
-                <p className="mb-4">{t("description2")}</p>
-                <p className="mb-8">{t("description3")}</p>
+                <p className="mb-8">{t("description2")}</p>
                 <div className="flex flex-wrap gap-x-4 gap-y-2">
                     <Button href={getListRidersUrl()} color="secondary">
                         {t("exploreButton")}

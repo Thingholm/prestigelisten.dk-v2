@@ -47,6 +47,10 @@ export default async function ComparePropertiesSection({
     const nation1ResultYears = nation1Results?.map(result => result.year);
     const nation2ResultYears = nation2Results?.map(result => result.year);
 
+    const nation1GreatestSeason = nation1?.nation_seasons.sort((a, b) => (b.points_for_year ?? 0) - (a.points_for_year ?? 0))[0];
+    const nation2GreatestSeason = nation2?.nation_seasons.sort((a, b) => (b.points_for_year ?? 0) - (a.points_for_year ?? 0))[0];
+
+
     const nation1Categories = nation1Results && Object.fromEntries(
         groupResultsByKey(
             nation1Results.map(result => ({
@@ -127,6 +131,18 @@ export default async function ComparePropertiesSection({
                             }
                             title={t("pointsPerRider")}
                         />
+                        <CompareProperties
+                            value1={nation1GreatestSeason?.year}
+                            value2={nation2GreatestSeason?.year}
+                            title={t("greatestSeasonYear")}
+                            showCompareColor={false}
+                            noFormat
+                        />
+                        <CompareProperties
+                            value1={nation1GreatestSeason?.points_for_year}
+                            value2={nation2GreatestSeason?.points_for_year}
+                            title={t("greatestSeasonPoints")}
+                        />
                     </TableBody>
                 </Table>
             </div>
@@ -182,9 +198,9 @@ export default async function ComparePropertiesSection({
                             title={tCategoryNames("championship")}
                         />
                         <CompareProperties
-                            value1={nation1Categories?.other}
-                            value2={nation2Categories?.other}
-                            title={tCategoryNames("other")}
+                            value1={nation1Categories?.gtJerseys}
+                            value2={nation2Categories?.gtJerseys}
+                            title={tCategoryNames("gtJerseys")}
                         />
                     </TableBody>
                 </Table>

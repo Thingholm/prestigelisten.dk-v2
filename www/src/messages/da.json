@@ -250,7 +250,7 @@
                 "adjective": "Tyrkisk"
             },
             "ua": {
-                "name": "Ukraina",
+                "name": "Ukraine",
                 "adjective": "Ukrainsk"
             },
             "us": {
@@ -279,6 +279,7 @@
         "stage": "etape",
         "stageIn": "Etape i",
         "stageInLower": "etape i",
+        "stageCapitalized": "Etape",
         "place": "plads",
         "champion": "mester",
         "championITT": "mester i enkeltstart",
@@ -592,7 +593,7 @@
             "adjective": "Tyrkisk"
         },
         "ua": {
-            "name": "Ukraina",
+            "name": "Ukraine",
             "adjective": "Ukrainsk"
         },
         "us": {
@@ -630,7 +631,7 @@
         "yearlyPoints": "Point optjent hvert år",
         "yearlyResultsAmount": "Pointgivende resultater i året",
         "amount": "Antal",
-        "distributionOfPointsGained": "Fordeling af point optjent pr. kategori",
+        "distributionOfPointsGained": "Point optjent fordelt efter resultattype",
         "category": "Kategori",
         "numberOfResults": "Antal resultater",
         "categories": {
@@ -638,7 +639,7 @@
             "stageWin": "Etapesejre",
             "oneDayRace": "Endagsløb",
             "championship": "Mesterskaber",
-            "other": "Andre"
+            "gtJerseys": "Grand Tour-trøjer"
         }
     },
     "navigation": {
@@ -649,7 +650,7 @@
         "about": "Om Prestigelisten",
         "pointSystem": "Pointsystem",
         "lists": "Ranglister",
-        "compare": "Sammenlign",
+        "compare": "Sammenlign ryttere",
         "searchPlaceholder": "Søg efter ryttere, nationer, hold eller løb...",
         "more": "Mere",
         "seeList": "Se listen",
@@ -667,6 +668,7 @@
         "rawData": "Rådata",
         "quiz": "Quiz",
         "raceCalendar": "Løbskalender",
+        "seasonOverview": "Sæsonoversigt",
         "contact": "Kontakt",
         "developer": "Hjemmesiden er designet og udviklet af Rasmus Thingholm. Kontakt på ",
         "search": "Søg...",
@@ -683,12 +685,11 @@
     "homepage": {
         "quote": "Cycling isn't a game, it's a sport. Tough, hard and unpitying, and it requires great sacrifices. One plays football, or tennis, or hockey. One doesn't play at cycling.",
         "author": "Jean De Gribaldy",
-        "description1": "Velkommen til Mathias Jensens og Mathias Fisker Mundbjergs bud på en prestigeliste i landevejscyklingens verden.",
-        "description2": "Vi vil gerne begynde med at slå fast, at pointsystemet er baseret på en subjektiv vurdering, men en gennemdiskuteret og - mener vi selv - kvalificeret en af slagsen.",
-        "description3": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har forsøgt at udfærdige pointgivningen, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det, at der var mindre konkurrence for 100 år siden, udligner det mindre antal prestigefyldte løb, hvori det var muligt at score point.",
+        "description1": "Velkommen til - her har du vores bud på en rangering over ryttere med de mest prestigefyldte resultater i landevejscyklingens verden.",
+        "description2": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har tilstræbt at vægte pointsystemet, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det stigende antal prestigefyldte løb gennem de seneste 150 år udlignes af den forøgede konkurrence i verdenseliten.",
         "exploreButton": "Udforsk Prestigelisten",
         "moreButton": "Mere om listen...",
-        "socialMediaText": "Følg med på X og Instagram, hvor vi skriver om udvikling på Prestigelisten, statistik, quiz og meget mere.",
+        "socialMediaText": "Følg med på X, Facebook og Instagram, hvor vi løbende opdaterer om udviklingen på Prestigelisten, statistik, quiz og meget mere.",
         "tableTitles": {
             "allTimePoints": "All time største ryttere",
             "latestResults": "Seneste pointgivende resultater",
@@ -697,25 +698,29 @@
             "greatestDanishRiders": "Største danske ryttere",
             "greatestNations": "Største nationer",
             "greatestSeasons": "Største individuelle sæsoner",
-            "greatestAlltimeEachYear": "Største ryttere hvert år",
+            "greatestAlltimeEachYear": "Største ryttere all time efter hvert år",
             "greatest3YearSpan": "Største ryttere over en 3-årig periode",
-            "greatestByDecade": "Største ryttere hvert årti",
-            "socialMedia": "Følg os på X og Instagram"
-        }
+            "greatestByDecade": "Flest point i hvert årti",
+            "socialMedia": "Følg med på sociale medier"
+        },
+        "onlyActiveRiders": "Kun aktive ryttere"
     },
     "tableColumns": {
         "no": "Nr.",
+        "allTime": "All time",
         "allTimeNo": "Nr. (All time)",
         "placement": "Placering",
         "name": "Navn",
         "rider": "Rytter",
         "points": "Point",
+        "pointsTotal": "Point i alt",
         "nation": "Nation",
         "team": "Hold",
         "year": "Årgang",
         "season": "Sæson",
         "change": "Udvikling",
         "results": "Resultater",
+        "result(s)": "Resultat(er)",
         "result": "Resultat",
         "greatestResults": "Største resultater",
         "pointsGained": "Point optjent",
@@ -726,16 +731,22 @@
         "showAll": "Vis alle...",
         "showMore": "Vis flere...",
         "numberOfResults": "Antal resultater",
+        "pointsScoringResults": "Pointgivende resultater",
         "greatestRiders": "Største ryttere",
         "span": "Periode",
         "amount": "Antal",
-        "riders": "Ryttere",
+        "number": "Antal",
+        "riders": "Rytter(e)",
         "races": "Løb",
-        "latestPointSystem": "Aktuel/seneste pointklasse",
+        "latestPointSystem": "Aktuel/seneste løbskategori",
         "and": "og",
         "active": "Aktive",
         "inactive": "Inaktive",
-        "years": "År"
+        "years": "År",
+        "age": "Alder",
+        "dateFormatNoYear": "dd-mm",
+        "editions": "Udgave(r)",
+        "totalPointsCurrentRiders": "Nuværende rytteres pointtotal"
     },
     "searchBar": {
         "placeholder": "Søg..."
@@ -776,8 +787,8 @@
         "titles": {
             "riderWithMostPoints": "Ryttere med flest point optjent i {year}",
             "nationWithMostPoints": "Nationer med flest point optjent i {year}",
-            "ridersRankings": "Største ryttere i {year}",
-            "nationsRankings": "Største nationer i {year}",
+            "ridersRankings": "Største ryttere all time i {year}",
+            "nationsRankings": "Største nationer all time i {year}",
             "greatestRidersFromYear": "Største ryttere født i {year}",
             "resultsFromYear": "Resultater i {year}"
         },
@@ -793,14 +804,15 @@
     "teamPage": {
         "profile": {
             "nation": "Nation",
-            "points": "Rytteres point (samlet)",
-            "placementAllTeams": "Placering blandt hold med de største ryttere",
+            "points": "Nuværende rytteres pointtotal",
+            "placementAllTeams": "Holdrangering (pointtotal for nuværende trup)",
             "numberOfResultsThisYear": "Antal pointgivende resultater i {year}",
             "pointsGainedThisYear": "Point optjent i {year}",
-            "placementThisYear": "Placering blandt hold i {year}"
+            "placementThisYear": "Holdrangering i {year}",
+            "founded": "Grundlagt"
         },
         "titles": {
-            "greatestRiders": "Største ryttere på holdet",
+            "greatestRiders": "Største nuværende ryttere",
             "teamsWithGreatestRiders": "Hold med de største ryttere",
             "mostPoints": "Hold med flest point optjent i {year}",
             "greatestRidersOnTeam": "Største ryttere på {team}",
@@ -812,9 +824,9 @@
     "racePage": {
         "profile": {
             "nation": "Nation",
-            "currentPointSystem": "Aktuel pointklasse",
-            "latestPointSystem": "Seneste pointklasse",
-            "active": "Aktiv (som pointgivende løb)",
+            "currentPointSystem": "Aktuel løbskategori",
+            "latestPointSystem": "Seneste løbskategori",
+            "active": "Aktivt (som pointgivende løb)",
             "activeAnswer": {
                 "yes": "Ja",
                 "no": "Nej"
@@ -826,8 +838,8 @@
         },
         "timeline": {
             "title": "Tidslinje",
-            "pointClasses": "Pointklasser",
-            "pointClass": "Pointklasse",
+            "pointClasses": "Løbskategorier",
+            "pointClass": "Løbskategori",
             "from": "Fra",
             "to": "Til",
             "active": "Aktivt"
@@ -838,11 +850,11 @@
         },
         "resultsEachEdition": {
             "title": "Resultater for hver udgave",
-            "pointClassForEdition": "Pointklasse for udgave",
+            "pointClassForEdition": "Udgavens løbskategori",
             "results": "Resultater"
         },
         "mostOfEachResultTypes": {
-            "title": "Ryttere med flest af hver type resultat",
+            "title": "Rekorder for hvert muligt resultat",
             "resultType": "Resultat"
         }
     },
@@ -850,7 +862,7 @@
         "nations": {
             "sortBy": "Rangér efter",
             "filterBy": "Filtrér efter",
-            "title": "Prestigelisten - Nationer",
+            "title": "Nationer",
             "points": "Point",
             "numberOfRiders": "Antal ryttere",
             "pointsPerRider": "Point pr. rytter",
@@ -859,7 +871,7 @@
             "inactive": "Kun inaktive ryttere"
         },
         "riders3YearSpans": {
-            "title": "Prestigelisten - Ryttere over 3-årig perioder",
+            "title": "Point optjent over en 3-årig periode",
             "mostPoints": "Flest point optjent i 3-årige perioder",
             "greatestRiders": "Største ryttere over en 3-årig periode hvert år",
             "span": "Periode",
@@ -869,13 +881,13 @@
             "title": "Prestigelisten - Ryttere på hvert alderstrin",
             "age": "Alder",
             "selectAge": "Vælg alder",
-            "ageTitle": "Største ryttere på hvert alderstrin - {age} år"
+            "ageTitle": "Største ryttere på hvert alderstrin"
         },
         "greatestSeasons": {
-            "title": "Prestigelisten - Største individuelle sæsoner"
+            "title": "Største individuelle sæsoner"
         },
         "riders": {
-            "title": "Prestigelisten - Ryttere",
+            "title": "Ryttere all time",
             "singleYear": "Enkelt årgang",
             "bornIn": "Født i",
             "orBefore": "eller før",
@@ -895,9 +907,9 @@
     "nationPage": {
         "noRiders": "{nation} har ingen ryttere med point endnu.",
         "profile": {
-            "placement": "Placering",
+            "placement": "Rangering all time",
             "points": "Point",
-            "activePlacement": "Placering (kun aktive)",
+            "activePlacement": "Rangering (kun aktive)",
             "activePoints": "Point (kun aktive)",
             "numberOfRidersWithPoints": "Antal ryttere med point",
             "resultCount": "Antal pointgivende resultater",
@@ -905,12 +917,12 @@
             "no": "nr."
         },
         "charts": {
+            "yearlyRankings": "Placering på sæsonranglisten",
+            "yearlyRankingsAcc": "Udvikling i all time-placering",
             "yearlyPoints": "Point optjent hvert år",
             "yearlyResultsAmount": "Antal pointgivende resultater hvert år",
-            "yearlyRankings": "Årlig placering",
-            "yearlyRankingsAcc": "All time placering hvert år",
-            "yearlyCategoryPoints": "Fordeling af points optjent hvert år pr. kategori",
-            "categoryPoints": "Fordeling af point pr. kategori"
+            "yearlyCategoryPoints": "Point optjent hvert år fordelt efter resultattype",
+            "categoryPoints": "Pointfordeling efter type af resultat"
         },
         "greatestResults": {
             "title": "Største resultater af ryttere fra {nation}"
@@ -920,46 +932,33 @@
             "greatestActiveRiders": "Største aktive ryttere fra {nation}"
         },
         "resultsEachYear": {
-            "title": "Resultater hvert år",
+            "title": "Pointgivende resultater pr. sæson",
             "results": "Resultater",
             "noResults": "Ingen resultater",
             "highlights": "Højdepunkter",
             "pointsInYear": "Point i {year}",
             "pointsAllTime": "Point all time",
-            "placementForYear": "Placering for {year}",
+            "placementForYear": "Placering all time",
             "placementOnPrestigeList": "Placering på Prestigelisten",
-            "movementOnPrestigeList": "Bevægelse på Prestigelisten",
-            "numberOfResults": "Antal resultater",
+            "movementOnPrestigeList": "Udvikling all time",
+            "numberOfResults": "Antal pointgivende resultater",
             "mostPoints": "Ryttere med flest point optjent i {year}"
         },
         "racesAndTeamsTables": {
             "pointGivingRaces": "Pointgivende løb i {nation}",
-            "teamsWithPoints": "Hold fra {nation} med point"
+            "teamsWithPoints": "Hold fra {nation}"
         }
     },
     "omPrestigelisten": {
         "title": "Om Prestigelisten",
-        "description1": "Velkommen til Mathias Jensens og Mathias Fisker Mundbjergs bud på en prestigeliste i landevejscyklingens verden.",
-        "description2": "Vi vil gerne begynde med at slå fast, at pointsystemet er baseret på en subjektiv vurdering, men en gennemdiskuteret og - mener vi selv - kvalificeret en af slagsen.",
-        "description3": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har forsøgt at udfærdige pointgivningen, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det, at der var mindre konkurrence for 100 år siden, udligner det mindre antal prestigefyldte løb, hvori det var muligt at score point.",
-        "description4": "Opgørelsen omfatter data helt tilbage til den første udgave af Milano-Torino i 1876, hvilket vil sige i alt mere end 30.000 placeringer fordelt på de flere end 4.000 forskellige ryttere, der har opnået mindst et af de 754 pointgivende resultater.",
-        "description5": "Der er ni forskellige ranglister:",
-        "description6": "Løbsresultaterne beror hovedsageligt på ProCyclingStats' og CyclingRankings databaser. Alle ryttere er skrevet uden eventuel omlyd eller specialtegn for at undgå fejl, hvor rytterne ikke får godskrevet deres point.",
-        "description7": "Pointsystemet er primært baseret på egne vurderinger, men vi har - hovedsageligt ved de ældre resultater - støttet os til CyclingRankings opgørelser, som blandt andet lægger vægt på, hvor stærkt løbene har været besat.",
-        "description8": "Bemærk, at listen er blevet til ud fra den præmis, at løbene afgøres på cyklen, da det er her, størstedelen af prestigen opnås. Derfor afspejler resultaterne ikke eventuelle dopingdomme, der er kommet på bagkant af selve cykelløbene. Vi har markeret resultater, som officielt er ændret som følge af doping, med sort baggrund i resultatarket, som du finder under rådata.",
-        "description9": "Hvis du finder fejl i resultaterne eller på hjemmesiden, har kendskab til yderligere udgaver af de oplistede løb, vil kommentere pointgivningen eller give anden form for feedback, hører vi meget gerne fra dig på",
-        "description9pt2": ". Arkenes udvikling kan følges på Twitter-profilen @prestigelisten, som vi også kan kontaktes gennem med en direkte besked.",
-        "description10": "God fornøjelse!",
-        "description11": "Mathias og Mathias",
-        "list1": "En all time-rangering, som lister de ryttere, som gennem tiden har opnået de mest prestigefyldte resultater",
-        "list2": "En rangering af de fortsat aktive ryttere, som har opnået de mest prestigefyldte resultate",
-        "list3": "En rangering af de nationer, hvis ryttere gennem tiden har optjent flest point",
-        "list4": "En rangering af de største danskere, som har opnået point",
-        "list5": "En tre-årig rullende oversigt over de ryttere, der har optjent flest point over de seneste tre sæsoner - dog på et meget begrænset grundlag før år 1900",
-        "list6": "En oversigt over top 10 all time, som den har set ud hvert år gennem tiden - dog på et meget begrænset grundlag før 1900",
-        "list7": "En oversigt over, hvilke ryttere der har optjent flest point i hvert årti - dog på et meget begrænset grundlag før 1900",
-        "list8": "En rangering af de sæsoner, hvori en enkelt rytter har opnået de mest prestigefyldte resultater",
-        "list9": "En rangering af de største ryttere fra hver årgang"
+        "description1": "Velkommen til - her har du vores bud på en rangering over ryttere med de mest prestigefyldte resultater i landevejscyklingens verden.",
+        "description2": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har tilstræbt at vægte pointsystemet, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det stigende antal prestigefyldte løb gennem de seneste 150 år udlignes af den forøgede konkurrence i verdenseliten.",
+        "description3": "Prestigelisten er baseret på data helt tilbage fra den første udgave af Milano-Torino i 1876, hvilket vil sige i alt mere end 30.000 placeringer fordelt på de flere end 4.000 forskellige ryttere, der har opnået mindst ét af de omkring 1000 pointgivende resultater.",
+        "description4": "Løbsresultaterne er primært er hentet fra ProCyclingStats og CyclingRanking. Alle ryttere er skrevet uden eventuel omlyd eller specialtegn for at undgå fejl, hvor rytterne ikke får godskrevet deres point.",
+        "description5": "Pointsystemet er primært baseret på egne vurderinger, men vi har ved nogle af de ældre resultater støttet os til CyclingRankings opgørelser, som blandt andet lægger vægt på, hvor stærkt løbene var besat. Vi mener derfor, at vores pointsystem er kvalificeret og gennemdiskuteret, men man kan selv trække fra eller lægge til, som man finder bedst.",
+        "description6": "Og så lidt om elefanten i rummet - doping. I vores optik findes der tre grupper af dopede ryttere - dem der har fået frataget alt, dem der ikke har fået frataget noget, og dem der aldrig er blevet opdaget. For at behandle alle så ens som muligt er Prestigelisten blevet til ud fra den præmis, at løbene afgøres på cyklen. Derfor har vi tildelt point ud fra de oprindelige resultater, og så står det naturligvis enhver frit for at tage eventuelle forbehold.",
+        "description7": "God fornøjelse!",
+        "description8": "Mathias S. Jensen og Mathias Fisker Mundbjerg"
     },
     "pointGivingResultsInYear": {
         "title": "Pointgivende resultater i {year}"
@@ -973,19 +972,19 @@
             "year": "Årgang",
             "team": "Hold",
             "allTimePlacement": "Placering all time",
-            "nationPlacement": "Placering all time (Kun {nation})",
+            "nationPlacement": "Placering blandt ryttere fra {nation}",
             "activePlacement": "Placering (kun aktive)",
             "points": "Point",
             "greatestResults": "Største resultater",
             "source": "Kilde"
         },
         "charts": {
-            "yearlyRankings": "Årlig placering",
-            "yearlyRankingsAcc": "All time placering hvert år",
+            "yearlyRankings": "Placering på sæsonranglisten",
+            "yearlyRankingsAcc": "Udvikling i all time-placering",
             "yearlyPoints": "Point optjent hvert år",
             "yearlyResultsAmount": "Antal pointgivende resultater hvert år",
-            "yearlyCategoryPoints": "Fordeling af points optjent hvert år pr. kategori",
-            "categoryPoints": "Fordeling af point pr. kategori"
+            "yearlyCategoryPoints": "Point optjent hvert år fordelt efter resultattype",
+            "categoryPoints": "Pointfordeling efter type af resultat"
         },
         "resultsEachYear": {
             "title": "Resultater hvert år",
@@ -993,10 +992,11 @@
             "noResults": "Ingen resultater",
             "highlights": "Højdepunkter",
             "pointsInYear": "Point i {year}",
-            "pointsEntireCareer": "Point i hele karrieren",
-            "placementForYear": "Placering for {year}",
-            "placementOnPrestigeList": "Placering på Prestigelisten",
-            "movementOnPrestigeList": "Bevægelse på Prestigelisten"
+            "pointsEntireCareer": "Point all time",
+            "placementForYear": "Placering på sæsonranglisten",
+            "placementOnPrestigeList": "Placering all time",
+            "movementOnPrestigeList": "Udvikling all time",
+            "resultCount": "Antal pointgivende resultater"    
         },
         "tables": {
             "greatestRidersFromNation": "Største ryttere fra {nation}",
@@ -1015,6 +1015,7 @@
         "rider": {
             "title": "Sammenlign ryttere",
             "agePointsTitle": "Point optjent på hvert alderstrin",
+            "ageAccumulatedPointsTitle": "Akkumulerede point på hvert alderstrin",
             "removeRider": "Fjern rytter",
             "riderInformation": "Rytterinformation",
             "nationality": "Nationalitet",
@@ -1030,7 +1031,9 @@
             "pointsGained": "Point optjent",
             "pointsAllTime": "Point all time",
             "placementForYear": "Placering for year",
-            "age": "Alder"
+            "age": "Alder",
+            "greatestSeasonYear": "Største sæson",
+            "greatestSeasonPoints": "Point i største sæson"
         },
         "nation": {
             "title": "Sammenlign nationer",
@@ -1052,17 +1055,19 @@
             "greatestResults": "Største resultater",
             "pointsGained": "Point optjent",
             "pointsAllTime": "Point all time",
-            "placementForYear": "Placering for år",
+            "placementForYear": "Placering dette år",
             "year": "År",
-            "placementLabel": "Placering"
+            "placementLabel": "Placering",
+            "greatestSeasonYear": "Største sæson",
+            "greatestSeasonPoints": "Point i største sæson"
         }
     },
     "twitterCard": {
         "points": "Point",
         "allTime": "All time",
         "active": "Aktive",
-        "fromYear": "Fra {year}",
-        "alltimePlacement": "All time placering",
+        "fromYear": "Født i {year}",
+        "alltimePlacement": "All time-placering",
         "placementActive": "Placering blandt aktive ryttere",
         "greatestResults": "Største resultater",
         "placementsOnPrestigeList": "Placeringer på Prestigelisten",

@@ -40,10 +40,9 @@ export default function GreatestResultsTable({
         <div>
             <Table>
                 <TableHead>
-                    <TableColumn>{t("points")}</TableColumn>
-                    <TableColumn>{t("amount")}</TableColumn>
-                    <TableColumn>{t("result")}</TableColumn>
+                    <TableColumn>{t("result(s)")}</TableColumn>
                     <TableColumn className="hidden lg:table-cell">{t("riders")}</TableColumn>
+                    <TableColumn>{t("points")}</TableColumn>
                 </TableHead>
                 <TableBody>
                     {groupedResults
@@ -53,7 +52,7 @@ export default function GreatestResultsTable({
                             const riderResults = () => {
                                 return (
                                     group.riderResults
-                                        .sort((a, b) => Math.max(...b.results.map(r => r.year)) - Math.max(...a.results.map(r => r.year)))
+                                        .sort((a, b) => Math.max(...a.results.map(r => r.year)) - Math.max(...b.results.map(r => r.year)))
                                         .map((riderGroup, riderIndex) => {
                                             const rider = nation.riders.find(r => r.id == riderGroup.key);
 
@@ -65,7 +64,7 @@ export default function GreatestResultsTable({
                                                         <span>{getRiderName(rider)} </span>
                                                         <span>
                                                             ({riderGroup.results
-                                                                .sort((a, b) => b.year - a.year)
+                                                                .sort((a, b) => a.year - b.year)
                                                                 .map((result, resultIndex) => resultIndex == 0 ? `${result.year}` : `, ${result.year}`)
                                                             })
                                                         </span>
@@ -80,17 +79,17 @@ export default function GreatestResultsTable({
                             return (
                                 <React.Fragment key={group.id}>
                                     <TableRow className="font-medium lg:font-normal">
-                                        <TableCell>{group.results[0].points}</TableCell>
-                                        <TableCell>{group.results.length}</TableCell>
                                         <TableCell className="min-w-52">
                                             <Link href={getRaceUrl(group.races.meta_races)} className="hover:underline">
                                                 <FlagSpan code={getRaceFlagCode(group.races.meta_races)}/>
+                                                {group.results.length > 1 && <span>{group.results.length}x </span>}
                                                 {getGroupedResultName(group, tResultNames)}
                                             </Link>
                                             </TableCell>
                                         <TableCell className="hidden lg:table-cell">
                                             {riderResults()}
                                         </TableCell>
+                                        <TableCell>{group.results[0].points}</TableCell>
                                     </TableRow>
                                     <TableRow className="lg:hidden" hasBorder={false}>
                                         <TableCell colSpan={3} className="pt-2">

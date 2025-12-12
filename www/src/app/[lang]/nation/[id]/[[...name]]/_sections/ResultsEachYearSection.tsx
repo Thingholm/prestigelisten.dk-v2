@@ -99,11 +99,11 @@ export default function ResultsEachYearSection({
                     <h4 className="font-semibold text-lg mb-2">{t("highlights")}</h4>
                     <ul>
                         <li>{t("pointsInYear", { year: selectedYear })}: <span className="font-medium">{formatNumber(season?.points_for_year ?? 0)}</span></li>
-                        <li>{t("pointsAllTime")}: <span className="font-medium">{formatNumber(season?.points_all_time ?? 0)}</span></li>
                         <li>{t("placementForYear", { year: selectedYear })}: <span className="font-medium">{formatNumber(season?.rank_for_year) ?? "-"}</span></li>
+                        <li>{t("numberOfResults")}: <span className="font-medium">{formatNumber(groupedResultsForYear.flatMap(group => group.results)?.length) ?? 0}</span></li>
+                        <li>{t("pointsAllTime")}: <span className="font-medium">{formatNumber(season?.points_all_time ?? 0)}</span></li>
                         <li>{t("placementOnPrestigeList")}: <span className="font-medium">{formatNumber(season?.rank_all_time) ?? "-"}</span></li>
                         <li>{t("movementOnPrestigeList")}: <span className="font-medium">{getYearlyMovement()}</span></li>
-                        <li>{t("numberOfResults")}: <span className="font-medium">{formatNumber(groupedResultsForYear.flatMap(group => group.results)?.length) ?? 0}</span></li>
                     </ul>
                 </div>
             </div>

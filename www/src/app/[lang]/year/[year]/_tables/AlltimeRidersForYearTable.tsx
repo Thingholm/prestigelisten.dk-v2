@@ -31,7 +31,7 @@ export default function AlltimeRidersForYearTable({
                             <TableRow key={riderSeason.id}>
                                 <TableCell>{riderSeason.rank_all_time}</TableCell>
                                 <RiderNameCell rider={riderSeason.riders} showFlagBreakpoint="always"/>
-                                <YearCell year={riderSeason.year}/>
+                                <YearCell year={riderSeason.riders.year}/>
                                 <TableCell>{riderSeason.points_all_time}</TableCell>
                             </TableRow>
                         ))

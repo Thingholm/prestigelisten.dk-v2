@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { Bar, BarChart, Brush, CartesianGrid, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from "recharts";
 import ChartTooltip from "./ChartTooltip";
 import { NameType, ValueType } from "recharts/types/component/DefaultTooltipContent";
-import { formatNumber } from "@/lib/helpers/localeHelpers";
 
 export default function YearlyResultCategoryDistributionChart({
     yearlyResultsGroupedByCategory
@@ -13,7 +12,7 @@ export default function YearlyResultCategoryDistributionChart({
         key: number;
         points: number;
         championship: number;
-        other: number;
+        gtJerseys: number;
         stageWin: number;
         gc: number;
         oneDayRace: number;
@@ -32,7 +31,7 @@ export default function YearlyResultCategoryDistributionChart({
                             key={index} 
                             style={{ color: (entry as {fill: string}).fill}}
                         >
-                            {t(`categories.${entry.name}`)}: {formatNumber(parseFloat(payload[index].value?.toString() ?? "-"), 1)}% - {formatNumber(Math.round((payload[index].value as number) / 100 * (payload[0].payload.points as number)))}p
+                            {t(`categories.${entry.name}`)}: {payload[index].value}p
                         </p>
                     ))}
                 </ChartTooltip>
@@ -47,20 +46,18 @@ export default function YearlyResultCategoryDistributionChart({
                 <XAxis dataKey="key" tick={{fill: "#fff"}}/>
                 <YAxis 
                     label={{ 
-                        value: "%", 
+                        value: t("points"), 
                         angle: -90, 
                         position: "insideLeft"
                     }}  
                     tick={{fill: "#fff"}} 
-                    domain={[0, 100]} 
-                    allowDataOverflow 
                     type="number"
                 />
                 <Bar dataKey="gc" stackId={1} fill="#fee402"/>
                 <Bar dataKey="stageWin" stackId={1} fill="#14ed11"/>
                 <Bar dataKey="oneDayRace" stackId={1} fill="#d1062b"/>
                 <Bar dataKey="championship" stackId={1} fill="#11c8ed"/>
-                <Bar dataKey="other" stackId={1} fill="#fff"/>
+                <Bar dataKey="gtJerseys" stackId={1} fill="#fff"/>
                 <Brush dataKey="key"/>
                 <Tooltip cursor={{fill: "#808080"}} content={<CustomToolTip />} wrapperStyle={{ zIndex: 1000 }}/>
             </BarChart>

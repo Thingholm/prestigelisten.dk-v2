@@ -29,7 +29,7 @@ export default function TeamsTable({
             <Table>
                 <TableHead>
                     <TableColumn>{t("team")}</TableColumn>
-                    <TableColumn>{t("points")}</TableColumn>
+                    <TableColumn>{t("totalPointsCurrentRiders")}</TableColumn>
                 </TableHead>
                 <TableBody>
                     {rankedTeams.map(team => (

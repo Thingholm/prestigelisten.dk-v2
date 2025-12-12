@@ -20,7 +20,7 @@ export default function DropdownGroup({
             onMouseEnter={handleMouseEnter} 
             onMouseLeave={handleMouseLeave}
         >
-            <p className="text-primary-500 flex items-center gap-x-1 select-none">
+            <p className="text-primary-500 flex items-center gap-x-0.5 select-none">
                 <span>{title}</span> 
                 <IoChevronDown className="group-hover:rotate-180 duration-300"/>
             </p>

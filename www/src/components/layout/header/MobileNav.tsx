@@ -1,7 +1,7 @@
 "use client";
 
 import { NavSearchbarData } from "@/db/navSearhbar";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import MobileNavItem from "./MobileNavItem";
 import { urls } from "@/lib/constants/urls";
@@ -17,14 +17,15 @@ export default function MobileNav({
     searchData: NavSearchbarData
 }>) {
     const t = useTranslations("navigation");
+    const locale = useLocale();
 
     const [showNav, setShowNav] = useState(false);
     const [showLists, setShowLists] = useState(false);
 
     return (
-        <div className="lg:hidden">
+        <div className="xl:hidden">
             <button 
-                className="lg:hidden relative w-9 h-8"
+                className="xl:hidden relative w-9 h-8"
                 onClick={() => setShowNav(s => !s)}
             >
                 <div className={`absolute h-1 w-full bg-primary-500 rounded-full duration-200 ${showNav ? "rotate-225 top-4" : "top-2.5"}`}></div>
@@ -32,12 +33,7 @@ export default function MobileNav({
             </button>     
             <div className={`${showNav ? "right-0" : "-right-full"} max-w-[90vw] sm:w-md text-end overflow-y-auto top-[2.8125rem] sm:top-[3.35rem] duration-150 absolute lg:hidden bg-white h-[calc(100vh-2.81rem)] sm:h-[calc(100vh-3.35rem)] px-3 sm:px-16 pt-2 items-end flex flex-col -z-10`}>
                 <NavSearchBar searchBarData={searchData} isMobile setShowNav={setShowNav}/>
-                <nav className="flex flex-col items-end mt-2 w-full">
-                    <MobileNavItem
-                        href={urls["about"]}
-                        onClick={() => setShowNav(false)}
-                        title={t("about")}
-                    />                
+                <nav className="flex flex-col items-end mt-2 w-full">            
                     <MobileNavItem
                         href={urls["pointSystem"]}
                         onClick={() => setShowNav(false)}
@@ -60,23 +56,20 @@ export default function MobileNav({
                                 onClick={() => setShowNav(false)}
                             />
                             <MobileNavItem
-                                href={getRidersListUrl({ nations: [14] })}
-                                title={t("danish")}
+                                href={getRidersListUrl({ isSingleYear: true })}
+                                title={t("greatestByYear")}
                                 onClick={() => setShowNav(false)}
-                            />
+                            />                  
+                            {locale == "da" &&          
+                                <MobileNavItem
+                                    href={getRidersListUrl({ nations: [14] })}
+                                    title={t("danish")}
+                                    onClick={() => setShowNav(false)}
+                                />
+                            }
                             <MobileNavItem
                                 href={urls["listNations"]}
                                 title={t("nations")}
-                                onClick={() => setShowNav(false)}
-                            />
-                            <MobileNavItem
-                                href={urls["team"]}
-                                title={t("teams")}
-                                onClick={() => setShowNav(false)}
-                            />
-                            <MobileNavItem
-                                href={urls["listRiders3YearPeriod"]}
-                                title={t("3YearPeriod")}
                                 onClick={() => setShowNav(false)}
                             />
                             <MobileNavItem
@@ -85,26 +78,31 @@ export default function MobileNav({
                                 onClick={() => setShowNav(false)}
                             />
                             <MobileNavItem
-                                href={urls["year"]}
-                                title={t("mostPointsEachYear")}
-                                onClick={() => setShowNav(false)}
-                            />
-                            <MobileNavItem
                                 href={urls["listRidersAges"]}
                                 title={t("greatestByAge")}
                                 onClick={() => setShowNav(false)}
                             />
                             <MobileNavItem
-                                href={getRidersListUrl({ isSingleYear: true })}
-                                title={t("greatestByYear")}
+                                href={urls["listRiders3YearPeriod"]}
+                                title={t("3YearPeriod")}
                                 onClick={() => setShowNav(false)}
                             />
                             <div className="absolute w-0.5 h-[calc(100%-0.9rem)] right-[0.35rem] sm:-right-[0.85rem] top-2 bg-secondary-950"></div>
                         </div>
                     }
                     <MobileNavItem
-                        href={urls["rawData"]}
-                        title={t("rawData")}
+                        href={urls["calendar"]}
+                        title={t("raceCalendar")}
+                        onClick={() => setShowNav(false)}
+                    />
+                    <MobileNavItem
+                        href={urls["year"]}
+                        title={t("seasonOverview")}
+                        onClick={() => setShowNav(false)}
+                    />
+                    <MobileNavItem
+                        href={urls["team"]}
+                        title={t("teams")}
                         onClick={() => setShowNav(false)}
                     />
                     <MobileNavItem
@@ -113,17 +111,17 @@ export default function MobileNav({
                         onClick={() => setShowNav(false)}
                     />
                     <MobileNavItem
-                        href={urls["calendar"]}
-                        title={t("raceCalendar")}
-                        onClick={() => setShowNav(false)}
-                    />
-                    <MobileNavItem
                         href={urls["compare"]}
                         title={t("compare")}
                         onClick={() => setShowNav(false)}
                     />
+                    <MobileNavItem
+                        href={urls["about"]}
+                        onClick={() => setShowNav(false)}
+                        title={t("about")}
+                    />    
                     <Button href={getRidersListUrl()} className="mt-2 mb-2">{t("seeList")}</Button>
-                    <LocaleSwitcher isMobile/>
+                    <LocaleSwitcher/>
                 </nav>
             </div>
             <div className={`${showNav ? "left-0" : "left-full"} top-[2.8125rem] sm:top-[3.35rem] absolute lg:hidden -z-20`}>

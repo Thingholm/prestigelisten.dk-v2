@@ -38,6 +38,7 @@ export default function ChartSection({
         })
     );
 
+
     const resultsGroupedByYearGroupedByResult = resultsGroupedByYear.map(group => ({...group, results: groupResults(group.results, pointSystem, true)}));
     const resultsGroupedByYearGroupedByCategory = resultsGroupedByYear.map(group => ({
         key: group.key,
@@ -49,12 +50,12 @@ export default function ChartSection({
             })), 
             pointSystem, 
             result => result.category
-        ).map(categoryGroup => [categoryGroup.key, categoryGroup.points / group.points * 100]))
+        ).map(categoryGroup => [categoryGroup.key, categoryGroup.points]))
     })) as {
         key: number;
         points: number;
         championship: number;
-        other: number;
+        gtJerseys: number;
         stageWin: number;
         gc: number;
         oneDayRace: number;
@@ -62,16 +63,16 @@ export default function ChartSection({
 
     const charts = [
         {
-            title: t("yearlyRankings"),
-            component: <YearlyRankingsChart seasons={JSON.parse(JSON.stringify(rider.rider_seasons)).filter((season: Rider["rider_seasons"][number]) => season.points_for_year)}/>
+            title: t("yearlyPoints"),
+            component: <YearlyPointsChart yearlyPointsAndResults={resultsGroupedByYearGroupedByResult} isDistinctPlacements/>
         },
         {
             title: t("yearlyRankingsAcc"),
             component: <YearlyAlltimeRankingsChart seasons={rider.rider_seasons}/>
         },
         {
-            title: t("yearlyPoints"),
-            component: <YearlyPointsChart yearlyPointsAndResults={resultsGroupedByYearGroupedByResult} isDistinctPlacements/>
+            title: t("yearlyRankings"),
+            component: <YearlyRankingsChart seasons={JSON.parse(JSON.stringify(rider.rider_seasons)).filter((season: Rider["rider_seasons"][number]) => season.points_for_year)}/>
         },
         {
             title: t("yearlyCategoryPoints"),
@@ -88,7 +89,7 @@ export default function ChartSection({
             <div className="lg:mr-3 w-full">
                 <ProfileChartsWrapper
                     charts={[...charts]}
-                    initialChartIndex={2}
+                    initialChartIndex={0}
                     key={1}
                 />
             </div>

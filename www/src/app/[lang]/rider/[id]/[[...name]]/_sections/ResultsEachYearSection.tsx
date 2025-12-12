@@ -5,6 +5,7 @@ import ResultNameListItem from "@/components/ResultNameListItem";
 import { PointSystem } from "@/db/pointSystem";
 import { Rider } from "@/db/rider";
 import { RiderCount } from "@/db/seasons";
+import { dayInLeadersJerseyResultTypeIds } from "@/lib/constants/resultTypes";
 import { groupResults } from "@/lib/helpers/groupResults";
 import { formatNumber } from "@/lib/helpers/localeHelpers";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
@@ -31,6 +32,7 @@ export default function ResultsEachYearSection({
     const [selectedYear, setSelectedYear] = useState<number>(maxYear);
     
     const groupedResultsForYear = groupResults(rider.results.filter(result => result.year == selectedYear), pointSystem, true);
+    const resultCountForYear = formatNumber(rider.results.filter(result => result.year == selectedYear && !dayInLeadersJerseyResultTypeIds.includes(result.result_type_id))?.length) ?? 0;
     const season = rider.rider_seasons.find(season => season.year == selectedYear);
 
     const getYearlyMovement = () => {
@@ -73,9 +75,10 @@ export default function ResultsEachYearSection({
                 <div>
                     <h4 className="font-semibold text-lg mb-2">{t("highlights")}</h4>
                     <ul>
+                        <li>{t("resultCount")}: <span className="font-medium">{resultCountForYear}</span></li>
                         <li>{t("pointsInYear", { year: selectedYear })}: <span className="font-medium">{formatNumber(season?.points_for_year ?? 0)}</span></li>
+                        <li>{t("placementForYear")}: <span className="font-medium">{formatNumber(season?.rank_for_year) ?? "-"}</span></li>
                         <li>{t("pointsEntireCareer")}: <span className="font-medium">{formatNumber(season?.points_all_time ?? 0)}</span></li>
-                        <li>{t("placementForYear", { year: selectedYear })}: <span className="font-medium">{formatNumber(season?.rank_for_year) ?? "-"}</span></li>
                         <li>{t("placementOnPrestigeList")}: <span className="font-medium">{formatNumber(season?.rank_all_time) ?? "-"}</span></li>
                         <li>{t("movementOnPrestigeList")}: <span className="font-medium">{getYearlyMovement()}</span></li>
                     </ul>

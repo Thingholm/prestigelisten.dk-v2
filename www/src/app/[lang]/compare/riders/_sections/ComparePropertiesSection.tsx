@@ -7,6 +7,7 @@ import { getResultCategory } from "@/lib/helpers/resultCategory";
 import { PointSystem } from "@/db/pointSystem";
 import Section from "@/components/layout/Section";
 import { getTranslations } from "next-intl/server";
+import { dayInLeadersJerseyResultTypeIds } from "@/lib/constants/resultTypes";
 
 export default async function ComparePropertiesSection({
     rider1,
@@ -45,6 +46,9 @@ export default async function ComparePropertiesSection({
             result => result.category
         ).map(group => [group.key, group.points])
     );
+
+    const rider1GreatestSeason = rider1?.rider_seasons.sort((a, b) => (b.points_for_year ?? 0) - (a.points_for_year ?? 0))[0];
+    const rider2GreatestSeason = rider2?.rider_seasons.sort((a, b) => (b.points_for_year ?? 0) - (a.points_for_year ?? 0))[0];
 
     return (
         <Section className="flex-col">
@@ -93,9 +97,21 @@ export default async function ComparePropertiesSection({
                             reverseComparison
                         />
                         <CompareProperties
-                            value1={rider1?.results.length}
-                            value2={rider2?.results.length}
+                            value1={rider1?.results.filter(result => !dayInLeadersJerseyResultTypeIds.includes(result.result_type_id)).length}
+                            value2={rider2?.results.filter(result => !dayInLeadersJerseyResultTypeIds.includes(result.result_type_id)).length}
                             title={t("numberOfResults")}
+                        />
+                        <CompareProperties
+                            value1={rider1GreatestSeason?.year}
+                            value2={rider2GreatestSeason?.year}
+                            title={t("greatestSeasonYear")}
+                            showCompareColor={false}
+                            noFormat
+                        />
+                        <CompareProperties
+                            value1={rider1GreatestSeason?.points_for_year}
+                            value2={rider2GreatestSeason?.points_for_year}
+                            title={t("greatestSeasonPoints")}
                         />
                     </TableBody>
                 </Table>
@@ -126,9 +142,9 @@ export default async function ComparePropertiesSection({
                             title={tCategoryNames("championship")}
                         />
                         <CompareProperties
-                            value1={rider1Categories?.other}
-                            value2={rider2Categories?.other}
-                            title={tCategoryNames("other")}
+                            value1={rider1Categories?.gtJerseys}
+                            value2={rider2Categories?.gtJerseys}
+                            title={tCategoryNames("gtJerseys")}
                         />
                     </TableBody>
                 </Table>

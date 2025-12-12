@@ -26,7 +26,7 @@ export default function MostPointsInRaceRidersTable({
                     </TableColumn>
                     <TableColumn>{t("rider")}</TableColumn>
                     <TableColumn className="hidden sm:table-cell">
-                        {t("numberOfResults")}
+                        {t("pointsScoringResults")}
                     </TableColumn>
                     <TableColumn>{t("points")}</TableColumn>
                 </TableHead>

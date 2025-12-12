@@ -9,13 +9,13 @@
             "12": "Gold",
             "13": "Silver",
             "14": "Bronze",
-            "6": "Points jersey",
-            "5": "Mountain jersey",
-            "7": "Stage",
+            "6": "Points GC",
+            "5": "KOM",
+            "7": "Stage win",
             "8": "1st day in leader's jersey",
             "9": "2nd day in leader's jersey",
             "10": "3rd day in leader's jersey",
-            "11": "Other day in leader's jersey",
+            "11": "Additional day in leader's jersey",
             "99": "Day in leader's jersey"
         },
         "raceClasses": {
@@ -30,14 +30,14 @@
             "23": "Olympic champion (amateur) in ITT"
         },
         "metaRaces": {
-            "225": "Olympic championship in ITT",
+            "225": "Olympic championships in ITT",
             "226": "Olympic 12-hour race",
-            "227": "World championship",
-            "228": "World championship in ITT",
-            "229": "European championship",
-            "230": "European championship in ITT",
-            "231": "Olympic championship",
-            "289": "World championship (amateur)"
+            "227": "World championships",
+            "228": "World championships in ITT",
+            "229": "European championships",
+            "230": "European championships in ITT",
+            "231": "Olympic championships",
+            "289": "World championships (amateur)"
         },
         "suffixes": {
             "1": "st",
@@ -103,7 +103,7 @@
                 "adjective": "Eritrean"
             },
             "ee": {
-                "name": "Estland",
+                "name": "Estonia",
                 "adjective": "Estonian"
             },
             "ph": {
@@ -143,7 +143,7 @@
                 "adjective": "Japanese"
             },
             "kz": {
-                "name": "Kasakhstan",
+                "name": "Kazakhstan",
                 "adjective": "Kazakh"
             },
             "kr": {
@@ -280,11 +280,12 @@
         "stage": "stage",
         "stageIn": "Stage in",
         "stageInLower": "stage in",
+        "stageCapitalized": "Stage",
         "place": "place",
         "champion": "champion",
         "championITT": "champion in ITT",
-        "championship": " championship",
-        "championshipITT": " championship in ITT"
+        "championship": " championships",
+        "championshipITT": " championships in ITT"
     },
     "resultTypes": {
         "win": "Win",
@@ -294,14 +295,14 @@
         "gold": "Gold",
         "silver": "Silver",
         "bronze": "Bronze",
-        "pointClassification": "Point jersey",
-        "mountainClassification": "Mountain jersey",
-        "classification": "Mountain/point jersey",
+        "pointClassification": "Points GC",
+        "mountainClassification": "KOM",
+        "classification": "KOM/Points GC",
         "stageWin": "Stage win",
         "firstLeadersJersey": "1st day in leader's jersey",
         "secondLeadersJersey": "2nd day in leader's jersey",
         "thirdLeadersJersey": "3rd day in leader's jersey",
-        "otherLeadersJersey": "Other day in leader's jersey",
+        "otherLeadersJersey": "Additional day in leader's jersey",
         "daysInLeadersJersey": "Days in leader's jersey",
         "dayInLeadersJersey": "Day in leader's jersey",
         "stage": "stage",
@@ -320,24 +321,24 @@
         "7": "WTC B",
         "9": "WTC C",
         "11": "WTC D",
-        "12": "National championship A",
-        "14": "National championship B",
-        "13": "National championship ITT A",
-        "15": "National championship ITT B",
+        "12": "Nationals A",
+        "14": "Nationasl B",
+        "13": "Nationals ITT A",
+        "15": "Nationals ITT B",
         "12abbr": "NC A",
         "14abbr": "NC B",
         "13abbr": "NC ITT A",
         "15abbr": "NC ITT B",
         "16": "Olympics",
         "17": "Olympics ITT",
-        "22": "Olympics (amateurs)",
-        "23": "Olympics ITT (amateurs)",
-        "18": "WC",
-        "19": "WC ITT",
-        "27": "WC (amateurs)",
-        "20": "EC",
-        "21": "EC ITT",
-        "24": "Pair race",
+        "22": "Olympics (amateur)",
+        "23": "Olympics ITT (amateur)",
+        "18": "Worlds",
+        "19": "Worlds ITT",
+        "27": "Worlds (amateur)",
+        "20": "Euros",
+        "21": "Euros ITT",
+        "24": "Duo Time Trial",
         "25": "Others",
         "0": "-"
     },
@@ -351,15 +352,15 @@
         "worldChampionAmateur": "World champion (amateur)",
         "olympicChampionAmateur": "Olympic champion (amateur)",
         "olympicChampionAmateurInITT": "Olympic champion (amateur) in ITT",
-        "worldChampionship": "World Championship",
-        "europeanChampionship": "European Championship",
-        "olympicChampionship": "Olympic Championship",
-        "worldChampionshipITT": "World Championship ITT",
-        "europeanChampionshipITT": "European Championship ITT",
-        "olympicChampionshipITT": "Olympic Championship ITT",
-        "worldChampionshipAmateur": "World Championship (amateur)",
-        "olympicChampionshipAmateur": "Olympic Championship (amateur)",
-        "olympicChampionshipAmateurITT": "Olympic Championship (amateur) in ITT",
+        "worldChampionship": "World Championships",
+        "europeanChampionship": "European Championships",
+        "olympicChampionship": "Olympic Championships",
+        "worldChampionshipITT": "World Championships ITT",
+        "europeanChampionshipITT": "European Championships ITT",
+        "olympicChampionshipITT": "Olympic Championships ITT",
+        "worldChampionshipAmateur": "World Championships (amateur)",
+        "olympicChampionshipAmateur": "Olympic Championships (amateur)",
+        "olympicChampionshipAmateurITT": "Olympic Championships (amateur) in ITT",
         "at": "at",
         "in": "in",
         "stageIn": "Stage in",
@@ -376,14 +377,14 @@
         "gold": "Gold",
         "silver": "Silver",
         "bronze": "Bronze",
-        "pointClassification": "Points jersey",
-        "mountainClassification": "Mountain jersey",
-        "classification": "Mountain/points jersey",
+        "pointClassification": "Points GC",
+        "mountainClassification": "KOM",
+        "classification": "KOM/Points GC",
         "stageWin": "Stage win",
         "firstLeadersJersey": "1st day in leader's jersey",
         "secondLeadersJersey": "2nd day in leader's jersey",
         "thirdLeadersJersey": "3rd day in leader's jersey",
-        "otherLeadersJersey": "Other day in leader's jersey",
+        "otherLeadersJersey": "Additional day in leader's jersey",
         "daysInLeadersJersey": "Days in leader's jersey",
         "dayInLeadersJersey": "Day in leader's jersey"
     },
@@ -445,7 +446,7 @@
             "adjective": "Eritrean"
         },
         "ee": {
-            "name": "Estland",
+            "name": "Estonia",
             "adjective": "Estonian"
         },
         "ph": {
@@ -485,7 +486,7 @@
             "adjective": "Japanese"
         },
         "kz": {
-            "name": "Kasakhstan",
+            "name": "Kazakhstan",
             "adjective": "Kazakh"
         },
         "kr": {
@@ -625,20 +626,20 @@
     },
     "chartTooltips": {
         "year": "Year",
-        "placement": "Placement",
+        "placement": "Ranking",
         "points": "Points",
-        "yearlyPoints": "Points gained each year",
+        "yearlyPoints": "Points earned each year",
         "yearlyResultsAmount": "Point scoring results for year",
         "amount": "Amount",
-        "distributionOfPointsGained": "Distribution of points gained per category",
+        "distributionOfPointsGained": "Points earned per type of result",
         "category": "Category",
-        "numberOfResults": "Number of results",
+        "numberOfResults": "Total results",
         "categories": {
-            "gc": "Classification",
+            "gc": "GC",
             "stageWin": "Stage wins",
             "oneDayRace": "One day races",
             "championship": "Championships",
-            "other": "Other"
+            "gtJerseys": "Grand Tour jerseys"
         }
     },
     "navigation": {
@@ -646,27 +647,28 @@
         "riders": "Riders",
         "races": "Races",
         "calendar": "Calendar",
-        "about": "About",
-        "pointSystem": "Point system",
-        "lists": "Lists",
-        "compare": "Compare",
-        "searchPlaceholder": "Search for riders, nations, teams or races...",
+        "about": "About us",
+        "pointSystem": "Point scale",
+        "lists": "Rankings",
+        "compare": "Compare riders",
+        "searchPlaceholder": "Search riders, nations, teams or races...",
         "more": "More",
-        "seeList": "The list",
-        "ridersAlltime": "Riders all time",
-        "active": "Active",
-        "nations": "Nations",
-        "danish": "Danish",
+        "seeList": "Access ranking",
+        "ridersAlltime": "All time",
+        "active": "Active riders",
+        "nations": "Countries",
+        "danish": "Danes",
         "teams": "Teams",
-        "3YearPeriod": "Greatest riders over a 3-year period",
+        "3YearPeriod": "3-year span",
         "greatestSeasons": "Greatest individual seasons",
         "greatestAlltimeEachYear": "Greatest all time each year",
-        "greatestByYear": "Greatest riders by birth year",
+        "greatestByYear": "Greatest by birth year",
         "mostPointsEachYear": "Most points each year",
-        "greatestByAge": "Greatest riders at each age",
+        "greatestByAge": "Greatest at a certain age",
         "rawData": "Raw data",
         "quiz": "Quiz",
         "raceCalendar": "Race calendar",
+        "seasonOverview": "Season overview",
         "contact": "Contact",
         "developer": "The website is designed and developed by Rasmus Thingholm. Contact at ",
         "search": "Search...",
@@ -683,59 +685,68 @@
     "homepage": {
         "quote": "Cycling isn't a game, it's a sport. Tough, hard and unpitying, and it requires great sacrifices. One plays football, or tennis, or hockey. One doesn't play at cycling.",
         "author": "Jean De Gribaldy",
-        "description1": "Welcome to Mathias Jensen's and Mathias Fisker Mundbjerg's take on a prestige list in the world of road cycling.",
-        "description2": "We would like to start by stating that the points system is based on a subjective assessment, but a thoroughly discussed and - we think ourselves - qualified one of its kind.",
-        "description3": "The primary purpose of Prestigelisten is to provide the opportunity to compare riders over time. We have tried to formulate the point allocation so that neither current nor oldest riders are favored too much. We have tried to balance it so that the fact that there was less competition 100 years ago balances out the smaller number of prestigious races in which it was possible to score points.",
+        "description1": "Welcome - here’s our take on a ranking of riders with the most prestigious results in the world of road cycling.",
+        "description2": "Primarily, the purpose of Prestigelisten is to enable useful rider comparison over time. We’ve tried to create the point scale so that neither modern riders nor those from earlier generations are overly favored. The idea is to balance the growing number of prestigious races over the past 150 years with the steadily increasing level of competition in the sport.",
         "exploreButton": "Explore Prestigelisten",
-        "moreButton": "More about the list...",
-        "socialMediaText": "Follow us on X and Instagram, where we post about changes on Prestigelisten, statistics, quiz and much more.",
+        "moreButton": "Learn more...",
+        "socialMediaText": "Follow us on X, Instagram and Facebook to get updates, statistics, quizzes and more.",
         "tableTitles": {
             "allTimePoints": "All time greatest riders",
-            "latestResults": "Latest point scoring results",
-            "calendar": "Calendar",
+            "latestResults": "Latest results",
+            "calendar": "Race calendar",
             "greatestActiveRiders": "Greatest active riders",
-            "greatestDanishRiders": "Greatest danish riders",
-            "greatestNations": "Greatest nations",
+            "greatestDanishRiders": "Greatest Danish riders",
+            "greatestNations": "Countries",
             "greatestSeasons": "Greatest individual seasons",
-            "greatestAlltimeEachYear": "Greatest riders each year",
+            "greatestAlltimeEachYear": "Greatest all time each year",
             "greatest3YearSpan": "Greatest riders over a 3-year span",
-            "greatestByDecade": "Greatest riders each decade",
-            "socialMedia": "Follow us on X and Instagram"
-        }
+            "greatestByDecade": "Most points each decade",
+            "socialMedia": "Follow us on social media"
+        },
+        "onlyActiveRiders": "Only active riders"
     },
     "tableColumns": {
         "no": "No.",
+        "allTime": "All time",
         "allTimeNo": "No. (All time)",
         "placement": "Placement",
         "name": "Name",
         "rider": "Rider",
         "points": "Points",
-        "nation": "Nation",
+        "pointsTotal": "Total points",
+        "nation": "Country",
         "team": "Team",
-        "year": "Year",
+        "year": "Born",
         "season": "Season",
         "change": "Change",
         "results": "Results",
-        "result": "Result(s)",
+        "result(s)": "Result(s)",
+        "result": "Result",
         "greatestResults": "Greatest results",
         "pointsGained": "Points gained",
         "date": "Date",
-        "numberOfRiders": "Number of riders",
+        "numberOfRiders": "Rider count",
         "pointsPerRider": "Points per rider",
-        "activeOnlySpan": "Active only",
+        "activeOnlySpan": "Active riders",
         "showAll": "Show all...",
         "showMore": "Show more...",
-        "numberOfResults": "Number of results",
+        "numberOfResults": "Total results",
+        "pointsScoringResults": "Prestigelisten results",
         "greatestRiders": "Greatest riders",
         "span": "Span",
         "amount": "Amount",
-        "riders": "Riders",
+        "number": "Number",
+        "riders": "Rider(s)",
         "races": "Races",
-        "latestPointSystem": "Current/latest point system",
+        "latestPointSystem": "Current/latest race category",
         "and": "and",
         "active": "Active",
         "inactive": "Inactive",
-        "years": "Years"
+        "years": "Years",
+        "age": "Age",
+        "dateFormatNoYear": "mm-dd",
+        "editions": "Edition(s)",
+        "totalPointsCurrentRiders": "Total points (current riders)"
     },
     "searchBar": {
         "placeholder": "Search..."
@@ -768,7 +779,7 @@
         "next": "Next"
     },
     "calendarPage": {
-        "title": "Calendar for point scoring races"
+        "title": "Race schedule"
     },
     "yearPage": {
         "year": "Year",
@@ -776,57 +787,58 @@
         "titles": {
             "riderWithMostPoints": "Riders with most points in {year}",
             "nationWithMostPoints": "Nations with most points in {year}",
-            "ridersRankings": "Greatest riders in {year}",
-            "nationsRankings": "Greatest nations in {year}",
+            "ridersRankings": "Greatest riders of all time in {year}",
+            "nationsRankings": "Greatest countries of all time in {year}",
             "greatestRidersFromYear": "Greatest riders born in {year}",
-            "resultsFromYear": "Results from {year}"
+            "resultsFromYear": "Results in {year}"
         },
         "noRidersBornInYear": "No riders born in {year}"
     },
     "teamsPage": {
         "team": "Teams",
         "titles": {
-            "greatestRiders": "Teams with the greatest riders",
-            "mostPoints": "Teams with most points in {year}"
+            "greatestRiders": "All time points by currently signed riders",
+            "mostPoints": "Points earned in {year}"
         }
     },
     "teamPage": {
         "profile": {
-            "nation": "Nation",
-            "points": "Riders' points (total)",
-            "placementAllTeams": "Placement among teams with the greatest riders",
-            "numberOfResultsThisYear": "Number of point scoring results in {year}",
-            "pointsGainedThisYear": "Points gained in {year}",
-            "placementThisYear": "Placement among teams in {year}"
+            "nation": "Country",
+            "points": "Total points (current riders)",
+            "placementAllTeams": "Team ranking (total points of current squad)",
+            "numberOfResultsThisYear": "Prestigelisten results in {year}",
+            "pointsGainedThisYear": "Points earned in {year}",
+            "placementThisYear": "Team ranking ({year} results)",
+            "founded": "Founded"
         },
         "titles": {
-            "greatestRiders": "Greatest riders on the team",
-            "teamsWithGreatestRiders": "Teams with the greatest riders",
-            "mostPoints": "Teams with most points in {year}",
+            "greatestRiders": "Greatest current riders",
+            "teamsWithGreatestRiders": "Team ranking (current squads)",
+            "mostPoints": "Team ranking ({year} results)",
             "greatestRidersOnTeam": "Greatest riders on {team}",
-            "resultsThisYear": "Point scoring results in {year}"
+            "resultsThisYear": "Prestigelisten results in {year}"
         },
         "no": "No."
     },
     "racePage": {
         "profile": {
-            "nation": "Nation",
-            "currentPointSystem": "Current point class",
-            "latestPointSystem": "Latest point class",
-            "active": "Active (as point scoring race)",
+            "nation": "Country",
+            "currentPointSystem": "Current race category",
+            "latestPointSystem": "Latest race category",
+            "active": "Active (as Prestigelisten race)",
             "activeAnswer": {
                 "yes": "Yes",
                 "no": "No"
             },
-            "firstEdition": "First point scoring edition",
-            "latestEdition": "Latest point scoring edition",
-            "pointSystem": "Point class for {race}",
+            "firstEdition": "First edition as Prestigelisten race",
+            "latestEdition": "Latest edition as Prestigelisten race",
+            "pointSystem": "Points scale for {race}",
             "source": "Source"
         },
         "timeline": {
             "title": "Timeline",
-            "pointClasses": "Point classes",
-            "pointClass": "Point class",
+            "pointClasses": "Race categories",
+            "pointClass": "Race category",
             "from": "From",
             "to": "To",
             "active": "Active"
@@ -836,29 +848,29 @@
             "mostPointsNations": "Nations with most points in the race"
         },
         "resultsEachEdition": {
-            "title": "Results each edition",
-            "pointClassForEdition": "Point class for edition",
+            "title": "Results",
+            "pointClassForEdition": "Race category for this edition",
             "results": "Results"
         },
         "mostOfEachResultTypes": {
-            "title": "Riders with most of each result type",
-            "resultType": "Result type"
+            "title": "Records for each possible result",
+            "resultType": "Result"
         }
     },
     "lists": {
         "nations": {
             "sortBy": "Rank by",
             "filterBy": "Filter by",
-            "title": "Prestigelisten - Nations",
+            "title": "Countries",
             "points": "Points",
-            "numberOfRiders": "Number of riders",
+            "numberOfRiders": "Rider count",
             "pointsPerRider": "Points per rider",
             "all": "All",
             "active": "Only active riders",
             "inactive": "Only inactive riders"
         },
         "riders3YearSpans": {
-            "title": "Prestigelisten - Riders over 3-year spans",
+            "title": "Points earned in 3 consecutive seasons",
             "mostPoints": "Riders with most points over 3-year spans",
             "greatestRiders": "Greatest riders over a 3-year span each year",
             "span": "Span",
@@ -868,21 +880,21 @@
             "title": "Prestigelisten - Riders at each age",
             "age": "Age",
             "selectAge": "Select age",
-            "ageTitle": "Greatest riders at each age - {age} years"
+            "ageTitle": "Greatest riders at a certain age"
         },
         "greatestSeasons": {
-            "title": "Prestigelisten - Greatest individual seasons"
+            "title": "Greatest individual seasons"
         },
         "riders": {
-            "title": "Prestigelisten - Riders",
+            "title": "All time ranking",
             "singleYear": "Single year",
             "bornIn": "Born in",
             "orBefore": "or before",
             "orAfter": "or after",
             "nationality": "Nationality",
-            "allNations": "All nations",
-            "addNation": "Add nation",
-            "selectNation": "Select nation",
+            "allNations": "All countries",
+            "addNation": "Add country",
+            "selectNation": "Select country",
             "allStatuses": "All",
             "activeOnly": "Only active riders",
             "inactiveOnly": "Only inactive riders",
@@ -893,22 +905,22 @@
     "nationPage": {
         "noRiders": "{nation} has no riders with points yet.",
         "profile": {
-            "placement": "Placement",
+            "placement": "All time ranking",
             "points": "Points",
-            "activePlacement": "Placement (only active riders)",
-            "activePoints": "Points (only active riders)",
-            "numberOfRidersWithPoints": "Number of riders with points",
-            "resultCount": "Number of point scoring results",
-            "greatestRiders": "Greatest riders from {nation}",
+            "activePlacement": "Ranking (active riders only)",
+            "activePoints": "Points (active riders only)",
+            "numberOfRidersWithPoints": "Riders with points",
+            "resultCount": "Prestigelisten",
+            "greatestRiders": "Top results",
             "no": "no."
         },
         "charts": {
-            "yearlyPoints": "Points gained each year",
+            "yearlyRankings": "Season ranking",
+            "yearlyRankingsAcc": "Development all time",
+            "yearlyPoints": "Points earned each year",
             "yearlyResultsAmount": "Number of point scoring results each year",
-            "yearlyRankings": "Yearly rankings",
-            "yearlyRankingsAcc": "All time rankings each year",
-            "yearlyCategoryPoints": "Distribution of points gained each year by category",
-            "categoryPoints": "Distribution of points by category"
+            "yearlyCategoryPoints": "Points earned each year by type of result",
+            "categoryPoints": "Points distributed by type of result"
         },
         "greatestResults": {
             "title": "Greatest results from riders from {nation}"
@@ -918,84 +930,71 @@
             "greatestActiveRiders": "Greatest active riders from {nation}"
         },
         "resultsEachYear": {
-            "title": "Results each year",
+            "title": "Prestigelisten results by season",
             "results": "Results",
             "noResults": "No results",
             "highlights": "Highlights",
             "pointsInYear": "Points in {year}",
-            "pointsAllTime": "Points all time",
-            "placementForYear": "Placement for {year}",
-            "placementOnPrestigeList": "Placement on Prestigelisten",
-            "movementOnPrestigeList": "Movement on Prestigelisten",
-            "numberOfResults": "Number of results",
-            "mostPoints": "Riders with most points in {year}"
+            "pointsAllTime": "All time points",
+            "placementForYear": "Season ranking",
+            "placementOnPrestigeList": "All time ranking",
+            "movementOnPrestigeList": "Development all time",
+            "numberOfResults": "Prestigelisten results",
+            "mostPoints": "Points earned in {year}"
         },
         "racesAndTeamsTables": {
-            "pointGivingRaces": "Point giving races in {nation}",
+            "pointGivingRaces": "Prestigelisten races in {nation}",
             "teamsWithPoints": "Teams from {nation} with points"
         }
     },
     "omPrestigelisten": {
         "title": "About Prestigelisten",
-        "description1": "Welcome to Mathias Jensen's and Mathias Fisker Mundbjerg's take on a prestige list in the world of road cycling.",
-        "description2": "We would like to start by stating that the points system is based on a subjective assessment, but a thoroughly discussed and - we think ourselves - qualified one of its kind.",
-        "description3": "The primary purpose of Prestigelisten is to provide the opportunity to compare riders over time. We have tried to formulate the point allocation so that neither current nor oldest riders are favored too much. We have tried to balance it so that the fact that there was less competition 100 years ago balances out the smaller number of prestigious races in which it was possible to score points.",
-        "description4": "The evaluation covers data all the way back to the first edition of the Milano-Torino in 1876, which means in total more than 30,000 placements distributed among more than 4,000 different riders who have achieved at least one of the 754 point-giving results.",
-        "description5": "There are nine different rankings:",
-        "description6": "The race results primarily rely on ProCyclingStats' and CyclingRankings databases. All riders are written out without any special characters or omlyds to avoid errors where the riders are not credited with their points.",
-        "description7": "The point system is primarily based on our own assessments, but we have - primarily in the older results - supported ourselves with CyclingRankings assessments, which, among other things, weigh the strength of the races.",
-        "description8": "Note that the list has been made based on the premise that the races are decided on the bike, as this is where the majority of Prestigelisten is achieved. Therefore, the results do not reflect any doping scandals that have come to light after the races, but rather on the bike.",
-        "description9": "If you find errors in the results or on the website, if you have access to additional editions of the listed races, if you want to comment on the point allocation or give other feedback, we would very much like to hear from you at ",
-        "description9pt2": ". The development of Arken can be followed on the Twitter profile ",
-        "description9pt3": ", which we can also be contacted via a direct message.",
-        "description10": "Good luck!",
-        "description11": "Mathias and Mathias",
-        "list1": "An all time ranking, which lists the riders who have achieved the most prestigious results over time",
-        "list2": "A ranking of the most active riders who have achieved the most prestigious results",
-        "list3": "A ranking of the nations whose riders have achieved the most points over time",
-        "list4": "A ranking of the greatest Danish riders who have achieved points",
-        "list5": "A three-year rolling overview of the riders who have achieved the most points over the past three seasons - albeit on a very limited basis before 1900",
-        "list6": "An overview of the top 10 all time, as it has looked each year through time - albeit on a very limited basis before 1900",
-        "list7": "An overview of which riders have achieved the most points in each decade - albeit on a very limited basis before 1900",
-        "list8": "A ranking of the seasons in which a single rider has achieved the most prestigious results",
-        "list9": "A ranking of the greatest riders from each year of birth"
+        "description1": "Welcome - here’s our take on a ranking of riders with the most prestigious results in the world of road cycling.",
+        "description2": "Primarily, the purpose of Prestigelisten is to enable useful rider comparison over time. We’ve tried to create the point scale so that neither modern riders nor those from earlier generations are overly favored. The idea is to balance the growing number of prestigious races over the past 150 years with the steadily increasing level of competition in the sport.",
+        "description3": "Prestigelisten is based on data going all the way back to the first edition of Milano–Torino in 1876 - in total more than 30,000 prestigious results performed by more than 4,000 different riders.",
+        "description4": "ProCyclingStats and CyclingRanking are the main data sources. All rider names are spelled without special characters to prevent mistakes.",
+        "description5": "The points scale is largely based on subjective assessments, though for some older results we’ve followed CyclingRanking’s evaluations that consider the competitiveness of the races. Therefore, we believe our points scale is carefully considered and thoroughly debated.",
+        "description6": "And now, the elephant in the room - doping. In our opinion, there are three groups of doped riders: those who’ve been stripped of all results, those who haven’t lost any, and those who were never caught. To treat everyone as equally as possible, Prestigelisten is built on the premise that races are decided on the bike. Thus, we’ve assigned points based on the original results - and of course each and everyone can make reservations as they please.",
+        "description7": "Enjoy!",
+        "description8": "Mathias S. Jensen and Mathias Fisker Mundbjerg"
     },
     "pointGivingResultsInYear": {
         "title": "Point-giving results in {year}"
     },
     "pointSystems": {
-        "title": "Point system"
+        "title": "Point scale"
     },
     "riderPage": {
         "profile": {
-            "nationality": "Nationality",
-            "year": "Year",
+            "nationality": "Country",
+            "year": "Born",
             "team": "Team",
-            "allTimePlacement": "All time placement",
-            "nationPlacement": "Placement (only {nation})",
-            "activePlacement": "Placement (only active)",
+            "allTimePlacement": "All time ranking",
+            "nationPlacement": "Ranking among riders from {nation}",
+            "activePlacement": "Placement (active riders)",
             "points": "Points",
-            "greatestResults": "Greatest results",
+            "greatestResults": "Top results",
             "source": "Source"
         },
         "charts": {
-            "yearlyRankings": "Yearly rankings",
-            "yearlyRankingsAcc": "All time rankings each year",
-            "yearlyPoints": "Points gained each year",
+            "yearlyRankings": "Season ranking",
+            "yearlyRankingsAcc": "Development all time",
+            "yearlyPoints": "Points earned each year",
             "yearlyResultsAmount": "Number of point scoring results each year",
-            "yearlyCategoryPoints": "Distribution of points gained each year by category",
-            "categoryPoints": "Distribution of points by category"
+            "yearlyCategoryPoints": "Points earned each year by type of result",
+            "categoryPoints": "Points distributed by type of result"
         },
         "resultsEachYear": {
-            "title": "Results each year",
+            "title": "Prestigelisten results by season",
             "results": "Results",
             "noResults": "No results",
             "highlights": "Highlights",
             "pointsInYear": "Points in {year}",
-            "pointsEntireCareer": "Points in entire career",
-            "placementForYear": "Placement for {year}",
-            "placementOnPrestigeList": "Placement on Prestigelisten",
-            "movementOnPrestigeList": "Movement on Prestigelisten"
+            "pointsEntireCareer": "Career points",
+            "placementForYear": "Season ranking",
+            "placementOnPrestigeList": "All time ranking",
+            "movementOnPrestigeList": "Development all time",
+            "resultCount": "Total results"
         },
         "tables": {
             "greatestRidersFromNation": "Greatest riders from {nation}",
@@ -1007,63 +1006,68 @@
         }
     },
     "comparePage": {
-        "title": "Compare riders or nations on Prestigelisten",
+        "title": "Compare riders or countries on Prestigelisten",
         "riders": "Riders",
-        "nations": "Nations",
+        "nations": "Countries",
         "remove": "Remove",
         "rider": {
             "title": "Compare riders",
-            "agePointsTitle": "Points gained at each age",
+            "agePointsTitle": "Points earned at a certain age",
+            "ageAccumulatedPointsTitle": "Accumulated points earned at a certain age",
             "removeRider": "Remove rider",
             "riderInformation": "Rider information",
             "nationality": "Nationality",
             "team": "Team",
-            "year": "Year",
+            "year": "Born",
             "pointsAndResults": "Points/results",
-            "placementAlltime": "Placement all time",
-            "placementActive": "Placement (only active)",
-            "numberOfResults": "Number of results",
+            "placementAlltime": "All time ranking",
+            "placementActive": "Ranking (active riders)",
+            "numberOfResults": "Total results",
             "points": "Points",
-            "categoryPoints": "Category points",
+            "categoryPoints": "Points by type of result",
             "greatestResults": "Greatest results",
-            "pointsGained": "Points gained",
+            "pointsGained": "Points earned",
             "pointsAllTime": "Points all time",
-            "placementForYear": "Placement for year",
-            "age": "Age"
+            "placementForYear": "Ranking for year",
+            "age": "Age",
+            "greatestSeasonYear": "Greatest season",
+            "greatestSeasonPoints": "Points in greatest season"
         },
         "nation": {
             "title": "Compare nations",
-            "pointsGainedEachYear": "Points gained each year",
-            "yearlyRankings": "All time rankings each year",
+            "pointsGainedEachYear": "Points earned by year",
+            "yearlyRankings": "All time ranking by year",
             "removeNation": "Remove nation",
             "pointInformation": "Points/placements",
             "points": "Points",
-            "placement": "Placement all time",
-            "placementActive": "Placement (only active)",
-            "pointsActive": "Points (only active)",
-            "numberOfResults": "Number of results",
-            "numberOfRidersWithPoints": "Number of riders with points",
+            "placement": "All time ranking",
+            "placementActive": "Ranking (active riders)",
+            "pointsActive": "Points (active riders)",
+            "numberOfResults": "Total results",
+            "numberOfRidersWithPoints": "Total riders",
             "pointsPerRider": "Points per rider",
             "results": "Results",
-            "firstPointGivingResult": "First point giving result",
-            "latestPointGivingResult": "Latest point giving result",
-            "categoryPoints": "Category points",
+            "firstPointGivingResult": "First point earned",
+            "latestPointGivingResult": "Latest point earned",
+            "categoryPoints": "Points by type of result",
             "greatestResults": "Greatest results",
-            "pointsGained": "Points gained",
+            "pointsGained": "Points earned",
             "pointsAllTime": "Points all time",
-            "placementForYear": "Placement for year",
+            "placementForYear": "Yearly ranking",
             "year": "Year",
-            "placementLabel": "Placement"
+            "placementLabel": "Ranking",
+            "greatestSeasonYear": "Greatest season",
+            "greatestSeasonPoints": "Points in greatest season"
         }
     },
     "twitterCard": {
         "points": "Points",
         "allTime": "All time",
         "active": "Active",
-        "fromYear": "From {year}",
-        "alltimePlacement": "All time placement",
-        "placementActive": "Placement among active riders",
-        "greatestResults": "Greatest results",
+        "fromYear": "Born in {year}",
+        "alltimePlacement": "All time ranking",
+        "placementActive": "Ranking (active riders)",
+        "greatestResults": "Top results",
         "placementsOnPrestigeList": "Placements on Prestigelisten",
         "and": "and"
     }

@@ -5,15 +5,19 @@ export default function CompareProperties({
     value2,
     title,
     reverseComparison = false,
-    noFormat = false
+    noFormat = false,
+    showCompareColor = true,
 }: Readonly<{
     value1: number | null | undefined,
     value2: number | null | undefined,
     title: string,
     reverseComparison?: boolean,
-    noFormat?: boolean
+    noFormat?: boolean,
+    showCompareColor?: boolean,
 }>) {
     const getColorFromComparison = (baseValue: number | null | undefined, compareValue: number | null | undefined) => {
+        if (!showCompareColor) return "";
+
         if (!baseValue || !compareValue || baseValue == compareValue) return "";
 
         if (reverseComparison ? baseValue < compareValue : baseValue > compareValue) return "text-green-500";

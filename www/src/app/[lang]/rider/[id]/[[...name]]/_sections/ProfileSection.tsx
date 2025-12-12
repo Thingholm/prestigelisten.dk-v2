@@ -73,8 +73,8 @@ export default async function ProfileSection({
                         {formatNumber(rider.rider_seasons.find(season => season.year = new Date().getFullYear())?.rank_all_time) ?? "-"}
                     </ProfileAttribute>
 
-                    <ProfileAttribute label={t("nationPlacement", { nation: tNations(`${rider.nations.code}.name`)})} href={getRidersListUrl({ nations: [rider.nation_id]})}>
-                        {formatNumber(nationRank) ?? "-"}
+                    <ProfileAttribute label={t("points")}>
+                        {formatNumber(rider.rider_points[0]?.points)}
                     </ProfileAttribute>
 
                     {rider.active &&
@@ -83,8 +83,8 @@ export default async function ProfileSection({
                         </ProfileAttribute>
                     }
 
-                    <ProfileAttribute label={t("points")}>
-                        {formatNumber(rider.rider_points[0]?.points)}
+                    <ProfileAttribute label={t("nationPlacement", { nation: tNations(`${rider.nations.code}.name`)})} href={getRidersListUrl({ nations: [rider.nation_id]})}>
+                        {formatNumber(nationRank) ?? "-"}
                     </ProfileAttribute>
                 </ProfileDetails>
             </ProfileMainSection>
@@ -98,6 +98,7 @@ export default async function ProfileSection({
                             metaRace={group.races.meta_races}
                             count={group.results.length}
                             points={group.points}
+                            showPoints={false}
                         />
                     ))}
                 </ul>

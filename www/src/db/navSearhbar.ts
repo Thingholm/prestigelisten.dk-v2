@@ -18,7 +18,7 @@ export const getNavSearchbarData = unstable_cache(async () => {
     return {
         riders: ridersData.sort((a, b) => (b.rider_points[0]?.points) - (a.rider_points[0]?.points)),
         nations: nationsData.sort((a, b) => (b.nation_points[0]?.points) - (a.nation_points[0]?.points)),
-        races: racesData,
+        races: racesData.sort((a, b) => Math.min(...a.races.map(r => r.race_classes.sorting_index)) - Math.min(...b.races.map(r => r.race_classes.sorting_index))),
         teams: teamsData
     } as NavSearchbarData
 }, ["navSearchbarData"], { revalidate: 60 * 60})
@@ -39,7 +39,14 @@ const nationsQuery = supabase
 
 const racesQuery = supabase
     .from("meta_races")
-    .select("*")
+    .select(`
+        *,
+        races (
+            race_classes (
+                sorting_index
+            )
+        )
+    `)
     .order("name");
 
 const teamsQuery = supabase

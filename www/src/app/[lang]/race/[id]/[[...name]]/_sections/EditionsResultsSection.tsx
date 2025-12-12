@@ -53,7 +53,7 @@ export default function EditionsResultsSection({
                 <TableBody>
                     {sortResults(resultsForYear).map(result => (
                         <TableRow key={result.id}>
-                            <TableCell className=" pr-2! sm:pr-6!">{getOnlyResultName(result, tResultNames)}</TableCell>
+                            <TableCell className="pr-2! sm:pr-6!">{getOnlyResultName(result, tResultNames, false)}</TableCell>
                             <RiderNameCell 
                                 rider={result.riders} 
                                 showFlagBreakpoint="always"
