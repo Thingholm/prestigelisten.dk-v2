@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: prestigelisten-API
+  IMAGE_NAME: prestigelisten-api
   ACR_NAME: prestigelistenacr
   CONTAINER_APP_NAME: prestigelisten-api-ca
   RESOURCE_GROUP: prestigelisten-rg
@@ -54,7 +54,7 @@ jobs:
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
         
-      - name: Build and push Docker image to AZure Container Registry
+      - name: Build and push Docker image to Azure Container Registry
         uses: docker/build-push-action@v6
         with:
           context: ./backend
