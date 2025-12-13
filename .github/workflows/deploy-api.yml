@@ -32,7 +32,7 @@ jobs:
         run: dotnet build backend --configuration Release
 
       - name: Run tests
-        run: dotnet test backend --no-build --verbosity normal
+        run: dotnet test backend --configuration Release --no-build --verbosity normal
 
   push-image:
     needs: build-and-test
