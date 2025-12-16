@@ -33,23 +33,21 @@ public class RiderService : IRiderService
         var resultDTO = new SyncRidersResultDTO();
 
         var googleSheetsRiders = _googleSheetsRidersService.GetAllRiders();
-        var nations = _nations
-            .GetAll()
-            .ToDictionary(
-                nation => nation.Name,
-                nation => nation,
-                StringComparer.OrdinalIgnoreCase
-            );
-        var teams = _teams
-            .GetAll()
-            .ToDictionary(team => team.Name, team => team, StringComparer.OrdinalIgnoreCase);
-        var riders = _riders
-            .GetAll()
-            .ToDictionary(
-                rider => rider.FullName,
-                rider => rider,
-                StringComparer.OrdinalIgnoreCase
-            );
+        var nations = (await _nations.GetAllAsync()).ToDictionary(
+            nation => nation.Name,
+            nation => nation,
+            StringComparer.OrdinalIgnoreCase
+        );
+        var teams = (await _teams.GetAllAsync()).ToDictionary(
+            team => team.Name, 
+            team => team, 
+            StringComparer.OrdinalIgnoreCase
+        );
+        var riders = (await _riders.GetAllAsync()).ToDictionary(
+            rider => rider.FullName,
+            rider => rider,
+            StringComparer.OrdinalIgnoreCase
+        );
 
         foreach (var sheetRider in googleSheetsRiders)
         {

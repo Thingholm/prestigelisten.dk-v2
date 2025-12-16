@@ -1,7 +1,8 @@
-﻿using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Prestigelisten.Core.Interfaces.Models;
 using Prestigelisten.Core.Interfaces.Repositories;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Prestigelisten.Persistence.Repositories;
 
@@ -25,6 +26,11 @@ public class BaseRepository<T> : IBaseRepository<T>
     public virtual IEnumerable<T> GetAll()
     {
         return SetupQueryable().ToList();
+    }
+
+    public virtual async Task<IEnumerable<T>> GetAllAsync()
+    {
+        return await SetupQueryable().ToListAsync();
     }
 
     public virtual T? GetById(int id)
