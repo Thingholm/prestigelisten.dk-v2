@@ -17,7 +17,7 @@ namespace Prestigelisten.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.10")
+                .HasAnnotation("ProductVersion", "10.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -7848,7 +7848,7 @@ namespace Prestigelisten.Persistence.Migrations
                         .HasConstraintName("fk_previous_nationalities_nations_nation_id");
 
                     b.HasOne("Prestigelisten.Core.Models.Rider", "Rider")
-                        .WithMany()
+                        .WithMany("PreviousNationalities")
                         .HasForeignKey("RiderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
@@ -7989,6 +7989,8 @@ namespace Prestigelisten.Persistence.Migrations
 
             modelBuilder.Entity("Prestigelisten.Core.Models.Rider", b =>
                 {
+                    b.Navigation("PreviousNationalities");
+
                     b.Navigation("Seasons");
                 });
 #pragma warning restore 612, 618

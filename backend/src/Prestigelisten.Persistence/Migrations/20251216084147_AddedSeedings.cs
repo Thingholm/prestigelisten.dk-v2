@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -8,11 +9,193 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Prestigelisten.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedTableSeedings : Migration
+    public partial class AddedSeedings : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "fk_results_nation_seasons_nation_season_id",
+                table: "results");
+
+            migrationBuilder.DropForeignKey(
+                name: "fk_results_rider_seasons_rider_season_id",
+                table: "results");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "id",
+                table: "rider_seasons",
+                type: "integer",
+                nullable: false,
+                oldClrType: typeof(long),
+                oldType: "bigint")
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "rider_season_id",
+                table: "results",
+                type: "integer",
+                nullable: true,
+                oldClrType: typeof(long),
+                oldType: "bigint");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "nation_season_id",
+                table: "results",
+                type: "integer",
+                nullable: true,
+                oldClrType: typeof(long),
+                oldType: "bigint");
+
+            migrationBuilder.AddColumn<int>(
+                name: "race_date_id",
+                table: "results",
+                type: "integer",
+                nullable: true);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "id",
+                table: "nation_seasons",
+                type: "integer",
+                nullable: false,
+                oldClrType: typeof(long),
+                oldType: "bigint")
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            migrationBuilder.AddColumn<int>(
+                name: "nation_id",
+                table: "nation_seasons",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.InsertData(
+                table: "meta_races",
+                columns: new[] { "id", "color_hex", "dark_text", "image_id", "name", "nation_id" },
+                values: new object[,]
+                {
+                    { 225, null, false, null, "OL i enkeltstart", null },
+                    { 226, null, false, null, "OL 12 timers løb", null },
+                    { 227, "#ededed", true, null, "VM i linjeløb", null },
+                    { 228, "#ededed", true, null, "VM i enkeltstart", null },
+                    { 229, "#004494", false, null, "EM i linjeløb", null },
+                    { 230, "#004494", false, null, "EM i enkeltstart", null },
+                    { 231, null, false, null, "OL i linjeløb", null },
+                    { 289, "#ededed", false, null, "VM (amatør)", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "nations",
+                columns: new[] { "id", "active", "active_points", "code", "name", "points" },
+                values: new object[,]
+                {
+                    { 1, true, 0, "it", "Italien", 0 },
+                    { 2, true, 0, "be", "Belgien", 0 },
+                    { 3, true, 0, "fr", "Frankrig", 0 },
+                    { 4, true, 0, "es", "Spanien", 0 },
+                    { 5, true, 0, "nl", "Nederlandene", 0 },
+                    { 6, true, 0, "ch", "Schweiz", 0 },
+                    { 7, true, 0, "de", "Tyskland", 0 },
+                    { 8, true, 0, "gb", "Storbritannien", 0 },
+                    { 9, true, 0, "us", "USA", 0 },
+                    { 10, true, 0, "au", "Australien", 0 },
+                    { 11, true, 0, "lu", "Luxembourg", 0 },
+                    { 12, true, 0, "co", "Colombia", 0 },
+                    { 13, true, 0, "ie", "Irland", 0 },
+                    { 14, true, 0, "dk", "Danmark", 0 },
+                    { 15, true, 0, "si", "Slovenien", 0 },
+                    { 16, true, 0, "ru", "Rusland", 0 },
+                    { 17, true, 0, "no", "Norge", 0 },
+                    { 18, true, 0, "sk", "Slovakiet", 0 },
+                    { 19, true, 0, "pt", "Portugal", 0 },
+                    { 20, true, 0, "pl", "Polen", 0 },
+                    { 21, true, 0, "kz", "Kasakhstan", 0 },
+                    { 22, true, 0, "se", "Sverige", 0 },
+                    { 23, true, 0, "ua", "Ukraine", 0 },
+                    { 24, true, 0, "at", "Østrig", 0 },
+                    { 25, true, 0, "cz", "Tjekkiet", 0 },
+                    { 26, true, 0, "ca", "Canada", 0 },
+                    { 27, true, 0, "ec", "Ecuador", 0 },
+                    { 28, true, 0, "lv", "Letland", 0 },
+                    { 29, false, 0, "su", "Sovjetunionen", 0 },
+                    { 30, true, 0, "uz", "Usbekistan", 0 },
+                    { 31, true, 0, "lt", "Litauen", 0 },
+                    { 32, true, 0, "za", "Sydafrika", 0 },
+                    { 33, true, 0, "mx", "Mexico", 0 },
+                    { 34, true, 0, "ee", "Estland", 0 },
+                    { 35, true, 0, "by", "Belarus", 0 },
+                    { 36, true, 0, "ve", "Venezuela", 0 },
+                    { 37, false, 0, "dd", "Østtyskland", 0 },
+                    { 38, true, 0, "md", "Moldova", 0 },
+                    { 39, true, 0, "nz", "New Zealand", 0 },
+                    { 40, true, 0, "ar", "Argentina", 0 },
+                    { 41, true, 0, "er", "Eritrea", 0 },
+                    { 42, true, 0, "cr", "Costa Rica", 0 },
+                    { 43, true, 0, "hu", "Ungarn", 0 },
+                    { 44, true, 0, "br", "Brasilien", 0 },
+                    { 45, true, 0, "gr", "Grækenland", 0 },
+                    { 46, true, 0, "hr", "Kroatien", 0 },
+                    { 47, true, 0, "jp", "Japan", 0 },
+                    { 48, true, 0, "bg", "Bulgarien", 0 },
+                    { 49, true, 0, "fi", "Finland", 0 },
+                    { 50, true, 0, "dz", "Algeriet", 0 },
+                    { 51, true, 0, "ae", "UAE", 0 },
+                    { 52, true, 0, "cn", "Kina", 0 },
+                    { 53, true, 0, "tr", "Tyrkiet", 0 },
+                    { 54, true, 0, "bh", "Bahrain", 0 },
+                    { 55, true, 0, "il", "Israel", 0 },
+                    { 56, true, 0, "ph", "Filippinerne", 0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "race_classes",
+                columns: new[] { "id", "name", "sorting_index" },
+                values: new object[,]
+                {
+                    { 1, "Tour de France", 1 },
+                    { 2, "Grand Tour", 2 },
+                    { 3, "Monument", 4 },
+                    { 4, "WTT A", 5 },
+                    { 5, "WTC A", 6 },
+                    { 6, "WTT B", 7 },
+                    { 7, "WTC B", 8 },
+                    { 8, "WTT C", 9 },
+                    { 9, "WTC C", 10 },
+                    { 10, "WTT D", 11 },
+                    { 11, "WTC D", 12 },
+                    { 12, "Nationale mesterskaber A", 24 },
+                    { 13, "Nationale mesterskaber i ITT A", 25 },
+                    { 14, "Nationale mesterskaber B", 26 },
+                    { 15, "Nationale mesterskaber i ITT B", 27 },
+                    { 16, "OL", 13 },
+                    { 17, "OL ITT", 14 },
+                    { 18, "VM", 17 },
+                    { 19, "VM ITT", 18 },
+                    { 20, "EM", 20 },
+                    { 21, "EM ITT", 21 },
+                    { 22, "OL (amatør)", 15 },
+                    { 23, "OL ITT (amatør)", 16 },
+                    { 24, "Parløb", 22 },
+                    { 25, "Andre", 23 },
+                    { 26, "Grand Tour B", 3 },
+                    { 27, "VM (amatør)", 19 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "teams",
+                columns: new[] { "id", "name", "nation_id" },
+                values: new object[,]
+                {
+                    { 6, "Kinan Racing Team", null },
+                    { 7, "Toscana Factory Team Vini Fantini", null },
+                    { 9, "Petrolike", null },
+                    { 10, "REMBE | rad-net", null },
+                    { 12, "Orgullo Paisa", null },
+                    { 13, "Factor Racing", null }
+                });
+
             migrationBuilder.InsertData(
                 table: "meta_races",
                 columns: new[] { "id", "color_hex", "dark_text", "image_id", "name", "nation_id" },
@@ -182,13 +365,6 @@ namespace Prestigelisten.Persistence.Migrations
                     { 221, null, false, null, "Kasakhisk mester i enkeltstart", 21 },
                     { 222, null, false, null, "Svensk mester i enkeltstart", 22 },
                     { 223, null, false, null, "Irsk mester i enkeltstart", 13 },
-                    { 225, null, false, null, "OL i enkeltstart", null },
-                    { 226, null, false, null, "OL 12 timers løb", null },
-                    { 227, "#ededed", true, null, "VM i linjeløb", null },
-                    { 228, "#ededed", true, null, "VM i enkeltstart", null },
-                    { 229, "#004494", false, null, "EM i linjeløb", null },
-                    { 230, "#004494", false, null, "EM i enkeltstart", null },
-                    { 231, null, false, null, "OL i linjeløb", null },
                     { 233, "#02B3E4", false, null, "Trofeo Baracchi", 1 },
                     { 234, null, false, null, "48 Hours Race North Shields", 8 },
                     { 235, null, false, null, "50 Miles Professional Championship", 8 },
@@ -245,7 +421,6 @@ namespace Prestigelisten.Persistence.Migrations
                     { 286, null, false, null, "Tour d'Europe", 3 },
                     { 287, null, false, null, "Tour de la Nouvelle France", 3 },
                     { 288, null, false, null, "Tour of Ireland", 13 },
-                    { 289, "#ededed", false, null, "VM (amatør)", null },
                     { 290, null, false, null, "Wien-Reichenberg", 24 },
                     { 291, null, false, null, "Zürich-Berlin", 7 },
                     { 292, null, false, null, "100 Miles Professional Championship of Britain", 8 },
@@ -352,6 +527,98 @@ namespace Prestigelisten.Persistence.Migrations
                 columns: new[] { "id", "active", "active_span_string", "meta_race_id", "race_class_id" },
                 values: new object[,]
                 {
+                    { 224, true, "(>1994)", 231, 16 },
+                    { 225, true, "(>1994)", 225, 17 },
+                    { 226, false, null, 226, 17 },
+                    { 227, true, null, 227, 18 },
+                    { 228, true, null, 228, 19 },
+                    { 229, true, null, 229, 20 },
+                    { 230, true, null, 230, 21 },
+                    { 231, false, "(<1994)", 231, 22 },
+                    { 232, false, "(<1994)", 225, 23 },
+                    { 1832, false, null, 289, 27 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "teams",
+                columns: new[] { "id", "name", "nation_id" },
+                values: new object[,]
+                {
+                    { 1, "UAE Team Emirates - XRG", 51 },
+                    { 2, "Red Bull - BORA - hansgrohe", 7 },
+                    { 3, "Team Picnic PostNL", 5 },
+                    { 4, "Lotto", 2 },
+                    { 5, "XDS Astana Team", 21 },
+                    { 8, "Unibet Tietema Rockets", 5 },
+                    { 11, "Team Polti VisitMalta", 1 },
+                    { 2125, "UAE Team Emirates", 51 },
+                    { 2126, "Israel - Premier Tech", 55 },
+                    { 2127, "BORA - hansgrohe", 7 },
+                    { 2128, "Astana Qazaqstan Team", 21 },
+                    { 2129, "Soudal - Quick Step", 2 },
+                    { 2130, "Movistar Team", 4 },
+                    { 2131, "Alpecin-Deceuninck", 2 },
+                    { 2132, "Team Visma | Lease a Bike", 5 },
+                    { 2133, "INEOS Grenadiers", 8 },
+                    { 2134, "EF Education-EasyPost", 9 },
+                    { 2135, "Uno-X Mobility", 17 },
+                    { 2136, "Team Jayco AlUla", 10 },
+                    { 2137, "Team dsm-firmenich Post NL", 5 },
+                    { 2138, "Team dsm - firmenich", 5 },
+                    { 2139, "Arkéa - B&B Hotels", 3 },
+                    { 2140, "Lidl - Trek", 9 },
+                    { 2141, "Decathlon AG2R La Mondiale Team", 3 },
+                    { 2142, "Cofidis", 3 },
+                    { 2143, "Bahrain - Victorious", 54 },
+                    { 2144, "Tudor Pro Cycling Team", 6 },
+                    { 2145, "Groupama - FDJ", 3 },
+                    { 2146, "Lotto Dstny", 2 },
+                    { 2147, "Team Medellin - EPM", 12 },
+                    { 2148, "Q36.5 Pro Cycling Team", 6 },
+                    { 2149, "VF Group - Bardiani CSF - Faizanè", 1 },
+                    { 2150, "Intermarché - Wanty", 2 },
+                    { 2151, "Nu Colombia", 12 },
+                    { 2152, "TotalEnergies", 3 },
+                    { 2153, "Corratec", 1 },
+                    { 2154, "Equipo Kern Pharma", 4 },
+                    { 2155, "Forte Petrolike - Androni Giocattoli", 1 },
+                    { 2156, "VolkerWessels Cycling Team", 5 },
+                    { 2157, "Team Polti Kometa", 1 },
+                    { 2158, "Caja Rural - Seguros RGA", 4 },
+                    { 2159, "Euskaltel - Euskadi", 4 },
+                    { 2160, "Rad-Net Osswald", 7 },
+                    { 2161, "Team Felt - Felbermayr", 24 },
+                    { 2162, "TDT-Unibet Cycling Team", 3 },
+                    { 2163, "GW Erco Shimano", 12 },
+                    { 2164, "Sabgal / Anicolor", 19 },
+                    { 2165, "Victoria Sports Pro Cycling Team", 56 },
+                    { 2166, "BHS - PL Beton Bornholm", 14 },
+                    { 2167, "Elkov - Kasper", 25 },
+                    { 2168, "Santic - Wibatech", 7 },
+                    { 2169, "Mazowsze Serce Polski", 20 },
+                    { 2170, "Decathlon AG2R La Mondiale Development Team", 3 },
+                    { 2171, "Movistar - Best PC", 27 },
+                    { 2172, "Team Banco Guayaquil - Ecuador", 27 },
+                    { 2173, "Team Skyline", 9 },
+                    { 2174, "ATT Investments", 25 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "race_dates",
+                columns: new[] { "id", "date", "race_id", "stage" },
+                values: new object[,]
+                {
+                    { 184, new DateOnly(2025, 9, 21), 228, null },
+                    { 185, new DateOnly(2025, 9, 28), 227, null },
+                    { 193, new DateOnly(2025, 10, 5), 229, null },
+                    { 194, new DateOnly(2025, 10, 1), 230, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "races",
+                columns: new[] { "id", "active", "active_span_string", "meta_race_id", "race_class_id" },
+                values: new object[,]
+                {
                     { 1, true, "(>2022)", 302, 14 },
                     { 2, true, "(>2022)", 303, 15 },
                     { 168, true, null, 168, 12 },
@@ -410,15 +677,6 @@ namespace Prestigelisten.Persistence.Migrations
                     { 221, false, "(<2013)", 221, 15 },
                     { 222, false, "(1980-1985 + 1999-2003 + 2007-2009 + 2012-2013)", 222, 15 },
                     { 223, true, "(2010-2013 + 2017-2021 + >2023)", 223, 15 },
-                    { 224, true, "(>1994)", 231, 16 },
-                    { 225, true, "(>1994)", 225, 17 },
-                    { 226, false, null, 226, 17 },
-                    { 227, true, null, 227, 18 },
-                    { 228, true, null, 228, 19 },
-                    { 229, true, null, 229, 20 },
-                    { 230, true, null, 230, 21 },
-                    { 231, false, "(<1994)", 231, 22 },
-                    { 232, false, "(<1994)", 225, 23 },
                     { 233, true, null, 233, 24 },
                     { 1067, false, "(<2008)", 120, 10 },
                     { 1069, true, "(>2007)", 120, 6 },
@@ -680,8 +938,7 @@ namespace Prestigelisten.Persistence.Migrations
                     { 1658, false, "(>1971)", 163, 5 },
                     { 1661, false, null, 291, 10 },
                     { 1662, false, "(<1925)", 109, 9 },
-                    { 1663, true, "(<1998 + >2013)", 118, 10 },
-                    { 1832, false, null, 289, 27 }
+                    { 1663, true, "(<1998 + >2013)", 118, 10 }
                 });
 
             migrationBuilder.InsertData(
@@ -869,8 +1126,6 @@ namespace Prestigelisten.Persistence.Migrations
                     { 181, new DateOnly(2025, 9, 13), 1286, 20 },
                     { 182, new DateOnly(2025, 9, 14), 1286, 21 },
                     { 183, new DateOnly(2025, 9, 14), 1286, null },
-                    { 184, new DateOnly(2025, 9, 21), 228, null },
-                    { 185, new DateOnly(2025, 9, 28), 227, null },
                     { 186, new DateOnly(2025, 10, 4), 1306, null },
                     { 187, new DateOnly(2025, 10, 7), 1307, null },
                     { 188, new DateOnly(2025, 10, 9), 1310, null },
@@ -878,8 +1133,6 @@ namespace Prestigelisten.Persistence.Migrations
                     { 190, new DateOnly(2025, 10, 12), 1324, null },
                     { 191, new DateOnly(2025, 10, 19), 1325, null },
                     { 192, new DateOnly(2025, 9, 7), 1663, null },
-                    { 193, new DateOnly(2025, 10, 5), 229, null },
-                    { 194, new DateOnly(2025, 10, 1), 230, null },
                     { 195, new DateOnly(2025, 1, 12), 180, null },
                     { 196, new DateOnly(2025, 1, 9), 204, null },
                     { 197, new DateOnly(2025, 2, 8), 1, null },
@@ -887,11 +1140,174 @@ namespace Prestigelisten.Persistence.Migrations
                     { 199, new DateOnly(2025, 2, 9), 178, null },
                     { 200, new DateOnly(2025, 2, 2), 179, null }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "ix_results_race_date_id",
+                table: "results",
+                column: "race_date_id");
+
+            migrationBuilder.CreateIndex(
+                name: "ix_nation_seasons_nation_id",
+                table: "nation_seasons",
+                column: "nation_id");
+
+            migrationBuilder.AddForeignKey(
+                name: "fk_nation_seasons_nations_nation_id",
+                table: "nation_seasons",
+                column: "nation_id",
+                principalTable: "nations",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "fk_results_nation_seasons_nation_season_id",
+                table: "results",
+                column: "nation_season_id",
+                principalTable: "nation_seasons",
+                principalColumn: "id");
+
+            migrationBuilder.AddForeignKey(
+                name: "fk_results_race_dates_race_date_id",
+                table: "results",
+                column: "race_date_id",
+                principalTable: "race_dates",
+                principalColumn: "id");
+
+            migrationBuilder.AddForeignKey(
+                name: "fk_results_rider_seasons_rider_season_id",
+                table: "results",
+                column: "rider_season_id",
+                principalTable: "rider_seasons",
+                principalColumn: "id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "fk_nation_seasons_nations_nation_id",
+                table: "nation_seasons");
+
+            migrationBuilder.DropForeignKey(
+                name: "fk_results_nation_seasons_nation_season_id",
+                table: "results");
+
+            migrationBuilder.DropForeignKey(
+                name: "fk_results_race_dates_race_date_id",
+                table: "results");
+
+            migrationBuilder.DropForeignKey(
+                name: "fk_results_rider_seasons_rider_season_id",
+                table: "results");
+
+            migrationBuilder.DropIndex(
+                name: "ix_results_race_date_id",
+                table: "results");
+
+            migrationBuilder.DropIndex(
+                name: "ix_nation_seasons_nation_id",
+                table: "nation_seasons");
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 18);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 28);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 29);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 30);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 32);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 33);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 34);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 36);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 37);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 38);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 40);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 41);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 42);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 43);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 44);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 45);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 46);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 48);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 49);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 50);
+
             migrationBuilder.DeleteData(
                 table: "point_system",
                 keyColumn: "id",
@@ -1281,6 +1697,11 @@ namespace Prestigelisten.Persistence.Migrations
                 table: "point_system",
                 keyColumn: "id",
                 keyValue: 157);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 25);
 
             migrationBuilder.DeleteData(
                 table: "race_dates",
@@ -3623,6 +4044,321 @@ namespace Prestigelisten.Persistence.Migrations
                 keyValue: 1832);
 
             migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 13);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2125);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2126);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2127);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2128);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2129);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2130);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2131);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2132);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2133);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2134);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2135);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2136);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2137);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2138);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2139);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2140);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2141);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2142);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2143);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2144);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2145);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2146);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2147);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2148);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2149);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2150);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2151);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2152);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2153);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2154);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2155);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2156);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2157);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2158);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2159);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2160);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2161);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2162);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2163);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2164);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2165);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2166);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2167);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2168);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2169);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2170);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2171);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2172);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2173);
+
+            migrationBuilder.DeleteData(
+                table: "teams",
+                keyColumn: "id",
+                keyValue: 2174);
+
+            migrationBuilder.DeleteData(
                 table: "meta_races",
                 keyColumn: "id",
                 keyValue: 11);
@@ -4538,6 +5274,66 @@ namespace Prestigelisten.Persistence.Migrations
                 keyValue: 301);
 
             migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 54);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 55);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 56);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 13);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 16);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 17);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 22);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 23);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 24);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 26);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 27);
+
+            migrationBuilder.DeleteData(
                 table: "races",
                 keyColumn: "id",
                 keyValue: 1);
@@ -5126,6 +5922,320 @@ namespace Prestigelisten.Persistence.Migrations
                 table: "meta_races",
                 keyColumn: "id",
                 keyValue: 303);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 13);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 14);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 16);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 17);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 19);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 21);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 22);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 23);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 24);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 25);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 31);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 35);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 47);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 53);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 11);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 14);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 18);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 19);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 20);
+
+            migrationBuilder.DeleteData(
+                table: "race_classes",
+                keyColumn: "id",
+                keyValue: 21);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 10);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 20);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 26);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 27);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 39);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 51);
+
+            migrationBuilder.DeleteData(
+                table: "nations",
+                keyColumn: "id",
+                keyValue: 52);
+
+            migrationBuilder.DropColumn(
+                name: "race_date_id",
+                table: "results");
+
+            migrationBuilder.DropColumn(
+                name: "nation_id",
+                table: "nation_seasons");
+
+            migrationBuilder.AlterColumn<long>(
+                name: "id",
+                table: "rider_seasons",
+                type: "bigint",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "integer")
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            migrationBuilder.AlterColumn<long>(
+                name: "rider_season_id",
+                table: "results",
+                type: "bigint",
+                nullable: false,
+                defaultValue: 0L,
+                oldClrType: typeof(int),
+                oldType: "integer",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<long>(
+                name: "nation_season_id",
+                table: "results",
+                type: "bigint",
+                nullable: false,
+                defaultValue: 0L,
+                oldClrType: typeof(int),
+                oldType: "integer",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<long>(
+                name: "id",
+                table: "nation_seasons",
+                type: "bigint",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "integer")
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            migrationBuilder.AddForeignKey(
+                name: "fk_results_nation_seasons_nation_season_id",
+                table: "results",
+                column: "nation_season_id",
+                principalTable: "nation_seasons",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "fk_results_rider_seasons_rider_season_id",
+                table: "results",
+                column: "rider_season_id",
+                principalTable: "rider_seasons",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Cascade);
         }
     }
 }

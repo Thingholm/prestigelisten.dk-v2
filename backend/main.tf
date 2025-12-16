@@ -93,6 +93,12 @@ variable "jwt_public_jwk" {
   sensitive   = true
 }
 
+variable "connection_strings_default_connection" {
+  description = "Default connection string for the database"
+  type        = string
+  sensitive   = true
+}
+
 resource "azurerm_key_vault_secret" "google_sheets_creds" {
   name         = "GoogleSheets--ServiceCredentialsJson"
   value        = var.google_sheets_credentials_json
@@ -102,6 +108,12 @@ resource "azurerm_key_vault_secret" "google_sheets_creds" {
 resource "azurerm_key_vault_secret" "jwt_public_jwk" {
   name         = "Authentication--JwtPublicJwk"
   value        = var.jwt_public_jwk
+  key_vault_id = azurerm_key_vault.kv.id
+}
+
+resource "azurerm_key_vault_secret" "db_connection_string" {
+  name         = "ConnectionStrings--DefaultConnection"
+  value        = var.connection_strings_default_connection
   key_vault_id = azurerm_key_vault.kv.id
 }
 
@@ -161,6 +173,11 @@ resource "azurerm_container_app" "api_ca" {
         name        = "Authentication__JwtPublicJwk"
         secret_name = "jwt-public-jwk"
       }
+
+      env {
+        name        = "ConnectionStrings__DefaultConnection"
+        secret_name = "db-connection-string"
+      }
     }
 
     min_replicas = 1
@@ -168,14 +185,20 @@ resource "azurerm_container_app" "api_ca" {
   }
 
   secret {
-    name  = "google-sheets-creds"
+    name                = "google-sheets-creds"
     key_vault_secret_id = azurerm_key_vault_secret.google_sheets_creds.id
     identity            = azurerm_user_assigned_identity.kv_reader.id
   }
 
   secret {
-    name  = "jwt-public-jwk"
+    name                = "jwt-public-jwk"
     key_vault_secret_id = azurerm_key_vault_secret.jwt_public_jwk.id
+    identity            = azurerm_user_assigned_identity.kv_reader.id
+  }
+
+  secret {
+    name                = "db-connection-string"
+    key_vault_secret_id = azurerm_key_vault_secret.db_connection_string.id
     identity            = azurerm_user_assigned_identity.kv_reader.id
   }
 
@@ -202,6 +225,9 @@ resource "azurerm_container_app" "api_ca" {
   }
 
   depends_on = [
-    azurerm_key_vault_access_policy.kv_reader
+    azurerm_key_vault_access_policy.kv_reader,
+    azurerm_key_vault_secret.db_connection_string,
+    azurerm_key_vault_secret.google_sheets_creds,
+    azurerm_key_vault_secret.jwt_public_jwk  
   ]
 }

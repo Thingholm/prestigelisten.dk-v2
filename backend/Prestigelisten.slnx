@@ -7,9 +7,11 @@
     <Project Path="src/Prestigelisten.Tests/Prestigelisten.Tests.Core/Prestigelisten.Tests.Core.csproj" Id="938f2ab4-604d-4a15-9818-3c50c8608fe5" />
     <Project Path="src/Prestigelisten.Tests/Prestigelisten.Tests.Integrations.GoogleSheets/Prestigelisten.Tests.Integrations.GoogleSheets.csproj" Id="fad5048f-ccfb-4cd6-8764-3adc980879ef" />
   </Folder>
-  <Folder Name="/Solution Items/">
+  <Folder Name="/DevOps/">
     <File Path=".dockerignore" />
     <File Path="Dockerfile" />
+    <File Path="main.tf" />
+    <File Path="terraform.tfvars" />
   </Folder>
   <Project Path="src/Prestigelisten.Api/Prestigelisten.Api.csproj" />
   <Project Path="src/Prestigelisten.Application/Prestigelisten.Application.csproj" />
