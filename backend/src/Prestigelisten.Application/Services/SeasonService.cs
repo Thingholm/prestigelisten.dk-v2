@@ -77,9 +77,17 @@ public class SeasonService : ISeasonService
 
     private async Task CalculateAllNationSeasonsPointsAndRanks()
     {
-        var nationSeasons = _nationSeasonRepository.GetAll().ToList();
-        var nations = nationSeasons.Select(ns => ns.Nation).DistinctBy(n => n.Id).ToList();
+        var nationSeasons = (await _nationSeasonRepository.GetAllAsync()).ToList();
+        var nationIds = new HashSet<int>();
+        var nations = new List<Nation>();
 
+        foreach (var season in nationSeasons)
+        {
+            if (nationIds.Add(season.Nation.Id))
+            {
+                nations.Add(season.Nation);
+            }
+        }
         _seasonComputationService.ProcessSeasons(
             nations,
             nationSeasons,
@@ -91,15 +99,27 @@ public class SeasonService : ISeasonService
             }
         );
 
-        _nationSeasonRepository.AddOrUpdateRange(nationSeasons);
-        await _nationSeasonRepository.SaveChangesAsync();
+        foreach (var batch in nationSeasons.Chunk(1000))
+        {
+            _nationSeasonRepository.AddOrUpdateRange(batch);
+            await _nationSeasonRepository.SaveChangesAsync();
+        }
     }
 
     private async Task CalculateAllRiderSeasonsPointsAndRanks()
     {
-        var riderSeasons = _riderSeasonRepository.GetAll().ToList();
-        var riders = riderSeasons.Select(rs => rs.Rider).DistinctBy(r => r.Id).ToList();
+        var riderSeasons = (await _riderSeasonRepository.GetAllAsync()).ToList();
 
+        var riderIds = new HashSet<int>();
+        var riders = new List<Rider>();
+
+        foreach (var season in riderSeasons)
+        {
+            if (riderIds.Add(season.Rider.Id))
+            {
+                riders.Add(season.Rider);
+            }
+        }
         _seasonComputationService.ProcessSeasons(
             riders,
             riderSeasons,
@@ -111,7 +131,10 @@ public class SeasonService : ISeasonService
             }
         );
 
-        _riderSeasonRepository.AddOrUpdateRange(riderSeasons);
-        await _riderSeasonRepository.SaveChangesAsync();
+        foreach (var batch in riderSeasons.Chunk(1000))
+        {
+            _riderSeasonRepository.AddOrUpdateRange(batch);
+            await _riderSeasonRepository.SaveChangesAsync();
+        }
     }
 }

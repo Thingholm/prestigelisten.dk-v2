@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Prestigelisten.Application.Helpers;
 using Prestigelisten.Application.Interfaces.Services;
+using Prestigelisten.Core.Enums;
 using Prestigelisten.Core.Helpers;
 using Prestigelisten.Core.Interfaces.Repositories;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Models;
@@ -60,11 +62,20 @@ public class ResultService : IResultService
 
         var lookupData = GetLookupData();
         _results.RemoveAll();
+        await _results.SaveChangesAsync();
+
         ResetRiderAndNationData(lookupData.Riders);
+        await _riders.SaveChangesAsync();
 
         var newResults = ProcessSheetResults(googleSheetsResults, lookupData);
 
-        await _results.SaveChangesAsync();
+        const int batchSize = 1000;
+
+        foreach (var batch in newResults.Chunk(batchSize))
+        {
+            _results.AddRange(batch);
+            await _results.SaveChangesAsync();
+        }
         await _riders.SaveChangesAsync();
 
         await _seasonService.CalculateAllSeasonsPointsAndRanks();
@@ -102,7 +113,7 @@ public class ResultService : IResultService
         var races = DictionaryHelper.ToLookup(_races, race => race.NameWithActiveSpanString);
         var raceDates = _raceDates.GetAll();
         var pointSystem = _pointSystem.GetAll();
-        var existingResultSheetIndices = _results.Find(result => result.Year == year).Select(result => result.SheetIndex).ToList();
+        var existingResultSheetIndices = _results.Find(result => result.Year == year).Select(result => result.SheetIndex).ToList().ToHashSet();
 
         return new LookupData(riders, races, raceDates, pointSystem, existingResultSheetIndices);
     }
@@ -122,7 +133,7 @@ public class ResultService : IResultService
     private List<Result> ProcessSheetResults(
         List<GoogleSheetsResult> sheetResults,
         LookupData lookupData,
-        List<int>? existingResultSheetIndices = null
+        HashSet<int>? existingResultSheetIndices = null
     )
     {
         var newResults = new List<Result>();
@@ -166,8 +177,6 @@ public class ResultService : IResultService
             ProcessNationPoints(result, rider, resultPoints);
 
             newResults.Add(result);
-
-            _results.AddOrUpdate(result);
         }
 
         return newResults;
@@ -241,6 +250,6 @@ public class ResultService : IResultService
         Dictionary<string, Race> Races,
         IEnumerable<RaceDate> RaceDates,
         IEnumerable<PointSystem> PointSystem,
-        List<int>? ExistingResultSheetIndices
+        HashSet<int>? ExistingResultSheetIndices
     );
 }
