@@ -4,18 +4,12 @@ using Prestigelisten.Core.Interfaces.Repositories;
 
 namespace Prestigelisten.Persistence.Repositories;
 
-public class NationSeasonRepository
-    : BaseRepository<NationSeason>,
+public class NationSeasonRepository(AppDbContext context)
+    : BaseRepository<NationSeason>(context),
         INationSeasonRepository
 {
-    public NationSeasonRepository(IDbContextFactory<AppDbContext> factory)
-        : base(factory)
+    protected override IQueryable<NationSeason> SetupQueryable()
     {
-    }
-    protected override IQueryable<NationSeason> SetupQueryable(AppDbContext context)
-    {
-        return base.SetupQueryable(context)
-            .Include(season => season.Nation)
-            .AsSplitQuery();
+        return base.SetupQueryable().Include(season => season.Nation).AsSplitQuery();
     }
 }
