@@ -3,9 +3,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Prestigelisten.Application.Helpers;
 using Prestigelisten.Application.Interfaces.Services;
-using Prestigelisten.Core.Enums;
 using Prestigelisten.Core.Helpers;
-using Prestigelisten.Core.Interfaces.Repositories;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Models;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 using Prestigelisten.Persistence;
@@ -127,6 +125,11 @@ public class ResultService : IResultService
             rider.Nation.Seasons = [];
             rider.Nation.Points = 0;
             rider.Nation.ActivePoints = 0;
+
+            foreach (var prevNationality in rider.PreviousNationalities)
+            {
+                prevNationality.Points = 0;
+            }
         }
     }
 
@@ -210,6 +213,13 @@ public class ResultService : IResultService
 
     private static void ProcessRiderPoints(Result result, Rider rider, int resultPoints)
     {
+        var prevNationality = rider.PreviousNationalities.FirstOrDefault(prevNationality =>
+            (prevNationality.StartYear ?? 0) <= result.Year
+            && (prevNationality.EndYear == null || prevNationality.EndYear >= result.Year)
+        );
+
+        prevNationality?.Points += resultPoints;
+
         rider.Points += resultPoints;
 
         var riderSeason = SeasonHelper.GetOrCreate(

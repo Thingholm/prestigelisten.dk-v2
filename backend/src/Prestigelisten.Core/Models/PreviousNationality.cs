@@ -10,6 +10,8 @@ public class PreviousNationality : IEntity
 
     public int? EndYear { get; set; }
 
+    public int Points { get; set; }
+
     public required Rider Rider { get; set; }
 
     public required Nation Nation { get; set; }
