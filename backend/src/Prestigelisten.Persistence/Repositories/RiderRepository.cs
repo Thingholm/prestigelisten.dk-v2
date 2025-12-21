@@ -4,13 +4,18 @@ using Prestigelisten.Core.Models;
 
 namespace Prestigelisten.Persistence.Repositories;
 
-public class RiderRepository(AppDbContext context)
-    : BaseRepository<Rider>(context),
+public class RiderRepository
+    : BaseRepository<Rider>,
         IRiderRepository
 {
-    protected override IQueryable<Rider> SetupQueryable()
+    public RiderRepository(IDbContextFactory<AppDbContext> factory)
+        : base(factory)
     {
-        return base.SetupQueryable()
+    }
+
+    protected override IQueryable<Rider> SetupQueryable(AppDbContext context)
+    {
+        return base.SetupQueryable(context)
             .Include(rider => rider.Nation)
             .ThenInclude(nation => nation.Seasons)
             .Include(rider => rider.Team)

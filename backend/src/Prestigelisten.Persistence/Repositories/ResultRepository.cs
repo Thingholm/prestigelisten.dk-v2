@@ -4,17 +4,22 @@ using Prestigelisten.Core.Models;
 
 namespace Prestigelisten.Persistence.Repositories;
 
-public class ResultRepository(AppDbContext context)
-    : BaseRepository<Result>(context),
+public class ResultRepository
+    : BaseRepository<Result>,
         IResultRepository
 {
-    protected override IQueryable<Result> SetupQueryable()
+    public ResultRepository(IDbContextFactory<AppDbContext> factory)
+        : base(factory)
     {
-        return base.SetupQueryable()
+    }
+    protected override IQueryable<Result> SetupQueryable(AppDbContext context)
+    {
+        return base.SetupQueryable(context)
             .Include(result => result.Rider)
             .Include(result => result.Race)
             .Include(result => result.RaceDate)
             .Include(result => result.RiderSeason)
-            .Include(result => result.NationSeason);
+            .Include(result => result.NationSeason)
+            .AsSplitQuery();
     }
 }

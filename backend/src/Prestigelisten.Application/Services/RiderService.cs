@@ -49,6 +49,7 @@ public class RiderService : IRiderService
             StringComparer.OrdinalIgnoreCase
         );
 
+        var ridersToSave = new List<Rider>();
         foreach (var sheetRider in googleSheetsRiders)
         {
             var (nation, isNewNation) = await GetOrCreateNationAsync(sheetRider.Nation, nations);
@@ -73,9 +74,11 @@ public class RiderService : IRiderService
 
             if (isNewRider || isUpdatedRider)
             {
-                _riders.AddOrUpdate(rider);
+                ridersToSave.Add(rider);
             }
         }
+
+        _riders.AddOrUpdateRange(ridersToSave);
 
         await _riders.SaveChangesAsync();
         return resultDTO;
@@ -100,7 +103,6 @@ public class RiderService : IRiderService
             Active = true,
         };
         _nations.Add(nation);
-        await _nations.SaveChangesAsync();
         nations[nationName] = nation;
 
         return (nation, true);
@@ -125,7 +127,6 @@ public class RiderService : IRiderService
 
         team = new Team { Name = teamName };
         _teams.Add(team);
-        await _teams.SaveChangesAsync();
         teams[teamName] = team;
 
         return (team, true);

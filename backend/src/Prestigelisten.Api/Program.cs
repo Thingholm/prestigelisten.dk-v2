@@ -1,18 +1,25 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Prestigelisten.Api.Endpoints;
 using Prestigelisten.Application;
+using Prestigelisten.Application.Interfaces.Services;
 using Prestigelisten.Core;
 using Prestigelisten.Integrations.GoogleSheets;
 using Prestigelisten.Persistence;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContextFactory<AppDbContext>(options =>
     options
-        .UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+        .UseNpgsql(
+            builder.Configuration.GetConnectionString("DefaultConnection"), 
+            npgsqlOptions =>
+            {
+                npgsqlOptions.EnableRetryOnFailure(3);
+            }
+        )
         .UseSnakeCaseNamingConvention()
 );
 

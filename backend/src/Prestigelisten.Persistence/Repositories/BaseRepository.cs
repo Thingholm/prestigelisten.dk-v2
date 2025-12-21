@@ -9,98 +9,138 @@ namespace Prestigelisten.Persistence.Repositories;
 public class BaseRepository<T> : IBaseRepository<T>
     where T : class, IEntity
 {
-    protected readonly AppDbContext _context;
-    protected DbSet<T> _dbSet;
+    private readonly IDbContextFactory<AppDbContext> _contextFactory;
 
-    public BaseRepository(AppDbContext context)
+    public BaseRepository(IDbContextFactory<AppDbContext> contextFactory)
     {
-        _context = context;
-        _dbSet = _context.Set<T>();
+        _contextFactory = contextFactory;
     }
 
-    protected virtual IQueryable<T> SetupQueryable()
+    protected virtual AppDbContext CreateContext()
     {
-        return _dbSet.AsQueryable();
+        return _contextFactory.CreateDbContext();
+    }
+
+    protected virtual IQueryable<T> SetupQueryable(AppDbContext context)
+    {
+        return context.Set<T>();
     }
 
     public virtual IEnumerable<T> GetAll()
     {
-        return SetupQueryable().ToList();
+        using var context = _contextFactory.CreateDbContext();
+        return SetupQueryable(context).ToList();
     }
 
     public virtual async Task<IEnumerable<T>> GetAllAsync()
     {
-        return await SetupQueryable().ToListAsync();
+        await using var context = _contextFactory.CreateDbContext();
+        return await SetupQueryable(context).ToListAsync();
     }
 
     public virtual T? GetById(int id)
     {
-        return SetupQueryable().FirstOrDefault(entity => entity.Id == id);
+        using var context = _contextFactory.CreateDbContext();
+        return SetupQueryable(context).FirstOrDefault(entity => entity.Id == id);
     }
 
     public virtual IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
     {
-        return SetupQueryable().Where(predicate).ToList();
+        using var context = _contextFactory.CreateDbContext();
+        return SetupQueryable(context).Where(predicate).ToList();
     }
 
     public virtual T? FindFirstOrDefault(Expression<Func<T, bool>> predicate)
     {
-        return SetupQueryable().FirstOrDefault(predicate);
+        using var context = _contextFactory.CreateDbContext();
+        return SetupQueryable(context).FirstOrDefault(predicate);
     }
 
     public virtual void Add(T entity)
     {
-        _dbSet.Add(entity);
+        using var context = _contextFactory.CreateDbContext();
+        context.Set<T>().Add(entity);
     }
 
     public virtual void AddRange(IEnumerable<T> entities)
     {
-        _dbSet.AddRange(entities);
+        using var context = _contextFactory.CreateDbContext();
+        context.Set<T>().AddRange(entities);
     }
 
     public virtual void Update(T entity)
     {
-        _dbSet.Update(entity);
+        using var context = _contextFactory.CreateDbContext();
+        context.Set<T>().Update(entity);
     }
 
     public virtual void AddOrUpdate(T entity)
     {
-        var existingEntity = GetById(entity.Id);
+        using var context = _contextFactory.CreateDbContext();
+        var existingEntity = context.Set<T>().Local.FirstOrDefault(e => e.Id == entity.Id);
 
         if (existingEntity is null)
         {
-            _dbSet.Add(entity);
+            existingEntity = GetById(entity.Id);
+        }
+
+        if (existingEntity is null)
+        {
+            context.Set<T>().Add(entity);
             return;
         }
 
-        Update(entity);
+        context.Entry(existingEntity).CurrentValues.SetValues(entity);
     }
 
     public virtual void AddOrUpdateRange(IEnumerable<T> entities)
     {
-        foreach (var entity in entities)
+        using var context = _contextFactory.CreateDbContext();
+
+        var entityList = entities.ToList();
+        if (!entityList.Any()) return;
+
+        var entityIds = entityList.Select(e => e.Id).Where(id => id > 0).ToList();
+
+        var existingEntities = entityIds.Any()
+            ? context.Set<T>().Where(e => entityIds.Contains(e.Id)).ToDictionary(e => e.Id)
+            : new Dictionary<int, T>();
+
+        foreach (var entity in entityList)
         {
-            AddOrUpdate(entity);
+            if (entity.Id > 0 && existingEntities.TryGetValue(entity.Id, out var existingEntity))
+            {
+                context.Entry(existingEntity).CurrentValues.SetValues(entity);
+            }
+            else
+            {
+                context.Set<T>().Add(entity);
+            }
         }
     }
 
     public virtual void Remove(T entity)
     {
-        _dbSet.Remove(entity);
+        using var context = _contextFactory.CreateDbContext();
+        context.Set<T>().Remove(entity);
     }
 
     public virtual void RemoveRange(IEnumerable<T> entities)
     {
-        _dbSet.RemoveRange(entities);
+        using var context = _contextFactory.CreateDbContext();
+        context.Set<T>().RemoveRange(entities);
     }
 
     public virtual void RemoveAll()
     {
-        _dbSet.RemoveRange(_dbSet);
+        using var context = _contextFactory.CreateDbContext();
+        var dbSet = context.Set<T>();
+        dbSet.RemoveRange(dbSet);
     }
 
     public virtual async Task<int> SaveChangesAsync()
     {
-        return await _context.SaveChangesAsync();
+        using var context = _contextFactory.CreateDbContext();
+        return await context.SaveChangesAsync();
     }
 }

@@ -4,10 +4,18 @@ using Prestigelisten.Core.Models;
 
 namespace Prestigelisten.Persistence.Repositories;
 
-public class RaceRepository(AppDbContext context) : BaseRepository<Race>(context), IRaceRepository
+public class RaceRepository : BaseRepository<Race>, IRaceRepository
 {
-    protected override IQueryable<Race> SetupQueryable()
+    public RaceRepository(IDbContextFactory<AppDbContext> factory)
+        : base(factory)
     {
-        return base.SetupQueryable().Include(race => race.MetaRace);
+    }
+
+    protected override IQueryable<Race> SetupQueryable(AppDbContext context)
+    {
+        return base.SetupQueryable(context)
+            .Include(race => race.RaceClass)
+            .Include(race => race.MetaRace)
+            .AsSplitQuery();
     }
 }

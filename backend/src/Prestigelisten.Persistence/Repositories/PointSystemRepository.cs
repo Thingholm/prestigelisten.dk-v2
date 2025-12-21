@@ -4,12 +4,18 @@ using Prestigelisten.Core.Models;
 
 namespace Prestigelisten.Persistence.Repositories;
 
-public class PointSystemRepository(AppDbContext context)
-    : BaseRepository<PointSystem>(context),
+public class PointSystemRepository
+    : BaseRepository<PointSystem>,
         IPointSystemRepository
 {
-    protected override IQueryable<PointSystem> SetupQueryable()
+    public PointSystemRepository(IDbContextFactory<AppDbContext> factory)
+        : base(factory)
     {
-        return base.SetupQueryable().Include(ps => ps.RaceClass);
+    }
+    protected override IQueryable<PointSystem> SetupQueryable(AppDbContext context)
+    {
+        return base.SetupQueryable(context)
+            .Include(ps => ps.RaceClass)
+            .AsSplitQuery();
     }
 }
