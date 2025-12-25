@@ -15,7 +15,14 @@ export default async function Page({
     const riderIdParams = (await searchParams).riders ?? ""
     const riderIds = riderIdParams.split(",").map(riderId => parseInt(riderId)).filter(riderId => !Number.isNaN(riderId)).slice(0, 2);
 
-    const riders = await getRiders();
+    const [
+        riders,
+        pointSystem,
+    ] = await Promise.all([
+        getRiders(),
+        getPointSystem()
+    ]);
+    
     const rankedActiveRiders = rankBy(
         riders.filter(rider => rider.active).map(rider => ({
             ...rider, 
@@ -23,8 +30,6 @@ export default async function Page({
         })),
         "points"
     );
-
-    const pointSystem = await getPointSystem();
 
     const rider1 = riderIds[0] ? await getRider(riderIds[0])() : null;
     const rider2 = riderIds[1] ? await getRider(riderIds[1])() : null;

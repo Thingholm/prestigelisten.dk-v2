@@ -16,9 +16,15 @@ export default async function Page({
     const nationIdParams = (await searchParams).nations ?? ""
     const nationIds = nationIdParams.split(",").map(nationId => parseInt(nationId)).filter(nationId => !Number.isNaN(nationId)).slice(0, 2);
 
-    const nationsPoints = await getNationsWithTopRidersAndCount();
-    const pointSystem = await getPointSystem();
-    const races = await getRaces();
+    const [
+        nationsPoints,
+        pointSystem,
+        races,
+    ] = await Promise.all([
+        getNationsWithTopRidersAndCount(),
+        getPointSystem(),
+        getRaces()
+    ]);
 
     const nation1 = nationIds[0] ? await getNation(nationIds[0])() : null;
     const nation2 = nationIds[1] ? await getNation(nationIds[1])() : null;

@@ -18,13 +18,23 @@ export default async function RiderPage({
 }>) {
     const id = (await params).id;
 
-    const rider = await getRider(id)();
-    const pointSystem = await getPointSystem();
-    const riderCountEachSeason = await getRiderCountEachSeason();
-    const nations = await getNations();
-    const previousNationalities = await getRidersPreviousNationalities(id)();
+    const [
+        rider,
+        pointSystem, 
+        riderCountEachSeason, 
+        nations, 
+        previousNationalities,
+        allRiders,
+    ] = await Promise.all([
+        getRider(id)(),
+        getPointSystem(),
+        getRiderCountEachSeason(),
+        getNations(),
+        getRidersPreviousNationalities(id)(),
+        getAllRidersWithNationAndTeam()
+    ])
 
-    const rankedRiders = rankBy((await getAllRidersWithNationAndTeam()), "points");
+    const rankedRiders = rankBy(allRiders, "points");
     const rankedActiveRiders = rankBy(rankedRiders.filter(r => r.active), "points");
     const rankedNationRiders = rankBy(rankedRiders.filter(r => r.nation_id == rider.nation_id), "points");
     const rankedYearRiders = rankBy(rankedRiders.filter(r => r.year == rider.year), "points");

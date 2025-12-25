@@ -9,9 +9,15 @@ import RaceClassAccordion from "./_components/RaceClassAccordion";
 export default async function PointSystemPage() {
     const t = await getTranslations("pointSystems");
 
-    const pointSystem = await getPointSystem();
-    const races = await getRaces();
-    const raceClasses = await getRaceClasses();
+    const [
+        pointSystem,
+        races,
+        raceClasses
+    ] = await Promise.all([
+        getPointSystem(),
+        getRaces(),
+        getRaceClasses()
+    ]);
 
     return (
         <div>

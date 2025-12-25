@@ -9,11 +9,17 @@ import { getTranslations } from "next-intl/server";
 import { getAllRidersWithNationAndTeam } from "@/db/rider";
 
 export default async function Page(){
-    const t = await getTranslations("pointGivingResultsInYear");
-
-    const results = await getResultsThisYear();
-    const riderPoints = await getAllRidersWithNationAndTeam();
-    const pointSystem = await getPointSystem();
+    const [
+        t,
+        results,
+        riderPoints,
+        pointSystem,
+    ] = await Promise.all([
+        getTranslations("pointGivingResultsInYear"), 
+        getResultsThisYear(),
+        getAllRidersWithNationAndTeam(),
+        getPointSystem(),
+    ])
     
     const rankingsByDate = calculateRankingEvolution(results, riderPoints, pointSystem)
 

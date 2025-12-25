@@ -27,13 +27,23 @@ export default async function NationPage({
 }>) {
     const id = (await params).id;
 
-    const nation = await getNationWithRiders(id)();
-    const ridersWithPreviousNationality = await GetRidersWithPreviousNationality(id)();
-    const teams = await getTeamsFromNation(id)();
-    const races = await getRaces();
-    const pointSystem = await getPointSystem();
-    const nations = await getNations();
-    const nationCountEachSeason = await getNationCountEachSeason();
+    const [
+        nation,
+        ridersWithPreviousNationality,
+        teams,
+        races,
+        pointSystem,
+        nations,
+        nationCountEachSeason
+    ] = await Promise.all([
+        getNationWithRiders(id)(),
+        GetRidersWithPreviousNationality(id)(),
+        getTeamsFromNation(id)(),
+        getRaces(),
+        getPointSystem(),
+        getNations(),
+        getNationCountEachSeason()
+    ]);
 
     nation.riders = [
         ...nation.riders.map(riders => ({...riders, nations: null})),

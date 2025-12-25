@@ -17,14 +17,25 @@ import { getNationsWithTopRidersAndCount } from "@/db/nations";
 import NationsSection from "./_sections/NationsSection";
 
 export default async function HomePage() {
-    const ridersWithNationAndTeam = await getAllRidersWithNationAndTeam();
-    const nations = await getNationsWithTopRidersAndCount();
-    const greatestSeasons = await getGreatestSeasons();
-    const pointSystem = await getPointSystem();
-    const top10AlltimeEachSeason = await getTop10AlltimeEachSeason();
-    const riders3YearRollingRankings = await getRiders3YearRollingRankings();
-    const results = await getResultsThisYear();
-    const decadeRankings = await getDecadeRankings();
+    const [
+        ridersWithNationAndTeam,
+        nations,
+        greatestSeasons,
+        pointSystem,
+        top10AlltimeEachSeason,
+        riders3YearRollingRankings,
+        results,
+        decadeRankings,
+    ] = await Promise.all([
+        getAllRidersWithNationAndTeam(),
+        getNationsWithTopRidersAndCount(),
+        getGreatestSeasons(),
+        getPointSystem(),
+        getTop10AlltimeEachSeason(),
+        getRiders3YearRollingRankings(),
+        getResultsThisYear(),
+        getDecadeRankings(),
+    ])
 
     return (
         <div>

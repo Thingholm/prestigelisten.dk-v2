@@ -22,9 +22,15 @@ export type GreatestSeasonsWithResults = (Tables<"rider_seasons"> & {
 export default async function GreatestSeasonsPage() {
     const t = await getTranslations("lists.greatestSeasons");
 
-    const greatestSeasons = await getAllGreatestSeasons();
-    const races = await getRaces();
-    const pointSystem = await getPointSystem();
+    const [
+        greatestSeasons,
+        races,
+        pointSystem
+    ] = await Promise.all([
+        getAllGreatestSeasons(),
+        getRaces(),
+        getPointSystem()
+    ]);
 
     const greatestSeasonsWithResultPoints = greatestSeasons.map(season => ({
         ...season,

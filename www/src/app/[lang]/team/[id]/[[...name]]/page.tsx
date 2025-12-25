@@ -15,10 +15,17 @@ export default async function TeamPage({
     const id = (await params).id;
     const currentYear = new Date().getFullYear();
 
-    const teamWithRiders = await getTeamWithRiders(id)();
-    const teamsWithRiders = await getTeamsWithRiders();
-    const pointSystem = await getPointSystem();
-    const activeRiderPointsLookup = await getActiveRiderPointsLookup();
+    const [
+        teamWithRiders,
+        teamsWithRiders, 
+        pointSystem, 
+        activeRiderPointsLookup, 
+    ] = await Promise.all([
+        getTeamWithRiders(id)(),
+        getTeamsWithRiders(),
+        getPointSystem(),
+        getActiveRiderPointsLookup()
+    ])
 
     const teamsWithPoints = teamsWithRiders?.map(team => {
         const pointsForYear = team.riders.reduce((sum, rider) => {

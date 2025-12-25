@@ -13,7 +13,6 @@ export default async function Page() {
     const t = await getTranslations("lists.nations");
 
     let nationPoints = (await getNationsWithTopRidersAndCount()).filter(n => n.points);
-    console.log(nationPoints)
 
     const riders = await getRidersRange(
         [...nationPoints.flatMap(n => {

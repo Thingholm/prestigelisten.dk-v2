@@ -11,11 +11,17 @@ export default async function TwitterImageGenerator({
 }>) {
     const id = (await params).id;
 
-    const rider = await getRider(id)();
-
-    const results = await getResultsThisYear();
-    const riderPoints = await getAllRidersWithNationAndTeam();
-    const pointSystem = await getPointSystem();
+    const [
+        rider,
+        results,
+        riderPoints,
+        pointSystem,
+    ] = await Promise.all([
+        getRider(id)(),
+        getResultsThisYear(),
+        getAllRidersWithNationAndTeam(),
+        getPointSystem()
+    ])
     
     const rankingsByDate = rider.active && rider.results.some(result => result.year == new Date().getFullYear()) ? calculateRankingEvolution(results, riderPoints, pointSystem) : null;
 
