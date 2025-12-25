@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Prestigelisten.Api.Endpoints;
 using Prestigelisten.Application;
-using Prestigelisten.Application.Interfaces.Services;
 using Prestigelisten.Core;
 using Prestigelisten.Integrations.GoogleSheets;
 using Prestigelisten.Persistence;
