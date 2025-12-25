@@ -74,7 +74,7 @@ export default async function ProfileSection({
                     </ProfileAttribute>
 
                     <ProfileAttribute label={t("points")}>
-                        {formatNumber(rider.rider_points[0]?.points)}
+                        {formatNumber(rider.points)}
                     </ProfileAttribute>
 
                     {rider.active &&

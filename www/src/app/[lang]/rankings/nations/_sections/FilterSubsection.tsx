@@ -71,7 +71,7 @@ export default function FilterSubsection({
                             onChange={handleFilterByChange}
                             checked={"all" == filter.FilterBy}
                         />
-                        <label htmlFor="all" className="pl-2">{t("points")}</label>
+                        <label htmlFor="all" className="pl-2">{t("all")}</label>
                     </div>
                     <div className="flex items-center mr-8 mb-2">
                         <Radio

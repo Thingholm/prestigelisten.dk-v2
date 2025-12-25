@@ -272,6 +272,10 @@
             "za": {
                 "name": "Sydafrika",
                 "adjective": "Sydafrikansk"
+            },
+            "mc": {
+                "name": "Monaco",
+                "adjective": "Monegaskisk"
             }
         },
         "at": "til",
@@ -615,6 +619,10 @@
         "za": {
             "name": "Sydafrika",
             "adjective": "Sydafrikansk"
+        },
+        "mc": {
+            "name": "Monaco",
+            "adjective": "Monegaskisk"
         }
     },
     "suffixes": {

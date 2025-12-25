@@ -2,7 +2,7 @@ import { PointSystem } from "@/db/pointSystem";
 import { getResultsWithPoints } from "./pointSystem";
 
 type Result = {
-    result_type_id: number;
+    result_type: number;
     races: {
         race_class_id: number;
         meta_race_id: number;
@@ -21,7 +21,7 @@ export function groupResults<T extends Result>(results: T[], pointSystem: PointS
     const groupsMap = new Map<string, T & GroupedResult<T>>();
 
     for (const result of resultsWithPoints) {
-        let resultTypeId = result.result_type_id 
+        let resultTypeId = result.result_type 
 
         if (8 <= resultTypeId && resultTypeId <= 11) {
             resultTypeId = 99;
@@ -37,7 +37,7 @@ export function groupResults<T extends Result>(results: T[], pointSystem: PointS
             groupsMap.set(key, {
                 ...result,
                 results: [],
-                result_type_id: resultTypeId,
+                result_type: resultTypeId,
                 points: 0
             })
         }

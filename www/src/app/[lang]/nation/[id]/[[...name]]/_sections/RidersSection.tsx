@@ -16,7 +16,7 @@ export default function RidersSection({
     const riders = nation.riders.map(rider => ({
         ...rider,
         points: rider.rider_seasons[0]?.points_all_time ?? 0,
-        nations: rider.nations ?? { id: 0, name: nation.name, code: nation.code, active: true },
+        nations: rider.nations ?? { id: 0, name: nation.name, code: nation.code, active: true, active_points: nation.active_points, points: nation.points },
     }))
 
     return (

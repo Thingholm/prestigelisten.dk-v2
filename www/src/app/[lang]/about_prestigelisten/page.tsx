@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import Section from "@/components/layout/Section";
 import PageHeading from "@/components/ui/PageHeading";

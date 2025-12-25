@@ -19,7 +19,7 @@ export default function TeamsTable({
     const rankedTeams = rankBy(
         teams.map(team => ({
             ...team,
-            points: team.riders.flatMap(rider => rider.rider_points[0].points).reduce((acc, obj) => acc + obj, 0)
+            points: team.riders.flatMap(rider => rider.points).reduce((acc, obj) => acc + obj, 0)
         })).filter(team => team.points > 0),
         "points"
     )

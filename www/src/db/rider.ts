@@ -46,8 +46,7 @@ const ridersQuery = () => supabase
         *,
         nations (
             *
-        ),
-        rider_points (*)
+        )
     `)
 
 export type Riders = QueryData<ReturnType<typeof ridersQuery>>;
@@ -59,8 +58,7 @@ export const getRidersRange = (ids: number[]) => unstable_cache(async () => {
             *,
             nations (
                 *
-            ),
-            rider_points (*)
+            )
         `)
         .in("id", ids);
 
@@ -74,7 +72,6 @@ export const getRider = (id: number) => unstable_cache(async () => {
         .from("riders")
         .select(`
             *,
-            rider_points (*),
             results (
                 *,
                 races (
@@ -88,7 +85,7 @@ export const getRider = (id: number) => unstable_cache(async () => {
             nations (*),
             teams (*),
             rider_seasons (*),
-            image_metadata (*)
+            images (*)
         `)
         .eq("id", id)
         .maybeSingle();
@@ -102,7 +99,6 @@ const riderQuery = supabase
     .from("riders")
     .select(`
         *,
-        rider_points (*),
         results (
             *,
             races (
@@ -116,7 +112,64 @@ const riderQuery = supabase
         nations (*),
         teams (*),
         rider_seasons (*),
-        image_metadata (*)
+        images (*)
     `)
 
 export type Rider = QueryData<typeof riderQuery>[number];
+
+export const getAllRidersWithNationAndTeam = unstable_cache(async () => {
+    const { data, error } = await ridersWithNationAndTeamQuery();
+    
+    if (error) { throw error; }
+
+    return data as RidersWithNationAndTeam;
+}, ["allRidersWithNationAndTeam"], { revalidate: 60 * 60 });
+
+const ridersWithNationAndTeamQuery = () => supabase
+    .from("riders")
+    .select(`
+        *,
+        nations (*),
+        teams (*)
+    `)
+    .order("points", { ascending: false });
+
+export type RidersWithNationAndTeam = QueryData<ReturnType<typeof ridersWithNationAndTeamQuery>>
+
+export const getRidersFromYear = (year: number) => unstable_cache(async () => {
+    const currentYear = new Date().getFullYear();
+    const { data, error } = await  ridersFromYearQuery()
+        .eq("year", year)
+        .eq("rider_seasons.year", currentYear);
+
+    if (error) { throw error; }
+
+    return data as RidersFromYear;
+}, ["getRidersFromYear", year.toString()], { revalidate: 60 * 60 })
+
+const ridersFromYearQuery = () => supabase
+    .from("riders")
+    .select(`
+        *,
+        nations (*),
+        rider_seasons (*)
+    `)
+
+export type RidersFromYear = QueryData<ReturnType<typeof ridersFromYearQuery>>;
+
+export const getActiveRiderPointsLookup = unstable_cache(async () => {
+    const { data, error } = await supabase
+        .from("riders")
+        .select("id, points, active")
+        .eq("active", true);
+
+    if (error) { throw error; }
+
+    return data as ActiveRiderPointsLookup;
+}, ["activeRiderPointsLookup"], { revalidate: 60 * 60 });
+
+export type ActiveRiderPointsLookup = {
+    id: number;
+    points: number;
+    active: boolean;
+}[];

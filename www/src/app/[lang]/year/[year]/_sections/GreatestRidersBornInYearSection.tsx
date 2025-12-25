@@ -1,8 +1,8 @@
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { RidersFromYear } from "@/db/riderPoints";
 import { useTranslations } from "next-intl";
 import GreatestRidersBornInYearTable from "../_tables/GreatestRidersBornInYearTable";
+import { RidersFromYear } from "@/db/rider";
 
 export default function GreatestRidersBornInYearSection ({
     year,

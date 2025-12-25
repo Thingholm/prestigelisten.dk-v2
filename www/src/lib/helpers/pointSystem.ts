@@ -1,7 +1,7 @@
 import { PointSystem } from "@/db/pointSystem";
 
 type Result = {
-    result_type_id: number;
+    result_type: number;
     races: {
         race_class_id: number;
     }
@@ -9,7 +9,7 @@ type Result = {
 
 export function getResultPoints(result: Result, pointSystem: PointSystem) {
     return pointSystem.find(i => 
-        i.result_type_id == result.result_type_id 
+        i.result_type == result.result_type 
         && i.race_class_id == result.races.race_class_id
     )?.points ?? 0;
 }

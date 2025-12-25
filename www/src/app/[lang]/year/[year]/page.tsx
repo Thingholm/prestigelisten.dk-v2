@@ -1,11 +1,10 @@
 import { getAllResultsFromYear } from "@/db/results";
-import { getMinRiderBirthYear } from "@/db/rider";
+import { getMinRiderBirthYear, getRidersFromYear } from "@/db/rider";
 import { getAllNationSeasonsFromYear, getAllRiderSeasonsFromYear } from "@/db/seasons";
 import SelectYearSection from "./_sections/SelectYearSection";
 import MostPointsInYearSection from "./_sections/MostPointsInYearSection";
 import { getPointSystem } from "@/db/pointSystem";
 import AlltimePointsForYearSection from "./_sections/AlltimePointsForYearSection";
-import { getRidersFromYear } from "@/db/riderPoints";
 import GreatestRidersBornInYearSection from "./_sections/GreatestRidersBornInYearSection";
 import ResultsFromYearSection from "./_sections/ResultsFromYearSection";
 

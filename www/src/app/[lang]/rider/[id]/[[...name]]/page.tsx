@@ -1,5 +1,4 @@
-import { getRider } from "@/db/rider";
-import { getAllRiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { getAllRidersWithNationAndTeam, getRider } from "@/db/rider";
 import { rankBy } from "@/lib/helpers/rank";
 import ProfileSection from "./_sections/ProfileSection";
 import { getPointSystem } from "@/db/pointSystem";
@@ -25,10 +24,10 @@ export default async function RiderPage({
     const nations = await getNations();
     const previousNationalities = await getRidersPreviousNationalities(id)();
 
-    const rankedRiders = rankBy((await getAllRiderPointsWithNationAndTeam()), "points");
-    const rankedActiveRiders = rankBy(rankedRiders.filter(r => r.riders.active), "points");
-    const rankedNationRiders = rankBy(rankedRiders.filter(r => r.riders.nation_id == rider.nation_id), "points");
-    const rankedYearRiders = rankBy(rankedRiders.filter(r => r.riders.year == rider.year), "points");
+    const rankedRiders = rankBy((await getAllRidersWithNationAndTeam()), "points");
+    const rankedActiveRiders = rankBy(rankedRiders.filter(r => r.active), "points");
+    const rankedNationRiders = rankBy(rankedRiders.filter(r => r.nation_id == rider.nation_id), "points");
+    const rankedYearRiders = rankBy(rankedRiders.filter(r => r.year == rider.year), "points");
 
     const groupedResults = groupResults(rider.results, pointSystem);
 
@@ -36,8 +35,8 @@ export default async function RiderPage({
         <div>
             <ProfileSection
                 rider={rider}
-                activeRank={rankedActiveRiders.find(r => r.rider_id == rider.id)?.rank}
-                nationRank={rankedNationRiders.find(r => r.rider_id == rider.id)?.rank}
+                activeRank={rankedActiveRiders.find(r => r.id == rider.id)?.rank}
+                nationRank={rankedNationRiders.find(r => r.id == rider.id)?.rank}
                 groupedResults={groupedResults}
                 previousNationalities={previousNationalities}
             />

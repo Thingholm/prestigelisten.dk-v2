@@ -2,17 +2,12 @@
 
 import Container from "@/components/layout/Container"
 import Section from "@/components/layout/Section"
-import FlagSpan from "@/components/table/FlagSpan";
 import Select from "@/components/ui/Select"
 import { PointSystem } from "@/db/pointSystem"
 import { ResultsFromYear } from "@/db/results"
 import { getRaceName } from "@/lib/helpers/raceName";
-import { getOnlyResultName } from "@/lib/helpers/resultNames";
 import { sortResults } from "@/lib/helpers/results";
-import { getRiderName } from "@/lib/helpers/riderName";
-import { getRiderUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl"
-import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import ResultsFromRaceEditionTable from "../_tables/ResultsFromRaceEditionTable";
 

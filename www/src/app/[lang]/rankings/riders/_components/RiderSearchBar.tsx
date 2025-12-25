@@ -1,5 +1,5 @@
 import SearchBar from "@/components/ui/SearchBar";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { RidersWithNationAndTeam } from "@/db/rider";
 import { Ranked } from "@/lib/helpers/rank";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { Dispatch, SetStateAction } from "react";
@@ -13,7 +13,7 @@ export default function RidersSearchBar({
     setRange, 
     setHighlightedRiderId 
 }: Readonly<{
-    riders: Ranked<RiderPointsWithNationAndTeam[number]>[],
+    riders: Ranked<RidersWithNationAndTeam[number]>[],
     setRange: Dispatch<SetStateAction<number>>,
     setHighlightedRiderId: Dispatch<SetStateAction<number | null>>
 }>) {
@@ -41,7 +41,7 @@ export default function RidersSearchBar({
     return (        
         <div className="z-10">
             <SearchBar 
-                data={riders.map((rider, index) => ({id: rider.id, value: getRiderName(rider.riders) || "", index: index}))} 
+                data={riders.map((rider, index) => ({id: rider.id, value: getRiderName(rider) || "", index: index}))} 
                 onClick={handleClick}
                 className="max-w-128"
             />

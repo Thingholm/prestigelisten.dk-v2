@@ -14,18 +14,12 @@ const raceQuery = () => supabase
     .from("meta_races")
     .select(`
         *,
-        nations (
-            *
-        ),
+        nations (*),
         races (
             *,
-            race_classes (
-                *
-            )
+            race_classes (*)
         ),
-        image_metadata (
-            *
-        )
+        images (*)
     `)
     
 export type MetaRace = QueryData<ReturnType<typeof raceQuery>>[number];

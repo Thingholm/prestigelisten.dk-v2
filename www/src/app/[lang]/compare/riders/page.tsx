@@ -19,7 +19,7 @@ export default async function Page({
     const rankedActiveRiders = rankBy(
         riders.filter(rider => rider.active).map(rider => ({
             ...rider, 
-            points: rider.rider_points?.[0]?.points ?? 0
+            points: rider.points ?? 0
         })),
         "points"
     );

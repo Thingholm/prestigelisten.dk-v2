@@ -15,7 +15,7 @@ export default function CompareProfileSection({
 }>) {
     return (
         <Section className="justify-around sm:justify-start !pb-0 !pt-0">
-            <div className="w-1/3 flex-col flex items-start md:items-end text-end">
+            <div className="w-1/3 sm:w-1/4 flex-col flex items-start md:items-end text-end">
                 {rider1 &&
                     <div key={rider1.id} className="flex flex-col items-end">
                         <RemoveCompareableEntityButton 
@@ -28,8 +28,8 @@ export default function CompareProfileSection({
                     </div>
                 }
             </div>
-            <div className="w-1/3"></div>
-            <div className="w-1/3 flex-col flex items-end md:items-start">
+            <div className="w-1/3 sm:w-1/2"></div>
+            <div className="w-1/3 sm:w-1/4 flex-col flex items-end md:items-start">
                 {rider2 &&
                     <div key={rider2.id}>
                         <RemoveCompareableEntityButton 

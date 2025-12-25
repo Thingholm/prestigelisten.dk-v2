@@ -2,7 +2,7 @@
 
 import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import Button from "@/components/ui/Button";
-import { RidersFromYear } from "@/db/riderPoints";
+import { RidersFromYear } from "@/db/rider";
 import { rankBy } from "@/lib/helpers/rank";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -32,9 +32,9 @@ export default function GreatestRidersBornInYearTable({
                     {ridersFromYearRanked.slice(0, rowAmount).map(rider => (
                         <TableRow key={rider.id}>
                             <TableCell>{rider.rank}</TableCell>
-                            <TableCell className="hidden sm:table-cell">{rider.riders?.rider_seasons[0].rank_all_time}</TableCell>
-                            <RiderNameCell rider={rider.riders} showFlagBreakpoint="md"/>
-                            <NationNameCell nation={rider.riders.nations} className="hidden md:table-cell"/>
+                            <TableCell className="hidden sm:table-cell">{rider.rider_seasons[0].rank_all_time}</TableCell>
+                            <RiderNameCell rider={rider} showFlagBreakpoint="md"/>
+                            <NationNameCell nation={rider.nations} className="hidden md:table-cell"/>
                             <TableCell>{rider.points}</TableCell>
                         </TableRow>
                     ))}

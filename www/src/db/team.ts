@@ -80,10 +80,7 @@ export const getTeamsFromNation = (nationId: number) => unstable_cache(async () 
         .select(`
             *,
             riders (
-                *,
-                rider_points (
-                    *
-                )
+                *
             )
         `)
         .eq("nation_id", nationId);
@@ -98,10 +95,7 @@ const teamsFromNationQuery = supabase
     .select(`
         *,
         riders (
-            *,
-            rider_points (
-                *
-            )
+            *
         )
     `)
 

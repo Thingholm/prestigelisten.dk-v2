@@ -1,5 +1,5 @@
 type Result = {
-    result_type_id: number;
+    result_type: number;
     races: {
         race_class_id: number;
     }
@@ -21,11 +21,11 @@ export function getResultCategory(result: Result): ResultCategory {
     }
 
     if (gcRaceClassIds.includes(result.races.race_class_id)) {
-        if (result.result_type_id == 5 || result.result_type_id == 6) {
+        if (result.result_type == 5 || result.result_type == 6) {
             return "gtJerseys";
         }
 
-        if (result.result_type_id == 7) {
+        if (result.result_type == 7) {
             return "stageWin";
         }
 

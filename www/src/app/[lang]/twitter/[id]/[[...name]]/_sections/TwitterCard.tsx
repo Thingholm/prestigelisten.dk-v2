@@ -1,9 +1,8 @@
-import { Rider } from "@/db/rider";
+import { Rider, RidersWithNationAndTeam } from "@/db/rider";
 import { Settings } from "./ContentWrapper";
 import { RankingEvolution } from "@/lib/helpers/rankingEvolution";
 import Profile from "./Profile";
 import RankingsSectionGeneral from "./RankingsSectionGeneral";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import RankingsSectionWithLatestResult from "./RankingsSectionWithLatestResult";
 import RankingsTableSection from "./RankingsTableSection";
 import { PointSystem } from "@/db/pointSystem";
@@ -21,7 +20,7 @@ export default function TwitterCard({
     rider: Rider,
     settings: Settings,
     ref: React.RefObject<HTMLDivElement>,
-    riderPoints: RiderPointsWithNationAndTeam,
+    riderPoints: RidersWithNationAndTeam,
     pointSystem: PointSystem
 }>) {
     const rankingEvolution = rankingEvolutions?.find(e => e.results.some(r => r.key == rider.id));
@@ -46,8 +45,8 @@ export default function TwitterCard({
                     rider={rider}
                     riderPoints={settings.showActiveRankingTable 
                         ? (rankingEvolution
-                            ? rankingEvolution.rankings.filter(rp => rp.riders.active)
-                            : riderPoints.filter(rp => rp.riders.active)
+                            ? rankingEvolution.rankings.filter(rp => rp.active)
+                            : riderPoints.filter(rp => rp.active)
                         )
                         : (rankingEvolution
                             ? rankingEvolution.rankings

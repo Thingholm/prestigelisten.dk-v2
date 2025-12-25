@@ -1,16 +1,16 @@
 import Section from "@/components/layout/Section";
 import Button from "@/components/ui/Button";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { useTranslations } from "next-intl";
 import { BiSolidQuoteAltLeft } from "react-icons/bi";
 import HeroTable from "./_tables/HeroTable";
 import Container from "@/components/layout/Container";
 import { getAboutUrl, getListRidersUrl } from "@/lib/helpers/urls";
+import { RidersWithNationAndTeam } from "@/db/rider";
 
 export default function HeroSection({
-    riderPointsWithNationsAndTeams = [],
+    ridersWithNationAndTeam = [],
 }: Readonly<{
-    riderPointsWithNationsAndTeams: RiderPointsWithNationAndTeam;
+    ridersWithNationAndTeam: RidersWithNationAndTeam;
 }>) {
     const t = useTranslations("homepage");
 
@@ -37,7 +37,7 @@ export default function HeroSection({
                 title={t("tableTitles.allTimePoints")} 
                 href={getListRidersUrl()}
             >
-                <HeroTable riderPointsWithNationsAndTeams={riderPointsWithNationsAndTeams.slice(0, 17)} />
+                <HeroTable ridersWithNationAndTeam={ridersWithNationAndTeam.slice(0, 17)} />
             </Container>
         </Section>
     );

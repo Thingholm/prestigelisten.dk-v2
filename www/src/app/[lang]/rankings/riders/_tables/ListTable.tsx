@@ -1,16 +1,16 @@
 import { NationNameCell, RiderNameCell, SecondaryCellSpan, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { RidersWithNationAndTeam } from "@/db/rider";
 import { Ranked } from "@/lib/helpers/rank";
 import { useTranslations } from "next-intl";
 
 export default function ListTable({
-    riderPoints,
+    riders,
     rowAmount,
     highlightedRiderId,
     alltimeRankingsLookupList,
     isFiltered
 }: Readonly<{
-    riderPoints: Ranked<RiderPointsWithNationAndTeam[number]>[],
+    riders: Ranked<RidersWithNationAndTeam[number]>[],
     rowAmount: number,
     highlightedRiderId: number | null,
     alltimeRankingsLookupList: Ranked<{
@@ -35,8 +35,8 @@ export default function ListTable({
                 <TableColumn>{t("points")}</TableColumn>
             </TableHead>
             <TableBody>
-                {riderPoints.slice(0, rowAmount).map(rider => {
-                    const alltimeRanking = alltimeRankingsLookupList.find(alltimeRanking => alltimeRanking.id == rider.rider_id)?.rank;
+                {riders.slice(0, rowAmount).map(rider => {
+                    const alltimeRanking = alltimeRankingsLookupList.find(alltimeRanking => alltimeRanking.id == rider.id)?.rank;
 
                     return (
                         <TableRow 
@@ -49,9 +49,9 @@ export default function ListTable({
                                 {isFiltered && <SecondaryCellSpan className="table-cell sm:hidden">{alltimeRanking}</SecondaryCellSpan>}
                             </TableCell>
                             {isFiltered && <TableCell className="hidden sm:table-cell">{alltimeRanking}</TableCell>}
-                            <RiderNameCell rider={rider.riders} showFlagBreakpoint="sm"/>
-                            <NationNameCell nation={rider.riders.nations} className="hidden sm:table-cell"/>
-                            <YearCell year={rider.riders.year}/>
+                            <RiderNameCell rider={rider} showFlagBreakpoint="sm"/>
+                            <NationNameCell nation={rider.nations} className="hidden sm:table-cell"/>
+                            <YearCell year={rider.year}/>
                             <TableCell>{rider.points}</TableCell>
                         </TableRow>
                     )

@@ -27,13 +27,13 @@ export default function RiderImage({
                 className="rounded-2xl aspect-square"
                 style={!className ? {height: 200, width: 200} : {}}
             />
-            {rider.image_metadata?.[0] && 
+            {rider.images && 
                 <p className="text-sm text-gray-500 mt-1">
                     <span>{t("source")}: </span>
-                    {rider.image_metadata?.[0].credit_link ? 
-                        <Link href={rider.image_metadata?.[0].credit_link} target="_blank">{rider.image_metadata?.[0].credit}</Link>
+                    {rider.images?.credit_url ? 
+                        <Link href={rider.images.credit_url} target="_blank">{rider.images.credit}</Link>
                     :
-                        <span>{rider.image_metadata?.[0].credit}</span>
+                        <span>{rider.images.credit}</span>
                     }
                 </p>
             }

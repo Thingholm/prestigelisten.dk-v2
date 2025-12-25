@@ -1,7 +1,6 @@
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { Rider } from "@/db/rider";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { Rider, RidersWithNationAndTeam } from "@/db/rider";
 import { Ranked } from "@/lib/helpers/rank";
 import { getRidersListUrl } from "@/lib/helpers/urls";
 import { getTranslations } from "next-intl/server";
@@ -14,8 +13,8 @@ export default async function TablesSection({
     rankedRidersByYear
 }: Readonly<{
     rider: Rider,
-    rankedRidersByNation: Ranked<RiderPointsWithNationAndTeam[number]>[],
-    rankedRidersByYear: Ranked<RiderPointsWithNationAndTeam[number]>[]
+    rankedRidersByNation: Ranked<RidersWithNationAndTeam[number]>[],
+    rankedRidersByYear: Ranked<RidersWithNationAndTeam[number]>[]
 }>) {
     const t = await getTranslations("riderPage.tables");
     const tNations = await getTranslations("nations");

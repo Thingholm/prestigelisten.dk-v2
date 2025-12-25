@@ -1,12 +1,12 @@
 import { EntityProfileSection, NationFlag, ProfileAttribute, ProfileDetails, ProfileHighlightSection, ProfileMainSection, ProfileTitle } from "@/components/entityPage";
-import { NationPoints } from "@/db/nationPoints";
-import { NationWithRiders } from "@/db/nations";
+import { NationWithRiders, NationWithTopRidersAndCount } from "@/db/nations";
 import { Race } from "@/db/race";
 import { urls } from "@/lib/constants/urls";
 import { formatNumber } from "@/lib/helpers/localeHelpers";
 import { Ranked } from "@/lib/helpers/rank";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getRiderUrl } from "@/lib/helpers/urls";
+import { Tables } from "@/utils/supabase/database.types";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -16,7 +16,7 @@ export default function ProfileSection({
     races,
 }: Readonly<{
     nation: NationWithRiders,
-    rankedActiveNationPoints: Ranked<NationPoints>[],
+    rankedActiveNationPoints: Ranked<Tables<"nations">>[],
     races: Race[],
 }>) {
     const t = useTranslations("nationPage.profile");
@@ -25,7 +25,7 @@ export default function ProfileSection({
     const currentYear = new Date().getFullYear();
     const currentSeason = nation.nation_seasons.find(season => season.year == currentYear);
 
-    const nationActivePoints = rankedActiveNationPoints.find(n => n.nation_id == nation.id);
+    const nationActivePoints = rankedActiveNationPoints.find(n => n.id == nation.id);
 
     const nationalsRaceIds = races.filter(race => [12, 13, 14, 15].includes(race.race_class_id)).map(race => race.id);
     const numberOfRidersWithPoints = nation.riders.length;

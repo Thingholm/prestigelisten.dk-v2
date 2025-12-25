@@ -32,7 +32,7 @@ export default function ChartSection({
             result => result.category
         ).map(categoryGroup => ({
             ...categoryGroup,
-            percent: categoryGroup.points / (rider.rider_points[0].points ?? 1) * 100,
+            percent: categoryGroup.points / (rider.points ?? 1) * 100,
             results: groupResults(categoryGroup.results, pointSystem),
             count: categoryGroup.results.length
         })

@@ -1,14 +1,14 @@
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { NationPointsWithRiderCount } from "@/db/nationPoints";
 import { getListNationsUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";
 import NationsTable from "../_tables/NationsTable";
+import { NationWithTopRidersAndCount } from "@/db/nations";
 
 export default function NationsSection({
     nationPointsWithRiderCount,
 }: Readonly<{
-    nationPointsWithRiderCount: NationPointsWithRiderCount;
+    nationPointsWithRiderCount: NationWithTopRidersAndCount;
 }>) {
     const t = useTranslations("homepage");
 

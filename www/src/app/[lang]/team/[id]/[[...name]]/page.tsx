@@ -4,8 +4,8 @@ import ProfileSection from "./_sections/ProfileSection";
 import { rankBy } from "@/lib/helpers/rank";
 import TeamsTablesSection from "./_sections/TeamsTablesSection";
 import GreatestRidersSection from "./_sections/GreatestRidersSection";
-import { getActiveRiderPointsLookup } from "@/db/riderPoints";
 import ResultsForYearSection from "./_sections/ResultsForYearSection";
+import { getActiveRiderPointsLookup } from "@/db/rider";
 
 export default async function TeamPage({
     params,

@@ -6,10 +6,15 @@ import { useState } from "react";
 import { rankBy, Ranked } from "@/lib/helpers/rank";
 import NationsTable from "../_tables/NationsTable";
 import FilterSubsection from "./FilterSubsection";
+import { toDecimals } from "@/lib/helpers/number";
 
 export type NationsFilter = {
     RankBy: "points" | "rider_count" | "points_per_rider";
     FilterBy: "all" | "active" | "inactive";
+}
+
+export type NationPointsWithRidersAndCount = NationPointsWithRiders[number] & {
+    points_per_rider: number
 }
 
 export default function ListSection({
@@ -29,38 +34,26 @@ export default function ListSection({
         filter.RankBy
     );
 
-    function filterNationPointsItem(nation: NationPointsWithRiders[number]) {
+    function filterNationPointsItem(nation: NationPointsWithRiders[number]): NationPointsWithRidersAndCount {
         let points = nation.points;
         let riderCount = nation.rider_count;
-        let points_per_rider = nation.points_per_rider;
-        let riders = [
-            nation.riders.find(rider => rider.id == nation.top_rider1_id),
-            nation.riders.find(rider => rider.id == nation.top_rider2_id),
-            nation.riders.find(rider => rider.id == nation.top_rider3_id),
-        ]
+        let points_per_rider = toDecimals(riderCount > 0 ? (points / riderCount) : 0, 1);
+        let riders = nation.riders.filter(r => nation.top_riders.some(tr => tr.rider_id == r.id));
 
         if (filter.FilterBy == "active")
         {
             points = nation.active_points;
-            riderCount = nation.active_rider_count;
-            points_per_rider = nation.active_points_per_rider;
-            riders = [
-                nation.riders.find(rider => rider.id == nation.top_active_rider1_id),
-                nation.riders.find(rider => rider.id == nation.top_active_rider2_id),
-                nation.riders.find(rider => rider.id == nation.top_active_rider3_id),
-            ]
+            riderCount = nation.rider_active_count;
+            points_per_rider = toDecimals(riderCount > 0 ? (points / riderCount) : 0, 1);
+            riders = nation.riders.filter(r => nation.top_active_riders.some(tr => tr.rider_id == r.id));
         }
 
         if (filter.FilterBy == "inactive")
         {
-            points = nation.inactive_points;
-            riderCount = nation.inactive_rider_count;
-            points_per_rider = nation.inactive_points_per_rider;
-            riders = [
-                nation.riders.find(rider => rider.id == nation.top_inactive_rider1_id),
-                nation.riders.find(rider => rider.id == nation.top_inactive_rider2_id),
-                nation.riders.find(rider => rider.id == nation.top_inactive_rider3_id),
-            ]
+            points = nation.points - nation.active_points;
+            riderCount = nation.rider_count - nation.rider_active_count;
+            points_per_rider = toDecimals(riderCount > 0 ? (points / riderCount) : 0, 1);
+            riders = nation.riders.filter(r => nation.top_inactive_riders.some(tr => tr.rider_id == r.id));
         }
 
         return {
@@ -75,7 +68,7 @@ export default function ListSection({
     return (
         <Section className="flex-col">
             <FilterSubsection filter={filter} setFilter={setFilter}/>
-            <NationsTable nationPoints={filteredNationPoints as Ranked<NationPointsWithRiders[number]>[]}/>
+            <NationsTable nationPoints={filteredNationPoints as Ranked<NationPointsWithRidersAndCount>[]}/>
         </Section>
     )
 }

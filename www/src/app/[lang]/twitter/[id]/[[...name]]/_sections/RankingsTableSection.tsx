@@ -1,5 +1,4 @@
-import { Rider } from "@/db/rider";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { Rider, RidersWithNationAndTeam } from "@/db/rider";
 import { Settings } from "./ContentWrapper";
 import { useTranslations } from "next-intl";
 import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
@@ -11,7 +10,7 @@ export default function RankingsTableSection({
     settings
 }: Readonly<{
     rider: Rider,
-    riderPoints: RiderPointsWithNationAndTeam,
+    riderPoints: RidersWithNationAndTeam,
     settings: Settings
 }>) {
     const t = useTranslations("twitterCard");
@@ -19,7 +18,7 @@ export default function RankingsTableSection({
 
     const rankedRiders = rankBy(riderPoints, "points")
 
-    const riderIndex = rankedRiders.findIndex(rp => rp.rider_id == rider.id);
+    const riderIndex = rankedRiders.findIndex(rp => rp.id == rider.id);
 
     return (
         <div className="mt-2">
@@ -38,12 +37,12 @@ export default function RankingsTableSection({
                     ).map(rankedRider => (
                         <TableRow 
                             key={rankedRider.id}
-                            style={{ backgroundColor: rankedRider.rider_id == rider.id ? settings.colorHex : "" }}
-                            className={rankedRider.rider_id == rider.id ? settings.whiteText ? "text-white font-semibold" : "font-semibold" : ""}
+                            style={{ backgroundColor: rankedRider.id == rider.id ? settings.colorHex : "" }}
+                            className={rankedRider.id == rider.id ? settings.whiteText ? "text-white font-semibold" : "font-semibold" : ""}
                         >
                             <TableCell>{rankedRider.rank}</TableCell>
-                            <RiderNameCell rider={rankedRider.riders} showFlagBreakpoint="always"/>
-                            <YearCell year={rankedRider.riders.year}/>
+                            <RiderNameCell rider={rankedRider} showFlagBreakpoint="always"/>
+                            <YearCell year={rankedRider.year}/>
                             <TableCell>{rankedRider.points}</TableCell>
                         </TableRow>
                     ))}

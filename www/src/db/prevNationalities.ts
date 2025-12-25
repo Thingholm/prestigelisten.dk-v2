@@ -4,7 +4,7 @@ import { unstable_cache } from "next/cache";
 
 export const GetRidersWithPreviousNationality = (nationId: number) => unstable_cache(async () => {
     const { data, error } = await supabase
-        .from("prev_nationalities")
+        .from("previous_nationalities")
         .select(`
             *,
             riders (
@@ -40,7 +40,7 @@ export const GetRidersWithPreviousNationality = (nationId: number) => unstable_c
 }, ["ridersWithPreviousNationality", nationId.toString()], { revalidate: 60 * 60 * 24})
 
 const ridersWithPreviousNationalityQuery = supabase
-    .from("prev_nationalities")
+    .from("previous_nationalities")
     .select(`
         *,
         riders (
@@ -61,7 +61,7 @@ export type PreviousNationalityData = QueryData<typeof ridersWithPreviousNationa
 
 export const getRidersPreviousNationalities = (riderId: number) => unstable_cache(async () => {
     const { data, error } = await supabase
-        .from("prev_nationalities")
+        .from("previous_nationalities")
         .select(`
             *,
             riders (
@@ -79,7 +79,7 @@ export const getRidersPreviousNationalities = (riderId: number) => unstable_cach
 }, ["ridersPreviousNationalities", riderId.toString()], { revalidate: 60 * 60 });
 
 const ridersPreviousNationalitiesQuery = supabase
-    .from("prev_nationalities")
+    .from("previous_nationalities")
     .select(`
         *,
         riders (

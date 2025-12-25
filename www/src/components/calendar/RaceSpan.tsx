@@ -112,7 +112,7 @@ export default function RaceSpan({
                     <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center">
                         {pointSystem.filter(ps => ps.race_class_id === raceItem.race.race_class_id).map(ps => (
                             <div key={ps.id} className="text-sm flex flex-col items-center justify-center">
-                                <span className="font-semibold">{tResultNames(`resultTypes.${ps.result_type_id}`)}</span>
+                                <span className="font-semibold">{tResultNames(`resultTypes.${ps.result_type}`)}</span>
                                 <span className="opacity-70">{ps.points}p</span>
                             </div>
                         ))}
