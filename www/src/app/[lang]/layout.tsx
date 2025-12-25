@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "../../../node_modules/flag-icons/css/flag-icons.min.css";
-import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import Header from "@/components/layout/header/Header";
 import Footer from "@/components/layout/footer/Footer";
@@ -18,12 +17,11 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ lang: "en" | "da" }>;
 }>) {
-  const messages = await getMessages();
   const { lang } = await params;
 
   return (
     <html lang={lang}>
-      <NextIntlClientProvider messages={messages}>
+      <NextIntlClientProvider>
         <body
             className={`font-inter antialiased overflow-x-hidden text-sm sm:text-[0.938rem] flex flex-col min-h-screen`}
         >
