@@ -220,7 +220,7 @@ resource "azurerm_container_app" "api_ca" {
     type = "UserAssigned"
     identity_ids = [
       azurerm_user_assigned_identity.acr_pull.id,
-            azurerm_user_assigned_identity.kv_reader.id
+      azurerm_user_assigned_identity.kv_reader.id
     ]
   }
 
