@@ -6,7 +6,6 @@ using Prestigelisten.Application.Interfaces.Services;
 using Prestigelisten.Core;
 using Prestigelisten.Integrations.GoogleSheets;
 using Prestigelisten.Persistence;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
