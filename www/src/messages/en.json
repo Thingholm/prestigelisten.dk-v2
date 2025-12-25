@@ -273,6 +273,10 @@
             "za": {
                 "name": "South Africa",
                 "adjective": "South African"
+            },
+            "mc": {
+                "name": "Monaco",
+                "adjective": "Monégasque"
             }
         },
         "at": "at",
@@ -616,6 +620,10 @@
         "za": {
             "name": "South Africa",
             "adjective": "South African"
+        },
+        "mc": {
+            "name": "Monaco",
+            "adjective": "Monégasque"
         }
     },
     "suffixes": {

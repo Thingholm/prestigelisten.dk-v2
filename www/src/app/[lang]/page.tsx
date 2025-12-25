@@ -1,8 +1,5 @@
-import { getAllRiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import HeroSection from "./HeroSection";
 import ActiveAndDanishRidersSection from "./_sections/ActiveAndDanishRidersSection";
-import { getAllNationPointsWithRiderCount } from "@/db/nationPoints";
-import NationsSection from "./_sections/NationsSection";
 import { getGreatestSeasons, getTop10AlltimeEachSeason } from "@/db/seasons";
 import { getPointSystem } from "@/db/pointSystem";
 import GreatestSeasonsSection from "./_sections/GreatestSeasonsSection";
@@ -14,12 +11,14 @@ import LatestResultsSection from "./_sections/LatestResultsSection";
 import CalendarSection from "./_sections/CalendarSection";
 import { getDecadeRankings } from "@/db/decade";
 import DecadeSection from "./_sections/DecadeSection";
-import Loading from "./loading";
 import SocialMediaSection from "./_sections/SocialMediaSection";
+import { getAllRidersWithNationAndTeam } from "@/db/rider";
+import { getNationsWithTopRidersAndCount } from "@/db/nations";
+import NationsSection from "./_sections/NationsSection";
 
 export default async function HomePage() {
-    const riderPointsWithNationsAndTeams = await getAllRiderPointsWithNationAndTeam();
-    const nationPointsWithRiderCount = await getAllNationPointsWithRiderCount();
+    const ridersWithNationAndTeam = await getAllRidersWithNationAndTeam();
+    const nations = await getNationsWithTopRidersAndCount();
     const greatestSeasons = await getGreatestSeasons();
     const pointSystem = await getPointSystem();
     const top10AlltimeEachSeason = await getTop10AlltimeEachSeason();
@@ -29,15 +28,15 @@ export default async function HomePage() {
 
     return (
         <div>
-            <HeroSection riderPointsWithNationsAndTeams={riderPointsWithNationsAndTeams}/>
+            <HeroSection ridersWithNationAndTeam={ridersWithNationAndTeam}/>
             <LatestResultsSection
                 results={results}
-                riderPoints={riderPointsWithNationsAndTeams}
+                riders={ridersWithNationAndTeam}
                 pointSystem={pointSystem}
             />
             <CalendarSection/>
-            <ActiveAndDanishRidersSection riderPointsWithNationAndTeam={riderPointsWithNationsAndTeams} />
-            <NationsSection nationPointsWithRiderCount={nationPointsWithRiderCount} />
+            <ActiveAndDanishRidersSection ridersWithNationAndTeam={ridersWithNationAndTeam} />
+            <NationsSection nationPointsWithRiderCount={nations} />
             <GreatestSeasonsSection greatestSeasons={greatestSeasons} pointSystem={pointSystem} />
             <TopAlltimeEachSeasonSection top10AlltimeEachSeason={top10AlltimeEachSeason} />
             <Riders3YearRollingRankingsSection riders3YearRollingRankings={riders3YearRollingRankings} />

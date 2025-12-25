@@ -1,6 +1,6 @@
 import { RiderNameCell, SecondaryCellSpan, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table"
 import FlagSpan from "@/components/table/FlagSpan"
-import { formatDate, getDateString } from "@/lib/helpers/dateFormatter"
+import { getDateString } from "@/lib/helpers/dateFormatter"
 import { getRaceFlagCode } from "@/lib/helpers/raceFlags"
 import { getGroupedResultName } from "@/lib/helpers/resultNames"
 import { getRiderName } from "@/lib/helpers/riderName"

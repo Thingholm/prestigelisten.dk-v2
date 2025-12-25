@@ -1,7 +1,6 @@
 import { getPointSystem } from "@/db/pointSystem";
 import { getResultsThisYear } from "@/db/results";
-import { getRider } from "@/db/rider";
-import { getAllRiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { getAllRidersWithNationAndTeam, getRider } from "@/db/rider";
 import { calculateRankingEvolution } from "@/lib/helpers/rankingEvolution";
 import ContentWrapper from "./_sections/ContentWrapper";
 
@@ -15,7 +14,7 @@ export default async function TwitterImageGenerator({
     const rider = await getRider(id)();
 
     const results = await getResultsThisYear();
-    const riderPoints = await getAllRiderPointsWithNationAndTeam();
+    const riderPoints = await getAllRidersWithNationAndTeam();
     const pointSystem = await getPointSystem();
     
     const rankingsByDate = rider.active && rider.results.some(result => result.year == new Date().getFullYear()) ? calculateRankingEvolution(results, riderPoints, pointSystem) : null;

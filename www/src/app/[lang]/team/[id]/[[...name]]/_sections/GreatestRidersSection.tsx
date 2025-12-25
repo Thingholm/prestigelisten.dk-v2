@@ -1,10 +1,10 @@
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { ActiveRiderPointsLookup } from "@/db/riderPoints";
 import { TeamWithRiders } from "@/db/team";
 import { Ranked } from "@/lib/helpers/rank";
 import { useTranslations } from "next-intl";
 import GreatestRidersTable from "../_tables/GreatestRidersTable";
+import { ActiveRiderPointsLookup } from "@/db/rider";
 
 export default function GreatestRidersSection({
     teamWithRiders,

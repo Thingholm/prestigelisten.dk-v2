@@ -14,6 +14,21 @@ export type Database = {
   }
   public: {
     Tables: {
+      __EFMigrationsHistory: {
+        Row: {
+          migration_id: string
+          product_version: string
+        }
+        Insert: {
+          migration_id: string
+          product_version: string
+        }
+        Update: {
+          migration_id?: string
+          product_version?: string
+        }
+        Relationships: []
+      }
       calendar: {
         Row: {
           end_date: string
@@ -35,7 +50,7 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "calendar_race_id_fkey"
+            foreignKeyName: "fk_calendar_races_race_id"
             columns: ["race_id"]
             isOneToOne: false
             referencedRelation: "races"
@@ -43,105 +58,73 @@ export type Database = {
           },
         ]
       }
-      image_metadata: {
+      images: {
         Row: {
           credit: string | null
-          credit_link: string | null
+          credit_url: string | null
           id: number
-          meta_race_id: number | null
-          rider_id: number | null
+          image_url: string | null
         }
         Insert: {
           credit?: string | null
-          credit_link?: string | null
+          credit_url?: string | null
           id?: number
-          meta_race_id?: number | null
-          rider_id?: number | null
+          image_url?: string | null
         }
         Update: {
           credit?: string | null
-          credit_link?: string | null
+          credit_url?: string | null
           id?: number
-          meta_race_id?: number | null
-          rider_id?: number | null
+          image_url?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "image_metadata_meta_race_id_fkey"
-            columns: ["meta_race_id"]
-            isOneToOne: false
-            referencedRelation: "meta_races"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "image_metadata_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "image_metadata_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "riders"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "image_metadata_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "image_metadata_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "image_metadata_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-        ]
+        Relationships: []
       }
       meta_races: {
         Row: {
           color_hex: string | null
           dark_text: boolean
           id: number
+          image_id: number | null
           name: string
           nation_id: number | null
-          white_text: boolean
         }
         Insert: {
           color_hex?: string | null
-          dark_text?: boolean
+          dark_text: boolean
           id?: number
+          image_id?: number | null
           name: string
           nation_id?: number | null
-          white_text?: boolean
         }
         Update: {
           color_hex?: string | null
           dark_text?: boolean
           id?: number
+          image_id?: number | null
           name?: string
           nation_id?: number | null
-          white_text?: boolean
         }
         Relationships: [
+          {
+            foreignKeyName: "fk_meta_races_images_image_id"
+            columns: ["image_id"]
+            isOneToOne: false
+            referencedRelation: "images"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "fk_meta_races_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
-            referencedRelation: "nation_points_with_rider_counts_view"
-            referencedColumns: ["id"]
+            referencedRelation: "nation_rider_counts_view"
+            referencedColumns: ["nation_id"]
+          },
+          {
+            foreignKeyName: "fk_meta_races_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
+            referencedRelation: "nation_top_3_riders"
+            referencedColumns: ["nation_id"]
           },
           {
             foreignKeyName: "fk_meta_races_nations_nation_id"
@@ -155,225 +138,6 @@ export type Database = {
             columns: ["nation_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_meta_races_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_meta_races_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_meta_races_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-        ]
-      }
-      nation_points: {
-        Row: {
-          active_points: number
-          id: number
-          nation_id: number
-          points: number
-        }
-        Insert: {
-          active_points?: number
-          id?: number
-          nation_id: number
-          points: number
-        }
-        Update: {
-          active_points?: number
-          id?: number
-          nation_id?: number
-          points?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "fk_nation_points_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "nation_points_with_rider_counts_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_nation_points_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "nations"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_nation_points_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_points_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_points_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_points_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-        ]
-      }
-      nation_ranks_yearly: {
-        Row: {
-          id: number
-          nation_id: number
-          placement: number
-          points: number
-          year: number
-        }
-        Insert: {
-          id?: number
-          nation_id: number
-          placement: number
-          points: number
-          year: number
-        }
-        Update: {
-          id?: number
-          nation_id?: number
-          placement?: number
-          points?: number
-          year?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "nation_points_with_rider_counts_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "nations"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-        ]
-      }
-      nation_ranks_yearly_acc: {
-        Row: {
-          id: number
-          nation_id: number
-          placement: number
-          points: number
-          year: number
-        }
-        Insert: {
-          id?: number
-          nation_id: number
-          placement: number
-          points: number
-          year: number
-        }
-        Update: {
-          id?: number
-          nation_id?: number
-          placement?: number
-          points?: number
-          year?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_acc_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "nation_points_with_rider_counts_view"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_acc_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "nations"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_acc_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_acc_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_acc_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_nation_ranks_yearly_acc_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
             referencedColumns: ["nation_id"]
           },
         ]
@@ -390,7 +154,7 @@ export type Database = {
         }
         Insert: {
           id?: number
-          nation_id: number
+          nation_id?: number
           points_all_time: number
           points_for_year?: number | null
           rank_all_time: number
@@ -408,45 +172,31 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "nation_seasons_nation_id_fkey"
+            foreignKeyName: "fk_nation_seasons_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
-            referencedRelation: "nation_points_with_rider_counts_view"
-            referencedColumns: ["id"]
+            referencedRelation: "nation_rider_counts_view"
+            referencedColumns: ["nation_id"]
           },
           {
-            foreignKeyName: "nation_seasons_nation_id_fkey"
+            foreignKeyName: "fk_nation_seasons_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
+            referencedRelation: "nation_top_3_riders"
+            referencedColumns: ["nation_id"]
+          },
+          {
+            foreignKeyName: "fk_nation_seasons_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
             referencedRelation: "nations"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "nation_seasons_nation_id_fkey"
+            foreignKeyName: "fk_nation_seasons_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "nation_seasons_nation_id_fkey"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "nation_seasons_nation_id_fkey"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "nation_seasons_nation_id_fkey"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
             referencedColumns: ["nation_id"]
           },
         ]
@@ -454,21 +204,27 @@ export type Database = {
       nations: {
         Row: {
           active: boolean
+          active_points: number
           code: string
           id: number
           name: string
+          points: number
         }
         Insert: {
           active: boolean
+          active_points: number
           code: string
           id?: number
           name: string
+          points: number
         }
         Update: {
           active?: boolean
+          active_points?: number
           code?: string
           id?: number
           name?: string
+          points?: number
         }
         Relationships: []
       }
@@ -477,19 +233,19 @@ export type Database = {
           id: number
           points: number
           race_class_id: number
-          result_type_id: number
+          result_type: number
         }
         Insert: {
           id?: number
           points: number
           race_class_id: number
-          result_type_id: number
+          result_type: number
         }
         Update: {
           id?: number
           points?: number
           race_class_id?: number
-          result_type_id?: number
+          result_type?: number
         }
         Relationships: [
           {
@@ -499,20 +255,14 @@ export type Database = {
             referencedRelation: "race_classes"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "fk_point_system_result_types_result_type_id"
-            columns: ["result_type_id"]
-            isOneToOne: false
-            referencedRelation: "result_types"
-            referencedColumns: ["id"]
-          },
         ]
       }
-      prev_nationalities: {
+      previous_nationalities: {
         Row: {
           end_year: number | null
           id: number
           nation_id: number
+          points: number
           rider_id: number
           start_year: number | null
         }
@@ -520,6 +270,7 @@ export type Database = {
           end_year?: number | null
           id?: number
           nation_id: number
+          points?: number
           rider_id: number
           start_year?: number | null
         }
@@ -527,86 +278,52 @@ export type Database = {
           end_year?: number | null
           id?: number
           nation_id?: number
+          points?: number
           rider_id?: number
           start_year?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "fk_prev_nationalities_nations_nation_id"
+            foreignKeyName: "fk_previous_nationalities_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
-            referencedRelation: "nation_points_with_rider_counts_view"
-            referencedColumns: ["id"]
+            referencedRelation: "nation_rider_counts_view"
+            referencedColumns: ["nation_id"]
           },
           {
-            foreignKeyName: "fk_prev_nationalities_nations_nation_id"
+            foreignKeyName: "fk_previous_nationalities_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
+            referencedRelation: "nation_top_3_riders"
+            referencedColumns: ["nation_id"]
+          },
+          {
+            foreignKeyName: "fk_previous_nationalities_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
             referencedRelation: "nations"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "fk_prev_nationalities_nations_nation_id"
+            foreignKeyName: "fk_previous_nationalities_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
             referencedColumns: ["nation_id"]
           },
           {
-            foreignKeyName: "fk_prev_nationalities_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_prev_nationalities_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_prev_nationalities_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_prev_nationalities_riders_rider_id"
+            foreignKeyName: "fk_previous_nationalities_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
             referencedColumns: ["rider_id"]
           },
           {
-            foreignKeyName: "fk_prev_nationalities_riders_rider_id"
+            foreignKeyName: "fk_previous_nationalities_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "riders"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_prev_nationalities_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_prev_nationalities_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_prev_nationalities_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
           },
         ]
       }
@@ -669,7 +386,7 @@ export type Database = {
           active: boolean
           active_span_string?: string | null
           id?: number
-          meta_race_id?: number
+          meta_race_id: number
           race_class_id: number
         }
         Update: {
@@ -696,21 +413,6 @@ export type Database = {
           },
         ]
       }
-      result_types: {
-        Row: {
-          id: number
-          name: string
-        }
-        Insert: {
-          id?: number
-          name: string
-        }
-        Update: {
-          id?: number
-          name?: string
-        }
-        Relationships: []
-      }
       results: {
         Row: {
           id: number
@@ -718,7 +420,7 @@ export type Database = {
           placement: number | null
           race_date_id: number | null
           race_id: number
-          result_type_id: number
+          result_type: number
           rider_id: number
           rider_season_id: number | null
           sheet_index: number
@@ -731,10 +433,10 @@ export type Database = {
           placement?: number | null
           race_date_id?: number | null
           race_id: number
-          result_type_id: number
+          result_type: number
           rider_id: number
           rider_season_id?: number | null
-          sheet_index?: number
+          sheet_index: number
           stage?: number | null
           year: number
         }
@@ -744,7 +446,7 @@ export type Database = {
           placement?: number | null
           race_date_id?: number | null
           race_id?: number
-          result_type_id?: number
+          result_type?: number
           rider_id?: number
           rider_season_id?: number | null
           sheet_index?: number
@@ -753,6 +455,20 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "fk_results_nation_seasons_nation_season_id"
+            columns: ["nation_season_id"]
+            isOneToOne: false
+            referencedRelation: "nation_seasons"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_results_race_dates_race_date_id"
+            columns: ["race_date_id"]
+            isOneToOne: false
+            referencedRelation: "race_dates"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "fk_results_races_race_id"
             columns: ["race_id"]
             isOneToOne: false
@@ -760,308 +476,32 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "fk_results_result_types_result_type_id"
-            columns: ["result_type_id"]
-            isOneToOne: false
-            referencedRelation: "result_types"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_results_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_results_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "riders"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_results_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_results_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_results_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "results_nation_season_id_fkey"
-            columns: ["nation_season_id"]
-            isOneToOne: false
-            referencedRelation: "nation_seasons"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "results_race_date_id_fkey"
-            columns: ["race_date_id"]
-            isOneToOne: false
-            referencedRelation: "race_dates"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "results_rider_season_id_fkey"
+            foreignKeyName: "fk_results_rider_seasons_rider_season_id"
             columns: ["rider_season_id"]
             isOneToOne: false
             referencedRelation: "rider_points_by_age"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "results_rider_season_id_fkey"
+            foreignKeyName: "fk_results_rider_seasons_rider_season_id"
             columns: ["rider_season_id"]
             isOneToOne: false
             referencedRelation: "rider_seasons"
             referencedColumns: ["id"]
           },
-        ]
-      }
-      rider_points: {
-        Row: {
-          id: number
-          points: number
-          rider_id: number
-        }
-        Insert: {
-          id?: number
-          points: number
-          rider_id: number
-        }
-        Update: {
-          id?: number
-          points?: number
-          rider_id?: number
-        }
-        Relationships: [
           {
-            foreignKeyName: "fk_rider_points_riders_rider_id"
+            foreignKeyName: "fk_results_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
             referencedColumns: ["rider_id"]
           },
           {
-            foreignKeyName: "fk_rider_points_riders_rider_id"
+            foreignKeyName: "fk_results_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "riders"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_rider_points_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_points_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_points_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-        ]
-      }
-      rider_ranks_yearly: {
-        Row: {
-          id: number
-          placement: number
-          points: number
-          rider_id: number
-          year: number
-        }
-        Insert: {
-          id?: number
-          placement: number
-          points: number
-          rider_id: number
-          year: number
-        }
-        Update: {
-          id?: number
-          placement?: number
-          points?: number
-          rider_id?: number
-          year?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "riders"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-        ]
-      }
-      rider_ranks_yearly_acc: {
-        Row: {
-          id: number
-          placement: number
-          points: number
-          rider_id: number
-          year: number
-        }
-        Insert: {
-          id?: number
-          placement: number
-          points: number
-          rider_id: number
-          year: number
-        }
-        Update: {
-          id?: number
-          placement?: number
-          points?: number
-          rider_id?: number
-          year?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "riders"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-        ]
-      }
-      rider_ranks3year_span: {
-        Row: {
-          end_year: number
-          id: number
-          placement: number
-          points: number
-          rider_id: number
-        }
-        Insert: {
-          end_year: number
-          id?: number
-          placement: number
-          points: number
-          rider_id: number
-        }
-        Update: {
-          end_year?: number
-          id?: number
-          placement?: number
-          points?: number
-          rider_id?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "fk_rider_ranks3year_span_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks3year_span_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "riders"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks3year_span_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks3year_span_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks3year_span_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
           },
         ]
       }
@@ -1095,39 +535,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
+            foreignKeyName: "fk_rider_seasons_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
             referencedColumns: ["rider_id"]
           },
           {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
+            foreignKeyName: "fk_rider_seasons_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "riders"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
           },
         ]
       }
@@ -1136,8 +555,10 @@ export type Database = {
           active: boolean
           first_name: string | null
           id: number
+          image_id: number | null
           last_name: string
           nation_id: number
+          points: number
           team_id: number | null
           year: number | null
         }
@@ -1145,8 +566,10 @@ export type Database = {
           active: boolean
           first_name?: string | null
           id?: number
+          image_id?: number | null
           last_name: string
           nation_id: number
+          points: number
           team_id?: number | null
           year?: number | null
         }
@@ -1154,18 +577,34 @@ export type Database = {
           active?: boolean
           first_name?: string | null
           id?: number
+          image_id?: number | null
           last_name?: string
           nation_id?: number
+          points?: number
           team_id?: number | null
           year?: number | null
         }
         Relationships: [
           {
+            foreignKeyName: "fk_riders_images_image_id"
+            columns: ["image_id"]
+            isOneToOne: false
+            referencedRelation: "images"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "fk_riders_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
-            referencedRelation: "nation_points_with_rider_counts_view"
-            referencedColumns: ["id"]
+            referencedRelation: "nation_rider_counts_view"
+            referencedColumns: ["nation_id"]
+          },
+          {
+            foreignKeyName: "fk_riders_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
+            referencedRelation: "nation_top_3_riders"
+            referencedColumns: ["nation_id"]
           },
           {
             foreignKeyName: "fk_riders_nations_nation_id"
@@ -1179,27 +618,6 @@ export type Database = {
             columns: ["nation_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_riders_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_riders_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "fk_riders_nations_nation_id"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
             referencedColumns: ["nation_id"]
           },
           {
@@ -1213,94 +631,69 @@ export type Database = {
       }
       teams: {
         Row: {
-          color_hex: string | null
           id: number
           name: string
           nation_id: number | null
         }
         Insert: {
-          color_hex?: string | null
           id?: number
           name: string
           nation_id?: number | null
         }
         Update: {
-          color_hex?: string | null
           id?: number
           name?: string
           nation_id?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "teams_nation_id_fkey"
+            foreignKeyName: "fk_teams_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
-            referencedRelation: "nation_points_with_rider_counts_view"
-            referencedColumns: ["id"]
+            referencedRelation: "nation_rider_counts_view"
+            referencedColumns: ["nation_id"]
           },
           {
-            foreignKeyName: "teams_nation_id_fkey"
+            foreignKeyName: "fk_teams_nations_nation_id"
+            columns: ["nation_id"]
+            isOneToOne: false
+            referencedRelation: "nation_top_3_riders"
+            referencedColumns: ["nation_id"]
+          },
+          {
+            foreignKeyName: "fk_teams_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
             referencedRelation: "nations"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "teams_nation_id_fkey"
+            foreignKeyName: "fk_teams_nations_nation_id"
             columns: ["nation_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "teams_nation_id_fkey"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "teams_nation_id_fkey"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["nation_id"]
-          },
-          {
-            foreignKeyName: "teams_nation_id_fkey"
-            columns: ["nation_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
             referencedColumns: ["nation_id"]
           },
         ]
       }
     }
     Views: {
-      nation_points_with_rider_counts_view: {
+      nation_rider_counts_view: {
+        Row: {
+          active_riders: number | null
+          nation_id: number | null
+          total_riders: number | null
+        }
+        Relationships: []
+      }
+      nation_top_3_riders: {
         Row: {
           active: boolean | null
-          active_points: number | null
-          active_points_per_rider: number | null
-          active_rider_count: number | null
-          code: string | null
-          id: number | null
-          inactive_points: number | null
-          inactive_points_per_rider: number | null
-          inactive_rider_count: number | null
-          name: string | null
+          active_top_3: boolean | null
+          nation_id: number | null
+          overall_top_3: boolean | null
           points: number | null
-          points_per_rider: number | null
-          rider_count: number | null
-          top_active_rider1_id: number | null
-          top_active_rider2_id: number | null
-          top_active_rider3_id: number | null
-          top_inactive_rider1_id: number | null
-          top_inactive_rider2_id: number | null
-          top_inactive_rider3_id: number | null
-          top_rider1_id: number | null
-          top_rider2_id: number | null
-          top_rider3_id: number | null
+          rider_id: number | null
         }
         Relationships: []
       }
@@ -1328,86 +721,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
+            foreignKeyName: "fk_rider_seasons_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
             referencedColumns: ["rider_id"]
           },
           {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
+            foreignKeyName: "fk_rider_seasons_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "riders"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-        ]
-      }
-      rider_ranks_yearly_acc_by_age: {
-        Row: {
-          age: number | null
-          id: number | null
-          placement: number | null
-          points: number | null
-          rider_id: number | null
-          year: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "rider_decade_rankings"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "riders"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "fk_rider_ranks_yearly_acc_riders_rider_id"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
           },
         ]
       }
@@ -1420,77 +745,20 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
+            foreignKeyName: "fk_rider_seasons_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "rider_decade_rankings"
             referencedColumns: ["rider_id"]
           },
           {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
+            foreignKeyName: "fk_rider_seasons_riders_rider_id"
             columns: ["rider_id"]
             isOneToOne: false
             referencedRelation: "riders"
             referencedColumns: ["id"]
           },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_active_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_inactive_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
-          {
-            foreignKeyName: "rider_seasons_rider_id_fkey"
-            columns: ["rider_id"]
-            isOneToOne: false
-            referencedRelation: "top_3_riders_per_country"
-            referencedColumns: ["rider_id"]
-          },
         ]
-      }
-      top_3_active_riders_per_country: {
-        Row: {
-          active: boolean | null
-          first_name: string | null
-          last_name: string | null
-          nation_id: number | null
-          points: number | null
-          rank: number | null
-          rider_id: number | null
-        }
-        Relationships: []
-      }
-      top_3_inactive_riders_per_country: {
-        Row: {
-          active: boolean | null
-          first_name: string | null
-          last_name: string | null
-          nation_id: number | null
-          points: number | null
-          rank: number | null
-          rider_id: number | null
-        }
-        Relationships: []
-      }
-      top_3_riders_per_country: {
-        Row: {
-          active: boolean | null
-          first_name: string | null
-          last_name: string | null
-          nation_id: number | null
-          points: number | null
-          rank: number | null
-          rider_id: number | null
-        }
-        Relationships: []
       }
     }
     Functions: {

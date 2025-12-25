@@ -1,5 +1,4 @@
-import { getAllNationPointsWithRiderCount } from "@/db/nationPoints";
-import { getNation } from "@/db/nations";
+import { getNation, getNationsWithTopRidersAndCount } from "@/db/nations";
 import { getPointSystem } from "@/db/pointSystem";
 import NationSearchSection from "./_sections/NationSearchSection";
 import CompareProfileSection from "./_sections/CompareProfileSection";
@@ -17,7 +16,7 @@ export default async function Page({
     const nationIdParams = (await searchParams).nations ?? ""
     const nationIds = nationIdParams.split(",").map(nationId => parseInt(nationId)).filter(nationId => !Number.isNaN(nationId)).slice(0, 2);
 
-    const nationsPoints = await getAllNationPointsWithRiderCount();
+    const nationsPoints = await getNationsWithTopRidersAndCount();
     const pointSystem = await getPointSystem();
     const races = await getRaces();
 

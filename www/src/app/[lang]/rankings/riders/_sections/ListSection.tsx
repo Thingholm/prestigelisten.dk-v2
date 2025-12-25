@@ -1,7 +1,6 @@
 "use client";
 
 import Section from "@/components/layout/Section";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import ListTable from "../_tables/ListTable";
 import { rankBy } from "@/lib/helpers/rank";
 import { useEffect, useState } from "react";
@@ -15,6 +14,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { filterToSearchParamsMapper, searchParamsToFilterMapper } from "@/lib/mappers/filterSearchParamsMapper";
 import { IoReload } from "react-icons/io5";
 import RidersSearchBar from "../_components/RiderSearchBar";
+import { RidersWithNationAndTeam } from "@/db/rider";
 
 export type RidersFilter = {
     status: "all" | "active" | "inactive";
@@ -27,12 +27,12 @@ export type RidersFilter = {
 const defaultRowAmount = 100;
 
 export default function ListSection({
-    riderPoints,
+    riders,
     minBirthYear,
     maxBirthYear,
     nations
 }: Readonly<{
-    riderPoints: RiderPointsWithNationAndTeam,
+    riders: RidersWithNationAndTeam,
     minBirthYear: number,
     maxBirthYear: number,
     nations: Tables<"nations">[]
@@ -56,29 +56,29 @@ export default function ListSection({
     const [highlightedRiderId, setHighlightedRiderId] = useState<number | null>(null);
     const isFiltered = JSON.stringify(filter) != JSON.stringify(defaultFilter);
 
-    const filterRiders = (riderPoints: RiderPointsWithNationAndTeam) => {
-        return riderPoints.filter(rider => {
-            if (filter.status == "active" && !rider.riders.active) return false;
-            if (filter.status == "inactive" && rider.riders.active) return false;
+    const filterRiders = (riders: RidersWithNationAndTeam) => {
+        return riders.filter(rider => {
+            if (filter.status == "active" && !rider.active) return false;
+            if (filter.status == "inactive" && rider.active) return false;
 
-            if (filter.isSingleYear && rider.riders.year !== filter.bornBeforeOrIn) return false;
+            if (filter.isSingleYear && rider.year !== filter.bornBeforeOrIn) return false;
 
             if (filter.bornAfterOrIn != defaultFilter.bornAfterOrIn || filter.bornBeforeOrIn != defaultFilter.bornBeforeOrIn ) {
-                if (!rider.riders.year) {
+                if (!rider.year) {
                     return false;
                 }
 
-                if (!filter.isSingleYear && (rider.riders.year < filter.bornAfterOrIn || rider.riders.year > filter.bornBeforeOrIn)) return false;
+                if (!filter.isSingleYear && (rider.year < filter.bornAfterOrIn || rider.year > filter.bornBeforeOrIn)) return false;
             }
 
-            if (filter.nations.some(nation => nation) && !filter.nations.includes(rider.riders.nation_id)) return false;
+            if (filter.nations.some(nation => nation) && !filter.nations.includes(rider.nation_id)) return false;
 
             return true;
         })
     }
 
-    const alltimeRankingsLookupList = rankBy(riderPoints.map(rider => ({ id: rider.rider_id, points: rider.points })), "points");
-    const rankedAndFilteredRiders = rankBy(filterRiders(riderPoints), "points")
+    const alltimeRankingsLookupList = rankBy(riders.map(rider => ({ id: rider.id, points: rider.points })), "points");
+    const rankedAndFilteredRiders = rankBy(filterRiders(riders), "points")
 
     useEffect(() => {
         setRowAmount(defaultRowAmount)
@@ -138,7 +138,7 @@ export default function ListSection({
             />
             <div className="w-full">
                 <ListTable 
-                    riderPoints={rankedAndFilteredRiders} 
+                    riders={rankedAndFilteredRiders} 
                     alltimeRankingsLookupList={alltimeRankingsLookupList}
                     rowAmount={rowAmount} 
                     highlightedRiderId={highlightedRiderId}

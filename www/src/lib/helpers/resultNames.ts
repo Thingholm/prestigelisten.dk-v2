@@ -13,7 +13,7 @@ type GroupedResult = {
         },
         race_class_id: number;
     };
-    result_type_id: number;
+    result_type: number;
     results?: unknown[] | undefined;
     placement: number | null;
     stage?: number | null;
@@ -24,18 +24,18 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
 
     const resultCount = groupedResult.results?.length ?? 0;
 
-    const isGold = groupedResult.result_type_id == 12;
+    const isGold = groupedResult.result_type == 12;
 
     if (isGold) {
         resultName += t(`raceClasses.${groupedResult.races.race_class_id}`)
         return resultName;
     }
     
-    const isStageWin = groupedResult.result_type_id == 7 && showStage;
+    const isStageWin = groupedResult.result_type == 7 && showStage;
     const isChampionship = raceClassesWithRenames.includes(groupedResult.races.race_class_id);
-    const isPlacement = [2, 3, 4, 102, 103, 104, 105, 106, 107, 108, 109, 110].includes(groupedResult.result_type_id) && (showPlacement != undefined && showPlacement != false) && groupedResult?.placement != null
-    const isNotWin = groupedResult.result_type_id != 1;
-    const isDayInLeadersJersey = 8 <= groupedResult.result_type_id && groupedResult.result_type_id <= 11;
+    const isPlacement = [2, 3, 4, 102, 103, 104, 105, 106, 107, 108, 109, 110].includes(groupedResult.result_type) && (showPlacement != undefined && showPlacement != false) && groupedResult?.placement != null
+    const isNotWin = groupedResult.result_type != 1;
+    const isDayInLeadersJersey = 8 <= groupedResult.result_type && groupedResult.result_type <= 11;
 
     if (isStageWin) {
         resultName += showPlacement ? `${groupedResult.stage}${t(`suffixes.${getSuffix(groupedResult.stage!)}`)} ${t("stageInLower")} ` : `${t(resultCount > 1 ? "stageInLower" : "stageIn")} `
@@ -44,7 +44,7 @@ export function getGroupedResultName(groupedResult: GroupedResult, t: ReturnType
     } else if (isDayInLeadersJersey) {
         resultName += `${t("resultTypes.99")} ${t("in")} `
     } else if (isNotWin) {
-        resultName += t(`resultTypes.${groupedResult.result_type_id}`)
+        resultName += t(`resultTypes.${groupedResult.result_type}`)
 
         if (isChampionship) {
             resultName += ` ${t("at")} `
@@ -68,17 +68,17 @@ export function getGroupedResultNameWithCount(groupedResult: GroupedResult, t: R
 }
 
 type Result = {
-    result_type_id: number;
+    result_type: number;
     stage: number | null;
     placement: number | null;
 }
 
 export function getOnlyResultName(result: Result, t: ReturnType<typeof useTranslations>, stageNumberIsPrefix: boolean = true) {
-    if ([2, 3, 4].includes(result.result_type_id) && result.placement) {
+    if ([2, 3, 4].includes(result.result_type) && result.placement) {
         return `${result.placement}${t(`suffixes.${getSuffix(result.placement)}`)} ${t("place")}`
     }
 
-    if (result.result_type_id == 7 && result.stage) {
+    if (result.result_type == 7 && result.stage) {
         if (stageNumberIsPrefix) {
             return `${result.stage}${t(`suffixes.${getSuffix(result.stage)}`)} ${t("stage")}`
         } else {
@@ -86,7 +86,7 @@ export function getOnlyResultName(result: Result, t: ReturnType<typeof useTransl
         }
     }
 
-    return t(`resultTypes.${result.result_type_id}`)
+    return t(`resultTypes.${result.result_type}`)
 }
 
 

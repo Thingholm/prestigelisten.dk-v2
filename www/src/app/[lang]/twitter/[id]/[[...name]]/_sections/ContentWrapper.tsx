@@ -1,10 +1,9 @@
 "use client";
 
-import { Rider } from "@/db/rider";
+import { Rider, RidersWithNationAndTeam } from "@/db/rider";
 import { RankingEvolution } from "@/lib/helpers/rankingEvolution";
 import React, { useRef, useState } from "react";
 import TwitterCard from "./TwitterCard";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { PointSystem } from "@/db/pointSystem";
 import Toolbox from "./Toolbox";
 import Button from "@/components/ui/Button";
@@ -31,7 +30,7 @@ export default function ContentWrapper({
 }: Readonly<{
     rankingEvolutions:  RankingEvolution[] | null,
     rider: Rider,
-    riderPoints: RiderPointsWithNationAndTeam,
+    riderPoints: RidersWithNationAndTeam,
     pointSystem: PointSystem
 }>) {
     const ref = useRef<HTMLDivElement>(null);

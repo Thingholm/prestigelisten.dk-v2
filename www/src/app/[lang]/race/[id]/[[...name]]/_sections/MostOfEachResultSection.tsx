@@ -2,13 +2,13 @@
 
 import Section from "@/components/layout/Section";
 import { Result } from "../page";
-import { GroupedByKey, GroupedResult, groupResults } from "@/lib/helpers/groupResults";
+import { GroupedByKey, GroupedResult } from "@/lib/helpers/groupResults";
 import { Tables } from "@/utils/supabase/database.types";
 import Container from "@/components/layout/Container";
 import { useTranslations } from "next-intl";
 import Select from "@/components/ui/Select";
 import { ChangeEvent, useState } from "react";
-import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
+import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { getYearUrl } from "@/lib/helpers/urls";
@@ -34,7 +34,7 @@ export default function MostOfEachResultSection({
     const [selectedResultType, setSelectedResultType] = useState(resultTypes[0]);
     const [rowAmount, setRowAmount] = useState(20); 
 
-    const resultsForResultType = groupedResults.find(gr => gr.result_type_id == selectedResultType)?.results
+    const resultsForResultType = groupedResults.find(gr => gr.result_type == selectedResultType)?.results
 
     const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setSelectedResultType(parseInt(e.target.value));

@@ -2,7 +2,7 @@
 
 import { NationNameCell, RiderNameCell, SecondaryCellSpan, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
 import Button from "@/components/ui/Button";
-import { ActiveRiderPointsLookup } from "@/db/riderPoints";
+import { ActiveRiderPointsLookup } from "@/db/rider";
 import { TeamWithRiders } from "@/db/team";
 import { Ranked } from "@/lib/helpers/rank";
 import { useTranslations } from "next-intl";
@@ -39,7 +39,7 @@ export default function GreatestRidersTable({
                         <TableRow key={rider.id} className={`${(index > 10 && rowAmount == 15) && "hidden sm:table-row"}`}>
                             <TableCell>
                                 {rider.rider_seasons[0]?.rank_all_time} 
-                                <SecondaryCellSpan inlineBreakpoint="sm">{rankedActiveRiderPointsLookup.find(i => i.rider_id == rider.id)?.rank}</SecondaryCellSpan>
+                                <SecondaryCellSpan inlineBreakpoint="sm">{rankedActiveRiderPointsLookup.find(i => i.id == rider.id)?.rank}</SecondaryCellSpan>
                             </TableCell>
                             <RiderNameCell rider={rider} showFlagBreakpoint="md"/>
                             <NationNameCell nation={rider.nations} className="hidden md:table-cell"/>

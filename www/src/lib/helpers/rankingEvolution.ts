@@ -2,7 +2,7 @@ import { PointSystem } from "@/db/pointSystem";
 import { GroupedByKey, groupResultsByKey } from "./groupResults";
 import { rankBy, Ranked } from "./rank";
 import { Tables } from "@/utils/supabase/database.types";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { RidersWithNationAndTeam } from "@/db/rider";
 
 export type ResultWithRaceDate = Tables<"results"> & {
     races: Tables<"races"> & {
@@ -23,16 +23,16 @@ export type RankingEvolution = {
     results: GroupedByKey<ResultWithRaceDate & {
         points: number;
     }, number>[];
-    rankings: Ranked<RiderPointsWithNationAndTeam[number]>[];
-    prevRankings: Ranked<RiderPointsWithNationAndTeam[number]>[] | null;
+    rankings: Ranked<RidersWithNationAndTeam[number]>[];
+    prevRankings: Ranked<RidersWithNationAndTeam[number]>[] | null;
     key: string | undefined;
     points: number;
 }
 
-export function calculateRankingEvolution(results: ResultWithRaceDate[], riderPoints: (RiderPointsWithNationAndTeam[number])[], pointSystem: PointSystem): RankingEvolution[] {
+export function calculateRankingEvolution(results: ResultWithRaceDate[], riderPoints: (RidersWithNationAndTeam[number])[], pointSystem: PointSystem): RankingEvolution[] {
     const groupedResultsByDate = groupResultsByKey(results, pointSystem, r => r.race_dates?.date ?? "other").sort((a, b) => Date.parse(b.key ?? "") - Date.parse(a.key ?? ""));
 
-    let prevRankings: Ranked<RiderPointsWithNationAndTeam[number]>[] | null;
+    let prevRankings: Ranked<RidersWithNationAndTeam[number]>[] | null;
     const rankingsByDate = groupedResultsByDate.map(group => {
         const groupedByRider = groupResultsByKey(group.results, pointSystem, r => r.rider_id);
 
@@ -44,7 +44,7 @@ export function calculateRankingEvolution(results: ResultWithRaceDate[], riderPo
 
         prevRankings = JSON.parse(JSON.stringify(rankBy(prevRankings.map(rp => ({
             ...rp,
-            points: rp.points - (groupedByRider.find(riderGroup => riderGroup.key == rp.rider_id)?.points ?? 0)
+            points: rp.points - (groupedByRider.find(riderGroup => riderGroup.key == rp.id)?.points ?? 0)
         })), "points")))
 
         return {

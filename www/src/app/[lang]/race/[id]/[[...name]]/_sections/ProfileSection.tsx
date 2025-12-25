@@ -65,7 +65,7 @@ export default function ProfileSection({
                 {pointSystem.filter(ps => ps.race_class_id == latestEditionRaceClass?.id)
                     .map(ps => (
                         <p key={ps.id}>
-                            <span>{tResultNames(`resultTypes.${ps.result_type_id}`)}: </span>
+                            <span>{tResultNames(`resultTypes.${ps.result_type}`)}: </span>
                             <span className="font-medium">{ps.points}p</span>
                         </p>
                     )

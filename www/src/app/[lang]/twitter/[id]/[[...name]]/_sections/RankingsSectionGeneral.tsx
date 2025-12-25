@@ -1,5 +1,4 @@
-import { Rider } from "@/db/rider";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { Rider, RidersWithNationAndTeam } from "@/db/rider";
 import { Settings } from "./ContentWrapper";
 import { useTranslations } from "use-intl";
 import { rankBy } from "@/lib/helpers/rank";
@@ -10,17 +9,17 @@ export default function RankingsSectionGeneral({
     rider,
     settings
 }: Readonly<{
-    riderPoints: RiderPointsWithNationAndTeam,
+    riderPoints: RidersWithNationAndTeam,
     rider: Rider,
     settings: Settings
 }>) {
     const t = useTranslations("twitterCard");
     const tNations = useTranslations("nations")
 
-    const alltimeRank = rankBy(riderPoints, "points").find(r => r.rider_id == rider.id)?.rank;
-    const activeRank = rankBy(riderPoints.filter(r => r.riders.active), "points").find(r => r.rider_id == rider.id)?.rank;
-    const nationRank = rankBy(riderPoints.filter(r => r.riders.nation_id == rider.nation_id), "points").find(r => r.rider_id == rider.id)?.rank;
-    const yearRank = rankBy(riderPoints.filter(r => r.riders.year == rider.year), "points").find(r => r.rider_id == rider.id)?.rank;
+    const alltimeRank = rankBy(riderPoints, "points").find(r => r.id == rider.id)?.rank;
+    const activeRank = rankBy(riderPoints.filter(r => r.active), "points").find(r => r.id == rider.id)?.rank;
+    const nationRank = rankBy(riderPoints.filter(r => r.nation_id == rider.nation_id), "points").find(r => r.id == rider.id)?.rank;
+    const yearRank = rankBy(riderPoints.filter(r => r.year == rider.year), "points").find(r => r.id == rider.id)?.rank;
     
     return (
         <div>

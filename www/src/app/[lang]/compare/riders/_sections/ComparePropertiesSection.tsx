@@ -80,8 +80,8 @@ export default async function ComparePropertiesSection({
                 <Table>
                     <TableBody>
                         <CompareProperties
-                            value1={rider1?.rider_points[0].points}
-                            value2={rider2?.rider_points[0].points}
+                            value1={rider1?.points}
+                            value2={rider2?.points}
                             title={t("points")}
                         />
                         <CompareProperties
@@ -97,8 +97,8 @@ export default async function ComparePropertiesSection({
                             reverseComparison
                         />
                         <CompareProperties
-                            value1={rider1?.results.filter(result => !dayInLeadersJerseyResultTypeIds.includes(result.result_type_id)).length}
-                            value2={rider2?.results.filter(result => !dayInLeadersJerseyResultTypeIds.includes(result.result_type_id)).length}
+                            value1={rider1?.results.filter(result => !dayInLeadersJerseyResultTypeIds.includes(result.result_type)).length}
+                            value2={rider2?.results.filter(result => !dayInLeadersJerseyResultTypeIds.includes(result.result_type)).length}
                             title={t("numberOfResults")}
                         />
                         <CompareProperties

@@ -1,6 +1,5 @@
 import Section from "@/components/layout/Section";
-import { NationPointsWithRiderCount } from "@/db/nationPoints";
-import { Nation } from "@/db/nations";
+import { Nation, NationWithTopRidersAndCount } from "@/db/nations";
 import { PointSystem } from "@/db/pointSystem";
 import { getTranslations } from "next-intl/server";
 import CompareProperties from "../../_components/CompareProperties";
@@ -28,7 +27,7 @@ export default async function ComparePropertiesSection({
 }: Readonly<{
     nation1: NationWithRaceResults | null,
     nation2: NationWithRaceResults | null,
-    nations: Ranked<NationPointsWithRiderCount[number]>[],
+    nations: Ranked<NationWithTopRidersAndCount[number]>[],
     pointSystem: PointSystem
 }>) {
     const t = await getTranslations("comparePage.nation");
@@ -56,7 +55,7 @@ export default async function ComparePropertiesSection({
             nation1Results.map(result => ({
                 ...result,
                 category: getResultCategory({
-                    result_type_id: result.result_type_id,
+                    result_type: result.result_type,
                     races: { race_class_id: result.races?.race_class_id ?? 0 },
                 }),                
                 races: {
@@ -74,7 +73,7 @@ export default async function ComparePropertiesSection({
             nation2Results.map(result => ({
                 ...result,
                 category: getResultCategory({
-                    result_type_id: result.result_type_id,
+                    result_type: result.result_type,
                     races: { race_class_id: result.races?.race_class_id ?? 0 },
                 }),                
                 races: {

@@ -28,7 +28,7 @@ export default function ResultsFromRaceEditionTable({
                         <TableCell className="text-balance max-w-24 sm:max-w-none">{getOnlyResultName(result, tResultNames)}</TableCell>
                         <RiderNameCell rider={result.riders} showFlagBreakpoint="md"/>
                         <NationNameCell nation={result.riders.nations} className="hidden md:table-cell"/>
-                        <TableCell>{pointSystem.find(ps => ps.result_type_id == result.result_type_id && ps.race_class_id == result.races.race_class_id)?.points}</TableCell>
+                        <TableCell>{pointSystem.find(ps => ps.result_type == result.result_type && ps.race_class_id == result.races.race_class_id)?.points}</TableCell>
                     </TableRow>  
                 ))}
             </TableBody>

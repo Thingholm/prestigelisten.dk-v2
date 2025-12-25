@@ -1,15 +1,15 @@
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
 import { useTranslations } from "next-intl";
 import ActiveRidersTable from "../_tables/ActiveRidersTable";
 import DanishRidersTable from "../_tables/DanishRidersTable";
 import { getListRidersUrl } from "@/lib/helpers/urls";
+import { RidersWithNationAndTeam } from "@/db/rider";
 
 export default function ActiveAndDanishRidersSection({
-    riderPointsWithNationAndTeam,
+    ridersWithNationAndTeam,
 }: Readonly<{
-    riderPointsWithNationAndTeam: RiderPointsWithNationAndTeam;
+    ridersWithNationAndTeam: RidersWithNationAndTeam;
 }>) {
     const t = useTranslations("homepage");
 
@@ -22,7 +22,7 @@ export default function ActiveAndDanishRidersSection({
                 href={getListRidersUrl(null, true)} 
                 className="lg:w-7/12"
             >
-                <ActiveRidersTable riderPointsWithNationAndTeam={riderPointsWithNationAndTeam} />
+                <ActiveRidersTable ridersWithNationAndTeam={ridersWithNationAndTeam} />
             </Container>
             <Container 
                 title={t("tableTitles.greatestDanishRiders")} 
@@ -31,7 +31,7 @@ export default function ActiveAndDanishRidersSection({
                 href={getListRidersUrl({id: 14, name: "Danmark"})} 
                 className="lg:w-2/5"
             >
-                <DanishRidersTable riderPointsWithNationAndTeam={riderPointsWithNationAndTeam} />
+                <DanishRidersTable ridersWithNationAndTeam={ridersWithNationAndTeam} />
             </Container>
         </Section>
     );

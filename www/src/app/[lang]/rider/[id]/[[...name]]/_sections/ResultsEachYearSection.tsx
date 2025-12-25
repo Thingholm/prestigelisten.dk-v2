@@ -32,7 +32,7 @@ export default function ResultsEachYearSection({
     const [selectedYear, setSelectedYear] = useState<number>(maxYear);
     
     const groupedResultsForYear = groupResults(rider.results.filter(result => result.year == selectedYear), pointSystem, true);
-    const resultCountForYear = formatNumber(rider.results.filter(result => result.year == selectedYear && !dayInLeadersJerseyResultTypeIds.includes(result.result_type_id))?.length) ?? 0;
+    const resultCountForYear = formatNumber(rider.results.filter(result => result.year == selectedYear && !dayInLeadersJerseyResultTypeIds.includes(result.result_type))?.length) ?? 0;
     const season = rider.rider_seasons.find(season => season.year == selectedYear);
 
     const getYearlyMovement = () => {

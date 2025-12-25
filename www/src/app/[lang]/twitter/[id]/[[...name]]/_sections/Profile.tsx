@@ -15,7 +15,7 @@ export default function Profile({
 
     return (
         <div className={`p-4 w-[232px] h-full font-medium ${settings.whiteText ? "text-white" : ""}`} style={{ backgroundColor: settings.colorHex }}>
-            <RiderImage rider={{...rider, image_metadata: []}} className="mb-2"/>
+            <RiderImage rider={{...rider, images: null}} className="mb-2"/>
             <div className="flex flex-col justify-between h-[160px]">
                 <div className="flex justify-between items-center">
                     <p>

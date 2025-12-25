@@ -16,23 +16,14 @@ const greatestSeasonsQuery = () => supabase
         *,
         riders (
             *,
-            nations (
-                *
-            )
+            nations (*)
         ),
         results (
             *,
-            result_types (
-                *
-            ),
             races (
                 *,
-                race_classes (
-                    *
-                ),
-                meta_races (
-                    *
-                )
+                race_classes (*),
+                meta_races (*)
             )
         )  
     `)
@@ -54,17 +45,13 @@ const allGreatestSeasonsQuery = () => supabase
         *,
         riders (
             *,
-            nations (
-                *
-            )
+            nations (*)
         ),
         results (
             *,
             races (
                 *,
-                meta_races (
-                    *
-                )
+                meta_races (*)
             )
         )
     `)
@@ -89,9 +76,7 @@ const greatestTop10AlltimeEachSeasonQuery = () => supabase
         *,
         riders (
             *,
-            nations (
-                *
-            )
+            nations (*)
         )
     `)
     .lte("rank_all_time", 10)
@@ -113,9 +98,7 @@ const allRiderSeasonsFromYearQuery = () => supabase
         *,
         riders (
             *,
-            nations (
-                *
-            )
+            nations (*)
         )
     `)
 
@@ -133,9 +116,7 @@ const allNationSeasonsFromYearQuery = () => supabase
     .from("nation_seasons")
     .select(`
         *,
-        nations (
-            *
-        )
+        nations (*)
     `)
 
 export type NationSeasonsFromYear = QueryData<ReturnType<typeof allNationSeasonsFromYearQuery>>; 
@@ -154,8 +135,7 @@ const riderCountQuery = supabase.rpc('get_rider_season_counts_by_year');
 export type RiderCount = QueryData<typeof riderCountQuery>[number];
 
 export const getNationCountEachSeason = unstable_cache(async () => {
-    const { data, error } = await supabase.rpc('get_nation_season_counts_by_year')
-;
+    const { data, error } = await supabase.rpc('get_nation_season_counts_by_year');
 
     if (error) { throw error; }
 

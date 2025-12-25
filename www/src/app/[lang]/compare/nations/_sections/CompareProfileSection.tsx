@@ -17,7 +17,7 @@ export default async function CompareProfileSection({
 
     return (
         <Section className="justify-around sm:justify-start !pb-0 !pt-0">
-            <div className="w-1/3 flex-col flex items-start md:items-end text-end">
+            <div className="w-1/3 sm:w-1/4 flex-col flex items-start md:items-end text-end">
                 {nation1 &&
                     <div key={nation1.id} className="flex flex-col items-end">
                         <RemoveCompareableEntityButton 
@@ -30,8 +30,8 @@ export default async function CompareProfileSection({
                     </div>
                 }
             </div>
-            <div className="w-1/3"></div>
-            <div className="w-1/3 flex-col flex items-end md:items-start">
+            <div className="w-1/3 sm:w-1/2"></div>
+            <div className="w-1/3 sm:w-1/4 flex-col flex items-end md:items-start">
                 {nation2 &&
                     <div key={nation2.id}>
                         <RemoveCompareableEntityButton 

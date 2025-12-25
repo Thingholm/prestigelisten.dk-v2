@@ -54,11 +54,11 @@ export default async function LatestResultsTable({
                                 return (
                                     <TableRow key={riderGroup.key}>
                                         <TableCell className="!pr-4">
-                                            {date.rankings?.find(r => r.rider_id == riderGroup.key)?.rank} 
-                                            <SecondaryCellSpan>{date.prevRankings?.find(r => r.rider_id == riderGroup.key)?.rank}</SecondaryCellSpan>
+                                            {date.rankings?.find(r => r.id == riderGroup.key)?.rank} 
+                                            <SecondaryCellSpan>{date.prevRankings?.find(r => r.id == riderGroup.key)?.rank}</SecondaryCellSpan>
                                         </TableCell>
                                         <TableCell className="hidden lg:table-cell">
-                                            {`${(date.prevRankings?.find(r => r.rider_id == riderGroup.key)?.rank ?? (date.prevRankings?.length ?? 0)) - (date.rankings?.find(r => r.rider_id == riderGroup.key)?.rank ?? 0)}`} 
+                                            {`${(date.prevRankings?.find(r => r.id == riderGroup.key)?.rank ?? (date.prevRankings?.length ?? 0)) - (date.rankings?.find(r => r.id == riderGroup.key)?.rank ?? 0)}`} 
                                         </TableCell>
                                         <RiderNameCell rider={riderGroup.results[0].riders} showFlagBreakpoint="always" secondarySpan={{
                                             breakpoint: "md", 
@@ -67,8 +67,8 @@ export default async function LatestResultsTable({
                                         <TableCell className="hidden md:table-cell">{riderResults()}</TableCell>
                                         <TableCell className="hidden sm:table-cell">{riderGroup.points}</TableCell>
                                         <TableCell className="hidden lg:table-cell">
-                                            {date.rankings?.find(r => r.rider_id == riderGroup.key)?.points} 
-                                            <SecondaryCellSpan>{date.prevRankings?.find(r => r.rider_id == riderGroup.key)?.points}</SecondaryCellSpan>
+                                            {date.rankings?.find(r => r.id == riderGroup.key)?.points} 
+                                            <SecondaryCellSpan>{date.prevRankings?.find(r => r.id == riderGroup.key)?.points}</SecondaryCellSpan>
                                         </TableCell>
                                         <TableCell className="text-nowrap">{getDateString(riderGroup.results[0].race_dates?.date, locale)}</TableCell>
                                     </TableRow>

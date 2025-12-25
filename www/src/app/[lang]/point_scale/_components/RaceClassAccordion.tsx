@@ -60,7 +60,7 @@ export default function RaceClassAccordion({
                         <TableBody>
                             {pointSystem.filter(ps => ps.race_class_id == raceClass.id).map(ps => (
                                 <TableRow key={ps.id}>
-                                    <TableCell>{tResultNames(`resultTypes.${ps.result_type_id}`)}</TableCell>
+                                    <TableCell>{tResultNames(`resultTypes.${ps.result_type}`)}</TableCell>
                                     <TableCell>{ps.points}</TableCell>
                                 </TableRow>
                             ))}

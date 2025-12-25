@@ -1,6 +1,5 @@
 import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
-import { Rider } from "@/db/rider";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { Rider, RidersWithNationAndTeam } from "@/db/rider";
 import { Ranked } from "@/lib/helpers/rank";
 import { useTranslations } from "next-intl";
 
@@ -9,13 +8,13 @@ export default function RidersByNationTable({
     rankedRiders
 }: Readonly<{
     rider: Rider,
-    rankedRiders: Ranked<RiderPointsWithNationAndTeam[number]>[]
+    rankedRiders: Ranked<RidersWithNationAndTeam[number]>[]
 }>) {
     const t = useTranslations("tableColumns");
     
     const slicedRankedRiders = rankedRiders.slice(0, 17)
-    const currentRider = rankedRiders.find(rankedRider => rankedRider.rider_id == rider.id);
-    if (currentRider && !slicedRankedRiders.some(r => r.rider_id == rider.id)) {
+    const currentRider = rankedRiders.find(rankedRider => rankedRider.id == rider.id);
+    if (currentRider && !slicedRankedRiders.some(r => r.id == rider.id)) {
         slicedRankedRiders.splice(16, 1, currentRider);
     }
 
@@ -29,10 +28,10 @@ export default function RidersByNationTable({
             </TableHead>
             <TableBody>
                 {slicedRankedRiders.map(rankedRider => (
-                    <TableRow key={rankedRider.id} isHighlighted={rankedRider.rider_id == rider.id}>
+                    <TableRow key={rankedRider.id} isHighlighted={rankedRider.id== rider.id}>
                         <TableCell>{rankedRider.rank}</TableCell>
-                        <RiderNameCell rider={rankedRider.riders} showFlagBreakpoint="always"/>
-                        <YearCell year={rankedRider.riders.year}/>
+                        <RiderNameCell rider={rankedRider} showFlagBreakpoint="always"/>
+                        <YearCell year={rankedRider.year}/>
                         <TableCell>{rankedRider.points}</TableCell>
                     </TableRow>
                 ))}

@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl"
 import ResultNameListItem from "../ResultNameListItem"
 
 export type Result = {
-    result_type_id: number;
+    result_type: number;
     races: {
         race_class_id: number;
         meta_race_id: number;

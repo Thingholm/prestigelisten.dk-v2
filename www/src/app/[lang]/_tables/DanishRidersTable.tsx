@@ -1,18 +1,18 @@
 import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
-import { RiderPointsWithNationAndTeam } from "@/db/riderPoints";
+import { RidersWithNationAndTeam } from "@/db/rider";
 import { rankBy } from "@/lib/helpers/rank";
 import { useTranslations } from "next-intl";
 
 export default function DanishRidersTable({
-    riderPointsWithNationAndTeam = [],
+    ridersWithNationAndTeam = [],
 }: Readonly<{
-    riderPointsWithNationAndTeam: RiderPointsWithNationAndTeam;
+    ridersWithNationAndTeam: RidersWithNationAndTeam;
 }>) {
     const t = useTranslations("tableColumns");
 
     const rankedRiderPoints = rankBy(
-        riderPointsWithNationAndTeam
-            .filter(rider => rider.riders.nations.code == "dk")
+        ridersWithNationAndTeam
+            .filter(rider => rider.nations.code == "dk")
             .slice(0, 17),
         "points"
     );
@@ -29,8 +29,8 @@ export default function DanishRidersTable({
                 {rankedRiderPoints.map(riderPoint => (
                     <TableRow key={riderPoint.id}>
                         <TableCell>{riderPoint.rank}</TableCell>
-                        <RiderNameCell showFlagBreakpoint="always" rider={riderPoint.riders}/>
-                        <YearCell year={riderPoint.riders.year} />
+                        <RiderNameCell showFlagBreakpoint="always" rider={riderPoint}/>
+                        <YearCell year={riderPoint.year} />
                         <TableCell>{riderPoint.points}</TableCell>
                     </TableRow>
                 ))}

@@ -1,8 +1,7 @@
-import { getNationWithRiders, NationWithRiders } from "@/db/nations";
+import { getNations, getNationWithRiders, NationWithRiders } from "@/db/nations";
 import { getPointSystem } from "@/db/pointSystem";
 import { getRaces, Race } from "@/db/race";
 import ProfileSection from "./_sections/ProfileSection";
-import { getNationPoints } from "@/db/nationPoints";
 import { rankBy } from "@/lib/helpers/rank";
 import { GetRidersWithPreviousNationality } from "@/db/prevNationalities";
 import ChartsSection from "./_sections/ChartsSection";
@@ -33,7 +32,7 @@ export default async function NationPage({
     const teams = await getTeamsFromNation(id)();
     const races = await getRaces();
     const pointSystem = await getPointSystem();
-    const nationPoints = await getNationPoints();
+    const nations = await getNations();
     const nationCountEachSeason = await getNationCountEachSeason();
 
     nation.riders = [
@@ -41,7 +40,7 @@ export default async function NationPage({
         ...ridersWithPreviousNationality.map(riders => riders.riders)
     ]
 
-    const rankedActiveNationPoints = rankBy(nationPoints, "active_points");
+    const rankedActiveNationPoints = rankBy(nations, "active_points");
 
     const flatResults = nation.riders
         .flatMap(rider => rider.results)

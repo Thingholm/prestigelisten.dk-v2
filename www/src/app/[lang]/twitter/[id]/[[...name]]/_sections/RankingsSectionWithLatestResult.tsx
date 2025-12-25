@@ -19,14 +19,14 @@ export default function RankingsSectionWithLatestResult({
     const tResultNames = useTranslations("getResultNames");
     const tNations = useTranslations("nations")
 
-    const alltimeRank = rankingEvolution.rankings.find(r => r.rider_id == rider.id)?.rank;
-    const oldAlltimeRank = rankingEvolution.prevRankings?.find(r => r.rider_id == rider.id)?.rank;
-    const activeRank = rankBy(rankingEvolution.rankings.filter(r => r.riders.active), "points").find(r => r.rider_id == rider.id)?.rank;
-    const oldActiveRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.prevRankings.filter(r => r.riders.active), "points").find(r => r.rider_id == rider.id)?.rank;
-    const nationRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.rankings.filter(r => r.riders.nation_id == rider.nation_id), "points").find(r => r.rider_id == rider.id)?.rank;
-    const oldNationRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.prevRankings.filter(r => r.riders.nation_id == rider.nation_id), "points").find(r => r.rider_id == rider.id)?.rank;
-    const yearRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.rankings.filter(r => r.riders.year == rider.year), "points").find(r => r.rider_id == rider.id)?.rank;
-    const oldYearRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.prevRankings.filter(r => r.riders.year == rider.year), "points").find(r => r.rider_id == rider.id)?.rank;
+    const alltimeRank = rankingEvolution.rankings.find(r => r.id == rider.id)?.rank;
+    const oldAlltimeRank = rankingEvolution.prevRankings?.find(r => r.id == rider.id)?.rank;
+    const activeRank = rankBy(rankingEvolution.rankings.filter(r => r.active), "points").find(r => r.id == rider.id)?.rank;
+    const oldActiveRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.prevRankings.filter(r => r.active), "points").find(r => r.id == rider.id)?.rank;
+    const nationRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.rankings.filter(r => r.nation_id == rider.nation_id), "points").find(r => r.id == rider.id)?.rank;
+    const oldNationRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.prevRankings.filter(r => r.nation_id == rider.nation_id), "points").find(r => r.id == rider.id)?.rank;
+    const yearRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.rankings.filter(r => r.year == rider.year), "points").find(r => r.id == rider.id)?.rank;
+    const oldYearRank = rankingEvolution.prevRankings && rankBy(rankingEvolution.prevRankings.filter(r => r.year == rider.year), "points").find(r => r.id == rider.id)?.rank;
     
     const latestResultGroup = rankingEvolution.results.find(r => r.key == rider.id);
 
