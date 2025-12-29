@@ -1078,5 +1078,94 @@
         "greatestResults": "Top results",
         "placementsOnPrestigeList": "Placements on Prestigelisten",
         "and": "and"
+    },
+
+    "metadata": {
+        "homepage": {
+            "title": "Prestigelisten - Ranking of the Greatest Cyclists",
+            "description": "Prestigelisten is a ranking of the greatest cyclists in the sport of cycling – more specifically road cycling. The ranking includes data on riders dating all the way back to the first cycling race in 1876."
+        },
+        "about": {
+            "title": "About us - Prestigelisten",
+            "description": "Prestigelisten is a historical ranking of the greatest road cyclists, based on the most prestigious race results since 1876."
+        },
+        "calendar": {
+            "title": "Race Calendar - Prestigelisten",
+            "description": "Calendar of Prestigelisten cycling races for the current season."
+        },
+        "compare": {
+            "title": "Compare Riders or Countries - Prestigelisten",
+            "description": "Compare riders or nations on Prestigelisten"
+        },
+        "compareRiders": {
+            "title": "Compare Riders - Prestigelisten",
+            "description": "Compare riders on Prestigelisten by points earned, race results, points at each age and race categories."
+        },
+        "compareNations": {
+            "title": "Compare Countries - Prestigelisten",
+            "description": "Compare countries on Prestigelisten by points earned, race results, points at each age and race categories."
+        },
+        "nation": {
+            "title": "{nation} - Prestigelisten",
+            "description": "{nation} as a cycling country, its greatest cyclists, races and race results."
+        },
+        "pointScale": {
+            "title": "Point Scale - Prestigelisten",
+            "description": "Point scale for Prestigelisten"
+        },
+        "race": {
+            "title": "{race} - Prestigelisten",
+            "description": "Results for, points earned in, and race category for {race} over time.",
+            "race": "Race"
+        },
+          "nationsRankings": {
+            "title": "The Greatest Cycling Countries - Prestigelisten",
+            "description": "A ranking of the greatest countries in cycling, including the top three cyclists from each country, number of riders, points per rider, and the country's development as a cycling country."
+        },
+        "3YearSpan": {
+            "title": "3 Consecutive Seasons - Prestigelisten",
+            "description": "Most point earned by riders over 3 consecutive seasons, along with their results during the seasons"
+        },
+        "ageRanking": {
+            "title": "Most points earned at age {age} - Prestigelisten",
+            "description": "Most point earned by riders at age {age}"
+        },
+        "ageRankingNoneChosen": {
+            "title": "Most points earned at a ceertain age - Prestigelisten",
+            "description": "Most point earned by riders at a certain age."
+        },
+        "greatestSeasons": {
+            "title": "Greatest Individual Seasons - Prestigelisten",
+            "description": "The greatest individual seasons for riders, along with their results for the season."
+        },
+        "ridersRankings": {
+            "title": "The Greatest Riders All Time - Prestigelisten",
+            "description": "A ranking of the greatest cyclists in history. Filter and rank by birth year/generations, nationalities, active riders, inactive riders, and all time."
+        },
+        "resultsThisYear": {
+            "title": "Results This Year - Prestigelisten",
+            "description": "Prestigelisten point-giving results this year, along with riders development."
+        },
+        "riderPage": {
+            "title": "{rider} - Prestigelisten",
+            "description": "{rider}'s ranking on Prestigelisten, along with his results throughout his career.",
+            "rider": "Rider"
+        },
+        "teamsOverview": {
+            "title": "Teams - Prestigelisten",
+            "description": "Cycling teams with riders who has earned Prestigelisten points."
+        },
+        "teamPage": {
+            "title": "{team} - Prestigelisten",
+            "description": "Riders from {team} and their results in the current season."
+        },
+        "seasonOverview": {
+            "title": "{year} - Prestigelisten",
+            "description": "Overview of the {year} season - Most points earned in {year} by riders and countries, greatest riders and countries all time by {year}, greatest riders born in {year} and results in {year}."
+        },
+        "seasonRedirectPage": {
+            "title": "Season overview - Prestigelisten",
+            "description": "Overview for certain seasons - Most points earned in year by riders and countries, greatest riders and countries all time by the season, greatest riders born in the year and results for season."
+        }
     }
 }   

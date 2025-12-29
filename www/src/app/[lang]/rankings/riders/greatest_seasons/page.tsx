@@ -8,6 +8,15 @@ import GreatestSeasonsSection from "./_sections/GreatestSeasonsSection";
 import { Tables } from "@/utils/supabase/database.types";
 import { rankBy } from "@/lib/helpers/rank";
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.greatestSeasons'});
+    
+    return {
+        title: t('title'),
+        description: t("description")
+    };
+}
 export type GreatestSeasonsWithResults = (Tables<"rider_seasons"> & {
     riders: Tables<"riders"> & {
         nations: Tables<"nations">

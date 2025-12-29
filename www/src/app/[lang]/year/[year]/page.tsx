@@ -7,6 +7,17 @@ import { getPointSystem } from "@/db/pointSystem";
 import AlltimePointsForYearSection from "./_sections/AlltimePointsForYearSection";
 import GreatestRidersBornInYearSection from "./_sections/GreatestRidersBornInYearSection";
 import ResultsFromYearSection from "./_sections/ResultsFromYearSection";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  year: number }> }) {
+    const { locale, year } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.seasonOverview'});
+    
+    return {
+        title: t('title', {year: year}),
+        description: t("description", {year: year})
+    };
+}
 
 export default async function YearPage({
     params

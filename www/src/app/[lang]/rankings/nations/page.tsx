@@ -5,6 +5,16 @@ import { getTranslations } from "next-intl/server";
 import ListSection from "./_sections/ListSection";
 import { getNationsWithTopRidersAndCount, NationWithTopRidersAndCount } from "@/db/nations";
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.nationsRankings'});
+    
+    return {
+        title: t('title'),
+        description: t("description")
+    };
+}
+
 export type NationPointsWithRiders = (NationWithTopRidersAndCount[number] & {
     riders: Riders,
 })[]

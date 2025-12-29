@@ -6,6 +6,19 @@ import TeamsTablesSection from "./_sections/TeamsTablesSection";
 import GreatestRidersSection from "./_sections/GreatestRidersSection";
 import ResultsForYearSection from "./_sections/ResultsForYearSection";
 import { getActiveRiderPointsLookup } from "@/db/rider";
+import { getTranslations } from "next-intl/server";
+import { deserializeQueryString } from "@/lib/helpers/urls";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  name: string[] }> }) {
+    const { locale, name } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.teamPage'});
+    const teamName = name?.[0] ? deserializeQueryString(name[0]) : t("team");
+    
+    return {
+        title: t('title', {team: teamName}),
+        description: t("description", {team: teamName})
+    };
+}
 
 export default async function TeamPage({
     params,

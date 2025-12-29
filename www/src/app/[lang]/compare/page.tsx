@@ -4,6 +4,16 @@ import Button from "@/components/ui/Button";
 import { urls } from "@/lib/constants/urls";
 import { getTranslations } from "next-intl/server";
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.compare'});
+    
+    return {
+        title: t('title'),
+        description: t("description")
+    };
+}
+
 export default async function Page(){
     const t = await getTranslations("comparePage");
 

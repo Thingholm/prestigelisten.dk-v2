@@ -1080,5 +1080,94 @@
         "greatestResults": "Største resultater",
         "placementsOnPrestigeList": "Placeringer på Prestigelisten",
         "and": "og"
+    },
+
+    "metadata": {
+        "homepage": {
+            "title": "Prestigelisten - Rangliste over de største cykelryttere",
+            "description": "Prestigelisten er en opgørelse over de største cykelryttere inden for cykelsporten - mere specifikt landevejscykling. Opgørelsen omfatter data om ryttere helt tilbage fra det første cykelløb i 1876."
+        },
+        "about": {
+            "title": "Om Prestigelisten",
+            "description": "Prestigelisten er en historisk rangering af de største cykelryttere i landevejscykling baseret på mest prestigefyldte resultater siden 1876."
+        },
+        "calendar": {
+            "title": "Løbskalender - Prestigelisten",
+            "description": "Kalender for pointgivende cykelløb for indeværende sæson."
+        },
+        "compare": {
+            "title": "Sammenlign ryttere eller nationer - Prestigelisten",
+            "description": "Sammenlign ryttere eller nationer på Prestigelisten."
+        },
+        "compareRiders": {
+            "title": "Sammenlign ryttere - Prestigelisten",
+            "description": "Sammenlign cykelryttere på Prestigelisten på point optjent, løbsresultater, point på hvert alderstrin og løbskategorier."
+        },
+        "compareNations": {
+            "title": "Sammenlign nationer - Prestigelisten",
+            "description": "Sammenlign nationer på Prestigelisten på point optjent, løbsresultater, point på hvert alderstrin og løbskategorier."
+        },
+        "nation": {
+            "title": "{nation} - Prestigelisten",
+            "description": "{nation} som en cykelnation, deres største ryttere, løb and løbsresultater."
+        },
+        "pointScale": {
+            "title": "Pointsystem - Prestigelisten",
+            "description": "Pointsystem for Prestigelisten"
+        },
+        "race": {
+            "title": "{race} - Prestigelisten",
+            "description": "Resultater for, point optjent i og løbskategori for {race} gennem tiden.",
+            "race": "Løb"
+        },
+        "nationsRankings": {
+            "title": "De største cykelnationer - Prestigelisten",
+            "description": "En opgørelse over de største nationer i cykelsporten, de største 3 cykelryttere fra hver nation, antal ryttere, point per rytter og nationens udvikling som cykelnation"
+        },
+        "3YearSpan": {
+            "title": "3-årig periode - Prestigelisten",
+            "description": "Flest point optjent af ryttere over en 3-årige periode samt deres resultater i perioden."
+        },
+        "ageRanking": {
+            "title": "Flest point optjent som {age}-årig - Prestigelisten",
+            "description": "Flest point optjent af ryttere som {age}-årig"
+        },
+        "ageRankingNoneChosen": {
+            "title": "Flest point optjent på hvert alderstrin - Prestigelisten",
+            "description": "Flest point optjent af ryttere på hvert alderstrin"
+        },
+        "greatestSeasons": {
+            "title": "Største individuelle sæsoner",
+            "description": "De største individuelle sæsoner for ryttere samt deres resultater for sæsonen."
+        },
+        "ridersRankings": {
+            "title": "De største cykelryttere - Prestigelisten",
+            "description": "En rangliste over de største cykelryttere i historien. Filtrér og rangér efter årgange, nationaliteter, aktive ryttere, inaktive ryttere og all time."
+        },
+        "resultsThisYear": {
+            "title": "Resultater i år - Prestigelisten",
+            "description": "Pointgivende resultater i år, og rytteres udvikling på Prestigelisten."
+        },
+        "riderPage": {
+            "title": "{rider} - Prestigelisten",
+            "description": "{rider}s placering på Prestigelisten og resultater gennem karrieren.",
+            "rider": "Rytter"
+        },
+        "teamsOverview": {
+            "title": "Hold - Prestigelisten",
+            "description": "Cykelhold med ryttere, der har optjent point på Prestigelisten."
+        },
+        "teamPage": {
+            "title": "{team} - Prestigelisten",
+            "description": "Ryttere på {team} og deres resultater for indeværende sæson."
+        },
+        "seasonOverview": {
+            "title": "{year} - Prestigelisten",
+            "description": "Oversigt over {year}-sæsonen - Flest point optjent i {year}, største ryttere og nationer all time i {year}, største ryttere født i {year} og resultater i {year}."
+        },
+        "seasonRedirectPage": {
+            "title": "Sæsonoversigt - Prestigelisten",
+            "description": "Oversigt over bestemte sæsoner - Flest point optjent i sæsonen, største ryttere og nationer all time for året, største ryttere født i året og resultater i sæsonen."
+        }
     }
 }

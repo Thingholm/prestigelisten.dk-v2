@@ -6,6 +6,16 @@ import SelectAgeSection from "./_sections/SelectAgeSection";
 import { rankBy } from "@/lib/helpers/rank";
 import RiderPointsByAgeTable from "./_tables/RiderPointsByAgeTable";
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  age: number }> }) {
+    const { locale, age } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.ageRanking'});
+    
+    return {
+        title: t('title', {age: age}),
+        description: t("description", {age: age})
+    };
+}
+
 export default async function AgePage({
     params
 }: Readonly<{

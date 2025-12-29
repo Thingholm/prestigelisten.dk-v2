@@ -11,6 +11,21 @@ import EditionsResultsSection from "./_sections/EditionsResultsSection";
 import MostOfEachResultSection from "./_sections/MostOfEachResultSection";
 import { Tables } from "@/utils/supabase/database.types";
 import { getGeneralResultType } from "@/lib/helpers/resultType";
+import { getTranslations } from "next-intl/server";
+import { getRaceName } from "@/lib/helpers/raceName";
+import { deserializeQueryString } from "@/lib/helpers/urls";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  id: number, name: string[] }> }) {
+    const { locale, id, name } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.race'});
+    const tResultNames = await getTranslations("getResultNames");
+    const raceName = name?.[0] ? getRaceName({ id: id, name: deserializeQueryString(name[0]) }, tResultNames) : t("race");
+    
+    return {
+        title: t('title', {race: raceName}),
+        description: t("description", {race: raceName})
+    };
+}
 
 export type Result = (ResultsInRaceRange[number] & {
     races: (Tables<"races"> & {

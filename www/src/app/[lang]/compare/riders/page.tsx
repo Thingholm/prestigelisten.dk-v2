@@ -6,6 +6,17 @@ import { getPointSystem } from "@/db/pointSystem";
 import CompareProfileSection from "./_sections/CompareProfileSection";
 import CompareGreatestResultsSection from "./_sections/CompareGreatestResultsSection";
 import CompareChartSection from "./_sections/CompareChartSection";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.compareRiders'});
+    
+    return {
+        title: t('title'),
+        description: t("description")
+    };
+}
 
 export default async function Page({
     searchParams,

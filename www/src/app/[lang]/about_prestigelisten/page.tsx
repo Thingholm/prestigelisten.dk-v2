@@ -2,6 +2,16 @@ import { getTranslations } from "next-intl/server";
 import Section from "@/components/layout/Section";
 import PageHeading from "@/components/ui/PageHeading";
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.about'});
+    
+    return {
+        title: t('title'),
+        description: t("description")
+    };
+}
+
 export default async function Page() {
     const t = await getTranslations("omPrestigelisten");
 

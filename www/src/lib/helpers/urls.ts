@@ -108,3 +108,13 @@ export function getRidersListUrl(filter?: Partial<RidersFilter>): string {
     const query = params.toString();
     return query ? `${urls["listRiders"]}?${query}` : urls["listRiders"];
 }
+
+export function deserializeQueryString(query?: string) {
+    if (!query) return "";
+
+    return query
+        .replaceAll("%7C", "|")
+        .split("_")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+}

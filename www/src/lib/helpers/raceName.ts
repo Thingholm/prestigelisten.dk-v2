@@ -27,11 +27,11 @@ export function getResultRaceName(race: MetaRace, t: ReturnType<typeof useTransl
 }
 
 export function getRaceName(race: MetaRace, t: ReturnType<typeof useTranslations>) {
-    if (race.name.includes("mester i enkeltstart") && race.nations) {
+    if (race.name.toLowerCase().includes("mester i enkeltstart") && race.nations) {
         return `${t(`nations.${race.nations.code}.adjective`)}${t("championshipITT")}`;
     }
 
-    if (race.name.includes("mester") && race.nations) {
+    if (race.name.toLowerCase().includes("mester") && race.nations) {
         return `${t(`nations.${race.nations.code}.adjective`)}${t("championship")}`;
     }
     

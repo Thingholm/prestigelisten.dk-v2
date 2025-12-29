@@ -10,6 +10,19 @@ import TablesSection from "./_sections/TablesSection";
 import AllResultsSection from "./_sections/AllResultsSection";
 import { getNations } from "@/db/nations";
 import { getRidersPreviousNationalities } from "@/db/prevNationalities";
+import { getTranslations } from "next-intl/server";
+import { deserializeQueryString } from "@/lib/helpers/urls";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  name: string[] }> }) {
+    const { locale, name } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.riderPage'});
+    const riderName = name?.[0] ? deserializeQueryString(name[0]) : t("rider")
+    
+    return {
+        title: t('title', {rider: riderName}),
+        description: t("description", {rider: riderName})
+    };
+}
 
 export default async function RiderPage({
     params,

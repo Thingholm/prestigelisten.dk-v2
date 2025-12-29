@@ -13,6 +13,19 @@ import RacesAndTeamsSection from "./_sections/RacesAndTeamsSection";
 import { getTeamsFromNation } from "@/db/team";
 import { nationalsRaceClassIds } from "@/lib/constants/raceClasses";
 import { getNationCountEachSeason } from "@/db/seasons";
+import { getTranslations } from "next-intl/server";
+import { nationCodeById } from "@/lib/constants/nations";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  id: number }> }) {
+    const { locale, id } = await params;
+    const t = await getTranslations({locale, namespace: 'metadata.nation'});
+    const tNations = await getTranslations({locale, namespace: 'nations'})
+    
+    return {
+        title: t('title', {nation: tNations(`${nationCodeById[id]}.name`)}),
+        description: t("description", {nation: tNations(`${nationCodeById[id]}.name`)})
+    };
+}
 
 export type Nation = Omit<NationWithRiders, "riders"> & {
     riders: (NationWithRiders["riders"][number] & {
