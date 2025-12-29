@@ -3,12 +3,11 @@
 import NavigatorSection from "@/components/NavigatorSection";
 import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import { PointSystem } from "@/db/pointSystem";
-import { urls } from "@/lib/constants/urls";
 import { getResultPoints } from "@/lib/helpers/pointSystem";
 import { getOnlyResultName } from "@/lib/helpers/resultNames";
 import { sortResults } from "@/lib/helpers/results";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import { Result } from "../page";
 
@@ -39,7 +38,7 @@ export default function EditionsResultsSection({
         >
             <p className="mb-4">
                 <span>{t("pointClassForEdition")}: </span>
-                <Link href={`${urls["pointSystem"]}#${resultsForYear[0].races.race_class_id}`} className="font-semibold hover:underline">
+                <Link href={{ pathname: "/point_scale" }} className="font-semibold hover:underline">
                     {tRaceClasses(resultsForYear[0].races.race_class_id.toString())}
                 </Link>
             </p>

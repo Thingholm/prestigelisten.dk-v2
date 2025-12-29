@@ -7,8 +7,7 @@ import { getRiderName } from "@/lib/helpers/riderName"
 import { getRaceUrl, getRiderUrl } from "@/lib/helpers/urls"
 import { Tables } from "@/utils/supabase/database.types"
 import { useLocale, useTranslations } from "next-intl"
-import Link from "next/link"
-
+import { Link } from "@/i18n/navigation"
 type ResultsWithPoints = Tables<"results"> & { 
     points: number, 
     riders: Tables<"riders"> & {

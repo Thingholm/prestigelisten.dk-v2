@@ -1,9 +1,14 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
 import { ColorVariant } from "@/lib/constants/colors";
+import { ComponentProps } from "react";
+
+type LinkProps = ComponentProps<typeof Link>;
+type Href = LinkProps['href'];
 
 type ButtonAsLink = {
-    href: string;
+    href: Href | string;
     target?: string;
     onClick?: never;
     disabled?: never;
@@ -59,15 +64,28 @@ export default function Button({
     const variantClass = variants[variant][color];
 
     if (href) {
+        if (typeof href === "string") {
+            return (
+                <a
+                    href={href}
+                    target={target}
+                    onClick={onClick}
+                    className={`px-4 py-2 hover:cursor-pointer text-center select-none rounded-md ${fill ? "w-full" : ""} ${variantClass} ${className} ${disabled ? "opacity-50 pointer-events-none" : ""}`}
+                >
+                    {children}
+                </a>
+            )
+        }
+
         return (
-            <a
+            <Link
                 href={href}
                 target={target}
                 onClick={onClick}
                 className={`px-4 py-2 hover:cursor-pointer text-center select-none rounded-md ${fill ? "w-full" : ""} ${variantClass} ${className} ${disabled ? "opacity-50 pointer-events-none" : ""}`}
             >
                 {children}
-            </a>
+            </Link>
         );
     }
 

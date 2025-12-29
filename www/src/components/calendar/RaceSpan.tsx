@@ -3,7 +3,7 @@ import { RaceSpanItem } from "./Calendar";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { shift, useFloating, useHover, useInteractions } from "@floating-ui/react";
-import { getRaceUrl } from "@/lib/helpers/urls";
+import { getRaceUrl, getRaceUrlString } from "@/lib/helpers/urls";
 import { getRaceName } from "@/lib/helpers/raceName";
 import { useRouter } from "next/navigation";
 import { getSuffix } from "@/lib/helpers/resultNames";
@@ -68,7 +68,7 @@ export default function RaceSpan({
     }
 
     const handleClick = () => {
-        router.push(getRaceUrl(metaRace))
+        router.push(getRaceUrlString(metaRace, locale as "en" | "da"))
     }
 
     return (

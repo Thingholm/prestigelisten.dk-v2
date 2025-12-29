@@ -2,7 +2,7 @@
 
 import { urls } from "@/lib/constants/urls";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import DropdownGroup from "./DropdownGroup";
 import DropdownItem from "./DropdownItem";
@@ -16,7 +16,7 @@ export default function DesktopNav() {
 
     return (
         <nav className="text-primary-500 gap-x-4 text-sm 2xl:text-base 2xl:gap-x-8 hidden xl:flex">
-            <Link href={urls["pointSystem"]} className="relative group/item w-fit">
+            <Link href={{ pathname: "/point_scale" }} className="relative group/item w-fit">
                 <span>{t("pointSystem")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>
@@ -48,35 +48,35 @@ export default function DesktopNav() {
                     />
                 }
                 <DropdownItem
-                    href={urls["listNations"]}
+                    href={{ pathname: "/rankings/nations" }}
                     title={t("nations")}
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
                 <DropdownItem
-                    href={urls["listRidersGreatestSeasons"]}
+                    href={{ pathname: "/rankings/riders/greatest_seasons" }}
                     title={t("greatestSeasons")}
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
                 <DropdownItem
-                    href={urls["listRidersAges"]}
+                    href={{ pathname: "/rankings/riders/ages" }}
                     title={t("greatestByAge")}
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
                 <DropdownItem
-                    href={urls["listRiders3YearPeriod"]}
+                    href={{ pathname: "/rankings/riders/3-year_period" }}
                     title={t("3YearPeriod")}
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
             </DropdownGroup>
-            <Link href={urls["calendar"]} className="relative group/item w-fit">
+            <Link href={{ pathname: "/calendar" }} className="relative group/item w-fit">
                 <span>{t("raceCalendar")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>
-            <Link href={urls["year"]} className="relative group/item w-fit">
+            <Link href={{ pathname: "/year" }} className="relative group/item w-fit">
                 <span>{t("seasonOverview")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>
-            <Link href={urls["team"]} className="relative group/item w-fit">
+            <Link href={{ pathname: "/team" }} className="relative group/item w-fit">
                 <span>{t("teams")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>
@@ -91,12 +91,12 @@ export default function DesktopNav() {
                     onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
                 />
                 <DropdownItem
-                    href={urls["compare"]}
+                    href={{ pathname: "/compare" }}
                     title={t("compare")}
                     onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
                 />
             </DropdownGroup>
-            <Link href={urls["about"]} className="relative group/item w-fit">
+            <Link href={{ pathname: "/about_prestigelisten" }} className="relative group/item w-fit">
                 <span>{t("about")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>

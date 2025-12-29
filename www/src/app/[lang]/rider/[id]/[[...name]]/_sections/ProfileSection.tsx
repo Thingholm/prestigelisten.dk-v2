@@ -11,8 +11,7 @@ import { sortGroupedResults } from "@/lib/helpers/results";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getNationUrl, getRidersListUrl, getTeamUrl, getYearUrl } from "@/lib/helpers/urls";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
-
+import { Link } from "@/i18n/navigation";
 export default async function ProfileSection({
     rider,
     activeRank,

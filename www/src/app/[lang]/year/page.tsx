@@ -1,4 +1,4 @@
-import { getYearUrl } from "@/lib/helpers/urls";
+import { getYearUrlString } from "@/lib/helpers/urls";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 
@@ -12,6 +12,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: "
     };
 }
 
-export default function Page() {
-    redirect(`${getYearUrl()}/${new Date().getFullYear()}`)
+export default async function Page() {
+    redirect(getYearUrlString(new Date().getFullYear()))
 }

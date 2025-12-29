@@ -8,7 +8,7 @@ import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { sortGroupedResults } from "@/lib/helpers/results";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { NationWithRaceResults } from "./ComparePropertiesSection";
 import { nationalsRaceClassIds } from "@/lib/constants/raceClasses";
 import { Race } from "@/db/race";

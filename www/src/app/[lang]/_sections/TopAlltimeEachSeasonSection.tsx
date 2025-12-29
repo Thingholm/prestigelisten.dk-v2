@@ -13,7 +13,7 @@ export default function TopAlltimeEachSeasonSection({
 
     return (
         <Section>
-            <Container title={t("tableTitles.greatestAlltimeEachYear")} href="#">
+            <Container title={t("tableTitles.greatestAlltimeEachYear")} href={{ pathname: "/year" }}>
                 <TopAlltimeEachSeasonTable top10AlltimeEachSeason={top10AlltimeEachSeason} />
             </Container>
         </Section>

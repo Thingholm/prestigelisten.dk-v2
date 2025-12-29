@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Rider } from "@/db/rider";
+import Link from "next/link";
 
 export default function RiderImage({ 
     rider,

@@ -1,6 +1,6 @@
 import { NationNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import { useTranslations } from "use-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getRiderUrl } from "@/lib/helpers/urls";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { Ranked } from "@/lib/helpers/rank";

@@ -13,7 +13,7 @@ import { getRiderName } from "@/lib/helpers/riderName";
 import { getRaceUrl, getRiderUrl } from "@/lib/helpers/urls";
 import { Tables } from "@/utils/supabase/database.types";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React, { useState } from "react";
 
 export default function GreatestResultsTable({

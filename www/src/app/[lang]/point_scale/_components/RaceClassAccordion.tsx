@@ -9,7 +9,7 @@ import { getRaceName } from "@/lib/helpers/raceName";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import { Tables } from "@/utils/supabase/database.types";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 

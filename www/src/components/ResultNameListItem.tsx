@@ -1,6 +1,5 @@
 import { getRaceUrl } from "@/lib/helpers/urls"
-import Link from "next/link"
-
+import { Link } from "@/i18n/navigation"
 type MetaRace = {
     id: number;
     name: string;

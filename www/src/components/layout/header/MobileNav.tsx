@@ -35,7 +35,7 @@ export default function MobileNav({
                 <NavSearchBar searchBarData={searchData} isMobile setShowNav={setShowNav}/>
                 <nav className="flex flex-col items-end mt-2 w-full">            
                     <MobileNavItem
-                        href={urls["pointSystem"]}
+                        href={{ pathname: "/point_scale" }}
                         onClick={() => setShowNav(false)}
                         title={t("pointSystem")}
                     />
@@ -68,22 +68,22 @@ export default function MobileNav({
                                 />
                             }
                             <MobileNavItem
-                                href={urls["listNations"]}
+                                href={{ pathname: "/rankings/nations" }}
                                 title={t("nations")}
                                 onClick={() => setShowNav(false)}
                             />
                             <MobileNavItem
-                                href={urls["listRidersGreatestSeasons"]}
+                                href={{ pathname: "/rankings/riders/greatest_seasons" }}
                                 title={t("greatestSeasons")}
                                 onClick={() => setShowNav(false)}
                             />
                             <MobileNavItem
-                                href={urls["listRidersAges"]}
+                                href={{ pathname: "/rankings/riders/ages" }}
                                 title={t("greatestByAge")}
                                 onClick={() => setShowNav(false)}
                             />
                             <MobileNavItem
-                                href={urls["listRiders3YearPeriod"]}
+                                href={{ pathname: "/rankings/riders/3-year_period" }}
                                 title={t("3YearPeriod")}
                                 onClick={() => setShowNav(false)}
                             />
@@ -91,17 +91,17 @@ export default function MobileNav({
                         </div>
                     }
                     <MobileNavItem
-                        href={urls["calendar"]}
+                        href={{ pathname: "/calendar" }}
                         title={t("raceCalendar")}
                         onClick={() => setShowNav(false)}
                     />
                     <MobileNavItem
-                        href={urls["year"]}
+                        href={{ pathname: "/year" }}
                         title={t("seasonOverview")}
                         onClick={() => setShowNav(false)}
                     />
                     <MobileNavItem
-                        href={urls["team"]}
+                        href={{ pathname: "/team" }}
                         title={t("teams")}
                         onClick={() => setShowNav(false)}
                     />
@@ -111,12 +111,12 @@ export default function MobileNav({
                         onClick={() => setShowNav(false)}
                     />
                     <MobileNavItem
-                        href={urls["compare"]}
+                        href={{ pathname: "/compare" }}
                         title={t("compare")}
                         onClick={() => setShowNav(false)}
                     />
                     <MobileNavItem
-                        href={urls["about"]}
+                        href={{ pathname: "/about_prestigelisten" }}
                         onClick={() => setShowNav(false)}
                         title={t("about")}
                     />    

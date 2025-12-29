@@ -9,8 +9,7 @@ import { sortGroupedResults } from "@/lib/helpers/results";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
-
+import { Link } from "@/i18n/navigation";
 export default async function CompareGreatestResultsSection({
     rider1,
     rider2,

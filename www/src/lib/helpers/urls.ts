@@ -1,5 +1,10 @@
 import { RidersFilter } from "@/app/[lang]/rankings/riders/_sections/ListSection";
 import { urls } from "../constants/urls";
+import { Link } from "@/i18n/navigation";
+import { ComponentProps } from "react";
+
+type LinkProps = ComponentProps<typeof Link>;
+type Href = LinkProps['href'];
 
 type Rider = {
     id: number;
@@ -7,16 +12,18 @@ type Rider = {
     last_name: string;
 }
 
-export function getRiderUrl(rider: Rider) {
-    let url = urls["rider"];
+export function getRiderUrl(rider: Rider): Href {
+    const riderName = rider.first_name
+        ? `${rider.first_name.replaceAll(" ", "_").toLowerCase()}_${rider.last_name.replaceAll(" ", "_").toLowerCase()}`.replaceAll(".", "")
+        : rider.last_name.replaceAll(" ", "_").toLowerCase()
 
-    if (rider.first_name) {
-        url += `/${rider.id}/${rider.first_name.replaceAll(" ", "_").toLowerCase()}_${rider.last_name.replaceAll(" ", "_").toLowerCase()}`.replaceAll(".", "")
-    } else {
-        url += `/${rider.id}/${rider.last_name.replaceAll(" ", "_").toLowerCase()}`
-    }
-
-    return url;
+    return {
+        pathname: "/rider/[rider]/[[...name]]",
+        params: {
+            rider: rider.id,
+            name: [riderName]
+        }
+    };
 }
 
 type Nation = {
@@ -24,20 +31,39 @@ type Nation = {
     name: string;
 }
 
-export function getNationUrl(nation: Nation | null) {
+export function getNationUrl(nation: Nation | null): Href {
     if (!nation) {
-        return urls["nations"];
+        return {
+            pathname: "/"
+        }
     }
     
-    return `${urls["nation"]}/${nation.id}/${nation.name.replaceAll(" ", "_").toLowerCase()}`;
+    return {
+        pathname: "/nation/[nation]/[[...name]]",
+        params: {
+            nation: nation.id,
+            name: [nation.name.replaceAll(" ", "_").toLowerCase()]
+        }
+    };
 }
 
-export function getYearUrl(year?: number | null) {
+export function getYearUrl(year?: number | null): Href {
     if (!year) {
-        return urls["year"];
+        return {
+            pathname: "/year"
+        };
     }
 
-    return `${urls["year"]}/${year}`;
+    return {
+        pathname: "/year/[year]",
+        params: {
+            year: year
+        }
+    }
+}
+
+export function getYearUrlString(year: number): string {
+    return `/year/${year}`
 }
 
 export function getListRidersUrl(nation?: Nation | null, active?: boolean) {
@@ -56,8 +82,10 @@ export function getListRidersUrl(nation?: Nation | null, active?: boolean) {
     return url
 }
 
-export function getAboutUrl() {
-    return urls["about"];
+export function getAboutUrl(): Href {
+    return {
+        pathname: "/about_prestigelisten"
+    };
 }
 
 type Team = {
@@ -65,20 +93,32 @@ type Team = {
     name: string;
 }
 
-export function getTeamUrl(team: Team | null) {
+export function getTeamUrl(team: Team | null): Href {
     if (!team) {
-        return urls["teams"];
+        return {
+            pathname: "/team"
+        };
     }
 
-    return `${urls["team"]}/${team.id}/${team.name.replaceAll(" ", "_").replaceAll(".", "").toLowerCase()}`;
+    return {
+        pathname: "/team/[team]/[[...name]]",
+        params: {
+            team: team.id,
+            name: [team.name.replaceAll(" ", "_").replaceAll(".", "").toLowerCase()]
+        }
+    }
 }
 
-export function getListNationsUrl() {
-    return urls["listNations"];
+export function getListNationsUrl(): Href {
+    return {
+        pathname: "/rankings/nations"
+    };
 }
 
-export function getGreatestSeasonsUrl() {
-    return urls["listRidersGreatestSeasons"];
+export function getGreatestSeasonsUrl(): Href {
+    return {
+        pathname: "/rankings/riders/greatest_seasons"
+    };
 }
 
 type MetaRace = {
@@ -86,15 +126,27 @@ type MetaRace = {
     name: string;
 }
 
-export function getRaceUrl(race: MetaRace) {
-    return `${urls["race"]}/${race.id}/${race.name.replaceAll(" ", "_").toLowerCase()}`;
+export function getRaceUrl(race: MetaRace): Href {
+    return {
+        pathname: "/race/[race]/[[...name]]",
+        params: {
+            race: race.id,
+            name: [race.name.replaceAll(" ", "_").toLowerCase()]
+        }
+    }
 }
 
-export function getRiders3YearRollingRankingsUrl() {
-    return urls["listRiders3YearPeriod"];
+export function getRaceUrlString(race: MetaRace, locale: "en" | "da") {
+    return `${locale}/${urls["race"]}/${race.id}/${race.name.replaceAll(" ", "_").toLowerCase()}`;
 }
 
-export function getRidersListUrl(filter?: Partial<RidersFilter>): string {
+export function getRiders3YearRollingRankingsUrl(): Href {
+    return {
+        pathname: "/rankings/riders/3-year_period"
+    };
+}
+
+export function getRidersListUrl(filter?: Partial<RidersFilter>): Href {
     const params = new URLSearchParams();
 
     if (filter) {
@@ -106,7 +158,11 @@ export function getRidersListUrl(filter?: Partial<RidersFilter>): string {
     }
 
     const query = params.toString();
-    return query ? `${urls["listRiders"]}?${query}` : urls["listRiders"];
+
+    return {
+        pathname: "/rankings/riders",
+        query: query
+    }
 }
 
 export function deserializeQueryString(query?: string) {

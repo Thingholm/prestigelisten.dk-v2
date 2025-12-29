@@ -1,4 +1,8 @@
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
+import { ComponentProps } from "react";
+
+type LinkProps = ComponentProps<typeof Link>;
+type Href = LinkProps['href'];
 
 export default function ProfileAttribute({
     label,
@@ -7,7 +11,7 @@ export default function ProfileAttribute({
 }: Readonly<{
     label: string,
     children: React.ReactNode,
-    href?: string
+    href?: Href
 }>) {
     return(
         <p>

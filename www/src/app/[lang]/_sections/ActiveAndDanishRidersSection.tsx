@@ -3,7 +3,7 @@ import Section from "@/components/layout/Section";
 import { useTranslations } from "next-intl";
 import ActiveRidersTable from "../_tables/ActiveRidersTable";
 import DanishRidersTable from "../_tables/DanishRidersTable";
-import { getListRidersUrl } from "@/lib/helpers/urls";
+import { getRidersListUrl } from "@/lib/helpers/urls";
 import { RidersWithNationAndTeam } from "@/db/rider";
 
 export default function ActiveAndDanishRidersSection({
@@ -19,7 +19,7 @@ export default function ActiveAndDanishRidersSection({
                 title={t("tableTitles.greatestActiveRiders")} 
                 dark 
                 isCard 
-                href={getListRidersUrl(null, true)} 
+                href={getRidersListUrl({ status: "active" })} 
                 className="lg:w-7/12"
             >
                 <ActiveRidersTable ridersWithNationAndTeam={ridersWithNationAndTeam} />
@@ -28,7 +28,7 @@ export default function ActiveAndDanishRidersSection({
                 title={t("tableTitles.greatestDanishRiders")} 
                 dark 
                 isCard 
-                href={getListRidersUrl({id: 14, name: "Danmark"})} 
+                href={getRidersListUrl({ nations: [14] })} 
                 className="lg:w-2/5"
             >
                 <DanishRidersTable ridersWithNationAndTeam={ridersWithNationAndTeam} />

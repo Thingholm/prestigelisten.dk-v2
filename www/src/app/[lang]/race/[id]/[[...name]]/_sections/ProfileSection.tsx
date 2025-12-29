@@ -44,7 +44,7 @@ export default function ProfileSection({
                         )}
                     </ProfileAttribute>
 
-                    <ProfileAttribute label={isActive ? t("profile.currentPointSystem") : t("profile.latestPointSystem")} href={`${urls["pointSystem"]}/#${latestEditionRaceClass?.id}`}>
+                    <ProfileAttribute label={isActive ? t("profile.currentPointSystem") : t("profile.latestPointSystem")} href={{ pathname: "/point_scale" }}>
                         {tRaceClasses(latestEditionRaceClass?.id.toString() ?? "0")}
                     </ProfileAttribute>
 

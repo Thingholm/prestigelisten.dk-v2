@@ -39,7 +39,7 @@ export default function RacesTable({
                             return (
                                 <TableRow key={race.id} isFaded={!race.active}>
                                     <TableCell href={getRaceUrl(race.meta_races)} className="text-pretty">{getRaceName(race.meta_races, tResultNames)}</TableCell>
-                                    <TableCell href={`${urls["pointSystem"]}#${race.race_class_id}`}>{raceClassName}</TableCell>
+                                    <TableCell href={{ pathname: "/point_scale" }}>{raceClassName}</TableCell>
                                 </TableRow>
                             )
                         })

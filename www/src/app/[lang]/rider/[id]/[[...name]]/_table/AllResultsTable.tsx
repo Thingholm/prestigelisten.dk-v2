@@ -11,7 +11,7 @@ import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { sortGroupedResults } from "@/lib/helpers/results";
 import { getRaceUrl, getYearUrl } from "@/lib/helpers/urls";
 import { Tables } from "@/utils/supabase/database.types";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import { useTranslations } from "use-intl";
 

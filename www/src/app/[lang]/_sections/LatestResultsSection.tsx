@@ -23,7 +23,7 @@ export default async function LatestResultsSection({
 
     return (
         <Section>
-            <Container title={t("latestResults")} href={urls["resultsThisYear"]}>
+            <Container title={t("latestResults")} href={{pathname: "/results_this_year"}}>
                 <LatestResultsTable latestResultsGroups={rankingEvolution}/>
             </Container>
         </Section>

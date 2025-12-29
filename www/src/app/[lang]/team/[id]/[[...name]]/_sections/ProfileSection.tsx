@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl"
 import { TeamsWithPoints } from "../../../_sections/TeamsTablesSection"
 import ProfileHighlightSection from "@/components/entityPage/ProfileHighlightSection"
 import { EntityProfileSection, ProfileAttribute, ProfileDetails, ProfileMainSection, ProfileTitle, TeamLogo } from "@/components/entityPage"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { getRiderName } from "@/lib/helpers/riderName"
 
 export default function ProfileSection({

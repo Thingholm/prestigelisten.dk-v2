@@ -6,8 +6,7 @@ import { rankBy } from "@/lib/helpers/rank";
 import { getGroupedResultNameWithCount } from "@/lib/helpers/resultNames";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-
+import { Link } from "@/i18n/navigation";
 export default function GreatestSeasonsTable({
     greatestSeasons,
     pointSystem,

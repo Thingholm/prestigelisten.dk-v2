@@ -10,7 +10,7 @@ import Select from "@/components/ui/Select";
 import { ChangeEvent, useState } from "react";
 import { NationNameCell, RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import Button from "@/components/ui/Button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getYearUrl } from "@/lib/helpers/urls";
 
 type GroupedResults = (Omit<GroupedResult<Result>, "results"> & {

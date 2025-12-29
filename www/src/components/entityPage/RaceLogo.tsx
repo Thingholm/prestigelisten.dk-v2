@@ -1,18 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { getRaceName } from "@/lib/helpers/raceName";
+import Link from "next/link";
 
 type MetaRace = {
     id: number;
     name: string;
-    image_metadata?: {
-        credit_link: string | null;
+    images?: {
+        credit_url: string | null;
         credit: string | null;
-    }[] | null
+    } | null
 }
 
 export default function RaceLogo({
@@ -46,13 +46,13 @@ export default function RaceLogo({
                     className="rounded-2xl mb-4"
                     style={{height: 200, width: 200}}
                 />
-                {metaRace.image_metadata?.[0] && 
+                {metaRace.images && 
                     <p className="text-sm text-gray-500 mt-1">
                         <span>{t("source")}: </span>
-                        {metaRace.image_metadata?.[0].credit_link ? 
-                            <Link href={metaRace.image_metadata?.[0].credit_link} target="_blank">{metaRace.image_metadata?.[0].credit}</Link>
+                        {metaRace.images?.credit_url ? 
+                            <Link href={metaRace.images?.credit_url} target="_blank">{metaRace.images?.credit}</Link>
                         :
-                            <span>{metaRace.image_metadata?.[0].credit}</span>
+                            <span>{metaRace.images?.credit}</span>
                         }
                     </p>
                 }

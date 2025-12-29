@@ -8,8 +8,7 @@ import { getRiderName } from "@/lib/helpers/riderName";
 import { getRiderUrl } from "@/lib/helpers/urls";
 import { Tables } from "@/utils/supabase/database.types";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-
+import { Link } from "@/i18n/navigation";
 export default function ProfileSection({
     nation,
     rankedActiveNationPoints,
@@ -41,19 +40,19 @@ export default function ProfileSection({
                 <ProfileDetails>
                     <ProfileTitle>{tNations(`${nation.code}.name`)}</ProfileTitle>
 
-                    <ProfileAttribute label={t("placement")} href={urls["listNations"]}>
+                    <ProfileAttribute label={t("placement")} href={{ pathname: "/rankings/nations" }}>
                         {formatNumber(currentSeason?.rank_all_time) ?? "-"}
                     </ProfileAttribute>
                     
-                    <ProfileAttribute label={t("points")} href={urls["listNations"]}>
+                    <ProfileAttribute label={t("points")} href={{ pathname: "/rankings/nations" }}>
                         {formatNumber(currentSeason?.points_all_time) ?? "-"}
                     </ProfileAttribute>
 
-                    <ProfileAttribute label={t("activePlacement")} href={urls["listNations"]}>
+                    <ProfileAttribute label={t("activePlacement")} href={{ pathname: "/rankings/nations" }}>
                         {formatNumber(nationActivePoints?.rank) ?? "-"}
                     </ProfileAttribute>
                     
-                    <ProfileAttribute label={t("activePoints")} href={urls["listNations"]}>
+                    <ProfileAttribute label={t("activePoints")} href={{ pathname: "/rankings/nations" }}>
                         {formatNumber(nationActivePoints?.active_points) ?? "-"}
                     </ProfileAttribute>                    
                     

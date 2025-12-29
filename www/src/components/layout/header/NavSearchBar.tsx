@@ -5,7 +5,7 @@ import { getRaceName } from "@/lib/helpers/raceName";
 import { getRiderName } from "@/lib/helpers/riderName";
 import { getNationUrl, getRaceUrl, getRiderUrl, getTeamUrl } from "@/lib/helpers/urls";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
 

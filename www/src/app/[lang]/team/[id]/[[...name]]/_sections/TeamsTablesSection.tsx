@@ -4,7 +4,6 @@ import { TeamsWithRiders } from "@/db/team";
 import { useTranslations } from "next-intl";
 import TeamsTable from "../_tables/TeamsTable";
 import { Ranked } from "@/lib/helpers/rank";
-import { urls } from "@/lib/constants/urls";
 
 export type TeamsWithPoints = TeamsWithRiders[number] & {
     pointsForYear: number;
@@ -26,7 +25,7 @@ export default function TeamsTablesSection({
         <Section className="gap-x-12 flex-col lg:flex-row" color="secondary">
             <Container 
                 title={t("titles.greatestRiders")} 
-                href={urls["team"]}
+                href={{ pathname: "/team" }}
                 dark
                 isCard
             >
@@ -38,7 +37,7 @@ export default function TeamsTablesSection({
             </Container>
             <Container 
                 title={t("titles.mostPoints", { year: new Date().getFullYear() })} 
-                href={urls["team"]}
+                href={{ pathname: "/team" }}
                 dark
                 isCard
             >

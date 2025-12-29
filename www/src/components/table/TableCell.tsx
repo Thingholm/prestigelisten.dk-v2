@@ -1,13 +1,17 @@
 import { formatNumber } from "@/lib/helpers/localeHelpers";
-import Link from "next/link";
 import { ScreenBreakpoint } from "@/lib/constants/screenBreakpoints";
 import SecondaryCellSpan from "./SecondaryCellSpan";
+import { Link } from "@/i18n/navigation";
+import { ComponentProps } from "react";
 
 export type SecondarySpanProps = {
     content: React.ReactNode;
     breakpoint?: ScreenBreakpoint;
     inlineBreakpoint?: ScreenBreakpoint | "always";
 }
+
+type LinkProps = ComponentProps<typeof Link>;
+type Href = LinkProps['href'];
 
 export default function TableCell({
     children,
@@ -19,7 +23,7 @@ export default function TableCell({
 }: Readonly<{
     children?: React.ReactNode;
     className?: string;
-    href?: string;
+    href?: Href;
     colSpan?: number;
     noFormat?: boolean;
     secondarySpan?: SecondarySpanProps;

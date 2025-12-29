@@ -4,7 +4,7 @@ import { RankingEvolution } from "@/lib/helpers/rankingEvolution";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
 import { getRaceUrl } from "@/lib/helpers/urls";
 import { getLocale, getTranslations } from "next-intl/server";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React from "react";
 import { IoCaretUp } from "react-icons/io5";
 

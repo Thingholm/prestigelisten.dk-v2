@@ -1,6 +1,10 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { IoArrowForward } from "react-icons/io5";
 import Card from "./Card";
+import { ComponentProps } from "react";
+
+type LinkProps = ComponentProps<typeof Link>;
+type Href = LinkProps['href'];
 
 export default function Container({
     children,
@@ -13,7 +17,7 @@ export default function Container({
     children: React.ReactNode;
     className?: string;
     title?: string;
-    href?: string;
+    href?: Href;
     dark?: boolean;
     isCard?: boolean;
 }>) {
