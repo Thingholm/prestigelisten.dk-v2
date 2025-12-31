@@ -45,7 +45,7 @@ export default function ListTable({
                             isHighlighted={rider.id == highlightedRiderId}
                         >
                             <TableCell>
-                                {rider.rank}
+                                <span className="pr-1.5 sm:pr-0">{rider.rank}</span>
                                 {isFiltered && <SecondaryCellSpan className="table-cell sm:hidden">{alltimeRanking}</SecondaryCellSpan>}
                             </TableCell>
                             {isFiltered && <TableCell className="hidden sm:table-cell">{alltimeRanking}</TableCell>}
