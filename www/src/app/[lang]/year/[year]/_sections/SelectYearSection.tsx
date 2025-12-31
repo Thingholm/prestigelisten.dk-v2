@@ -2,9 +2,8 @@
 
 import Section from "@/components/layout/Section"
 import Select from "@/components/ui/Select";
-import { getYearUrl } from "@/lib/helpers/urls";
+import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation"
 
 export default function SelectYearSection({
     curYear,
@@ -24,7 +23,7 @@ export default function SelectYearSection({
                 <span className="font-medium text-xl mr-1">{t("year")}</span>
                 <Select
                     value={curYear}
-                    onChange={e => router.push(`${getYearUrl()}/${e.target.value}`)}
+                    onChange={e => router.push({ pathname: "/year/[year]", params: { year: e.target.value } })}
                     className="mb-4 font-semibold text-lg"
                 >
                     {Array.from({ length: maxYear - minYear + 1}, (_, index) => maxYear - index).map(year => (
