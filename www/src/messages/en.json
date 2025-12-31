@@ -658,8 +658,8 @@
         "about": "About us",
         "pointSystem": "Point scale",
         "lists": "Rankings",
-        "compare": "Compare riders",
-        "searchPlaceholder": "Search riders, nations, teams or races...",
+        "compare": "Compare",
+        "searchPlaceholder": "Search riders, countries, teams or races...",
         "more": "More",
         "seeList": "Access ranking",
         "ridersAlltime": "All time",
@@ -680,9 +680,9 @@
         "contact": "Contact",
         "developer": "The website is designed and developed by Rasmus Thingholm. Contact at ",
         "search": "Search...",
-        "searchFull": "Search for riders, nations, races or teams...",
+        "searchFull": "Search for riders, countries, races or teams...",
         "searchRiders": "Riders",
-        "searchNations": "Nations",
+        "searchNations": "Countries",
         "searchTeams": "Teams",
         "searchRaces": "Races"
     },
@@ -794,7 +794,7 @@
         "selectYear": "Select year",
         "titles": {
             "riderWithMostPoints": "Riders with most points in {year}",
-            "nationWithMostPoints": "Nations with most points in {year}",
+            "nationWithMostPoints": "Countries with most points in {year}",
             "ridersRankings": "Greatest riders of all time in {year}",
             "nationsRankings": "Greatest countries of all time in {year}",
             "greatestRidersFromYear": "Greatest riders born in {year}",
@@ -840,7 +840,7 @@
             },
             "firstEdition": "First edition as Prestigelisten race",
             "latestEdition": "Latest edition as Prestigelisten race",
-            "pointSystem": "Points scale for {race}",
+            "pointSystem": "Point scale for {race}",
             "source": "Source"
         },
         "timeline": {
@@ -853,7 +853,7 @@
         },
         "titles": {
             "mostPointsRiders": "Riders with most points in the race",
-            "mostPointsNations": "Nations with most points in the race"
+            "mostPointsNations": "Countries with most points in the race"
         },
         "resultsEachEdition": {
             "title": "Results",
@@ -961,7 +961,7 @@
         "description2": "Primarily, the purpose of Prestigelisten is to enable useful rider comparison over time. We’ve tried to create the point scale so that neither modern riders nor those from earlier generations are overly favored. The idea is to balance the growing number of prestigious races over the past 150 years with the steadily increasing level of competition in the sport.",
         "description3": "Prestigelisten is based on data going all the way back to the first edition of Milano–Torino in 1876 - in total more than 30,000 prestigious results performed by more than 4,000 different riders.",
         "description4": "ProCyclingStats and CyclingRanking are the main data sources. All rider names are spelled without special characters to prevent mistakes.",
-        "description5": "The points scale is largely based on subjective assessments, though for some older results we’ve followed CyclingRanking’s evaluations that consider the competitiveness of the races. Therefore, we believe our points scale is carefully considered and thoroughly debated.",
+        "description5": "The point scale is largely based on subjective assessments, though for some older results we’ve followed CyclingRanking’s evaluations that consider the competitiveness of the races. Therefore, we believe our point scale is carefully considered and thoroughly debated.",
         "description6": "And now, the elephant in the room - doping. In our opinion, there are three groups of doped riders: those who’ve been stripped of all results, those who haven’t lost any, and those who were never caught. To treat everyone as equally as possible, Prestigelisten is built on the premise that races are decided on the bike. Thus, we’ve assigned points based on the original results - and of course each and everyone can make reservations as they please.",
         "description7": "Enjoy!",
         "description8": "Mathias S. Jensen and Mathias Fisker Mundbjerg"
@@ -1042,10 +1042,10 @@
             "greatestSeasonPoints": "Points in greatest season"
         },
         "nation": {
-            "title": "Compare nations",
+            "title": "Compare countries",
             "pointsGainedEachYear": "Points earned by year",
             "yearlyRankings": "All time ranking by year",
-            "removeNation": "Remove nation",
+            "removeNation": "Remove country",
             "pointInformation": "Points/placements",
             "points": "Points",
             "placement": "All time ranking",
@@ -1095,7 +1095,7 @@
         },
         "compare": {
             "title": "Compare Riders or Countries - Prestigelisten",
-            "description": "Compare riders or nations on Prestigelisten"
+            "description": "Compare riders or countries on Prestigelisten"
         },
         "compareRiders": {
             "title": "Compare Riders - Prestigelisten",
