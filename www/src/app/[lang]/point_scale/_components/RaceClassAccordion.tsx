@@ -45,7 +45,7 @@ export default function RaceClassAccordion({
     }
 
     return (
-        <div className="bg-gray-100 shadow-sm w-full relative -left-2 rounded-xl scroll-mt-20" id={raceClass.id.toString()}>
+        <div className="bg-gray-100 shadow-sm w-full relative sm:-left-2 rounded-xl scroll-mt-20" id={raceClass.id.toString()}>
             <button className="flex items-center justify-between w-full hover:cursor-pointer rounded-xl hover:bg-gray-50 py-3 px-4" onClick={() => setIsOpen(!isOpen)}>
                 <span className="font-bold">{t(raceClass.id.toString())}</span>
                 <IoChevronDown className={`duration-150 ${isOpen ? "rotate-180" : ""}`}/>
