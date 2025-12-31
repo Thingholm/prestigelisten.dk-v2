@@ -21,8 +21,8 @@ export default async function Page(){
         <Section>
             <Container title={t("title")}>
                 <div className="flex gap-x-4">
-                    <Button color="gray" href={urls["compareRiders"]}>{t("riders")}</Button>
-                    <Button color="gray" href={urls["compareNations"]}>{t("nations")}</Button>
+                    <Button color="gray" href={{ pathname: "/compare/riders" }}>{t("riders")}</Button>
+                    <Button color="gray" href={{ pathname: "/compare/nations" }}>{t("nations")}</Button>
                 </div>
             </Container>
         </Section>

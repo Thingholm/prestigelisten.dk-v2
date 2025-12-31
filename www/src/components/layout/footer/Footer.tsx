@@ -42,7 +42,7 @@ export default async function Footer() {
                         <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/team" }}>{t("teams")}</Link></li>
                         <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/compare" }}>{t("compare")}</Link></li>
                         <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/calendar" }}>{t("calendar")}</Link></li>
-                        <li><a className="hover:underline hover:text-primary-500" href={urls["about"]}>{t("about")}</a></li>
+                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/about_prestigelisten" }}>{t("about")}</Link></li>
                         <li><a className="hover:underline hover:text-primary-500" href={urls["quiz"]}>{t("quiz")}</a></li>                        
                     </ul>
                 </div>
