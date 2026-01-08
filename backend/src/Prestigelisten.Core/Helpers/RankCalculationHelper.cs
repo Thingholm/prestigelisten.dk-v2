@@ -4,7 +4,7 @@ public class RankCalculationHelper
 {
     public static List<T> CalculateRanks<T>(List<T> PointsTable, Func<T, int?> pointsSelector, Action<T, int> setRankAction) where T : class
     {
-        if (PointsTable.Count == 0)
+        if (PointsTable.Count == 0 || !PointsTable.Any(pt => pointsSelector(pt).HasValue))
         {
             return PointsTable;
         }
