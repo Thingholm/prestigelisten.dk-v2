@@ -25,10 +25,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: "en
         creator: "@prestigelisten",
         card: "summary_large_image",
         openGraph: {
-            images: [`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${lang}_rider-images/${id}.png`]
+            images: [`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${lang}_twitter-images/${id}.png`]
         },
         twitter: {
-            images: [`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${lang}_rider-images/${id}.png`]
+            images: [`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${lang}_twitter-images/${id}.png`]
         }
     };
 }
