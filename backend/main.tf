@@ -209,6 +209,15 @@ resource "azurerm_container_app" "api_ca" {
       latest_revision = true
       percentage      = 100
     }
+    cors {
+      allowed_origins = [
+        "http://localhost:3000",
+        "https://admin.prestigelisten.dk"
+      ]
+      allowed_methods = ["GET", "POST", "PUT", "DELETE"]
+      allowed_headers = ["*"]
+    }
+
   }
 
   registry {
