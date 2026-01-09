@@ -1,43 +1,76 @@
 import { redirect } from "next/navigation";
-
-import { createClient } from "@/src/lib/supabase/server";
-import { InfoIcon } from "lucide-react";
-import { FetchDataSteps } from "@/src/components/tutorial/fetch-data-steps";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { createClient } from "@/lib/supabase/server";
 import { Suspense } from "react";
+import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
+import { SyncResultsButtons } from "@/components/sync-results-buttons";
 
-async function UserDetails() {
+async function checkConnection() {
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!apiUrl) {
+      throw new Error("API URL is not defined");
+    }
+
+    const response = await fetch(`${apiUrl}/health`, {
+      method: "GET",
+      cache: "no-store",
+      next: { revalidate: 0 }
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error("Health check failed:", error);
+    return false;
+  }
+}
+
+async function ConnectionStatus() {
+  const isConnected = await checkConnection();
+
+  if (!isConnected) {
+    return (
+      <Alert variant="destructive">
+        <AlertCircleIcon />
+        <AlertTitle>Kan ikke forbinde til serveren.</AlertTitle>
+      </Alert>
+    );
+  }
+
+  return (
+    <Alert variant="default">
+      <CheckCircle2Icon />
+      <AlertTitle>Forbundet til serveren</AlertTitle>
+    </Alert>
+  );
+}
+
+async function SyncButtonsWrapper() {
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.getClaims();
+  const { data: { session } } = await supabase.auth.getSession();
 
-  if (error || !data?.claims) {
+  if (!session) {
     redirect("/auth/login");
   }
 
-  return JSON.stringify(data.claims, null, 2);
+  const token = session.access_token;
+
+  return <SyncResultsButtons token={token} />;
 }
 
-export default function ProtectedPage() {
+export default  function ProtectedPage() {
   return (
     <div className="flex-1 w-full flex flex-col gap-12">
-      <div className="w-full">
-        <div className="bg-accent text-sm p-3 px-5 rounded-md text-foreground flex gap-3 items-center">
-          <InfoIcon size="16" strokeWidth={2} />
-          This is a protected page that you can only see as an authenticated
-          user
-        </div>
-      </div>
-      <div className="flex flex-col gap-2 items-start">
-        <h2 className="font-bold text-2xl mb-4">Your user details</h2>
-        <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto">
-          <Suspense>
-            <UserDetails />
-          </Suspense>
-        </pre>
-      </div>
-      <div>
-        <h2 className="font-bold text-2xl mb-4">Next steps</h2>
-        <FetchDataSteps />
-      </div>
+      <Suspense fallback={
+        <Alert>
+          <AlertCircleIcon className="h-4 w-4" />
+          <AlertTitle>Kontrollerer forbindelse...</AlertTitle>
+        </Alert>
+      }>
+        <ConnectionStatus />
+        <SyncButtonsWrapper />
+      </Suspense>
     </div>
   );
 }
