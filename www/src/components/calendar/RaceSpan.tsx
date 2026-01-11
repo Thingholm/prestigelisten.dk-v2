@@ -3,7 +3,7 @@ import { RaceSpanItem } from "./Calendar";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { shift, useFloating, useHover, useInteractions } from "@floating-ui/react";
-import { getRaceUrl, getRaceUrlString } from "@/lib/helpers/urls";
+import { getRaceUrlString } from "@/lib/helpers/urls";
 import { getRaceName } from "@/lib/helpers/raceName";
 import { useRouter } from "next/navigation";
 import { getSuffix } from "@/lib/helpers/resultNames";
@@ -71,28 +71,31 @@ export default function RaceSpan({
         router.push(getRaceUrlString(metaRace, locale as "en" | "da"))
     }
 
+    const top = 22 + (
+        week.raceLayout
+            .slice(0, raceId)
+            .filter(other =>
+                Math.max(
+                    raceItem.startColumnGrid,
+                    other.startColumnGrid
+                ) <= Math.min(
+                    raceItem.startColumnGrid + raceItem.spanGrid - 1,
+                    other.startColumnGrid + other.spanGrid - 1
+                )
+    ).length * 26);
+
     return (
         <>
             <button
                 key={`race-${weekIndex}-${raceItem.race.id}`}
                 {...getReferenceProps()}
                 ref={refs.setReference}
-                className={`absolute text-xs ${raceItem.race.darkText ? '' : 'text-white'} text-left mx-1 p-1.5 pt-1 rounded shadow-sm overflow-hidden truncate hover:opacity-90 transition-opacity duration-150 ease-in-out select-none`}
+                className={`absolute text-xs ${top > 80 ? "hidden" : "" } ${raceItem.race.darkText ? '' : 'text-white'} text-left mx-1 p-1.5 pt-1 rounded shadow-sm overflow-hidden truncate hover:opacity-90 transition-opacity duration-150 ease-in-out select-none`}
                 style={{
                     backgroundColor: raceItem.race.color ?? "",
                     left: `${((raceItem.startColumnGrid - 1) / 7) * 100}%`,
                     width: `calc(${(raceItem.spanGrid / 7) * 100}% - 8px)`,
-                    top: `${22 + (week.raceLayout
-                        .slice(0, raceId)
-                        .filter(other =>
-                            Math.max(
-                                raceItem.startColumnGrid,
-                                other.startColumnGrid
-                            ) <= Math.min(
-                                raceItem.startColumnGrid + raceItem.spanGrid - 1,
-                                other.startColumnGrid + other.spanGrid - 1
-                            )
-                        ).length * 26)}px`,
+                    top: `${top}px`,
                     height: '22px',
                     zIndex: 10 + raceId,
                 }}

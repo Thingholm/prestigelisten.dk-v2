@@ -33,10 +33,10 @@ export default function Calendar({
     pointSystem: PointSystem
 }>) {
     const t = useTranslations("calendar");
+    const currentDate = new Date();
 
     const [currentDisplayDate, setCurrentDisplayDate] = useState(() => {
-        const today = new Date();
-        return new Date(2025, today.getFullYear() === 2025 ? today.getMonth() : 0, 1);
+        return new Date(currentDate.getFullYear(), currentDate.getFullYear() === currentDate.getFullYear() ? currentDate.getMonth() : 0, 1);
     });
 
     const parsedRaces = useMemo(() => {
@@ -49,7 +49,7 @@ export default function Calendar({
 
             return { ...race, startDate: start, endDate: end };
         });
-    }, []);
+    }, [calendar]);
 
     const year = currentDisplayDate.getFullYear();
     const month = currentDisplayDate.getMonth();
@@ -57,8 +57,8 @@ export default function Calendar({
     const handlePrevMonth = () => {
         setCurrentDisplayDate(prevDate => {
         const newMonth = prevDate.getMonth() - 1;
-        if (prevDate.getFullYear() === 2025 && newMonth >= 0) {
-            return new Date(2025, newMonth, 1);
+        if (prevDate.getFullYear() === currentDate.getFullYear() && newMonth >= 0) {
+            return new Date(currentDate.getFullYear(), newMonth, 1);
         }
         return prevDate;
         });
@@ -67,8 +67,8 @@ export default function Calendar({
     const handleNextMonth = () => {
         setCurrentDisplayDate(prevDate => {
         const newMonth = prevDate.getMonth() + 1;
-        if (prevDate.getFullYear() === 2025 && newMonth <= 11) {
-            return new Date(2025, newMonth, 1);
+        if (prevDate.getFullYear() === currentDate.getFullYear() && newMonth <= 11) {
+            return new Date(currentDate.getFullYear(), newMonth, 1);
         }
         return prevDate;
         });
@@ -173,7 +173,7 @@ export default function Calendar({
             <div className="flex justify-between items-center mb-4">
                 <Button
                     onClick={handlePrevMonth}
-                    disabled={year === 2025 && month === 0}
+                    disabled={year === currentDate.getFullYear() && month === 0}
                 >
                     &lt; {t("previous")}
                 </Button>
@@ -182,7 +182,7 @@ export default function Calendar({
                 </h2>
                 <Button
                     onClick={handleNextMonth}
-                    disabled={year === 2025 && month === 11}
+                    disabled={year === currentDate.getFullYear() && month === 11}
                 >
                     {t("next")} &gt;
                 </Button>
