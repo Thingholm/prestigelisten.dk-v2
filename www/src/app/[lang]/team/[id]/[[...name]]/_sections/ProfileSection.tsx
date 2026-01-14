@@ -46,7 +46,7 @@ export default function ProfileSection({
 
                     <ProfileAttribute label={t("profile.points")}>
                         {formatNumber(teamWithRiders.riders.reduce((acc, obj) => {
-                            return acc + obj.rider_seasons[0].points_all_time || 0;
+                            return acc + obj.rider_seasons[0]?.points_all_time || 0;
                         }, 0))}
                     </ProfileAttribute>
 
@@ -62,7 +62,7 @@ export default function ProfileSection({
 
                     <ProfileAttribute label={t("profile.pointsGainedThisYear", { year: currentYear })}>
                          {formatNumber(teamWithRiders.riders.reduce((acc, obj) => {
-                            return acc + (obj.rider_seasons[0].points_for_year ?? 0) || 0;
+                            return acc + (obj.rider_seasons[0]?.points_for_year ?? 0) || 0;
                         }, 0))}
                     </ProfileAttribute>
 

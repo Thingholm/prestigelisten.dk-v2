@@ -27,10 +27,15 @@ export default async function Page() {
         const pointsAllTime = team.riders.reduce((sum, rider) => {
             return sum + (rider.rider_seasons[0]?.points_all_time || 0);
         }, 0);
+
+        const countForYear = team.riders.reduce((count, rider) => {
+            return count + (rider.rider_seasons[0]?.points_for_year && rider.rider_seasons[0]?.points_for_year > 0 ? 1 : 0);
+        }, 0);
         return {
             ...team,
             pointsForYear,
-            pointsAllTime
+            pointsAllTime,
+            countForYear
         };
     });
 

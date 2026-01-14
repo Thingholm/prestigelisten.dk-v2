@@ -36,7 +36,7 @@ export default async function TeamsTable({
                 <TableColumn>{t("points")}</TableColumn>
             </TableHead>
             <TableBody>
-                {slicedTeams.map(team => (
+                {slicedTeams.filter(team => team[rankKey] > 0).map(team => (
                     <TableRow key={team.id} isHighlighted={team.id == teamId}>
                         <TableCell>{team.rank}</TableCell>
                         <TeamNameCell 
