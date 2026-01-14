@@ -96,6 +96,7 @@ public class ResultService : IResultService
         var lookupData = GetLookupData(currentYear);
 
         var newResults = ProcessSheetResults(googleSheetsResults, lookupData, lookupData.ExistingResultSheetIndices);
+        _results.AddRange(newResults);
 
         await _results.SaveChangesAsync();
         await _riders.SaveChangesAsync();
