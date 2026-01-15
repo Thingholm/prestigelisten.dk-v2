@@ -32,7 +32,7 @@ export default async function TeamsTable({
                             showFlagBreakpoint="always"
                             isMain
                         />
-                        <TableCell className="hidden sm:table-cell">{team.riders.length}</TableCell>
+                        <TableCell className="hidden sm:table-cell">{rankKey == "pointsForYear" ? team.countForYear : team.riders.length}</TableCell>
                         <TableCell>{team[rankKey]}</TableCell>
                     </TableRow>
                 ))}

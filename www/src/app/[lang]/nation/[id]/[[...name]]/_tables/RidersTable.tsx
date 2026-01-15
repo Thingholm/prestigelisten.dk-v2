@@ -32,7 +32,7 @@ export default function RidersTable({
                             <TableCell>{rider.rank}</TableCell>
                             <RiderNameCell rider={rider} showFlagBreakpoint="always"/>
                             <YearCell year={rider.year}/>
-                            <TableCell>{rider.rider_seasons[0].points_all_time}</TableCell>
+                            <TableCell>{rider.rider_seasons?.[0]?.points_all_time}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

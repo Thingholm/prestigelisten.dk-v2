@@ -96,6 +96,7 @@ public class ResultService : IResultService
         var lookupData = GetLookupData(currentYear);
 
         var newResults = ProcessSheetResults(googleSheetsResults, lookupData, lookupData.ExistingResultSheetIndices);
+        _results.AddRange(newResults);
 
         await _results.SaveChangesAsync();
         await _riders.SaveChangesAsync();
@@ -125,11 +126,13 @@ public class ResultService : IResultService
             rider.Nation.Seasons = [];
             rider.Nation.Points = 0;
             rider.Nation.ActivePoints = 0;
-
-            foreach (var prevNationality in rider.PreviousNationalities)
+            rider.PreviousNationalities.ForEach(prevNationality =>
             {
                 prevNationality.Points = 0;
-            }
+                prevNationality.Nation.Seasons = [];
+                prevNationality.Nation.Points = 0;
+                prevNationality.Nation.ActivePoints = 0;
+            });
         }
     }
 

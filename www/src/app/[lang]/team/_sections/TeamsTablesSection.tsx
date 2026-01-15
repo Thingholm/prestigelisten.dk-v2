@@ -7,6 +7,7 @@ import TeamsTable from "../_tables/TeamsTable";
 export type TeamsWithPoints = TeamsWithRiders[number] & {
     pointsForYear: number;
     pointsAllTime: number;
+    countForYear: number;
 };
 
 export default function TeamsTablesSection({

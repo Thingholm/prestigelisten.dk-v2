@@ -38,15 +38,15 @@ export default function ProfileSection({
                         )}
                     </ProfileAttribute>
 
-                    <ProfileAttribute label={t("profile.founded")}>
-                        {/* TODO: Remove hardcoded string and add actual founded year property when added */}
+                    {/* <ProfileAttribute label={t("profile.founded")}>
+                        TODO: Remove hardcoded string and add actual founded year property when added
                         2010 (Eksempel)
-                        {/* {teamWithRiders.founded_year || "-"} */}
-                    </ProfileAttribute>
+                        {teamWithRiders.founded_year || "-"}
+                    </ProfileAttribute> */}
 
                     <ProfileAttribute label={t("profile.points")}>
                         {formatNumber(teamWithRiders.riders.reduce((acc, obj) => {
-                            return acc + obj.rider_seasons[0].points_all_time || 0;
+                            return acc + obj.rider_seasons[0]?.points_all_time || 0;
                         }, 0))}
                     </ProfileAttribute>
 
@@ -62,7 +62,7 @@ export default function ProfileSection({
 
                     <ProfileAttribute label={t("profile.pointsGainedThisYear", { year: currentYear })}>
                          {formatNumber(teamWithRiders.riders.reduce((acc, obj) => {
-                            return acc + (obj.rider_seasons[0].points_for_year ?? 0) || 0;
+                            return acc + (obj.rider_seasons[0]?.points_for_year ?? 0) || 0;
                         }, 0))}
                     </ProfileAttribute>
 
