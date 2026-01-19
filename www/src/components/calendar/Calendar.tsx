@@ -11,6 +11,7 @@ import RaceSpan from "./RaceSpan";
 type RaceEventWithDates = {
     id: number;
     name: string;
+    nation_code: string | null;
     race_class_id: number;
     meta_race_id: number;
     startDate: Date;

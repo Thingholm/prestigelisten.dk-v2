@@ -16,7 +16,10 @@ const calendarQuery = () => supabase
         *,
         races (
             *,
-            meta_races (*)
+            meta_races (
+                *,
+                nations (*)
+            )
         )    
     `);
 

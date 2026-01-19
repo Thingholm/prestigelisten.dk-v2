@@ -3,14 +3,15 @@ import { getPointSystem } from "@/db/pointSystem";
 import Calendar from "./Calendar";
 
 export type RaceEvent = {
-  id: number;
-  name: string;
-  race_class_id: number;
-  meta_race_id: number;
-  startDate: string;
-  endDate: string;
-  color: string | null;
-  darkText: boolean;
+    id: number;
+    name: string;
+    nation_code: string | null;
+    race_class_id: number;
+    meta_race_id: number;
+    startDate: string;
+    endDate: string;
+    color: string | null;
+    darkText: boolean;
 }
 
 export default async function CalendarWrapper() {
@@ -21,6 +22,7 @@ export default async function CalendarWrapper() {
         return {
             id: race.id,
             name: race.races!.meta_races.name,
+            nation_code: race.races!.meta_races.nations?.code ?? null,
             race_class_id: race.races!.race_class_id,
             meta_race_id: race.races?.meta_races.id,
             startDate: race.start_date,
