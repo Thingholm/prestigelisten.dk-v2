@@ -54,7 +54,7 @@ export default async function Footer() {
                 </div>
             </div>
             <div className="mt-8">
-                <p>{t("developer")} <a href="mailto:rasmusthingholm@gmail.dk" className="underline hover:text-primary-500">rasmusthingholm@gmail.com</a>.</p>
+                <p>{t("developer")} <a href="mailto:rasmusthingholm@gmail.com" className="underline hover:text-primary-500">rasmusthingholm@gmail.com</a>.</p>
             </div>
         </footer>
     )
