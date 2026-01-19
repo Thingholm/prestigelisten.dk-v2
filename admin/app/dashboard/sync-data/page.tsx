@@ -1,5 +1,9 @@
+import { SyncResultsButtons } from "@/components/sync-results-buttons";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
+import { createClient } from "@/lib/supabase/server";
 import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
+import { redirect } from "next/dist/client/components/navigation";
 import { Suspense } from "react";
 
 async function checkConnection() {
@@ -43,9 +47,22 @@ async function ConnectionStatus() {
   );
 }
 
+async function SyncButtonsWrapper() {
+  const supabase = await createClient();
+  const { data: { session } } = await supabase.auth.getSession();
+
+  if (!session) {
+    redirect("/auth/login");
+  }
+
+  const token = session.access_token;
+
+  return <SyncResultsButtons token={token} />;
+}
+
 export default function Page() {
     return (
-        <div>
+        <div className="flex flex-col gap-4">
             <Suspense fallback={
                 <Alert>
                     <AlertCircleIcon className="h-4 w-4" />
@@ -53,6 +70,8 @@ export default function Page() {
                 </Alert>
             }>
                 <ConnectionStatus />
+                <Separator />
+                <SyncButtonsWrapper />
             </Suspense>
         </div>
     )
