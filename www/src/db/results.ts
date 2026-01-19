@@ -88,7 +88,8 @@ const resultsThisYearQuery = () => supabase
         races (
             *,
             meta_races (
-                *
+                *,
+                nations (*)
             )
         ),
         riders (

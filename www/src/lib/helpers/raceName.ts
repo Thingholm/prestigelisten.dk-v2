@@ -9,6 +9,7 @@ type MetaRace = {
 }
 
 export function getResultRaceName(race: MetaRace, t: ReturnType<typeof useTranslations>) {
+    console.log(race)
     if (race.name.includes("mester i enkeltstart") && race.nations) {
         return `${t(`nations.${race.nations.code}.adjective`)} ${t("championITT")}`;
     }
