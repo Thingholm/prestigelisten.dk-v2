@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Home } from "lucide-react"
+import { ArrowDownToLine, Home } from "lucide-react"
 
 const items = [
     {
@@ -19,9 +19,9 @@ const items = [
         icon: Home,
     },
     {
-        title: "Test",
-        url: "/dashboard/test",
-        icon: Home,
+        title: "Synkronisér data",
+        url: "/dashboard/sync-data",
+        icon: ArrowDownToLine,
     }
 ]
 
