@@ -26,6 +26,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="014fd7d4-56bf-48ee-a8f6-9c902bfb276d"></script>
+      </head>
       <NextIntlClientProvider>
         <body
             className={`font-inter antialiased overflow-x-hidden text-sm sm:text-[0.938rem] flex flex-col min-h-screen`}
