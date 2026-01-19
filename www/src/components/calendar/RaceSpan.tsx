@@ -35,7 +35,7 @@ export default function RaceSpan({
     const locale = useLocale();
     const router = useRouter();
 
-    const metaRace = {id: raceItem.race.meta_race_id, name: raceItem.race.name, nations: {code: raceItem.race.nation_code}};
+    const metaRace = {id: raceItem.race.meta_race_id, name: raceItem.race.name, nations: {code: raceItem.race.nation_code ?? "xx", id: 0, name: ""}};
     
     const { refs, floatingStyles, context } = useFloating({
         open: isOpen,
