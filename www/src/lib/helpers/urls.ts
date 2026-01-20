@@ -126,7 +126,13 @@ type MetaRace = {
     name: string;
 }
 
-export function getRaceUrl(race: MetaRace): Href {
+export function getRaceUrl(race: MetaRace):  {
+    pathname: "/race/[race]/[[...name]]";
+    params: {
+        race: number;
+        name: string[];
+    };
+} {
     return {
         pathname: "/race/[race]/[[...name]]",
         params: {
@@ -134,10 +140,6 @@ export function getRaceUrl(race: MetaRace): Href {
             name: [race.name.replaceAll(" ", "_").toLowerCase()]
         }
     }
-}
-
-export function getRaceUrlString(race: MetaRace, locale: "en" | "da") {
-    return `${locale}/${urls["race"]}/${race.id}/${race.name.replaceAll(" ", "_").toLowerCase()}`;
 }
 
 export function getRiders3YearRollingRankingsUrl(): Href {

@@ -3,10 +3,10 @@ import { RaceSpanItem } from "./Calendar";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { shift, useFloating, useHover, useInteractions } from "@floating-ui/react";
-import { getRaceUrlString } from "@/lib/helpers/urls";
+import { getRaceUrl } from "@/lib/helpers/urls";
 import { getRaceName } from "@/lib/helpers/raceName";
-import { useRouter } from "next/navigation";
 import { getSuffix } from "@/lib/helpers/resultNames";
+import { useRouter } from "@/i18n/navigation";
 
 export default function RaceSpan({
     raceItem,
@@ -36,6 +36,7 @@ export default function RaceSpan({
     const router = useRouter();
 
     const metaRace = {id: raceItem.race.meta_race_id, name: raceItem.race.name, nations: {code: raceItem.race.nation_code ?? "xx", id: 0, name: ""}};
+    const metaRaceWithoutNation = { id: raceItem.race.meta_race_id, name: raceItem.race.name };
     
     const { refs, floatingStyles, context } = useFloating({
         open: isOpen,
@@ -68,7 +69,7 @@ export default function RaceSpan({
     }
 
     const handleClick = () => {
-        router.push(getRaceUrlString(metaRace, locale as "en" | "da"))
+        router.push(getRaceUrl(metaRaceWithoutNation));
     }
 
     const top = 22 + (
