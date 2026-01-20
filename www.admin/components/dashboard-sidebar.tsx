@@ -23,11 +23,11 @@ const items = [
         url: "/dashboard/sync-data",
         icon: ArrowDownToLine,
     },
-    {
-        title: "X/Twitter billeder",
-        url: "/dashboard/twitter-images",
-        icon: Wallpaper,
-    },
+    // {
+    //     title: "X/Twitter billeder",
+    //     url: "/dashboard/twitter-images",
+    //     icon: Wallpaper,
+    // },
 ]
 
 export function DashboardSidebar() {
