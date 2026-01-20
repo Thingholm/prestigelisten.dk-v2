@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { ArrowDownToLine, Home } from "lucide-react"
+import { ArrowDownToLine, Home, Wallpaper } from "lucide-react"
 
 const items = [
     {
@@ -22,7 +22,12 @@ const items = [
         title: "Synkronisér data",
         url: "/dashboard/sync-data",
         icon: ArrowDownToLine,
-    }
+    },
+    {
+        title: "X/Twitter billeder",
+        url: "/dashboard/twitter-images",
+        icon: Wallpaper,
+    },
 ]
 
 export function DashboardSidebar() {
