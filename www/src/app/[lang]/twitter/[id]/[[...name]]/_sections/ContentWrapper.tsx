@@ -70,7 +70,7 @@ export default function ContentWrapper({
                 <div className="flex flex-col gap-y-2">
                     <Button onClick={() => handleSnapshot(ref as React.RefObject<HTMLDivElement>, rider.id, false, locale)}>Download</Button>
                     <Button onClick={() => handleSnapshot(ref as React.RefObject<HTMLDivElement>, rider.id, true, locale)}>Upload</Button>
-                    <Button href={`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${locale}_twitter-images/${rider.id}.jpg`} target="_blank">Revalidér billede</Button>
+                    <Button href={`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${locale}_twitter-images/${rider.id}.png`} target="_blank">Revalidér billede</Button>
                 </div>
             </div>
         </div>
