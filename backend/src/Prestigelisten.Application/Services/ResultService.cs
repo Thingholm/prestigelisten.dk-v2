@@ -98,13 +98,14 @@ public class ResultService : IResultService
         var newResults = ProcessSheetResults(googleSheetsResults, lookupData, lookupData.ExistingResultSheetIndices);
         _results.AddRange(newResults);
 
-        await _results.SaveChangesAsync();
-        await _riders.SaveChangesAsync();
-
         RankCalculationHelper.CalculateRanks(lookupData.Riders.Values.SelectMany(r => r.Seasons.Where(s => s.Year == currentYear)).ToList(), ns => ns.PointsAllTime, (ns, rank) => ns.RankAllTime = rank);
         RankCalculationHelper.CalculateRanks(lookupData.Riders.Values.SelectMany(r => r.Seasons.Where(s => s.Year == currentYear)).ToList(), ns => ns.PointsForYear, (ns, rank) => ns.RankForYear = rank);
         RankCalculationHelper.CalculateRanks(lookupData.Riders.Values.SelectMany(r => r.Nation.Seasons.Where(s => s.Year == currentYear)).ToList(), ns => ns.PointsAllTime, (ns, rank) => ns.RankAllTime = rank);
         RankCalculationHelper.CalculateRanks(lookupData.Riders.Values.SelectMany(r => r.Nation.Seasons.Where(s => s.Year == currentYear)).ToList(), ns => ns.PointsForYear, (ns, rank) => ns.RankForYear = rank);
+
+
+        await _results.SaveChangesAsync();
+        await _riders.SaveChangesAsync();
 
         return newResults;
     }
