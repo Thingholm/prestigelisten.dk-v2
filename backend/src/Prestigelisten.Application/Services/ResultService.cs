@@ -7,6 +7,7 @@ using Prestigelisten.Core.Helpers;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Models;
 using Prestigelisten.Integrations.GoogleSheets.Abstractions.Services;
 using Prestigelisten.Persistence;
+using Prestigelisten.Persistence.Repositories;
 
 namespace Prestigelisten.Application.Services;
 
@@ -98,14 +99,10 @@ public class ResultService : IResultService
         var newResults = ProcessSheetResults(googleSheetsResults, lookupData, lookupData.ExistingResultSheetIndices);
         _results.AddRange(newResults);
 
-        RankCalculationHelper.CalculateRanks(lookupData.Riders.Values.SelectMany(r => r.Seasons.Where(s => s.Year == currentYear)).ToList(), ns => ns.PointsAllTime, (ns, rank) => ns.RankAllTime = rank);
-        RankCalculationHelper.CalculateRanks(lookupData.Riders.Values.SelectMany(r => r.Seasons.Where(s => s.Year == currentYear)).ToList(), ns => ns.PointsForYear, (ns, rank) => ns.RankForYear = rank);
-        RankCalculationHelper.CalculateRanks(lookupData.Riders.Values.SelectMany(r => r.Nation.Seasons.Where(s => s.Year == currentYear)).ToList(), ns => ns.PointsAllTime, (ns, rank) => ns.RankAllTime = rank);
-        RankCalculationHelper.CalculateRanks(lookupData.Riders.Values.SelectMany(r => r.Nation.Seasons.Where(s => s.Year == currentYear)).ToList(), ns => ns.PointsForYear, (ns, rank) => ns.RankForYear = rank);
-
-
         await _results.SaveChangesAsync();
         await _riders.SaveChangesAsync();
+
+        await _seasonService.CalculateSeasonsPointsAndRanksForYear(currentYear);
 
         return newResults;
     }
@@ -234,7 +231,8 @@ public class ResultService : IResultService
             result.Year,
             () => new RiderSeason { Rider = rider, Year = result.Year, PointsForYear = 0 }
         );
-
+        
+        riderSeason.PointsForYear ??= 0;
         riderSeason.PointsForYear += resultPoints;
         result.RiderSeason = riderSeason;
     }
@@ -257,6 +255,7 @@ public class ResultService : IResultService
 
             nation.Points += resultPoints;
             nation.ActivePoints += rider.Active ? resultPoints : 0;
+            nationSeason.PointsForYear ??= 0;
             nationSeason.PointsForYear += resultPoints;
             result.NationSeason = nationSeason;
         }
