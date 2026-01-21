@@ -71,7 +71,7 @@ export default async function ProfileSection({
                     }
 
                     <ProfileAttribute label={t("allTimePlacement")} href={getRidersListUrl()}>
-                        {formatNumber(alltimeRank) == "-"}
+                        {formatNumber(alltimeRank) ?? "-"}
                     </ProfileAttribute>
 
                     <ProfileAttribute label={t("points")}>
