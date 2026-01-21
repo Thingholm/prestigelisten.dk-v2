@@ -14,12 +14,14 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 export default async function ProfileSection({
     rider,
+    alltimeRank,
     activeRank,
     nationRank,
     groupedResults,
     previousNationalities
 }: Readonly<{
     rider: Rider,
+    alltimeRank?: number | null,
     activeRank?: number | null,
     nationRank?: number | null,
     groupedResults: GroupedResult<Rider["results"][number]>[],
@@ -69,7 +71,7 @@ export default async function ProfileSection({
                     }
 
                     <ProfileAttribute label={t("allTimePlacement")} href={getRidersListUrl()}>
-                        {formatNumber(rider.rider_seasons.find(season => season.year = new Date().getFullYear())?.rank_all_time) ?? "-"}
+                        {formatNumber(alltimeRank) == "-"}
                     </ProfileAttribute>
 
                     <ProfileAttribute label={t("points")}>

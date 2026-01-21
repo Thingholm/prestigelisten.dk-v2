@@ -67,6 +67,7 @@ export default async function RiderPage({
         <div>
             <ProfileSection
                 rider={rider}
+                alltimeRank={rankedRiders.find(r => r.id == rider.id)?.rank}
                 activeRank={rankedActiveRiders.find(r => r.id == rider.id)?.rank}
                 nationRank={rankedNationRiders.find(r => r.id == rider.id)?.rank}
                 groupedResults={groupedResults}
