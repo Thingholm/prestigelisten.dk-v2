@@ -212,7 +212,8 @@ resource "azurerm_container_app" "api_ca" {
     cors {
       allowed_origins = [
         "http://localhost:3000",
-        "https://admin.prestigelisten.dk"
+        "https://admin.prestigelisten.dk",
+        "https://prestigelisten-dk-v2-4kus.vercel.app"
       ]
       allowed_methods = ["GET", "POST", "PUT", "DELETE"]
       allowed_headers = ["*"]
