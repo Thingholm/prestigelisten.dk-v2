@@ -8,6 +8,8 @@ import GreatestSeasonsSection from "./_sections/GreatestSeasonsSection";
 import { Tables } from "@/utils/supabase/database.types";
 import { rankBy } from "@/lib/helpers/rank";
 
+export const revalidate = 86400;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
     const { locale } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.greatestSeasons'});

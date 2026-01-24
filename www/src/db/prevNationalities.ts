@@ -37,7 +37,7 @@ export const GetRidersWithPreviousNationality = (nationId: number) => unstable_c
     }));
 
     return filteredData as PreviousNationalityData[]
-}, ["ridersWithPreviousNationality", nationId.toString()], { revalidate: 60 * 60 * 24})
+}, ["ridersWithPreviousNationality", nationId.toString()], { revalidate: 60 * 60 * 24  * 24})
 
 const ridersWithPreviousNationalityQuery = supabase
     .from("previous_nationalities")
@@ -76,7 +76,7 @@ export const getRidersPreviousNationalities = (riderId: number) => unstable_cach
     if (error) { throw error; }
     
     return data;
-}, ["ridersPreviousNationalities", riderId.toString()], { revalidate: 60 * 60 });
+}, ["ridersPreviousNationalities", riderId.toString()], { revalidate: 60 * 60 * 24  });
 
 const ridersPreviousNationalitiesQuery = supabase
     .from("previous_nationalities")

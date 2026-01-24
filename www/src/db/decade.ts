@@ -7,7 +7,7 @@ export const getDecadeRankings = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as unknown as DecadeRanking[];
-}, ["decadeRankings"], { revalidate: 60 * 60 });
+}, ["decadeRankings"], { revalidate: 60 * 60 * 24  * 24 });
 
 const decadeRankingsQuery = () => supabase
     .from("rider_decade_rankings")

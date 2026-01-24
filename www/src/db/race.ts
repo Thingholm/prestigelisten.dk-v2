@@ -8,7 +8,7 @@ export const getRace = (raceId: number) => unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as MetaRace;
-}, ["race", raceId.toString()], { revalidate: 60 * 60 });
+}, ["race", raceId.toString()], { revalidate: 60 * 60 * 24  });
 
 const raceQuery = () => supabase
     .from("meta_races")
@@ -30,7 +30,7 @@ export const getRaces = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Race[];
-}, ["races"], { revalidate: 60 * 60 * 24 })
+}, ["races"], { revalidate: 60 * 60 * 24  * 24 })
 
 const racesQuery = () => supabase
     .from("races")

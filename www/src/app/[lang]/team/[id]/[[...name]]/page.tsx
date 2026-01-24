@@ -9,6 +9,8 @@ import { getActiveRiderPointsLookup } from "@/db/rider";
 import { getTranslations } from "next-intl/server";
 import { deserializeQueryString } from "@/lib/helpers/urls";
 
+export const revalidate = 86400;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  name: string[] }> }) {
     const { locale, name } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.teamPage'});

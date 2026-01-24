@@ -8,7 +8,7 @@ export const getMinRiderBirthYear = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as MinRiderBirthYear;
-}, ["minRiderBirthYear"], { revalidate: 60 * 60 * 24 * 30})
+}, ["minRiderBirthYear"], { revalidate: 60 * 60 * 24  * 24 * 30})
 
 const minRiderBirthYearQuery = () => supabase
     .from("riders")
@@ -23,7 +23,7 @@ export const getMaxRiderBirthYear = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as MaxRiderBirthYear;
-}, ["maxRiderBirthYear"], { revalidate: 60 * 60})
+}, ["maxRiderBirthYear"], { revalidate: 60 * 60 * 24 })
 
 const maxRiderBirthYearQuery = () => supabase
     .from("riders")
@@ -38,7 +38,7 @@ export const getRiders = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Riders;
-}, ["riders"], { revalidate: 60 * 60})
+}, ["riders"], { revalidate: 60 * 60 * 24 })
 
 const ridersQuery = () => supabase
     .from("riders")
@@ -65,7 +65,7 @@ export const getRidersRange = (ids: number[]) => unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Riders;
-}, ["ridersInRange", ids.toString()], { revalidate: 60 * 60 });
+}, ["ridersInRange", ids.toString()], { revalidate: 60 * 60 * 24  });
 
 export const getRider = (id: number) => unstable_cache(async () => {
     const { data, error } = await supabase
@@ -93,7 +93,7 @@ export const getRider = (id: number) => unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Rider;
-}, ["rider", id.toString()], { revalidate: 60 * 60 })
+}, ["rider", id.toString()], { revalidate: 60 * 60 * 24  })
 
 const riderQuery = supabase
     .from("riders")
@@ -123,7 +123,7 @@ export const getAllRidersWithNationAndTeam = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as RidersWithNationAndTeam;
-}, ["allRidersWithNationAndTeam"], { revalidate: 60 * 60 });
+}, ["allRidersWithNationAndTeam"], { revalidate: 60 * 60 * 24  });
 
 const ridersWithNationAndTeamQuery = () => supabase
     .from("riders")
@@ -145,7 +145,7 @@ export const getRidersFromYear = (year: number) => unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as RidersFromYear;
-}, ["getRidersFromYear", year.toString()], { revalidate: 60 * 60 })
+}, ["getRidersFromYear", year.toString()], { revalidate: 60 * 60 * 24  })
 
 const ridersFromYearQuery = () => supabase
     .from("riders")
@@ -166,7 +166,7 @@ export const getActiveRiderPointsLookup = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as ActiveRiderPointsLookup;
-}, ["activeRiderPointsLookup"], { revalidate: 60 * 60 });
+}, ["activeRiderPointsLookup"], { revalidate: 60 * 60 * 24  });
 
 export type ActiveRiderPointsLookup = {
     id: number;

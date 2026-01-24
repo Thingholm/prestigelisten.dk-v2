@@ -16,6 +16,8 @@ import { getAllRidersWithNationAndTeam } from "@/db/rider";
 import { getNationsWithTopRidersAndCount } from "@/db/nations";
 import NationsSection from "./_sections/NationsSection";
 
+export const revalidate = 86400;
+
 export default async function HomePage() {
     const [
         ridersWithNationAndTeam,

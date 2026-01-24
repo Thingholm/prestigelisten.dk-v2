@@ -21,7 +21,7 @@ export const getNavSearchbarData = unstable_cache(async () => {
         races: racesData.sort((a, b) => Math.min(...a.races.map(r => r.race_classes.sorting_index)) - Math.min(...b.races.map(r => r.race_classes.sorting_index))),
         teams: teamsData
     } as NavSearchbarData
-}, ["navSearchbarData"], { revalidate: 60 * 60})
+}, ["navSearchbarData"], { revalidate: 60 * 60 * 24 })
 
 const ridersQuery = supabase
     .from("riders")

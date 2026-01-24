@@ -8,7 +8,7 @@ export const getCalendar = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Calendar;
-}, ["calendar"], { revalidate: 60 * 60 * 24 * 30 });
+}, ["calendar"], { revalidate: 60 * 60 * 24  * 24 * 30 });
 
 const calendarQuery = () => supabase
     .from("calendar")

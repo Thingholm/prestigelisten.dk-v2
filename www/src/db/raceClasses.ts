@@ -7,7 +7,7 @@ export const getRaceClasses = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data;
-}, ["raceClasses"], { revalidate: 60 * 60 * 24 * 365 })
+}, ["raceClasses"], { revalidate: 60 * 60 * 24  * 24 * 365 })
 
 const raceClassesQuery = () => supabase
     .from("race_classes")

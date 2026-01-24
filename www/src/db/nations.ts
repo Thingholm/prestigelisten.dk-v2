@@ -8,7 +8,7 @@ export const getNationWithRiders = (nationId: number) => unstable_cache(async ()
     if (error) { throw error; }
 
     return data as NationWithRiders;
-}, ["nationWithRiders", nationId.toString()], { revalidate: 60 * 60 });
+}, ["nationWithRiders", nationId.toString()], { revalidate: 60 * 60 * 24  });
 
 const nationWithRidersQuery = () => supabase
     .from("nations")
@@ -42,7 +42,7 @@ export const getNations = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data;
-}, ["nations"], { revalidate: 60 * 60 });
+}, ["nations"], { revalidate: 60 * 60 * 24  });
 
 export const getNationsWithTopRidersAndCount = unstable_cache(async () => {
     const { data: nationsData, error: nationsError } = await supabase
@@ -77,7 +77,7 @@ export const getNationsWithTopRidersAndCount = unstable_cache(async () => {
     });
 
     return nationsWithTopRidersAndCount;
-}, ["nationsWithTopRidersAndCount"], { revalidate: 60 * 60 });
+}, ["nationsWithTopRidersAndCount"], { revalidate: 60 * 60 * 24  });
 
 export type NationWithTopRidersAndCount = Awaited<ReturnType<typeof getNationsWithTopRidersAndCount>>;
 
@@ -101,7 +101,7 @@ export const getNation = (nationId: number) => unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Nation;
-}, ["nation", nationId.toString()], { revalidate: 60 * 60 });
+}, ["nation", nationId.toString()], { revalidate: 60 * 60 * 24  });
 
 const nationQuery = supabase
     .from("nations")

@@ -8,7 +8,7 @@ export const getPointSystem = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as PointSystem;
-}, ["pointSystem"], { revalidate: 60 * 60 * 24 * 30 });
+}, ["pointSystem"], { revalidate: 60 * 60 * 24  * 24 * 30 });
 
 const pointSystemQuery = () => supabase
     .from("point_system")

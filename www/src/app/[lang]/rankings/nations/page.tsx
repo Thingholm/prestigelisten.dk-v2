@@ -5,6 +5,8 @@ import { getTranslations } from "next-intl/server";
 import ListSection from "./_sections/ListSection";
 import { getNationsWithTopRidersAndCount, NationWithTopRidersAndCount } from "@/db/nations";
 
+export const revalidate = 86400;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
     const { locale } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.nationsRankings'});

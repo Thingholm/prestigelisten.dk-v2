@@ -13,8 +13,7 @@ import { getRidersPreviousNationalities } from "@/db/prevNationalities";
 import { getTranslations } from "next-intl/server";
 import { deserializeQueryString } from "@/lib/helpers/urls";
 
-export const revalidate = 7200;
-export const dynamic = 'force-static';
+export const revalidate = 86400;
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: "en" | "da", id: number,  name: string[] }> }) {
     const { lang, id, name } = await params;

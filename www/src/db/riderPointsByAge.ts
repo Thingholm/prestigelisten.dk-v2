@@ -8,7 +8,7 @@ export const getRiderPointsByAge = (age: number) => unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as RiderPointsByAge[];
-}, ["riderPointsByAge", age.toString()], { revalidate: 60 * 60 })
+}, ["riderPointsByAge", age.toString()], { revalidate: 60 * 60 * 24  })
 
 const riderPointsByAgeQuery = () => supabase
     .from("rider_points_by_age")
@@ -39,7 +39,7 @@ export const getMinRiderAge = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data?.min ?? 0;
-}, ["minRiderAge"], { revalidate: 60 * 60 * 24 * 365})
+}, ["minRiderAge"], { revalidate: 60 * 60 * 24  * 24 * 365})
 
 const minRiderAgeQuery = () => supabase
     .from("rider_points_by_age")
@@ -53,7 +53,7 @@ export const getMaxRiderAge = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data?.max ?? 0;
-}, ["maxRiderAge"], { revalidate: 60 * 60 * 24 * 365})
+}, ["maxRiderAge"], { revalidate: 60 * 60 * 24  * 24 * 365})
 
 const maxRiderAgeQuery = () => supabase
     .from("rider_points_by_age")

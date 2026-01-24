@@ -6,6 +6,8 @@ import { getTranslations } from "next-intl/server";
 import GreatestRidersEachSpanSection from "./_sections/GreatestRidersEachSpanSection";
 import { getFirstRaceYear } from "@/db/results";
 
+export const revalidate = 86400;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
     const { locale } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.3YearSpan'});

@@ -8,7 +8,7 @@ export const getGreatestSeasons = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data;
-}, ["greatestSeasons"], { revalidate: 60 * 60 });
+}, ["greatestSeasons"], { revalidate: 60 * 60 * 24  });
 
 const greatestSeasonsQuery = () => supabase
     .from("rider_seasons")
@@ -37,7 +37,7 @@ export const getAllGreatestSeasons = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as GreatestSeasons;
-}, ["allGreatestSeasons"], { revalidate: 60 * 60 });
+}, ["allGreatestSeasons"], { revalidate: 60 * 60 * 24  });
 
 const allGreatestSeasonsQuery = () => supabase
     .from("rider_seasons")
@@ -68,7 +68,7 @@ export const getTop10AlltimeEachSeason = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data;
-}, ["top10AlltimeEachSeason"], { revalidate: 60 * 60 })
+}, ["top10AlltimeEachSeason"], { revalidate: 60 * 60 * 24  })
 
 const greatestTop10AlltimeEachSeasonQuery = () => supabase
     .from("rider_seasons")
@@ -90,7 +90,7 @@ export const getAllRiderSeasonsFromYear = (year: number) => unstable_cache(async
     if (error) { throw error; }
 
     return data as RiderSeasonsFromYear;
-}, ["allRiderSeasonsFromYear", year.toString()], { revalidate: 60 * 60 })
+}, ["allRiderSeasonsFromYear", year.toString()], { revalidate: 60 * 60 * 24  })
 
 const allRiderSeasonsFromYearQuery = () => supabase
     .from("rider_seasons")
@@ -110,7 +110,7 @@ export const getAllNationSeasonsFromYear = (year: number) => unstable_cache(asyn
     if (error) { throw error; }
 
     return data as NationSeasonsFromYear;
-}, ["allNationSeasonsFromYear", year.toString()], { revalidate: 60 * 60 })
+}, ["allNationSeasonsFromYear", year.toString()], { revalidate: 60 * 60 * 24  })
 
 const allNationSeasonsFromYearQuery = () => supabase
     .from("nation_seasons")
@@ -128,7 +128,7 @@ export const getRiderCountEachSeason = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as RiderCount[];
-}, ["riderCountEachSeason"], { revalidate: 60 * 60 })
+}, ["riderCountEachSeason"], { revalidate: 60 * 60 * 24  })
 
 const riderCountQuery = supabase.rpc('get_rider_season_counts_by_year');
 
@@ -140,7 +140,7 @@ export const getNationCountEachSeason = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as NationCount[];
-}, ["nationCountEachSeason"], { revalidate: 60 * 60 })
+}, ["nationCountEachSeason"], { revalidate: 60 * 60 * 24  })
 
 const NationCountQuery = supabase.rpc('get_nation_season_counts_by_year');
 
