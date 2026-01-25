@@ -17,6 +17,7 @@ import { getTranslations } from "next-intl/server";
 import { nationCodeById } from "@/lib/constants/nations";
 
 export const revalidate = 86400;
+export const dynamic = 'force-static';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  id: number }> }) {
     const { locale, id } = await params;
