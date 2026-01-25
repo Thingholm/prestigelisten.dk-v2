@@ -7,6 +7,7 @@ import { rankBy } from "@/lib/helpers/rank";
 import RiderPointsByAgeTable from "./_tables/RiderPointsByAgeTable";
 
 export const revalidate = 86400;
+export const dynamic = 'force-static';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  age: number }> }) {
     const { locale, age } = await params;

@@ -10,6 +10,7 @@ import ResultsFromYearSection from "./_sections/ResultsFromYearSection";
 import { getTranslations } from "next-intl/server";
 
 export const revalidate = 86400;
+export const dynamic = 'force-static';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  year: number }> }) {
     const { locale, year } = await params;
