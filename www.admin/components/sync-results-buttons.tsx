@@ -14,12 +14,27 @@ export function SyncResultsButtons({
     const [fetching, setFetching] = useState<"all" | "latest" | null>(null);
     const [result, setResult] = useState<{ type: "success" | "error", message: string } | null>(null);
 
-   const handleSyncAll = async () => {
+    const revalidateSiteCache = async () => {
+        try {
+            await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate`, {
+                method: "POST",
+                headers: {
+                    authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+        } catch (error) {
+            console.error("Failed to revalidate site cache:", error);
+        }
+    };
+
+    const handleSyncAll = async () => {
         setFetching("all");
         setResult(null);
         try {
             const response = await syncAllResultsAsync(token);
             setResult({ type: "success", message: `Synkroniserede succesfuldt ${response} resultater.` });
+            await revalidateSiteCache();
         } catch (error) {
             setResult({ type: "error", message: error instanceof Error ? error.message : "Der opstod en fejl" });
         } finally {
@@ -33,6 +48,7 @@ export function SyncResultsButtons({
         try {
             const response = await syncLatestResultsAsync(token);
             setResult({ type: "success", message: `Synkroniserede succesfuldt ${response} resultater.` });
+            await revalidateSiteCache();
         } catch (error) {
             setResult({ type: "error", message: error instanceof Error ? error.message : "Der opstod en fejl" });
         } finally {

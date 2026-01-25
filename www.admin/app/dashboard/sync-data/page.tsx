@@ -6,6 +6,8 @@ import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
 import { redirect } from "next/dist/client/components/navigation";
 import { Suspense } from "react";
 
+export const dynamic = 'force-dynamic'
+
 async function checkConnection() {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
