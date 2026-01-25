@@ -17,6 +17,7 @@ import { getNationsWithTopRidersAndCount } from "@/db/nations";
 import NationsSection from "./_sections/NationsSection";
 
 export const revalidate = 86400;
+export const dynamic = 'force-static';
 
 export default async function HomePage() {
     const [
