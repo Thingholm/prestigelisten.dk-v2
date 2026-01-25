@@ -76,7 +76,10 @@ export const getRidersPreviousNationalities = (riderId: number) => unstable_cach
     if (error) { throw error; }
     
     return data;
-}, ["ridersPreviousNationalities", riderId.toString()], { revalidate: 60 * 60 * 24  });
+}, ["ridersPreviousNationalities", riderId.toString()], { 
+    revalidate: 60 * 60 * 24 ,
+    tags: ["all"]
+});
 
 const ridersPreviousNationalitiesQuery = supabase
     .from("previous_nationalities")

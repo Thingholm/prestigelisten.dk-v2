@@ -8,7 +8,10 @@ export const getRiderPointsByAge = (age: number) => unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as RiderPointsByAge[];
-}, ["riderPointsByAge", age.toString()], { revalidate: 60 * 60 * 24  })
+}, ["riderPointsByAge", age.toString()], { 
+    revalidate: 60 * 60 * 24 ,
+    tags: ["all"]
+})
 
 const riderPointsByAgeQuery = () => supabase
     .from("rider_points_by_age")

@@ -8,7 +8,10 @@ export const getRace = (raceId: number) => unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as MetaRace;
-}, ["race", raceId.toString()], { revalidate: 60 * 60 * 24  });
+}, ["race", raceId.toString()], { 
+    revalidate: 60 * 60 * 24 ,
+    tags: ["all"]
+});
 
 const raceQuery = () => supabase
     .from("meta_races")

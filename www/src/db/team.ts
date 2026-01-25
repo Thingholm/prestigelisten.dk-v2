@@ -8,7 +8,10 @@ export const getTeamsWithRiders = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data;
-}, ["teamsWithRiders"], { revalidate: 60 * 60 * 24  });
+}, ["teamsWithRiders"], { 
+    revalidate: 60 * 60 * 24 ,
+    tags: ["all"]
+});
 
 const teamsWithRidersQuery = () => supabase
     .from("teams")
@@ -35,7 +38,10 @@ export const getTeamWithRiders = (teamId: number) => unstable_cache(async () => 
     if (error) { throw error; }
 
     return data as TeamWithRiders;
-}, ["teamWithRiders", teamId.toString()], { revalidate: 60 * 60 * 24  });
+}, ["teamWithRiders", teamId.toString()], { 
+    revalidate: 60 * 60 * 24 ,
+    tags: ["all"]
+});
 
 const teamWithRidersQuery = () => supabase
     .from("teams")
@@ -88,7 +94,10 @@ export const getTeamsFromNation = (nationId: number) => unstable_cache(async () 
     if (error) { throw error; }
 
     return data as TeamFromNation[];
-}, ["teamsFromNation", nationId.toString()], { revalidate: 60 * 60 * 24  });
+}, ["teamsFromNation", nationId.toString()], { 
+    revalidate: 60 * 60 * 24 ,
+    tags: ["all"]
+});
 
 const teamsFromNationQuery = supabase
     .from("teams")

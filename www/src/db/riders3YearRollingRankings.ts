@@ -8,7 +8,10 @@ export const getRiders3YearRollingRankings = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as unknown as Riders3YearRollingRankings[];
-}, ["riders3YearRollingRankings"], { revalidate: 60 * 60 * 24  });
+}, ["riders3YearRollingRankings"], { 
+    revalidate: 60 * 60 * 24 ,
+    tags: ["all"]
+});
 
 const riders3YearRollingRankingsQuery = () => supabase
     .from("riders_3_year_rolling_rankings")
@@ -40,7 +43,10 @@ export const getRiders3YearRollingRankingsByEndYear = (endYear: number) => unsta
     if (error) { throw error; }
 
     return data as unknown as Riders3YearRollingRankingsWithResults[];
-}, ["riders3YearRollingRankingsByEndYear", endYear.toString()], { revalidate: 60 * 60 * 24  });
+}, ["riders3YearRollingRankingsByEndYear", endYear.toString()], { 
+    revalidate: 60 * 60 * 24 ,
+    tags: ["all"]
+});
 
 const riders3YearRollingRankingsByEndYearQuery = () => supabase
     .from("riders_3_year_rolling_rankings")
