@@ -12,6 +12,13 @@ import { getTranslations } from "next-intl/server";
 export const revalidate = 86400;
 export const dynamic = 'force-static';
 
+export async function generateStaticParams() {
+    return [
+        { lang: 'en' },
+        { lang: 'da' }
+    ];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  year: number }> }) {
     const { locale, year } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.seasonOverview'});

@@ -12,6 +12,13 @@ import { deserializeQueryString } from "@/lib/helpers/urls";
 export const revalidate = 86400;
 export const dynamic = 'force-static';
 
+export async function generateStaticParams() {
+    return [
+        { lang: 'en' },
+        { lang: 'da' }
+    ];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  name: string[] }> }) {
     const { locale, name } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.teamPage'});

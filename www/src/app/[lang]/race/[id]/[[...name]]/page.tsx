@@ -18,6 +18,13 @@ import { deserializeQueryString } from "@/lib/helpers/urls";
 export const revalidate = 86400;
 export const dynamic = 'force-static';
 
+export async function generateStaticParams() {
+    return [
+        { lang: 'en' },
+        { lang: 'da' }
+    ];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  id: number, name: string[] }> }) {
     const { locale, id, name } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.race'});

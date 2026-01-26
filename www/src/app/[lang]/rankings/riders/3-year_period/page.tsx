@@ -9,6 +9,13 @@ import { getFirstRaceYear } from "@/db/results";
 export const revalidate = 86400;
 export const dynamic = 'force-static';
 
+export async function generateStaticParams() {
+    return [
+        { lang: 'en' },
+        { lang: 'da' }
+    ];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da" }> }) {
     const { locale } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.3YearSpan'});

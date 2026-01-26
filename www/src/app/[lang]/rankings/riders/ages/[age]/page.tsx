@@ -9,6 +9,13 @@ import RiderPointsByAgeTable from "./_tables/RiderPointsByAgeTable";
 export const revalidate = 86400;
 export const dynamic = 'force-static';
 
+export async function generateStaticParams() {
+    return [
+        { lang: 'en' },
+        { lang: 'da' }
+    ];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da",  age: number }> }) {
     const { locale, age } = await params;
     const t = await getTranslations({locale, namespace: 'metadata.ageRanking'});
