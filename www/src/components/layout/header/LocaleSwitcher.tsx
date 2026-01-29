@@ -12,7 +12,7 @@ export default function LocaleSwitcher() {
 
     const handleClick = (newLocale: string) => {
         router.push(
-            // @ts-ignore
+            // @ts-expect-error Locale switcher does not work well with strict types
             { pathname: pathname, query: Object.fromEntries(searchParams.entries()) },
             { locale: newLocale }
         );
