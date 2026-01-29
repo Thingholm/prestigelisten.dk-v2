@@ -1,8 +1,8 @@
 "use client";
 
-import { useRouter, usePathname } from "@/i18n/navigation";
-import { useLocale, } from "next-intl";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
+import { useSearchParams, usePathname } from "next/navigation";
 
 export default function LocaleSwitcher() {
     const locale = useLocale();
@@ -13,7 +13,7 @@ export default function LocaleSwitcher() {
     const handleClick = (newLocale: string) => {
         router.push(
             // @ts-expect-error Locale switcher does not work well with strict types
-            { pathname: pathname, query: Object.fromEntries(searchParams.entries()) },
+            { pathname: pathname.replace(`/${locale}`, ""), query: Object.fromEntries(searchParams.entries()) },
             { locale: newLocale }
         );
     }
