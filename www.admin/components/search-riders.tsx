@@ -18,34 +18,44 @@ export default function SearchRiders({
 }>) {
     const router = useRouter();
 
+    const [searchQuery, setSearchQuery] = React.useState("");
+
     const handleClick = (rider: Tables<"riders">) => {
-        router.push(`/dashboard/twitter-images/${rider.id}`);
+        router.push(`/dashboard/some-images/${rider.id}`);
     };
 
     return (
         <div className="flex flex-col gap-2">
             <InputGroup>
-                <InputGroupInput placeholder="Søg efter ryttere..." />
+                <InputGroupInput 
+                    placeholder="Søg efter ryttere..." 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
                 <InputGroupAddon>
                     <Search />
                 </InputGroupAddon>
-                {/* <InputGroupAddon align="inline-end">12 results</InputGroupAddon> */}
             </InputGroup>
-            <Card className="gap-1 p-3">
-                {riders.slice(0, 10).map((rider, index) => (
-                    <React.Fragment key={rider.id}>
-                        <Button
-                            key={rider.id}
-                            variant="ghost"
-                            className="justify-start w-full text-left"
-                            onClick={() => handleClick(rider)}
-                        >
-                            {rider.first_name} {rider.last_name}
-                        </Button>
-                        {index < 9 && <Separator />}
-                    </React.Fragment>
-                ))}
-            </Card>
+            {searchQuery.length > 0 &&
+                <Card className="gap-1 p-3">
+                    {riders.filter(rider => `${rider.first_name} ${rider.last_name}`.toLowerCase().includes(searchQuery.toLowerCase()))
+                        .slice(0, 10)
+                        .map((rider, index) => (
+                            <React.Fragment key={rider.id}>
+                                <Button
+                                    key={rider.id}
+                                    variant="ghost"
+                                    className="justify-start w-full text-left"
+                                    onClick={() => handleClick(rider)}
+                                >
+                                    {rider.first_name} {rider.last_name}
+                                </Button>
+                                {index < 9 && <Separator />}
+                            </React.Fragment>
+                        )
+                    )}
+                </Card>
+            }
         </div>
     );
 }
