@@ -1,4 +1,4 @@
-import { RidersFilter } from "@/app/[lang]/rankings/riders/_sections/ListSection";
+import { RidersFilter } from "@/app/[locale]/rankings/riders/_sections/ListSection";
 
 export function filterToSearchParamsMapper(filter: RidersFilter, defaultFilter: RidersFilter) {
     const params = new URLSearchParams();

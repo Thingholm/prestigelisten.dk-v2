@@ -1,7 +1,8 @@
 "use client";
 
-import { useLocale } from "next-intl";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "@/i18n/navigation";
+import { useLocale, } from "next-intl";
+import { useSearchParams } from "next/navigation";
 
 export default function LocaleSwitcher() {
     const locale = useLocale();
@@ -10,7 +11,11 @@ export default function LocaleSwitcher() {
     const searchParams = useSearchParams();
 
     const handleClick = (newLocale: string) => {
-        router.push(`${pathname.replace(`/${locale}`, `/${newLocale}`)}?${searchParams.toString()}`);
+        router.push(
+            // @ts-ignore
+            { pathname: pathname, query: Object.fromEntries(searchParams.entries()) },
+            { locale: newLocale }
+        );
     }
 
     return (

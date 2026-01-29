@@ -1,4 +1,4 @@
-import { RidersFilter } from "@/app/[lang]/rankings/riders/_sections/ListSection";
+import { RidersFilter } from "@/app/[locale]/rankings/riders/_sections/ListSection";
 import { urls } from "../constants/urls";
 import { Link } from "@/i18n/navigation";
 import { ComponentProps } from "react";
