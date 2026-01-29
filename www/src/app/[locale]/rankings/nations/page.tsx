@@ -1,7 +1,7 @@
 import Section from "@/components/layout/Section";
 import PageHeading from "@/components/ui/PageHeading";
 import { getRidersRange, Riders } from "@/db/rider";
-import { getTranslations, setRequestLocale, setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import ListSection from "./_sections/ListSection";
 import { getNationsWithTopRidersAndCount, NationWithTopRidersAndCount } from "@/db/nations";
 

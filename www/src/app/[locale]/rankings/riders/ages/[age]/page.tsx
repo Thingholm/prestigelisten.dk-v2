@@ -1,7 +1,7 @@
 import Section from "@/components/layout/Section";
 import PageHeading from "@/components/ui/PageHeading";
 import { getMaxRiderAge, getMinRiderAge, getRiderPointsByAge } from "@/db/riderPointsByAge";
-import { getTranslations, setRequestLocale, setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import SelectAgeSection from "./_sections/SelectAgeSection";
 import { rankBy } from "@/lib/helpers/rank";
 import RiderPointsByAgeTable from "./_tables/RiderPointsByAgeTable";
