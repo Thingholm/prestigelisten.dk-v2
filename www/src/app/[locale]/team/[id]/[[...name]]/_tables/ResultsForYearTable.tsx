@@ -57,13 +57,13 @@ export default function ResultsForYearTable({
                         <TableRow key={result.id}>
                             <TableCell>{result.points}</TableCell>
                             <TableCell>
-                                <Link href={getRaceUrl(result.races.meta_races)} className="hover:underline font-semibold">
+                                <Link prefetch={false}  href={getRaceUrl(result.races.meta_races)} className="hover:underline font-semibold">
                                     <FlagSpan code={getRaceFlagCode(result.races.meta_races)} className="!hidden md:table-cell!"/>
                                     <span className="md:ml-1">{getGroupedResultName(result, tResultNames)}</span>
                                 </Link>
                                 <SecondaryCellSpan breakpoint="md">
                                     <FlagSpan code={result.riders.nations?.code} className="mr-1"/>
-                                    <Link href={getRiderUrl(result.riders)}>{getRiderName(result.riders)}</Link>
+                                    <Link prefetch={false}  href={getRiderUrl(result.riders)}>{getRiderName(result.riders)}</Link>
                                 </SecondaryCellSpan>
                             </TableCell>
                             <RiderNameCell rider={result.riders} showFlagBreakpoint="always" className="hidden md:table-cell"/>

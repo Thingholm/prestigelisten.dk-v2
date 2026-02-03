@@ -25,7 +25,7 @@ export default function ResultNameListItem({
             {count && count > 1 && 
                 <span className="absolute right-full mr-2 opacity-70">{count}x</span>
             }
-            <Link href={getRaceUrl(metaRace)} className="font-medium hover:underline">{resultName}</Link>
+            <Link prefetch={false}  href={getRaceUrl(metaRace)} className="font-medium hover:underline">{resultName}</Link>
             {points && showPoints &&
                 <span className="opacity-70 ml-2 font-light">- {points}p</span>
             }

@@ -60,7 +60,7 @@ export default function GreatestResultsTable({
 
                                             return (
                                                 <span key={rider.id}>
-                                                    <Link href={getRiderUrl(rider)} className="hover:underline">
+                                                    <Link prefetch={false}  href={getRiderUrl(rider)} className="hover:underline">
                                                         <span>{getRiderName(rider)} </span>
                                                         <span>
                                                             ({riderGroup.results
@@ -80,7 +80,7 @@ export default function GreatestResultsTable({
                                 <React.Fragment key={group.id}>
                                     <TableRow className="font-medium lg:font-normal">
                                         <TableCell className="min-w-52">
-                                            <Link href={getRaceUrl(group.races.meta_races)} className="hover:underline">
+                                            <Link prefetch={false}  href={getRaceUrl(group.races.meta_races)} className="hover:underline">
                                                 <FlagSpan code={getRaceFlagCode(group.races.meta_races)}/>
                                                 {group.results.length > 1 && <span>{group.results.length}x </span>}
                                                 {getGroupedResultName(group, tResultNames)}

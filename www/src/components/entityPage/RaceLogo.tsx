@@ -50,7 +50,7 @@ export default function RaceLogo({
                     <p className="text-sm text-gray-500 mt-1">
                         <span>{t("source")}: </span>
                         {metaRace.images?.credit_url ? 
-                            <Link href={metaRace.images?.credit_url} target="_blank">{metaRace.images?.credit}</Link>
+                            <Link prefetch={false}  href={metaRace.images?.credit_url} target="_blank">{metaRace.images?.credit}</Link>
                         :
                             <span>{metaRace.images?.credit}</span>
                         }

@@ -16,7 +16,7 @@ export default function DesktopNav() {
 
     return (
         <nav className="text-primary-500 gap-x-4 text-sm 2xl:text-base 2xl:gap-x-8 hidden xl:flex">
-            <Link href={{ pathname: "/point_scale" }} className="relative group/item w-fit">
+            <Link prefetch={false}  href={{ pathname: "/point_scale" }} className="relative group/item w-fit">
                 <span>{t("pointSystem")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>
@@ -68,15 +68,15 @@ export default function DesktopNav() {
                     onClick={() => setIsDropdownOpen(prev => [false, prev[1]])}
                 />
             </DropdownGroup>
-            <Link href={{ pathname: "/calendar" }} className="relative group/item w-fit">
+            <Link prefetch={false}  href={{ pathname: "/calendar" }} className="relative group/item w-fit">
                 <span>{t("raceCalendar")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>
-            <Link href={{ pathname: "/year" }} className="relative group/item w-fit">
+            <Link prefetch={false}  href={{ pathname: "/year" }} className="relative group/item w-fit">
                 <span>{t("seasonOverview")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>
-            <Link href={{ pathname: "/team" }} className="relative group/item w-fit">
+            <Link prefetch={false}  href={{ pathname: "/team" }} className="relative group/item w-fit">
                 <span>{t("teams")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>
@@ -96,7 +96,7 @@ export default function DesktopNav() {
                     onClick={() => setIsDropdownOpen(prev => [prev[0], false])}
                 />
             </DropdownGroup>
-            <Link href={{ pathname: "/about_prestigelisten" }} className="relative group/item w-fit">
+            <Link prefetch={false}  href={{ pathname: "/about_prestigelisten" }} className="relative group/item w-fit">
                 <span>{t("about")}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover/item:w-full"></span>
             </Link>

@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <SidebarTrigger />
             </div>
             <div className="flex items-center gap-2">
-              <Link href="/auth/update-password" className="text-sm hover:underline">Ændre kodeord</Link>
+              <Link prefetch={false}  href="/auth/update-password" className="text-sm hover:underline">Ændre kodeord</Link>
               <LogoutButton />
             </div>
         </header>

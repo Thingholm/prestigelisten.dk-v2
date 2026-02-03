@@ -46,7 +46,7 @@ export default async function LatestResultsTable({
                                                         : ", ")
                                                     : ""
                                                 }
-                                                <Link href={getRaceUrl(result.races.meta_races)} className="hover:underline">{getGroupedResultName(result, tResultNames, true, true)}</Link>
+                                                <Link prefetch={false}  href={getRaceUrl(result.races.meta_races)} className="hover:underline">{getGroupedResultName(result, tResultNames, true, true)}</Link>
                                             </span>
                                         ))}
                                     </>

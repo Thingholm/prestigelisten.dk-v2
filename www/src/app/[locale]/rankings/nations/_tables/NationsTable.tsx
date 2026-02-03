@@ -34,7 +34,7 @@ export default function NationsTable({
                         />
                         <TableCell className="hidden md:table-cell">
                             {nation.riders.map((rider, index) => (
-                                <Link 
+                                <Link prefetch={false}  
                                     href={getRiderUrl(rider)} 
                                     className="hover:underline"
                                     key={rider.id}

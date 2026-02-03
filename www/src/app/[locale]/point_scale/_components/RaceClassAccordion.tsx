@@ -73,7 +73,7 @@ export default function RaceClassAccordion({
                         <p className="mb-1 font-medium hidden lg:block">{tTableColumns("active")}</p>
                         <div className="flex flex-col gap-y-1">
                             {activeRaces.map(race => (
-                                <Link 
+                                <Link prefetch={false}  
                                     key={race.id}
                                     href={getRaceUrl(race.meta_races)} 
                                     className="hover:underline"
@@ -89,7 +89,7 @@ export default function RaceClassAccordion({
                         <p className="mb-1 font-medium hidden lg:block">{tTableColumns("inactive")}</p>
                         <div className="flex flex-col gap-y-1 opacity-60">
                             {inactiveRaces.filter(race => race.race_class_id == raceClass.id && !race.active).map(race => (
-                                <Link 
+                                <Link prefetch={false}  
                                     key={race.id}
                                     href={getRaceUrl(race.meta_races)} 
                                     className="hover:underline"

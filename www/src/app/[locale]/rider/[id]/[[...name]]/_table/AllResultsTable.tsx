@@ -45,7 +45,7 @@ export default function AllResultsTable({
                         return (
                             <TableRow key={group.id}>
                                 <TableCell className="font-medium">
-                                    <Link href={getRaceUrl(group.races.meta_races)} className="hover:underline">
+                                    <Link prefetch={false}  href={getRaceUrl(group.races.meta_races)} className="hover:underline">
                                         <FlagSpan code={getRaceFlagCode({id: group.races.meta_races.id, nations: nations.find(nation => nation.id == group.races.meta_races.nation_id)})}/>
                                         {group.results.length > 1 && <span>{group.results.length}x </span>}
                                         {getGroupedResultName(group, tResultNames, true)}
@@ -55,7 +55,7 @@ export default function AllResultsTable({
                                     {groupedByYear.sort((a, b) => a.key - b.key).map((result, index) => (
                                         <span key={result.key}>
                                             {index != 0 ? ", " : ""}
-                                            <Link href={getYearUrl(result.key)} className="hover:underline">{result.key}<span className="opacity-70 font-light">{result.results.length > 1 ? ` (${result.results.length}x)` : ""}</span></Link>
+                                            <Link prefetch={false}  href={getYearUrl(result.key)} className="hover:underline">{result.key}<span className="opacity-70 font-light">{result.results.length > 1 ? ` (${result.results.length}x)` : ""}</span></Link>
                                         </span>
                                     ))}
                                 </TableCell>

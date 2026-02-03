@@ -38,7 +38,7 @@ export default function EditionsResultsSection({
         >
             <p className="mb-4">
                 <span>{t("pointClassForEdition")}: </span>
-                <Link href={{ pathname: "/point_scale" }} className="font-semibold hover:underline">
+                <Link prefetch={false}  href={{ pathname: "/point_scale" }} className="font-semibold hover:underline">
                     {tRaceClasses(resultsForYear[0].races.race_class_id.toString())}
                 </Link>
             </p>

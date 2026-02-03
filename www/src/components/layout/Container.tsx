@@ -36,7 +36,7 @@ export default function Container({
     return (
         <div className={`w-full ${className}`}>
             {title && (href 
-                ? <Link href={href}><Heading /></Link>
+                ? <Link prefetch={false}  href={href}><Heading /></Link>
                 : <Heading />
             )}
             {isCard 

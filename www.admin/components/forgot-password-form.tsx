@@ -89,7 +89,7 @@ export function ForgotPasswordForm({
               </div>
               <div className="mt-4 text-center text-sm">
                 Already have an account?{" "}
-                <Link
+                <Link prefetch={false} 
                   href="/auth/login"
                   className="underline underline-offset-4"
                 >

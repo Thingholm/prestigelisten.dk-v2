@@ -78,7 +78,7 @@ export default function Button({
         }
 
         return (
-            <Link
+            <Link prefetch={false} 
                 href={href}
                 target={target}
                 onClick={onClick}

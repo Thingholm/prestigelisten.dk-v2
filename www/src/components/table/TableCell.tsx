@@ -43,7 +43,7 @@ export default function TableCell({
         <td className={`py-0.5 not-last:pr-1 ${className}`} colSpan={colSpan ?? 1}>
             <span>
                 {href 
-                    ? <Link href={href} className="hover:underline">{content}</Link>
+                    ? <Link prefetch={false}  href={href} className="hover:underline">{content}</Link>
                     : content
                 }
             </span>

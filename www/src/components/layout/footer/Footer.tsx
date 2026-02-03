@@ -24,25 +24,25 @@ export default async function Footer() {
                 <div>
                     <h4 className="font-bold opacity-50 uppercase mb-2">{t("lists")}</h4>
                     <ul>
-                        <li><Link className="hover:underline hover:text-primary-500" href={getRidersListUrl()}>{t("ridersAlltime")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={getRidersListUrl({ status: "active" })}>{t("active")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={getRidersListUrl({ isSingleYear: true })}>{t("greatestByYear")}</Link></li>
-                        {locale == "da" && <li><Link className="hover:underline hover:text-primary-500" href={getRidersListUrl({ nations: [14] })}>{t("danish")}</Link></li>}
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/rankings/nations" }}>{t("nations")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/rankings/riders/greatest_seasons" }}>{t("greatestSeasons")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/rankings/riders/ages" }}>{t("greatestByAge")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/rankings/riders/3-year_period" }}>{t("3YearPeriod")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={getRidersListUrl()}>{t("ridersAlltime")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={getRidersListUrl({ status: "active" })}>{t("active")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={getRidersListUrl({ isSingleYear: true })}>{t("greatestByYear")}</Link></li>
+                        {locale == "da" && <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={getRidersListUrl({ nations: [14] })}>{t("danish")}</Link></li>}
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/rankings/nations" }}>{t("nations")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/rankings/riders/greatest_seasons" }}>{t("greatestSeasons")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/rankings/riders/ages" }}>{t("greatestByAge")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/rankings/riders/3-year_period" }}>{t("3YearPeriod")}</Link></li>
                     </ul>
                 </div>
                 <div>
                     <h4 className="font-bold opacity-50 uppercase mb-2">{t("more")}</h4>
                     <ul>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/point_scale" }}>{t("pointSystem")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/year" }}>{t("seasonOverview")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/team" }}>{t("teams")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/compare" }}>{t("compare")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/calendar" }}>{t("calendar")}</Link></li>
-                        <li><Link className="hover:underline hover:text-primary-500" href={{ pathname: "/about_prestigelisten" }}>{t("about")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/point_scale" }}>{t("pointSystem")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/year" }}>{t("seasonOverview")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/team" }}>{t("teams")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/compare" }}>{t("compare")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/calendar" }}>{t("calendar")}</Link></li>
+                        <li><Link prefetch={false}  className="hover:underline hover:text-primary-500" href={{ pathname: "/about_prestigelisten" }}>{t("about")}</Link></li>
                         <li><a className="hover:underline hover:text-primary-500" href={urls["quiz"]}>{t("quiz")}</a></li>                        
                     </ul>
                 </div>

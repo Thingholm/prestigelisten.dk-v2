@@ -45,7 +45,7 @@ export default async function ProfileSection({
                                 .sort((a, b) => (b.end_year ?? 9999) - (a.end_year ?? 9999))
                                 .map((previousNationality, index) => (
                                     <span key={previousNationality.id} className="font-semibold text-nowrap">
-                                        <Link href={getNationUrl(previousNationality.nations)} className="hover:underline">
+                                        <Link prefetch={false}  href={getNationUrl(previousNationality.nations)} className="hover:underline">
                                             <FlagSpan code={previousNationality.nations.code}/> 
                                             <span>{tNations(`${previousNationality.nations.code}.name`)} {`(${previousNationality.start_year ?? ""}-${previousNationality.end_year ?? ""})`}</span>
                                         </Link>

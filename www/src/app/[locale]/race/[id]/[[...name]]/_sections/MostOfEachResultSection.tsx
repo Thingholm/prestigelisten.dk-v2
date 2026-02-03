@@ -96,7 +96,7 @@ export default function MostOfEachResultSection({
                                             {resultsGroupedByYear.map((r, index) => (
                                                 <span key={`${result.key}-${index}`}>
                                                     {index > 0 && ", "}
-                                                    <Link href={getYearUrl(r.year)} className="hover:underline">{r.year}{r.count > 1 && <span className="opacity-70 font-light"> ({r.count}x)</span>}</Link>
+                                                    <Link prefetch={false}  href={getYearUrl(r.year)} className="hover:underline">{r.year}{r.count > 1 && <span className="opacity-70 font-light"> ({r.count}x)</span>}</Link>
                                                 </span>
                                             ))}
                                         </TableCell>

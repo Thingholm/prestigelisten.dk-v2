@@ -31,7 +31,7 @@ export default function RiderImage({
                 <p className="text-sm text-gray-500 mt-1">
                     <span>{t("source")}: </span>
                     {rider.images?.credit_url ? 
-                        <Link href={rider.images.credit_url} target="_blank">{rider.images.credit}</Link>
+                        <Link prefetch={false}  href={rider.images.credit_url} target="_blank">{rider.images.credit}</Link>
                     :
                         <span>{rider.images.credit}</span>
                     }

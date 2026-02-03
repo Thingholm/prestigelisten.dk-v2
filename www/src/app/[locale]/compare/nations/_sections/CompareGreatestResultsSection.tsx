@@ -63,7 +63,7 @@ export default async function CompareGreatestResultsSection({
                                                 {group.results.length > 1 && 
                                                     <span className="mr-2 opacity-70">{group.results.length}x</span>
                                                 }
-                                                <Link href={getRaceUrl(group.races.meta_races)} className="font-medium hover:underline">{getGroupedResultName(group, tResultNames)}</Link>
+                                                <Link prefetch={false}  href={getRaceUrl(group.races.meta_races)} className="font-medium hover:underline">{getGroupedResultName(group, tResultNames)}</Link>
                                             </li>
                                         </div>
                                     ))}
@@ -85,7 +85,7 @@ export default async function CompareGreatestResultsSection({
                                                 className="md:hidden"
                                             />
                                             <li className="hidden md:block">
-                                                <Link href={getRaceUrl(group.races.meta_races)} className="font-medium hover:underline">{getGroupedResultName(group, tResultNames)}</Link>
+                                                <Link prefetch={false}  href={getRaceUrl(group.races.meta_races)} className="font-medium hover:underline">{getGroupedResultName(group, tResultNames)}</Link>
                                                 {group.results.length > 1 && 
                                                     <span className="ml-2 opacity-70">{group.results.length}x</span>
                                                 }

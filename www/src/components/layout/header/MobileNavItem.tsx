@@ -26,7 +26,7 @@ export default function MobileNavItem({
     }
 
     return (
-        <Link
+        <Link prefetch={false} 
             href={href}
             onClick={() => onClick()}
             className="hover:underline py-1 inline-block"

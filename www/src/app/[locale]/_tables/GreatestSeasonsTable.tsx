@@ -41,7 +41,7 @@ export default function GreatestSeasonsTable({
                         <TableCell className="hidden lg:table-cell">
                             {season.results.slice(0, 3).map((result, index) => (
                                 <span key={result.id}>
-                                    <Link href={getRaceUrl(result.races.meta_races)} className="hover:underline">{getGroupedResultNameWithCount(result, tResultNames, true)}</Link>
+                                    <Link prefetch={false}  href={getRaceUrl(result.races.meta_races)} className="hover:underline">{getGroupedResultNameWithCount(result, tResultNames, true)}</Link>
                                     {index < 2 && ", "}
                                 </span>
                             ))}

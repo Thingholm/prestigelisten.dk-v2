@@ -83,7 +83,7 @@ export default function NavSearchBar({
                             <>
                                 <p className="px-4 opacity-50 font-semibold uppercase">{t("searchRiders")}</p>
                                 {riders.slice(0, 7).map(rider => (
-                                    <Link
+                                    <Link prefetch={false} 
                                         key={rider.id}
                                         href={getRiderUrl(rider)}
                                         onClick={handleLinkClick}
@@ -98,7 +98,7 @@ export default function NavSearchBar({
                             <>
                                 <p className="px-4 opacity-50 font-semibold uppercase">{t("searchNations")}</p>
                                 {nations.slice(0, 5).map(nation => (
-                                    <Link
+                                    <Link prefetch={false} 
                                         key={nation.id}
                                         href={getNationUrl(nation)}
                                         onClick={handleLinkClick}
@@ -113,7 +113,7 @@ export default function NavSearchBar({
                             <>
                                 <p className="px-4 opacity-50 font-semibold uppercase">{t("searchRaces")}</p>
                                 {races.slice(0, 4).map(race => (
-                                    <Link
+                                    <Link prefetch={false} 
                                         key={race.id}
                                         href={getRaceUrl(race)}
                                         onClick={handleLinkClick}
@@ -128,7 +128,7 @@ export default function NavSearchBar({
                             <>
                                 <p className="px-4 opacity-50 font-semibold uppercase">{t("searchTeams")}</p>
                                 {teams.slice(0, 3).map(team => (
-                                    <Link
+                                    <Link prefetch={false} 
                                         key={team.id}
                                         href={getTeamUrl(team)}
                                         onClick={handleLinkClick}

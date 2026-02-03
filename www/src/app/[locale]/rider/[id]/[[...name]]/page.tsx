@@ -23,10 +23,10 @@ export async function generateStaticParams() {
     ];
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: "en" | "da", id: number,  name: string[] }> }) {
-    const { lang, id, name } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: "en" | "da", id: number,  name: string[] }> }) {
+    const { locale, id, name } = await params;
     const t = await getTranslations('metadata.riderPage');
-    const riderName = name?.[0] ? deserializeQueryString(name[0]) : t("rider")
+    const riderName = name?.[0] ? deserializeQueryString(name[0]) : t("rider")    
     
     return {
         title: t('title', {rider: riderName}),
@@ -35,10 +35,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: "en
         creator: "@prestigelisten",
         card: "summary_large_image",
         openGraph: {
-            images: [`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${lang}_twitter-images/${id}.png`]
+            images: [`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${locale}_twitter-images/${id}.png`]
         },
         twitter: {
-            images: [`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${lang}_twitter-images/${id}.png`]
+            images: [`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${locale}_twitter-images/${id}.png`]
         }
     };
 }
@@ -51,6 +51,14 @@ export default async function RiderPage({
     const { locale, id } = await params;    
     setRequestLocale(locale);
 
+    const headers = await import('next/headers').then(m => m.headers());
+    const purpose = headers.get('purpose') || headers.get('x-nextjs-data');
+    
+    console.log(`🔍 [${new Date().toISOString()}] Rider ${id}`, {
+        locale,
+        purpose,  // Will show 'prefetch' if it's a prefetch
+        params
+    });
     const [
         rider,
         pointSystem, 

@@ -30,7 +30,7 @@ export default function DropdownItem({
     }
 
     return (
-        <Link
+        <Link prefetch={false} 
             href={href}
             className="text-primary-500 relative group/item w-fit"
             onClick={handleOnClick}

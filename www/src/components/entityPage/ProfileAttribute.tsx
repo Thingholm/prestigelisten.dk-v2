@@ -18,7 +18,7 @@ export default function ProfileAttribute({
             <span>{label}: </span>
             <span className="font-semibold">
                 {href 
-                    ? <Link href={href} className="hover:underline">{children}</Link> 
+                    ? <Link prefetch={false}  href={href} className="hover:underline">{children}</Link> 
                     : children
                 }
             </span>
