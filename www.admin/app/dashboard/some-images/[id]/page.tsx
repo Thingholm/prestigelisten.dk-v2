@@ -1,3 +1,4 @@
+import ContentWrapper from "@/components/social-media-images/ContentWrapper";
 import { getPointSystem } from "@/lib/db/point-system";
 import { getResultsThisYear, ResultWithRaceDate } from "@/lib/db/results";
 import { getRiderById, getRiders, Rider } from "@/lib/db/riders";
@@ -20,7 +21,7 @@ type GroupedByKey<T, K> = {
 
 type Ranked<T> = T & { rank: number | null };
 
-type RankingEvolution = {
+export type RankingEvolution = {
     results: GroupedByKey<ResultWithRaceDate & {
         points: number;
     }, number>[];
@@ -140,6 +141,12 @@ export default async function Page({
     return (
         <div>
             {id}
+            <ContentWrapper
+                rankingEvolutions={rankingsByDate}
+                rider={rider}
+                riderPoints={riderPoints}
+                pointSystem={pointSystem}
+            />
         </div>
     );
 }
