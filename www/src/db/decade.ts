@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase/client";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { unstable_cache } from "next/cache";
 
 export const getDecadeRankings = unstable_cache(async () => {
@@ -8,11 +8,11 @@ export const getDecadeRankings = unstable_cache(async () => {
 
     return data as unknown as DecadeRanking[];
 }, ["decadeRankings"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const decadeRankingsQuery = () => supabase
+const decadeRankingsQuery = () => supabaseServer
     .from("rider_decade_rankings")
     .select("*")
     .lte("rank", 10)

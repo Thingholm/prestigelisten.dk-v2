@@ -1,5 +1,5 @@
-import { supabase } from "@/utils/supabase/client";
 import { Tables } from "@/utils/supabase/database.types";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { unstable_cache } from "next/cache";
 
 export const getRiderPointsByAge = (age: number) => unstable_cache(async () => {
@@ -9,11 +9,11 @@ export const getRiderPointsByAge = (age: number) => unstable_cache(async () => {
 
     return data as RiderPointsByAge[];
 }, ["riderPointsByAge", age.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 })
 
-const riderPointsByAgeQuery = () => supabase
+const riderPointsByAgeQuery = () => supabaseServer
     .from("rider_points_by_age")
     .select(`
         *,
@@ -42,9 +42,9 @@ export const getMinRiderAge = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data?.min ?? 0;
-}, ["minRiderAge"], { revalidate: 60 * 60 * 24  * 24 * 365})
+}, ["minRiderAge"], { revalidate: 60 * 60 * 24  * 24 * 365, tags: ["all"]})
 
-const minRiderAgeQuery = () => supabase
+const minRiderAgeQuery = () => supabaseServer
     .from("rider_points_by_age")
     .select("age.min()")
     .maybeSingle();
@@ -56,9 +56,9 @@ export const getMaxRiderAge = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data?.max ?? 0;
-}, ["maxRiderAge"], { revalidate: 60 * 60 * 24  * 24 * 365})
+}, ["maxRiderAge"], { revalidate: 60 * 60 * 24  * 24 * 365, tags: ["all"]})
 
-const maxRiderAgeQuery = () => supabase
+const maxRiderAgeQuery = () => supabaseServer
     .from("rider_points_by_age")
     .select("age.max()")
     .maybeSingle();

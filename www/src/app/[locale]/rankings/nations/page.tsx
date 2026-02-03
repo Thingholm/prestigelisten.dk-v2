@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import ListSection from "./_sections/ListSection";
 import { getNationsWithTopRidersAndCount, NationWithTopRidersAndCount } from "@/db/nations";
 
-export const revalidate = 86400;
+export const revalidate = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {

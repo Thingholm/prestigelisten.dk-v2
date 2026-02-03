@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase/client";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
@@ -21,21 +21,24 @@ export const getNavSearchbarData = unstable_cache(async () => {
         races: racesData.sort((a, b) => Math.min(...a.races.map(r => r.race_classes.sorting_index)) - Math.min(...b.races.map(r => r.race_classes.sorting_index))),
         teams: teamsData
     } as NavSearchbarData
-}, ["navSearchbarData"], { revalidate: 60 * 60 * 24 })
+}, ["navSearchbarData"], { 
+    revalidate: 60 * 60 * 24 * 7,
+    tags: ["all"]
+});
 
-const ridersQuery = supabase
+const ridersQuery = supabaseServer
     .from("riders")
     .select(`
         *
     `);
 
-const nationsQuery = supabase
+const nationsQuery = supabaseServer
     .from("nations")
     .select(`
         * 
     `);
 
-const racesQuery = supabase
+const racesQuery = supabaseServer
     .from("meta_races")
     .select(`
         *,
@@ -47,7 +50,7 @@ const racesQuery = supabase
     `)
     .order("name");
 
-const teamsQuery = supabase
+const teamsQuery = supabaseServer
     .from("teams")
     .select("*")
     .order("name");

@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase/client";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
@@ -8,9 +8,12 @@ export const getMinRiderBirthYear = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as MinRiderBirthYear;
-}, ["minRiderBirthYear"], { revalidate: 60 * 60 * 24  * 24 * 30})
+}, ["minRiderBirthYear"], {
+    revalidate: 60 * 60 * 24 * 7,
+    tags: ["all"]
+})
 
-const minRiderBirthYearQuery = () => supabase
+const minRiderBirthYearQuery = () => supabaseServer
     .from("riders")
     .select("year.min()")
     .maybeSingle();
@@ -23,9 +26,12 @@ export const getMaxRiderBirthYear = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as MaxRiderBirthYear;
-}, ["maxRiderBirthYear"], { revalidate: 60 * 60 * 24 })
+}, ["maxRiderBirthYear"], { 
+    revalidate: 60 * 60 * 24 * 7, 
+    tags: ["all"] 
+})
 
-const maxRiderBirthYearQuery = () => supabase
+const maxRiderBirthYearQuery = () => supabaseServer
     .from("riders")
     .select("year.max()")
     .maybeSingle();
@@ -38,9 +44,12 @@ export const getRiders = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Riders;
-}, ["riders"], { revalidate: 60 * 60 * 24 })
+}, ["riders"], { 
+    revalidate: 60 * 60 * 24 * 7, 
+    tags: ["all"] 
+});
 
-const ridersQuery = () => supabase
+const ridersQuery = () => supabaseServer
     .from("riders")
     .select(`
         *,
@@ -52,7 +61,7 @@ const ridersQuery = () => supabase
 export type Riders = QueryData<ReturnType<typeof ridersQuery>>;
 
 export const getRidersRange = (ids: number[]) => unstable_cache(async () => {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseServer
         .from("riders")
         .select(`
             *,
@@ -66,12 +75,12 @@ export const getRidersRange = (ids: number[]) => unstable_cache(async () => {
 
     return data as Riders;
 }, ["ridersInRange", ids.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
 export const getRider = (id: number) => unstable_cache(async () => {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseServer
         .from("riders")
         .select(`
             *,
@@ -97,11 +106,11 @@ export const getRider = (id: number) => unstable_cache(async () => {
 
     return data as Rider;
 }, ["rider", id.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 })
 
-const riderQuery = supabase
+const riderQuery = supabaseServer
     .from("riders")
     .select(`
         *,
@@ -130,11 +139,11 @@ export const getAllRidersWithNationAndTeam = unstable_cache(async () => {
 
     return data as RidersWithNationAndTeam;
 }, ["allRidersWithNationAndTeam"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const ridersWithNationAndTeamQuery = () => supabase
+const ridersWithNationAndTeamQuery = () => supabaseServer
     .from("riders")
     .select(`
         *,
@@ -155,11 +164,11 @@ export const getRidersFromYear = (year: number) => unstable_cache(async () => {
 
     return data as RidersFromYear;
 }, ["getRidersFromYear", year.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 })
 
-const ridersFromYearQuery = () => supabase
+const ridersFromYearQuery = () => supabaseServer
     .from("riders")
     .select(`
         *,
@@ -170,7 +179,7 @@ const ridersFromYearQuery = () => supabase
 export type RidersFromYear = QueryData<ReturnType<typeof ridersFromYearQuery>>;
 
 export const getActiveRiderPointsLookup = unstable_cache(async () => {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseServer
         .from("riders")
         .select("id, points, active")
         .eq("active", true);
@@ -179,7 +188,7 @@ export const getActiveRiderPointsLookup = unstable_cache(async () => {
 
     return data as ActiveRiderPointsLookup;
 }, ["activeRiderPointsLookup"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 

@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase/client";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
@@ -10,7 +10,7 @@ export const getPointSystem = unstable_cache(async () => {
     return data as PointSystem;
 }, ["pointSystem"], { revalidate: 60 * 60 * 24  * 24 * 30 });
 
-const pointSystemQuery = () => supabase
+const pointSystemQuery = () => supabaseServer
     .from("point_system")
     .select("*");
 

@@ -1,5 +1,5 @@
-import { supabase } from "@/utils/supabase/client";
 import { Tables } from "@/utils/supabase/database.types";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { unstable_cache } from "next/cache";
 
 export const getRiders3YearRollingRankings = unstable_cache(async () => {
@@ -9,11 +9,11 @@ export const getRiders3YearRollingRankings = unstable_cache(async () => {
 
     return data as unknown as Riders3YearRollingRankings[];
 }, ["riders3YearRollingRankings"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const riders3YearRollingRankingsQuery = () => supabase
+const riders3YearRollingRankingsQuery = () => supabaseServer
     .from("riders_3_year_rolling_rankings")
     .select(`
         *,
@@ -44,11 +44,11 @@ export const getRiders3YearRollingRankingsByEndYear = (endYear: number) => unsta
 
     return data as unknown as Riders3YearRollingRankingsWithResults[];
 }, ["riders3YearRollingRankingsByEndYear", endYear.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const riders3YearRollingRankingsByEndYearQuery = () => supabase
+const riders3YearRollingRankingsByEndYearQuery = () => supabaseServer
     .from("riders_3_year_rolling_rankings")
     .select(`
         *,

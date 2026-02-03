@@ -6,7 +6,7 @@ import SelectAgeSection from "./_sections/SelectAgeSection";
 import { rankBy } from "@/lib/helpers/rank";
 import RiderPointsByAgeTable from "./_tables/RiderPointsByAgeTable";
 
-export const revalidate = 86400;
+export const revalidate = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {

@@ -15,7 +15,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getRaceName } from "@/lib/helpers/raceName";
 import { deserializeQueryString } from "@/lib/helpers/urls";
 
-export const revalidate = 86400;
+export const revalidate = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {

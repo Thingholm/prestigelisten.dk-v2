@@ -12,10 +12,14 @@ type Rider = {
     last_name: string;
 }
 
-export function getRiderUrl(rider: Rider): Href {
-    const riderName = rider.first_name
+export function getRiderUrlString(rider: Rider): string {
+    return rider.first_name
         ? `${rider.first_name.replaceAll(" ", "_").toLowerCase()}_${rider.last_name.replaceAll(" ", "_").toLowerCase()}`.replaceAll(".", "")
         : rider.last_name.replaceAll(" ", "_").toLowerCase()
+}
+
+export function getRiderUrl(rider: Rider): Href {
+    const riderName = getRiderUrlString(rider);
 
     return {
         pathname: "/rider/[rider]/[[...name]]",

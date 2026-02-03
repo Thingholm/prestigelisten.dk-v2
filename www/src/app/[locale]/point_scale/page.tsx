@@ -6,7 +6,7 @@ import { getRaceClasses } from "@/db/raceClasses";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import RaceClassAccordion from "./_components/RaceClassAccordion";
 
-export const revalidate = 86400;
+export const revalidate = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {

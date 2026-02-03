@@ -1,9 +1,9 @@
-import { supabase } from "@/utils/supabase/client";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
 export const GetRidersWithPreviousNationality = (nationId: number) => unstable_cache(async () => {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseServer
         .from("previous_nationalities")
         .select(`
             *,
@@ -37,9 +37,12 @@ export const GetRidersWithPreviousNationality = (nationId: number) => unstable_c
     }));
 
     return filteredData as PreviousNationalityData[]
-}, ["ridersWithPreviousNationality", nationId.toString()], { revalidate: 60 * 60 * 24  * 24})
+}, ["ridersWithPreviousNationality", nationId.toString()], { 
+    revalidate: 60 * 60 * 24 * 7 , 
+    tags: ["all"] 
+});
 
-const ridersWithPreviousNationalityQuery = supabase
+const ridersWithPreviousNationalityQuery = supabaseServer
     .from("previous_nationalities")
     .select(`
         *,
@@ -60,7 +63,7 @@ const ridersWithPreviousNationalityQuery = supabase
 export type PreviousNationalityData = QueryData<typeof ridersWithPreviousNationalityQuery>[number]
 
 export const getRidersPreviousNationalities = (riderId: number) => unstable_cache(async () => {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseServer
         .from("previous_nationalities")
         .select(`
             *,
@@ -77,11 +80,11 @@ export const getRidersPreviousNationalities = (riderId: number) => unstable_cach
     
     return data;
 }, ["ridersPreviousNationalities", riderId.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const ridersPreviousNationalitiesQuery = supabase
+const ridersPreviousNationalitiesQuery = supabaseServer
     .from("previous_nationalities")
     .select(`
         *,

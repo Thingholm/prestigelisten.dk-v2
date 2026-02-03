@@ -8,7 +8,7 @@ import GreatestSeasonsSection from "./_sections/GreatestSeasonsSection";
 import { Tables } from "@/utils/supabase/database.types";
 import { rankBy } from "@/lib/helpers/rank";
 
-export const revalidate = 86400;
+export const revalidate = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {

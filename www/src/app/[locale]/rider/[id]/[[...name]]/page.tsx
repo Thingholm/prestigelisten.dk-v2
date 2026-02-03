@@ -1,4 +1,4 @@
-import { getAllRidersWithNationAndTeam, getRider } from "@/db/rider";
+import { getAllRidersWithNationAndTeam, getRider, getRiders } from "@/db/rider";
 import { rankBy } from "@/lib/helpers/rank";
 import ProfileSection from "./_sections/ProfileSection";
 import { getPointSystem } from "@/db/pointSystem";
@@ -13,7 +13,7 @@ import { getRidersPreviousNationalities } from "@/db/prevNationalities";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { deserializeQueryString } from "@/lib/helpers/urls";
 
-export const revalidate = 86400;
+export const revalidate = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {

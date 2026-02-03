@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase/client";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
@@ -9,11 +9,11 @@ export const getTeamsWithRiders = unstable_cache(async () => {
 
     return data;
 }, ["teamsWithRiders"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const teamsWithRidersQuery = () => supabase
+const teamsWithRidersQuery = () => supabaseServer
     .from("teams")
     .select(`
         *,
@@ -39,11 +39,11 @@ export const getTeamWithRiders = (teamId: number) => unstable_cache(async () => 
 
     return data as TeamWithRiders;
 }, ["teamWithRiders", teamId.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const teamWithRidersQuery = () => supabase
+const teamWithRidersQuery = () => supabaseServer
     .from("teams")
     .select(`
         *,
@@ -81,7 +81,7 @@ const teamWithRidersQuery = () => supabase
 export type TeamWithRiders = QueryData<ReturnType<typeof teamWithRidersQuery>>[number];
 
 export const getTeamsFromNation = (nationId: number) => unstable_cache(async () => {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseServer
         .from("teams")
         .select(`
             *,
@@ -95,11 +95,11 @@ export const getTeamsFromNation = (nationId: number) => unstable_cache(async () 
 
     return data as TeamFromNation[];
 }, ["teamsFromNation", nationId.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const teamsFromNationQuery = supabase
+const teamsFromNationQuery = supabaseServer
     .from("teams")
     .select(`
         *,

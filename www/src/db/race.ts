@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase/client";
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
@@ -9,11 +9,11 @@ export const getRace = (raceId: number) => unstable_cache(async () => {
 
     return data as MetaRace;
 }, ["race", raceId.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const raceQuery = () => supabase
+const raceQuery = () => supabaseServer
     .from("meta_races")
     .select(`
         *,
@@ -33,9 +33,12 @@ export const getRaces = unstable_cache(async () => {
     if (error) { throw error; }
 
     return data as Race[];
-}, ["races"], { revalidate: 60 * 60 * 24  * 24 })
+}, ["races"], { 
+    revalidate: 60 * 60 * 24 * 7, 
+    tags: ["all"] 
+});
 
-const racesQuery = () => supabase
+const racesQuery = () => supabaseServer
     .from("races")
     .select(`
         *,

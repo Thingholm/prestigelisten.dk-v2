@@ -9,7 +9,7 @@ import GreatestRidersBornInYearSection from "./_sections/GreatestRidersBornInYea
 import ResultsFromYearSection from "./_sections/ResultsFromYearSection";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const revalidate = 86400;
+export const revalidate = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {

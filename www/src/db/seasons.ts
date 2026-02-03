@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/supabase/client"
+import { supabaseServer } from "@/utils/supabase/server-static";
 import { QueryData } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 
@@ -9,11 +9,11 @@ export const getGreatestSeasons = unstable_cache(async () => {
 
     return data;
 }, ["greatestSeasons"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const greatestSeasonsQuery = () => supabase
+const greatestSeasonsQuery = () => supabaseServer
     .from("rider_seasons")
     .select(`
         *,
@@ -41,11 +41,11 @@ export const getAllGreatestSeasons = unstable_cache(async () => {
 
     return data as GreatestSeasons;
 }, ["allGreatestSeasons"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 });
 
-const allGreatestSeasonsQuery = () => supabase
+const allGreatestSeasonsQuery = () => supabaseServer
     .from("rider_seasons")
     .select(`
         *,
@@ -75,11 +75,11 @@ export const getTop10AlltimeEachSeason = unstable_cache(async () => {
 
     return data;
 }, ["top10AlltimeEachSeason"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 })
 
-const greatestTop10AlltimeEachSeasonQuery = () => supabase
+const greatestTop10AlltimeEachSeasonQuery = () => supabaseServer
     .from("rider_seasons")
     .select(`
         *,
@@ -100,11 +100,11 @@ export const getAllRiderSeasonsFromYear = (year: number) => unstable_cache(async
 
     return data as RiderSeasonsFromYear;
 }, ["allRiderSeasonsFromYear", year.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 })
 
-const allRiderSeasonsFromYearQuery = () => supabase
+const allRiderSeasonsFromYearQuery = () => supabaseServer
     .from("rider_seasons")
     .select(`
         *,
@@ -123,11 +123,11 @@ export const getAllNationSeasonsFromYear = (year: number) => unstable_cache(asyn
 
     return data as NationSeasonsFromYear;
 }, ["allNationSeasonsFromYear", year.toString()], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 })
 
-const allNationSeasonsFromYearQuery = () => supabase
+const allNationSeasonsFromYearQuery = () => supabaseServer
     .from("nation_seasons")
     .select(`
         *,
@@ -137,32 +137,32 @@ const allNationSeasonsFromYearQuery = () => supabase
 export type NationSeasonsFromYear = QueryData<ReturnType<typeof allNationSeasonsFromYearQuery>>; 
 
 export const getRiderCountEachSeason = unstable_cache(async () => {
-    const { data, error } = await supabase.rpc('get_rider_season_counts_by_year')
+    const { data, error } = await supabaseServer.rpc('get_rider_season_counts_by_year')
 ;
 
     if (error) { throw error; }
 
     return data as RiderCount[];
 }, ["riderCountEachSeason"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 })
 
-const riderCountQuery = supabase.rpc('get_rider_season_counts_by_year');
+const riderCountQuery = supabaseServer.rpc('get_rider_season_counts_by_year');
 
 export type RiderCount = QueryData<typeof riderCountQuery>[number];
 
 export const getNationCountEachSeason = unstable_cache(async () => {
-    const { data, error } = await supabase.rpc('get_nation_season_counts_by_year');
+    const { data, error } = await supabaseServer.rpc('get_nation_season_counts_by_year');
 
     if (error) { throw error; }
 
     return data as NationCount[];
 }, ["nationCountEachSeason"], { 
-    revalidate: 60 * 60 * 24 ,
+    revalidate: 60 * 60 * 24 * 7,
     tags: ["all"]
 })
 
-const NationCountQuery = supabase.rpc('get_nation_season_counts_by_year');
+const NationCountQuery = supabaseServer.rpc('get_nation_season_counts_by_year');
 
 export type NationCount = QueryData<typeof NationCountQuery>[number];

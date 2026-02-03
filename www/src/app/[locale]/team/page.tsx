@@ -4,7 +4,7 @@ import TeamsTablesSection from "./_sections/TeamsTablesSection";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Section from "@/components/layout/Section";
 
-export const revalidate = 86400;
+export const revalidate = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {
