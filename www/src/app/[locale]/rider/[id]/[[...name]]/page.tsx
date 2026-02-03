@@ -1,4 +1,4 @@
-import { getAllRidersWithNationAndTeam, getRider, getRiders } from "@/db/rider";
+import { getAllRidersWithNationAndTeam, getRider } from "@/db/rider";
 import { rankBy } from "@/lib/helpers/rank";
 import ProfileSection from "./_sections/ProfileSection";
 import { getPointSystem } from "@/db/pointSystem";
@@ -51,14 +51,6 @@ export default async function RiderPage({
     const { locale, id } = await params;    
     setRequestLocale(locale);
 
-    const headers = await import('next/headers').then(m => m.headers());
-    const purpose = headers.get('purpose') || headers.get('x-nextjs-data');
-    
-    console.log(`🔍 [${new Date().toISOString()}] Rider ${id}`, {
-        locale,
-        purpose,  // Will show 'prefetch' if it's a prefetch
-        params
-    });
     const [
         rider,
         pointSystem, 
