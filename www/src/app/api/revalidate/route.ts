@@ -27,6 +27,8 @@ export async function POST(request: Request) {
         }
 
         revalidatePath('/', "layout");
+        revalidatePath('/da', "layout");
+        revalidatePath('/en', "layout");
         revalidateTag("all");
 
         return NextResponse.json({ revalidated: true })
