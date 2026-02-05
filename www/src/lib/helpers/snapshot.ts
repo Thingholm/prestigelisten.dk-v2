@@ -1,6 +1,5 @@
 import { uploadSnapshot } from "@/app/actions/snapshot";
 import { toPng } from "html-to-image";
-import { revalidatePath } from "next/cache";
 
 export default function handleSnapshot(ref: React.RefObject<HTMLDivElement>, id: number, upload: boolean, locale: string) {
     if (ref.current === null) return;
@@ -31,9 +30,6 @@ export default function handleSnapshot(ref: React.RefObject<HTMLDivElement>, id:
         console.error(err);
         return "error";
     });
-
-    revalidatePath(`/${locale}/rider/${id}`, "page");
-    revalidatePath(`/${locale}/rytter/${id}`, "page");
 
     return "success";
 }

@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import { revalidatePath } from "next/cache";
 
 export async function uploadSnapshot(dataUrl: string, id: number, locale: "en" | "da") {
     const blob = await fetch(dataUrl).then(res => res.blob());
@@ -36,5 +37,8 @@ export async function uploadSnapshot(dataUrl: string, id: number, locale: "en" |
         return { success: false, error: "Upload failed" };
     }
 
+    revalidatePath(`/${locale}/rider/${id}`, "page");
+    revalidatePath(`/${locale}/rytter/${id}`, "page");
+    
     return { success: true, fileName };
 }
