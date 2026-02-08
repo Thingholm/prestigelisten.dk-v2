@@ -33,8 +33,8 @@ export function SyncResultsButtons({
         setResult(null);
         try {
             const response = await syncAllResultsAsync(token);
-            setResult({ type: "success", message: `Synkroniserede succesfuldt ${response} resultater.` });
             await revalidateSiteCache();
+            setResult({ type: "success", message: `Synkroniserede succesfuldt ${response} resultater.` });
         } catch (error) {
             setResult({ type: "error", message: error instanceof Error ? error.message : "Der opstod en fejl" });
         } finally {
@@ -47,8 +47,8 @@ export function SyncResultsButtons({
         setResult(null);
         try {
             const response = await syncLatestResultsAsync(token);
-            setResult({ type: "success", message: `Synkroniserede succesfuldt ${response} resultater.` });
             await revalidateSiteCache();
+            setResult({ type: "success", message: `Synkroniserede succesfuldt ${response} resultater.` });
         } catch (error) {
             setResult({ type: "error", message: error instanceof Error ? error.message : "Der opstod en fejl" });
         } finally {
