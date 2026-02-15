@@ -5,6 +5,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Button } from "./ui/button";
 import { syncAllResultsAsync, syncLatestResultsAsync } from "@/lib/api/results";
 import { Alert } from "./ui/alert";
+import RevalidateCacheButton from "./revalidate-cache-button";
 
 export function SyncResultsButtons({
     token
@@ -94,6 +95,7 @@ export function SyncResultsButtons({
                         </AlertDialogFooter>
                     </AlertDialogContent>
                 </AlertDialog>
+                <RevalidateCacheButton token={token}/>
             </div>
             {(result || fetching) && (
                 <Alert className="">
