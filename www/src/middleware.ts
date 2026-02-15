@@ -14,16 +14,11 @@ export default function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
     
     if (pathname.startsWith('/api')) {
-        console.log('API request detected:', pathname);
-
         const origin = request.headers.get('origin');
-        console.log('Origin:', origin);
 
         const isAllowed = allowedOrigins.includes(origin || '');
-        console.log('Is allowed:', isAllowed);
 
         if (request.method === 'OPTIONS') {
-            console.log('OPTIONS request');
             return new NextResponse(null, {
                 status: 204,
                 headers: {
@@ -43,8 +38,6 @@ export default function middleware(request: NextRequest) {
             response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
             response.headers.set('Access-Control-Allow-Credentials', 'true');
         }
-
-        console.log('Response headers:', Object.fromEntries(response.headers.entries()));
 
         return response;
     }
