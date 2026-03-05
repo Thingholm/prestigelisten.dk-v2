@@ -1,3 +1,5 @@
+import { dayInLeadersJerseyResultTypeIds } from "../constants/resultTypes";
+
 type Result = {
     result_type: number;
     races: {
@@ -21,7 +23,7 @@ export function getResultCategory(result: Result): ResultCategory {
     }
 
     if (gcRaceClassIds.includes(result.races.race_class_id)) {
-        if (result.result_type == 5 || result.result_type == 6) {
+        if (dayInLeadersJerseyResultTypeIds.includes(result.result_type)) {
             return "gtJerseys";
         }
 
