@@ -2,6 +2,7 @@
 
 import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow } from "@/components/table";
 import Button from "@/components/ui/Button";
+import { dayInLeadersJerseyResultTypeIds } from "@/lib/constants/resultTypes";
 import { GroupedByKey } from "@/lib/helpers/groupResults";
 import { Ranked } from "@/lib/helpers/rank";
 import { Tables } from "@/utils/supabase/database.types";
@@ -35,7 +36,7 @@ export default function MostPointsInRaceRidersTable({
                         <TableRow key={rider.key.id}>
                             <TableCell>{rider.rank}</TableCell>
                             <RiderNameCell rider={rider.key} showFlagBreakpoint="always"/>
-                            <TableCell className="hidden sm:table-cell">{rider.results.length}</TableCell>
+                            <TableCell className="hidden sm:table-cell">{rider.results.filter(r => !dayInLeadersJerseyResultTypeIds.includes(r.result_type)).length}</TableCell>
                             <TableCell>{rider.points}</TableCell>
                         </TableRow>
                     ))}
