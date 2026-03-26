@@ -1,20 +1,24 @@
-import { Rider, RidersWithNationAndTeam } from "@/db/rider";
+import { Tables } from "@/lib/supabase/database.types";
 import { Settings } from "./ContentWrapper";
-import { useTranslations } from "use-intl";
+import { Rider } from "@/lib/db/riders";
 import { rankBy } from "@/lib/helpers/rank";
-import RankDisplay from "../_components/RankDisplay";
+import RankDisplay from "./RankDisplay";
+import { useT } from "@/lib/helpers/translations";
+
 
 export default function RankingsSectionGeneral({
     riderPoints,
     rider,
-    settings
+    settings,
+    locale
 }: Readonly<{
-    riderPoints: RidersWithNationAndTeam,
+    riderPoints: Tables<"riders">[],
     rider: Rider,
-    settings: Settings
+    settings: Settings,
+    locale: "en" | "da"
 }>) {
-    const t = useTranslations("twitterCard");
-    const tNations = useTranslations("nations")
+    const t = useT("twitterCard", locale);
+    const tNations = useT("nations", locale);
 
     const alltimeRank = rankBy(riderPoints, "points").find(r => r.id == rider.id)?.rank;
     const activeRank = rankBy(riderPoints.filter(r => r.active), "points").find(r => r.id == rider.id)?.rank;

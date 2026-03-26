@@ -14,31 +14,35 @@ export default function TwitterCard({
     settings,
     ref,
     riderPoints,
-    pointSystem
+    pointSystem,
+    locale
 }: Readonly<{
     rankingEvolutions:  RankingEvolution[] | null,
     rider: Rider,
     settings: Settings,
     ref: React.RefObject<HTMLDivElement>,
     riderPoints: Tables<"riders">[],
-    pointSystem: Tables<"point_system">[]
+    pointSystem: Tables<"point_system">[],
+    locale: "en" | "da"
 }>) {
     const rankingEvolution = rankingEvolutions?.find(e => e.results.some(r => r.key == rider.id));
 
     return (
         <div className="h-100 w-191.25 flex" ref={ref}>
-            <Profile rider={rider} settings={settings}/>
+            <Profile rider={rider} settings={settings} locale={locale}/>
             <div className="p-4 w-133.25 h-100 flex flex-col justify-between">
-                {/* {settings.showLatestResult && rankingEvolution
+                {settings.showLatestResult && rankingEvolution
                     ? <RankingsSectionWithLatestResult
                         rankingEvolution={rankingEvolution}
                         rider={rider}
                         settings={settings}
+                        locale={locale}
                     />
                     : <RankingsSectionGeneral
                         riderPoints={riderPoints}
                         rider={rider}
                         settings={settings}
+                        locale={locale}
                     />
                 }
                 <RankingsTableSection
@@ -54,12 +58,14 @@ export default function TwitterCard({
                         )
                     }
                     settings={settings}
+                    locale={locale}
                 />
                 <GroupedResults
                     rider={rider}
                     settings={settings}
                     pointSystem={pointSystem}
-                /> */}
+                    locale={locale}
+                />
             </div>
         </div>
     )

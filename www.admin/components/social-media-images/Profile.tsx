@@ -1,16 +1,19 @@
 import { Settings } from "./ContentWrapper";
-import RiderImage from "@/components/entityPage/RiderImage";
-import { useTranslations } from "use-intl";
-import FlagSpan from "@/components/table/FlagSpan";
+import FlagSpan from "./table/FlagSpan";
+import { Rider } from "@/lib/db/riders";
+import RiderImage from "./RiderImage";
+import { useT } from "@/lib/helpers/translations";
 
 export default function Profile({
     rider,
     settings,
+    locale
 }: Readonly<{
     rider: Rider,
-    settings: Settings
+    settings: Settings,
+    locale: "en" | "da"
 }>) {
-    const tNations = useTranslations("nations");
+    const tNations = useT("nations", locale);
 
     return (
         <div className={`p-4 w-[232px] h-full font-medium ${settings.whiteText ? "text-white" : ""}`} style={{ backgroundColor: settings.colorHex }}>

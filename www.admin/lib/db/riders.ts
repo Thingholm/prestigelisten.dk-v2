@@ -4,7 +4,10 @@ export const getRiders = async () => {
     const supabase = await createClient();
     const { data, error } = await supabase
         .from("riders")
-        .select("*")
+        .select(`
+            *,
+            nations (code)    
+        `)
         .order("points", { ascending: false });
 
     if (error) { throw error; }

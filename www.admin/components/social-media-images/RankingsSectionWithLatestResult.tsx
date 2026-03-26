@@ -1,23 +1,26 @@
-import { Rider } from "@/db/rider";
+import { RankingEvolution } from "@/app/dashboard/some-images/[id]/page";
 import { Settings } from "./ContentWrapper";
-import { RankingEvolution } from "@/lib/helpers/rankingEvolution";
-import { useTranslations } from "next-intl";
+import { Rider } from "@/lib/db/riders";
 import { rankBy } from "@/lib/helpers/rank";
-import RankDisplay from "../_components/RankDisplay";
 import { getGroupedResultName } from "@/lib/helpers/resultNames";
+import RankDisplay from "./RankDisplay";
+import { useT } from "@/lib/helpers/translations";
+
 
 export default function RankingsSectionWithLatestResult({
     rankingEvolution,
     rider,
     settings,
+    locale
 }: Readonly<{
     rankingEvolution: RankingEvolution,
     rider: Rider,
-    settings: Settings
+    settings: Settings,
+    locale: "en" | "da"
 }>) {
-    const t = useTranslations("twitterCard");
-    const tResultNames = useTranslations("getResultNames");
-    const tNations = useTranslations("nations")
+    const t = useT("twitterCard", locale);
+    const tResultNames = useT("getResultNames", locale);
+    const tNations = useT("nations", locale);
 
     const alltimeRank = rankingEvolution.rankings.find(r => r.id == rider.id)?.rank;
     const oldAlltimeRank = rankingEvolution.prevRankings?.find(r => r.id == rider.id)?.rank;

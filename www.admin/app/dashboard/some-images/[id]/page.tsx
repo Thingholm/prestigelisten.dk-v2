@@ -137,7 +137,6 @@ export default async function Page({
     ])
     const rankingsByDate = rider.active && rider.results.some((result: Rider["results"]) => result.year == new Date().getFullYear()) ? calculateRankingEvolution(results, riderPoints, pointSystem) : null;
 
-
     return (
         <div>
             {id}

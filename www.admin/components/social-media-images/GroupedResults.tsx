@@ -1,22 +1,24 @@
-import { Rider } from "@/db/rider";
 import { Settings } from "./ContentWrapper";
-import { useTranslations } from "use-intl";
 import { groupResults } from "@/lib/helpers/groupResults";
-import { PointSystem } from "@/db/pointSystem";
 import { sortGroupedResults } from "@/lib/helpers/results";
 import { getGroupedResultNameWithCount } from "@/lib/helpers/resultNames";
+import { useT } from "@/lib/helpers/translations";
+import { Tables } from "@/lib/supabase/database.types";
+import { Rider } from "@/lib/db/riders";
 
 export default function GroupedResults({
     rider,
     settings,
-    pointSystem
+    pointSystem,
+    locale
 }: Readonly<{
     rider: Rider,
     settings: Settings,
-    pointSystem: PointSystem
+    pointSystem: Tables<"point_system">[],
+    locale: "en" | "da"
 }>) {
-    const t = useTranslations("twitterCard");
-    const tResultNames = useTranslations("getResultNames");
+    const t = useT("twitterCard", locale);
+    const tResultNames = useT("getResultNames", locale);
 
     const groupedResults = sortGroupedResults(groupResults(rider.results, pointSystem));
 

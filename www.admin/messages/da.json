@@ -1,0 +1,1173 @@
+{
+    "getResultNames": {
+        "resultTypes": {
+            "1": "Sejr",
+            "2": "Top 3",
+            "3": "Top 5",
+            "4": "Top 10",
+            "12": "Guld",
+            "13": "Sølv",
+            "14": "Bronze",
+            "6": "Pointtrøje",
+            "5": "Bjergtrøje",
+            "7": "Etapesejr",
+            "8": "1. dag i førertrøjen",
+            "9": "2. dag i førertrøjen",
+            "10": "3. dag i førertrøjen",
+            "11": "Øvrig dag i førertrøjen",
+            "99": "Dag i førertrøjen"
+        },
+        "raceClasses": {
+            "18": "Verdensmester",
+            "20": "Europamester",
+            "16": "Olympisk mester",
+            "19": "Verdensmester i enkeltstart",
+            "21": "Europamester i enkeltstart",
+            "17": "Olympisk mester i enkeltstart",
+            "27": "Verdensmester (amatør)",
+            "22": "Olympisk mester (amatør)",
+            "23": "Olympisk mester (amatør) i enkeltstart"
+        },
+        "metaRaces": {
+            "225": "OL i enkeltstart",
+            "226": "OL 12 timers løb",
+            "227": "VM i linjeløb",
+            "228": "VM i enkeltstart",
+            "229": "EM i linjeløb",
+            "230": "EM i enkeltstart",
+            "231": "OL i linjeløb",
+            "289": "VM (amatør)"
+        },
+        "suffixes": {
+            "1": ".",
+            "2": ".",
+            "3": ".",
+            "other": "."
+        },
+        "nations": {
+            "dz": {
+                "name": "Algeriet",
+                "adjective": "Algerisk"
+            },
+            "ar": {
+                "name": "Argentina",
+                "adjective": "Argentinsk"
+            },
+            "au": {
+                "name": "Australien",
+                "adjective": "Australisk"
+            },
+            "bh": {
+                "name": "Bahrain",
+                "adjective": "Bahrainsk"
+            },
+            "by": {
+                "name": "Belarus",
+                "adjective": "Belarusisk"
+            },
+            "be": {
+                "name": "Belgien",
+                "adjective": "Belgisk"
+            },
+            "br": {
+                "name": "Brasilien",
+                "adjective": "Brasiliansk"
+            },
+            "bg": {
+                "name": "Bulgarien",
+                "adjective": "Bulgarsk"
+            },
+            "ca": {
+                "name": "Canada",
+                "adjective": "Canadisk"
+            },
+            "co": {
+                "name": "Colombia",
+                "adjective": "Colombiansk"
+            },
+            "cr": {
+                "name": "Costa Rica",
+                "adjective": "Costa Ricansk"
+            },
+            "dk": {
+                "name": "Danmark",
+                "adjective": "Dansk"
+            },
+            "ec": {
+                "name": "Ecuador",
+                "adjective": "Ecuadoriansk"
+            },
+            "er": {
+                "name": "Eritrea",
+                "adjective": "Eritreansk"
+            },
+            "ee": {
+                "name": "Estland",
+                "adjective": "Estisk"
+            },
+            "ph": {
+                "name": "Filipinerne",
+                "adjective": "Filipinsk"
+            },
+            "fi": {
+                "name": "Finland",
+                "adjective": "Finlandsk"
+            },
+            "fr": {
+                "name": "Frankrig",
+                "adjective": "Fransk"
+            },
+            "de": {
+                "name": "Tyskland",
+                "adjective": "Tysk"
+            },
+            "gr": {
+                "name": "Grækenland",
+                "adjective": "Græsk"
+            },
+            "ie": {
+                "name": "Irland",
+                "adjective": "Irsk"
+            },
+            "il": {
+                "name": "Israel",
+                "adjective": "Israelisk"
+            },
+            "it": {
+                "name": "Italien",
+                "adjective": "Italiensk"
+            },
+            "jp": {
+                "name": "Japan",
+                "adjective": "Japansk"
+            },
+            "kz": {
+                "name": "Kasakhstan",
+                "adjective": "Kasakhisk"
+            },
+            "kr": {
+                "name": "Korea",
+                "adjective": "Koreansk"
+            },
+            "cn": {
+                "name": "Kina",
+                "adjective": "Kinesisk"
+            },
+            "hr": {
+                "name": "Kroatien",
+                "adjective": "Kroatisk"
+            },
+            "lv": {
+                "name": "Letland",
+                "adjective": "Lettisk"
+            },
+            "lu": {
+                "name": "Luxembourg",
+                "adjective": "Luxemburgsk"
+            },
+            "lt": {
+                "name": "Litauen",
+                "adjective": "Litauisk"
+            },
+            "mx": {
+                "name": "Mexico",
+                "adjective": "Mexicansk"
+            },
+            "md": {
+                "name": "Moldova",
+                "adjective": "Moldovsk"
+            },
+            "nl": {
+                "name": "Nederlandene",
+                "adjective": "Nederlandsk"
+            },
+            "nz": {
+                "name": "New Zealand",
+                "adjective": "New Zealandsk"
+            },
+            "no": {
+                "name": "Norge",
+                "adjective": "Norsk"
+            },
+            "at": {
+                "name": "Østrig",
+                "adjective": "Østrigsk"
+            },
+            "dd": {
+                "name": "Østtyskland",
+                "adjective": "Østtysk"
+            },
+            "pl": {
+                "name": "Polen",
+                "adjective": "Polsk"
+            },
+            "pt": {
+                "name": "Portugal",
+                "adjective": "Portugisisk"
+            },
+            "ru": {
+                "name": "Rusland",
+                "adjective": "Russisk"
+            },
+            "ch": {
+                "name": "Schweiz",
+                "adjective": "Schweizisk"
+            },
+            "se": {
+                "name": "Sverige",
+                "adjective": "Svensk"
+            },
+            "es": {
+                "name": "Spanien",
+                "adjective": "Spansk"
+            },
+            "sk": {
+                "name": "Slovakiet",
+                "adjective": "Slovakisk"
+            },
+            "si": {
+                "name": "Slovenien",
+                "adjective": "Slovenisk"
+            },
+            "su": {
+                "name": "Sovjetunionen",
+                "adjective": "Sovjetisk"
+            },
+            "gb": {
+                "name": "Storbritannien",
+                "adjective": "Britisk"
+            },
+            "cz": {
+                "name": "Tjekkiet",
+                "adjective": "Tjekkisk"
+            },
+            "ae": {
+                "name": "UAE",
+                "adjective": "Emiratisk"
+            },
+            "tr": {
+                "name": "Tyrkiet",
+                "adjective": "Tyrkisk"
+            },
+            "ua": {
+                "name": "Ukraine",
+                "adjective": "Ukrainsk"
+            },
+            "us": {
+                "name": "USA",
+                "adjective": "Amerikansk"
+            },
+            "hu": {
+                "name": "Ungarn",
+                "adjective": "Ungarsk"
+            },
+            "ve": {
+                "name": "Venezuela",
+                "adjective": "Venezuelansk"
+            },
+            "uz": {
+                "name": "Usbekistan",
+                "adjective": "Usbekisk"
+            },
+            "za": {
+                "name": "Sydafrika",
+                "adjective": "Sydafrikansk"
+            },
+            "mc": {
+                "name": "Monaco",
+                "adjective": "Monegaskisk"
+            }
+        },
+        "at": "til",
+        "in": "i",
+        "stage": "etape",
+        "stageIn": "Etape i",
+        "stageInLower": "etape i",
+        "stageCapitalized": "Etape",
+        "place": "plads",
+        "champion": "mester",
+        "championITT": "mester i enkeltstart",
+        "championship": "e mesterskaber",
+        "championshipITT": "e mester i enkeltstart"
+    },
+    "resultTypes": {
+        "win": "Sejr",
+        "top3": "Top 3",
+        "top5": "Top 5",
+        "top10": "Top 10",
+        "gold": "Guld",
+        "silver": "Sølv",
+        "bronze": "Bronze",
+        "pointClassification": "Pointtrøje",
+        "mountainClassification": "Bjergtrøje",
+        "classification": "Bjerg-/pointtrøje",
+        "stageWin": "Etapesejr",
+        "firstLeadersJersey": "1. dag i førertrøjen",
+        "secondLeadersJersey": "2. dag i førertrøjen",
+        "thirdLeadersJersey": "3. dag i førertrøjen",
+        "otherLeadersJersey": "Øvrig dag i førertrøjen",
+        "daysInLeadersJersey": "Dage i førertrøjen",
+        "dayInLeadersJersey": "Dag i førertrøjen",
+        "stage": "etape",
+        "placement": "plads"
+    },
+    "raceClasses": {
+        "1": "Tour de France",
+        "2": "Grand Tour",
+        "26": "Grand Tour B",
+        "3": "Monument",
+        "4": "WTT A",
+        "6": "WTT B",
+        "8": "WTT C",
+        "10": "WTT D",
+        "5": "WTC A",
+        "7": "WTC B",
+        "9": "WTC C",
+        "11": "WTC D",
+        "12": "Nationale mesterskaber A",
+        "14": "Nationale mesterskaber B",
+        "13": "Nationale mesterskaber ITT A",
+        "15": "Nationale mesterskaber ITT B",
+        "12abbr": "NM A",
+        "14abbr": "NM B",
+        "13abbr": "NM i ITT A",
+        "15abbr": "NM i ITT B",
+        "16": "OL",
+        "17": "OL ITT",
+        "22": "OL (amatør)",
+        "23": "OL ITT (amatør)",
+        "18": "VM",
+        "19": "VM ITT",
+        "27": "VM (amatør)",
+        "20": "EM",
+        "21": "EM ITT",
+        "24": "Parløb",
+        "25": "Andet",
+        "0": "-"
+    },
+    "resultNames": {
+        "worldChampion": "Verdensmester",
+        "europeanChampion": "Europamester",
+        "olympicChampion": "Olympisk mester",
+        "worldChampionInITT": "Verdensmester i enkeltstart",
+        "europeanChampionInITT": "Europamester i enkeltstart",
+        "olympicChampionInITT": "Olympisk mester i enkeltstart",
+        "worldChampionAmateur": "Verdensmester (amatør)",
+        "olympicChampionAmateur": "Olympisk mester (amatør)",
+        "olympicChampionAmateurInITT": "Olympisk mester (amatør) i enkeltstart",
+        "worldChampionship": "VM i linjeløb",
+        "europeanChampionship": "EM i linjeløb",
+        "olympicChampionship": "OL i linjeløb",
+        "worldChampionshipITT": "VM i enkeltstart",
+        "europeanChampionshipITT": "EM i enkeltstart",
+        "olympicChampionshipITT": "OL i enkeltstart",
+        "worldChampionshipAmateur": "VM (amatør)",
+        "olympicChampionshipAmateur": "OL (amatør)",
+        "olympicChampionshipAmateurITT": "OL ITT (amatør)",
+        "at": "til",
+        "in": "i",
+        "stageIn": "Etape i",
+        "nStageIn": "etape i",
+        "placement": "plads",
+        "champion": "mester",
+        "championITT": "mester i enkeltstart",
+        "silverAt": "Sølv til",
+        "bronzeAt": "Bronze til",
+        "win": "Sejr",
+        "top3": "Top 3",
+        "top5": "Top 5",
+        "top10": "Top 10",
+        "gold": "Guld",
+        "silver": "Sølv",
+        "bronze": "Bronze",
+        "pointClassification": "Pointtrøje",
+        "mountainClassification": "Bjergtrøje",
+        "classification": "Bjerg-/pointtrøje",
+        "stageWin": "Etapesejr",
+        "firstLeadersJersey": "1. dag i førertrøjen",
+        "secondLeadersJersey": "2. dag i førertrøjen",
+        "thirdLeadersJersey": "3. dag i førertrøjen",
+        "otherLeadersJersey": "Øvrig dag i førertrøjen",
+        "daysInLeadersJersey": "Dage i førertrøjen",
+        "dayInLeadersJersey": "Dag i førertrøjen"
+    },
+    "nations": {
+        "dz": {
+            "name": "Algeriet",
+            "adjective": "Algerisk"
+        },
+        "ar": {
+            "name": "Argentina",
+            "adjective": "Argentinsk"
+        },
+        "au": {
+            "name": "Australien",
+            "adjective": "Australisk"
+        },
+        "bh": {
+            "name": "Bahrain",
+            "adjective": "Bahrainsk"
+        },
+        "by": {
+            "name": "Belarus",
+            "adjective": "Belarusisk"
+        },
+        "be": {
+            "name": "Belgien",
+            "adjective": "Belgisk"
+        },
+        "br": {
+            "name": "Brasilien",
+            "adjective": "Brasiliansk"
+        },
+        "bg": {
+            "name": "Bulgarien",
+            "adjective": "Bulgarsk"
+        },
+        "ca": {
+            "name": "Canada",
+            "adjective": "Canadisk"
+        },
+        "co": {
+            "name": "Colombia",
+            "adjective": "Colombiansk"
+        },
+        "cr": {
+            "name": "Costa Rica",
+            "adjective": "Costa Ricansk"
+        },
+        "dk": {
+            "name": "Danmark",
+            "adjective": "Dansk"
+        },
+        "ec": {
+            "name": "Ecuador",
+            "adjective": "Ecuadoriansk"
+        },
+        "er": {
+            "name": "Eritrea",
+            "adjective": "Eritreansk"
+        },
+        "ee": {
+            "name": "Estland",
+            "adjective": "Estisk"
+        },
+        "ph": {
+            "name": "Filipinerne",
+            "adjective": "Filipinsk"
+        },
+        "fi": {
+            "name": "Finland",
+            "adjective": "Finlandsk"
+        },
+        "fr": {
+            "name": "Frankrig",
+            "adjective": "Fransk"
+        },
+        "de": {
+            "name": "Tyskland",
+            "adjective": "Tysk"
+        },
+        "gr": {
+            "name": "Grækenland",
+            "adjective": "Græsk"
+        },
+        "ie": {
+            "name": "Irland",
+            "adjective": "Irsk"
+        },
+        "il": {
+            "name": "Israel",
+            "adjective": "Israelisk"
+        },
+        "it": {
+            "name": "Italien",
+            "adjective": "Italiensk"
+        },
+        "jp": {
+            "name": "Japan",
+            "adjective": "Japansk"
+        },
+        "kz": {
+            "name": "Kasakhstan",
+            "adjective": "Kasakhisk"
+        },
+        "kr": {
+            "name": "Korea",
+            "adjective": "Koreansk"
+        },
+        "cn": {
+            "name": "Kina",
+            "adjective": "Kinesisk"
+        },
+        "hr": {
+            "name": "Kroatien",
+            "adjective": "Kroatisk"
+        },
+        "lv": {
+            "name": "Letland",
+            "adjective": "Lettisk"
+        },
+        "lu": {
+            "name": "Luxembourg",
+            "adjective": "Luxemburgsk"
+        },
+        "lt": {
+            "name": "Litauen",
+            "adjective": "Litauisk"
+        },
+        "mx": {
+            "name": "Mexico",
+            "adjective": "Mexicansk"
+        },
+        "md": {
+            "name": "Moldova",
+            "adjective": "Moldovsk"
+        },
+        "nl": {
+            "name": "Nederlandene",
+            "adjective": "Nederlandsk"
+        },
+        "nz": {
+            "name": "New Zealand",
+            "adjective": "New Zealandsk"
+        },
+        "no": {
+            "name": "Norge",
+            "adjective": "Norsk"
+        },
+        "at": {
+            "name": "Østrig",
+            "adjective": "Østrigsk"
+        },
+        "dd": {
+            "name": "Østtyskland",
+            "adjective": "Østtysk"
+        },
+        "pl": {
+            "name": "Polen",
+            "adjective": "Polsk"
+        },
+        "pt": {
+            "name": "Portugal",
+            "adjective": "Portugisisk"
+        },
+        "ru": {
+            "name": "Rusland",
+            "adjective": "Russisk"
+        },
+        "ch": {
+            "name": "Schweiz",
+            "adjective": "Schweizisk"
+        },
+        "se": {
+            "name": "Sverige",
+            "adjective": "Svensk"
+        },
+        "es": {
+            "name": "Spanien",
+            "adjective": "Spansk"
+        },
+        "sk": {
+            "name": "Slovakiet",
+            "adjective": "Slovakisk"
+        },
+        "si": {
+            "name": "Slovenien",
+            "adjective": "Slovenisk"
+        },
+        "su": {
+            "name": "Sovjetunionen",
+            "adjective": "Sovjetisk"
+        },
+        "gb": {
+            "name": "Storbritannien",
+            "adjective": "Britisk"
+        },
+        "cz": {
+            "name": "Tjekkiet",
+            "adjective": "Tjekkisk"
+        },
+        "ae": {
+            "name": "UAE",
+            "adjective": "Emiratisk"
+        },
+        "tr": {
+            "name": "Tyrkiet",
+            "adjective": "Tyrkisk"
+        },
+        "ua": {
+            "name": "Ukraine",
+            "adjective": "Ukrainsk"
+        },
+        "us": {
+            "name": "USA",
+            "adjective": "Amerikansk"
+        },
+        "hu": {
+            "name": "Ungarn",
+            "adjective": "Ungarsk"
+        },
+        "ve": {
+            "name": "Venezuela",
+            "adjective": "Venezuelansk"
+        },
+        "uz": {
+            "name": "Usbekistan",
+            "adjective": "Usbekisk"
+        },
+        "za": {
+            "name": "Sydafrika",
+            "adjective": "Sydafrikansk"
+        },
+        "mc": {
+            "name": "Monaco",
+            "adjective": "Monegaskisk"
+        }
+    },
+    "suffixes": {
+        "1": ".",
+        "2": ".",
+        "3": ".",
+        "other": "."
+    },
+    
+    "chartTooltips": {
+        "year": "År",
+        "placement": "Placering",
+        "points": "Point",
+        "yearlyPoints": "Point optjent hvert år",
+        "yearlyResultsAmount": "Pointgivende resultater i året",
+        "amount": "Antal",
+        "distributionOfPointsGained": "Point optjent fordelt efter resultattype",
+        "category": "Kategori",
+        "numberOfResults": "Antal resultater",
+        "categories": {
+            "gc": "Klassement",
+            "stageWin": "Etapesejre",
+            "oneDayRace": "Endagsløb",
+            "championship": "Mesterskaber",
+            "gtJerseys": "Grand Tour-trøjer"
+        }
+    },
+    "navigation": {
+        "home": "Hjem",
+        "riders": "Ryttere",
+        "races": "Løb",
+        "calendar": "Kalender",
+        "about": "Om Prestigelisten",
+        "pointSystem": "Pointsystem",
+        "lists": "Ranglister",
+        "compare": "Sammenlign",
+        "searchPlaceholder": "Søg efter ryttere, nationer, hold eller løb...",
+        "more": "Mere",
+        "seeList": "Se listen",
+        "ridersAlltime": "Ryttere all time",
+        "active": "Aktive",
+        "nations": "Nationer",
+        "danish": "Danskere",
+        "teams": "Hold",
+        "3YearPeriod": "Største ryttere over en 3-årig periode",
+        "greatestSeasons": "Største individuelle sæsoner",
+        "greatestAlltimeEachYear": "Største all time hvert år",
+        "greatestByYear": "Største pr. årgang",
+        "mostPointsEachYear": "Flest point hvert år",
+        "greatestByAge": "Største pr. alderstrin",
+        "rawData": "Rådata",
+        "quiz": "Quiz",
+        "raceCalendar": "Løbskalender",
+        "seasonOverview": "Sæsonoversigt",
+        "contact": "Kontakt",
+        "developer": "Hjemmesiden, backend-systemer og infrastruktur er designet, udviklet og vedligeholdt af Rasmus Thingholm. Kontakt på ",
+        "search": "Søg...",
+        "searchFull": "Søg efter ryttere, nationer, løb eller hold...",
+        "searchRiders": "Ryttere",
+        "searchNations": "Nationer",
+        "searchTeams": "Hold",
+        "searchRaces": "Løb"
+    },
+    "navigationButtons": {
+        "prev": "Forrige",
+        "next": "Næste"
+    },
+    "homepage": {
+        "quote": "Cycling isn't a game, it's a sport. Tough, hard and unpitying, and it requires great sacrifices. One plays football, or tennis, or hockey. One doesn't play at cycling.",
+        "author": "Jean De Gribaldy",
+        "description1": "Velkommen til - her har du vores bud på en rangering over ryttere med de mest prestigefyldte resultater i landevejscyklingens verden.",
+        "description2": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har tilstræbt at vægte pointsystemet, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det stigende antal prestigefyldte løb gennem de seneste 150 år udlignes af den forøgede konkurrence i verdenseliten.",
+        "exploreButton": "Udforsk Prestigelisten",
+        "moreButton": "Mere om listen...",
+        "socialMediaText": "Følg med på X, Facebook og Instagram, hvor vi løbende opdaterer om udviklingen på Prestigelisten, statistik, quiz og meget mere.",
+        "tableTitles": {
+            "allTimePoints": "All time største ryttere",
+            "latestResults": "Seneste pointgivende resultater",
+            "calendar": "Kalender",
+            "greatestActiveRiders": "Største aktive ryttere",
+            "greatestDanishRiders": "Største danske ryttere",
+            "greatestNations": "Største nationer",
+            "greatestSeasons": "Største individuelle sæsoner",
+            "greatestAlltimeEachYear": "Største ryttere all time efter hvert år",
+            "greatest3YearSpan": "Største ryttere over en 3-årig periode",
+            "greatestByDecade": "Flest point i hvert årti",
+            "socialMedia": "Følg med på sociale medier"
+        },
+        "onlyActiveRiders": "Kun aktive ryttere"
+    },
+    "tableColumns": {
+        "no": "Nr.",
+        "allTime": "All time",
+        "allTimeNo": "Nr. (All time)",
+        "placement": "Placering",
+        "name": "Navn",
+        "rider": "Rytter",
+        "points": "Point",
+        "pointsTotal": "Point i alt",
+        "nation": "Nation",
+        "team": "Hold",
+        "year": "Årgang",
+        "season": "Sæson",
+        "change": "Udvikling",
+        "results": "Resultater",
+        "result(s)": "Resultat(er)",
+        "result": "Resultat",
+        "greatestResults": "Største resultater",
+        "pointsGained": "Point optjent",
+        "date": "Dato",
+        "numberOfRiders": "Antal ryttere",
+        "pointsPerRider": "Point pr. rytter",
+        "activeOnlySpan": "Kun aktive",
+        "showAll": "Vis alle...",
+        "showMore": "Vis flere...",
+        "numberOfResults": "Antal resultater",
+        "pointsScoringResults": "Pointgivende resultater",
+        "greatestRiders": "Største ryttere",
+        "span": "Periode",
+        "amount": "Antal",
+        "number": "Antal",
+        "riders": "Rytter(e)",
+        "races": "Løb",
+        "latestPointSystem": "Aktuel/seneste løbskategori",
+        "and": "og",
+        "active": "Aktive",
+        "inactive": "Inaktive",
+        "years": "År",
+        "age": "Alder",
+        "dateFormatNoYear": "dd-mm",
+        "editions": "Udgave(r)",
+        "totalPointsCurrentRiders": "Nuværende rytteres pointtotal"
+    },
+    "searchBar": {
+        "placeholder": "Søg..."
+    },
+    "calendar": {
+        "months": {
+            "january": "Januar",
+            "february": "Februar",
+            "march": "Marts",
+            "april": "April",
+            "may": "Maj",
+            "june": "Juni",
+            "july": "Juli",
+            "august": "August",
+            "september": "September",
+            "october": "Oktober",
+            "november": "November",
+            "december": "December"
+        },
+        "daysOfWeek": {
+            "monday": "Mandag",
+            "tuesday": "Tirsdag",
+            "wednesday": "Onsdag",
+            "thursday": "Torsdag",
+            "friday": "Fredag",
+            "saturday": "Lørdag",
+            "sunday": "Søndag"
+        },
+        "previous": "Forrige",
+        "next": "Næste"
+    },
+    "calendarPage": {
+        "title": "Kalender for pointgivende løb"
+    },
+    "yearPage": {
+        "year": "År",
+        "selectYear": "Vælg år",
+        "titles": {
+            "riderWithMostPoints": "Ryttere med flest point optjent i {year}",
+            "nationWithMostPoints": "Nationer med flest point optjent i {year}",
+            "ridersRankings": "Største ryttere all time i {year}",
+            "nationsRankings": "Største nationer all time i {year}",
+            "greatestRidersFromYear": "Største ryttere født i {year}",
+            "resultsFromYear": "Resultater i {year}"
+        },
+        "noRidersBornInYear": "Ingen ryttere født i {year}"
+    },
+    "teamsPage": {
+        "team": "Hold",
+        "titles": {
+            "greatestRiders": "Hold med de største ryttere",
+            "mostPoints": "Hold med flest point optjent i {year}"
+        }
+    },
+    "teamPage": {
+        "profile": {
+            "nation": "Nation",
+            "points": "Nuværende rytteres pointtotal",
+            "placementAllTeams": "Holdrangering (pointtotal for nuværende trup)",
+            "numberOfResultsThisYear": "Antal pointgivende resultater i {year}",
+            "pointsGainedThisYear": "Point optjent i {year}",
+            "placementThisYear": "Holdrangering i {year}",
+            "founded": "Grundlagt"
+        },
+        "titles": {
+            "greatestRiders": "Største nuværende ryttere",
+            "teamsWithGreatestRiders": "Hold med de største ryttere",
+            "mostPoints": "Hold med flest point optjent i {year}",
+            "greatestRidersOnTeam": "Største ryttere på {team}",
+            "resultsThisYear": "Pointgivende resultater i {year}"
+        },
+        "no": "Nr.",
+        "noResults": "Ingen resultater af {team} i {year} endnu"
+    },
+    "racePage": {
+        "profile": {
+            "nation": "Nation",
+            "currentPointSystem": "Aktuel løbskategori",
+            "latestPointSystem": "Seneste løbskategori",
+            "active": "Aktivt (som pointgivende løb)",
+            "activeAnswer": {
+                "yes": "Ja",
+                "no": "Nej"
+            },
+            "firstEdition": "Første pointgivende udgave",
+            "latestEdition": "Seneste pointgivende udgave",
+            "pointSystem": "Pointsystem for {race}",
+            "source": "Kilde"
+        },
+        "timeline": {
+            "title": "Tidslinje",
+            "pointClasses": "Løbskategorier",
+            "pointClass": "Løbskategori",
+            "from": "Fra",
+            "to": "Til",
+            "active": "Aktivt"
+        },
+        "titles": {
+            "mostPointsRiders": "Ryttere med flest point optjent i løbet",
+            "mostPointsNations": "Nationer med flest point optjent i løbet"
+        },
+        "resultsEachEdition": {
+            "title": "Resultater for hver udgave",
+            "pointClassForEdition": "Udgavens løbskategori",
+            "results": "Resultater"
+        },
+        "mostOfEachResultTypes": {
+            "title": "Rekorder for hvert muligt resultat",
+            "resultType": "Resultat"
+        }
+    },
+    "lists": {
+        "nations": {
+            "sortBy": "Rangér efter",
+            "filterBy": "Filtrér efter",
+            "title": "Nationer",
+            "points": "Point",
+            "numberOfRiders": "Antal ryttere",
+            "pointsPerRider": "Point pr. rytter",
+            "all": "Alle",
+            "active": "Kun aktive ryttere",
+            "inactive": "Kun inaktive ryttere"
+        },
+        "riders3YearSpans": {
+            "title": "Point optjent over en 3-årig periode",
+            "mostPoints": "Flest point optjent i 3-årige perioder",
+            "greatestRiders": "Største ryttere over en 3-årig periode hvert år",
+            "span": "Periode",
+            "active": "Kun aktive ryttere"
+        },
+        "riderAge": {
+            "title": "Prestigelisten - Ryttere på hvert alderstrin",
+            "age": "Alder",
+            "selectAge": "Vælg alder",
+            "ageTitle": "Største ryttere på hvert alderstrin"
+        },
+        "greatestSeasons": {
+            "title": "Største individuelle sæsoner"
+        },
+        "riders": {
+            "title": "Ryttere all time",
+            "singleYear": "Enkelt årgang",
+            "bornIn": "Født i",
+            "orBefore": "eller før",
+            "orAfter": "eller efter",
+            "nationality": "Nationalitet",
+            "allNations": "Alle nationer",
+            "addNation": "Tilføj nation",
+            "selectNation": "Vælg nation",
+            "allStatuses": "Alle",
+            "activeOnly": "Kun aktive ryttere",
+            "inactiveOnly": "Kun inaktive ryttere",
+            "search": "Søg",
+            "resetFilter": "Nulstil"
+        }
+
+    },
+    "nationPage": {
+        "noRiders": "{nation} har ingen ryttere med point endnu.",
+        "profile": {
+            "placement": "Rangering all time",
+            "points": "Point",
+            "activePlacement": "Rangering (kun aktive)",
+            "activePoints": "Point (kun aktive)",
+            "numberOfRidersWithPoints": "Antal ryttere med point",
+            "resultCount": "Antal pointgivende resultater",
+            "greatestRiders": "Største ryttere fra {nation}",
+            "no": "nr."
+        },
+        "charts": {
+            "yearlyRankings": "Placering på sæsonranglisten",
+            "yearlyRankingsAcc": "Udvikling i all time-placering",
+            "yearlyPoints": "Point optjent hvert år",
+            "yearlyResultsAmount": "Antal pointgivende resultater hvert år",
+            "yearlyCategoryPoints": "Point optjent hvert år fordelt efter resultattype",
+            "categoryPoints": "Pointfordeling efter type af resultat"
+        },
+        "greatestResults": {
+            "title": "Største resultater af ryttere fra {nation}"
+        },
+        "tables": {
+            "greatestRiders": "Største ryttere fra {nation}",
+            "greatestActiveRiders": "Største aktive ryttere fra {nation}"
+        },
+        "resultsEachYear": {
+            "title": "Pointgivende resultater pr. sæson",
+            "results": "Resultater",
+            "noResults": "Ingen resultater",
+            "highlights": "Højdepunkter",
+            "pointsInYear": "Point i {year}",
+            "pointsAllTime": "Point all time",
+            "placementForYear": "Placering all time",
+            "placementOnPrestigeList": "Placering på Prestigelisten",
+            "movementOnPrestigeList": "Udvikling all time",
+            "numberOfResults": "Antal pointgivende resultater",
+            "mostPoints": "Ryttere med flest point optjent i {year}"
+        },
+        "racesAndTeamsTables": {
+            "pointGivingRaces": "Pointgivende løb i {nation}",
+            "teamsWithPoints": "Hold fra {nation}"
+        }
+    },
+    "omPrestigelisten": {
+        "title": "Om Prestigelisten",
+        "description1": "Velkommen til - her har du vores bud på en rangering over ryttere med de mest prestigefyldte resultater i landevejscyklingens verden.",
+        "description2": "Prestigelistens primære formål er at give mulighed for at sammenligne ryttere over tid. Vi har tilstræbt at vægte pointsystemet, så hverken de nutidige eller de ældste ryttere favoriseres i for høj grad. Vi har forsøgt at balancere det, så det stigende antal prestigefyldte løb gennem de seneste 150 år udlignes af den forøgede konkurrence i verdenseliten.",
+        "description3": "Prestigelisten er baseret på data helt tilbage fra den første udgave af Milano-Torino i 1876, hvilket vil sige i alt mere end 30.000 placeringer fordelt på de flere end 4.000 forskellige ryttere, der har opnået mindst ét af de omkring 1000 pointgivende resultater.",
+        "description4": "Løbsresultaterne er primært er hentet fra ProCyclingStats og CyclingRanking. Alle ryttere er skrevet uden eventuel omlyd eller specialtegn for at undgå fejl, hvor rytterne ikke får godskrevet deres point.",
+        "description5": "Pointsystemet er primært baseret på egne vurderinger, men vi har ved nogle af de ældre resultater støttet os til CyclingRankings opgørelser, som blandt andet lægger vægt på, hvor stærkt løbene var besat. Vi mener derfor, at vores pointsystem er kvalificeret og gennemdiskuteret, men man kan selv trække fra eller lægge til, som man finder bedst.",
+        "description6": "Og så lidt om elefanten i rummet - doping. I vores optik findes der tre grupper af dopede ryttere - dem der har fået frataget alt, dem der ikke har fået frataget noget, og dem der aldrig er blevet opdaget. For at behandle alle så ens som muligt er Prestigelisten blevet til ud fra den præmis, at løbene afgøres på cyklen. Derfor har vi tildelt point ud fra de oprindelige resultater, og så står det naturligvis enhver frit for at tage eventuelle forbehold.",
+        "description7": "God fornøjelse!",
+        "description8": "Mathias S. Jensen og Mathias Fisker Mundbjerg"
+    },
+    "pointGivingResultsInYear": {
+        "title": "Pointgivende resultater i {year}"
+    },
+    "pointSystems": {
+        "title": "Pointsystem"
+    },
+    "riderPage": {
+        "profile": {
+            "nationality": "Nationalitet",
+            "year": "Årgang",
+            "team": "Hold",
+            "allTimePlacement": "Placering all time",
+            "nationPlacement": "Placering blandt ryttere fra {nation}",
+            "activePlacement": "Placering (kun aktive)",
+            "points": "Point",
+            "greatestResults": "Største resultater",
+            "source": "Kilde"
+        },
+        "charts": {
+            "yearlyRankings": "Placering på sæsonranglisten",
+            "yearlyRankingsAcc": "Udvikling i all time-placering",
+            "yearlyPoints": "Point optjent hvert år",
+            "yearlyResultsAmount": "Antal pointgivende resultater hvert år",
+            "yearlyCategoryPoints": "Point optjent hvert år fordelt efter resultattype",
+            "categoryPoints": "Pointfordeling efter type af resultat"
+        },
+        "resultsEachYear": {
+            "title": "Resultater hvert år",
+            "results": "Resultater",
+            "noResults": "Ingen resultater",
+            "highlights": "Højdepunkter",
+            "pointsInYear": "Point i {year}",
+            "pointsEntireCareer": "Point all time",
+            "placementForYear": "Placering på sæsonranglisten",
+            "placementOnPrestigeList": "Placering all time",
+            "movementOnPrestigeList": "Udvikling all time",
+            "resultCount": "Antal pointgivende resultater"    
+        },
+        "tables": {
+            "greatestRidersFromNation": "Største ryttere fra {nation}",
+            "greatestRidersFromYear": "Største ryttere født i {year}"
+        },
+        "allResults": {
+            "title": "Alle resultater",
+            "showAll": "Vis alle resultater..."
+        }
+    },
+    "comparePage": {
+        "title": "Sammenlign ryttere eller nationer på Prestigelisten",
+        "riders": "Ryttere",
+        "nations": "Nationer",
+        "remove": "Fjern",
+        "rider": {
+            "title": "Sammenlign ryttere",
+            "agePointsTitle": "Point optjent på hvert alderstrin",
+            "ageAccumulatedPointsTitle": "Akkumulerede point på hvert alderstrin",
+            "removeRider": "Fjern rytter",
+            "riderInformation": "Rytterinformation",
+            "nationality": "Nationalitet",
+            "team": "Hold",
+            "year": "Årgang",
+            "pointsAndResults": "Point/resultater",
+            "placementAlltime": "Placering all time",
+            "placementActive": "Placering (kun aktive)",
+            "numberOfResults": "Antal resultater",
+            "points": "Point",
+            "categoryPoints": "Kategoriserede point",
+            "greatestResults": "Største resultater",
+            "pointsGained": "Point optjent",
+            "pointsAllTime": "Point all time",
+            "placementForYear": "Placering for year",
+            "age": "Alder",
+            "greatestSeasonYear": "Største sæson",
+            "greatestSeasonPoints": "Point i største sæson"
+        },
+        "nation": {
+            "title": "Sammenlign nationer",
+            "pointsGainedEachYear": "Point optjent hvert år",
+            "yearlyRankings": "All time placering hvert år",
+            "removeNation": "Fjern nation",
+            "pointInformation": "Point/placeringer",
+            "points": "Point",
+            "placement": "Placering all time",
+            "placementActive": "Placering (kun aktive)",
+            "pointsActive": "Point (kun aktive)",
+            "numberOfResults": "Antal resultater",
+            "numberOfRidersWithPoints": "Antal ryttere med point",
+            "pointsPerRider": "Point pr. rytter",
+            "results": "Resultater",
+            "firstPointGivingResult": "Første pointgivende resultat",
+            "latestPointGivingResult": "Seneste pointgivende resultat",
+            "categoryPoints": "Kategoriserede point",
+            "greatestResults": "Største resultater",
+            "pointsGained": "Point optjent",
+            "pointsAllTime": "Point all time",
+            "placementForYear": "Placering dette år",
+            "year": "År",
+            "placementLabel": "Placering",
+            "greatestSeasonYear": "Største sæson",
+            "greatestSeasonPoints": "Point i største sæson"
+        }
+    },
+    "twitterCard": {
+        "points": "Point",
+        "allTime": "All time",
+        "active": "Aktive",
+        "fromYear": "Født i {year}",
+        "alltimePlacement": "All time-placering",
+        "placementActive": "Placering blandt aktive ryttere",
+        "greatestResults": "Største resultater",
+        "placementsOnPrestigeList": "Placeringer på Prestigelisten",
+        "and": "og"
+    },
+
+    "metadata": {
+        "homepage": {
+            "title": "Prestigelisten - Rangliste over de største cykelryttere",
+            "description": "Prestigelisten er en opgørelse over de største cykelryttere inden for cykelsporten - mere specifikt landevejscykling. Opgørelsen omfatter data om ryttere helt tilbage fra det første cykelløb i 1876."
+        },
+        "about": {
+            "title": "Om Prestigelisten",
+            "description": "Prestigelisten er en historisk rangering af de største cykelryttere i landevejscykling baseret på mest prestigefyldte resultater siden 1876."
+        },
+        "calendar": {
+            "title": "Løbskalender - Prestigelisten",
+            "description": "Kalender for pointgivende cykelløb for indeværende sæson."
+        },
+        "compare": {
+            "title": "Sammenlign ryttere eller nationer - Prestigelisten",
+            "description": "Sammenlign ryttere eller nationer på Prestigelisten."
+        },
+        "compareRiders": {
+            "title": "Sammenlign ryttere - Prestigelisten",
+            "description": "Sammenlign cykelryttere på Prestigelisten på point optjent, løbsresultater, point på hvert alderstrin og løbskategorier."
+        },
+        "compareNations": {
+            "title": "Sammenlign nationer - Prestigelisten",
+            "description": "Sammenlign nationer på Prestigelisten på point optjent, løbsresultater, point på hvert alderstrin og løbskategorier."
+        },
+        "nation": {
+            "title": "{nation} - Prestigelisten",
+            "description": "{nation} som en cykelnation, deres største ryttere, løb and løbsresultater."
+        },
+        "pointScale": {
+            "title": "Pointsystem - Prestigelisten",
+            "description": "Pointsystem for Prestigelisten"
+        },
+        "race": {
+            "title": "{race} - Prestigelisten",
+            "description": "Resultater for, point optjent i og løbskategori for {race} gennem tiden.",
+            "race": "Løb"
+        },
+        "nationsRankings": {
+            "title": "De største cykelnationer - Prestigelisten",
+            "description": "En opgørelse over de største nationer i cykelsporten, de største 3 cykelryttere fra hver nation, antal ryttere, point per rytter og nationens udvikling som cykelnation"
+        },
+        "3YearSpan": {
+            "title": "3-årig periode - Prestigelisten",
+            "description": "Flest point optjent af ryttere over en 3-årige periode samt deres resultater i perioden."
+        },
+        "ageRanking": {
+            "title": "Flest point optjent som {age}-årig - Prestigelisten",
+            "description": "Flest point optjent af ryttere som {age}-årig"
+        },
+        "ageRankingNoneChosen": {
+            "title": "Flest point optjent på hvert alderstrin - Prestigelisten",
+            "description": "Flest point optjent af ryttere på hvert alderstrin"
+        },
+        "greatestSeasons": {
+            "title": "Største individuelle sæsoner",
+            "description": "De største individuelle sæsoner for ryttere samt deres resultater for sæsonen."
+        },
+        "ridersRankings": {
+            "title": "De største cykelryttere - Prestigelisten",
+            "description": "En rangliste over de største cykelryttere i historien. Filtrér og rangér efter årgange, nationaliteter, aktive ryttere, inaktive ryttere og all time."
+        },
+        "resultsThisYear": {
+            "title": "Resultater i år - Prestigelisten",
+            "description": "Pointgivende resultater i år, og rytteres udvikling på Prestigelisten."
+        },
+        "riderPage": {
+            "title": "{rider} - Prestigelisten",
+            "description": "{rider}s placering på Prestigelisten og resultater gennem karrieren.",
+            "rider": "Rytter"
+        },
+        "teamsOverview": {
+            "title": "Hold - Prestigelisten",
+            "description": "Cykelhold med ryttere, der har optjent point på Prestigelisten."
+        },
+        "teamPage": {
+            "title": "{team} - Prestigelisten",
+            "description": "Ryttere på {team} og deres resultater for indeværende sæson."
+        },
+        "seasonOverview": {
+            "title": "{year} - Prestigelisten",
+            "description": "Oversigt over {year}-sæsonen - Flest point optjent i {year}, største ryttere og nationer all time i {year}, største ryttere født i {year} og resultater i {year}."
+        },
+        "seasonRedirectPage": {
+            "title": "Sæsonoversigt - Prestigelisten",
+            "description": "Oversigt over bestemte sæsoner - Flest point optjent i sæsonen, største ryttere og nationer all time for året, største ryttere født i året og resultater i sæsonen."
+        }
+    }
+}

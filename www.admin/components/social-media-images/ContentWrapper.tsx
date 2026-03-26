@@ -33,7 +33,8 @@ export default function ContentWrapper({
     riderPoints: Tables<"riders">[],
     pointSystem: Tables<"point_system">[],
 }>) {
-    const ref = useRef<HTMLDivElement>(null);
+    const refEn = useRef<HTMLDivElement>(null);
+    const refDa = useRef<HTMLDivElement>(null);
 
     const [settings, setSettings] = useState<Settings>({
         textSize: 36,
@@ -50,14 +51,27 @@ export default function ContentWrapper({
     
     return (
         <div className="flex justify-evenly flex-wrap items-center w-screen gap-y-8 my-8">
-            <TwitterCard 
-                rider={rider} 
-                rankingEvolutions={rankingEvolutions} 
-                settings={settings}
-                ref={ref as React.RefObject<HTMLDivElement>}
-                riderPoints={riderPoints}
-                pointSystem={pointSystem}
-            />
+            <div className="grid gap-4">
+                <TwitterCard 
+                    rider={rider} 
+                    rankingEvolutions={rankingEvolutions} 
+                    settings={settings}
+                    ref={refEn as React.RefObject<HTMLDivElement>}
+                    riderPoints={riderPoints}
+                    pointSystem={pointSystem}
+                    locale="en"
+                />
+
+                <TwitterCard 
+                    rider={rider} 
+                    rankingEvolutions={rankingEvolutions} 
+                    settings={settings}
+                    ref={refDa as React.RefObject<HTMLDivElement>}
+                    riderPoints={riderPoints}
+                    pointSystem={pointSystem}
+                    locale="da"
+                />
+            </div>
             <div className="flex flex-col gap-y-2">      
                 <Toolbox
                     settings={settings}
@@ -66,8 +80,8 @@ export default function ContentWrapper({
                     rankingEvolutions={rankingEvolutions}
                 />
                 <div className="flex flex-col gap-y-2">
-                    <Button onClick={() => handleSnapshot(ref as React.RefObject<HTMLDivElement>, rider.id, false, "en")}>Download</Button>
-                    <Button onClick={() => handleSnapshot(ref as React.RefObject<HTMLDivElement>, rider.id, true, "en")}>Upload</Button>
+                    <Button onClick={() => handleSnapshot(refEn as React.RefObject<HTMLDivElement>, rider.id, false, "en")}>Download</Button>
+                    <Button onClick={() => handleSnapshot(refEn as React.RefObject<HTMLDivElement>, rider.id, true, "en")}>Upload</Button>
                     {/* <Button href={`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/${locale}_twitter-images/${rider.id}.png`} target="_blank">Revalidér billede</Button> */}
                 </div>
             </div>

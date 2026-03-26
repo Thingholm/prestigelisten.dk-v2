@@ -1,20 +1,23 @@
-import { Rider, RidersWithNationAndTeam } from "@/db/rider";
 import { Settings } from "./ContentWrapper";
-import { useTranslations } from "next-intl";
-import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "@/components/table";
+import { RiderNameCell, Table, TableBody, TableCell, TableColumn, TableHead, TableRow, YearCell } from "./table";
+import { Tables } from "@/lib/supabase/database.types";
+import { Rider } from "@/lib/db/riders";
 import { rankBy } from "@/lib/helpers/rank";
+import { useT } from "@/lib/helpers/translations";
 
 export default function RankingsTableSection({
     rider,
     riderPoints,
-    settings
+    settings,
+    locale
 }: Readonly<{
     rider: Rider,
-    riderPoints: RidersWithNationAndTeam,
-    settings: Settings
+    riderPoints: Tables<"riders">[],
+    settings: Settings,
+    locale: "en" | "da"
 }>) {
-    const t = useTranslations("twitterCard");
-    const tTableColumns = useTranslations("tableColumns");
+    const t = useT("twitterCard", locale);
+    const tTableColumns = useT("tableColumns", locale);
 
     const rankedRiders = rankBy(riderPoints, "points")
 
