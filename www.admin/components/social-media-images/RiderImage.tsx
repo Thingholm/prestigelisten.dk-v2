@@ -8,24 +8,26 @@ import { useT } from "@/lib/helpers/translations";
 
 export default function RiderImage({ 
     rider,
-    className
+    className,
+    size = 200,
 }: Readonly<{
     rider: Rider,
-    className?: string
+    className?: string,
+    size?: number,
 }>) {
     const t = useT("riderPage.profile", "en");
     const [imgSrc, setImgSrc] = useState(`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/rider_portraits//${rider.id}.jpg`);
 
     return (
-        <div className={`${className}`}>
+        <div className={`${className} flex-shrink-0`}>
             <Image
                 src={imgSrc} 
                 onError={() => setImgSrc(`https://ijyqomzpcigbnwjjohrd.supabase.co/storage/v1/object/public/rider_portraits//nopicture.jpg`)}
-                width={200}
-                height={200}
+                width={size}
+                height={size}
                 alt={`${rider.first_name} ${rider.last_name} portræt`}
                 className="rounded-2xl aspect-square"
-                style={!className ? {height: 200, width: 200} : {}}
+                style={{height: size, width: size}}
             />
             {rider.images && 
                 <p className="text-sm text-gray-500 mt-1">

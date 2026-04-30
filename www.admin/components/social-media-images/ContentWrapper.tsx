@@ -8,6 +8,7 @@ import { Rider } from "@/lib/db/riders";
 import { Tables } from "@/lib/supabase/database.types";
 import { Button } from "../ui/button";
 import { RankingEvolution } from "@/app/dashboard/some-images/[id]/page";
+import InstagramCard from "./InstagramCard";
 
 export type Settings = {
     textSize: number;
@@ -70,6 +71,16 @@ export default function ContentWrapper({
                     riderPoints={riderPoints}
                     pointSystem={pointSystem}
                     locale="da"
+                />
+            
+                <InstagramCard 
+                    rider={rider} 
+                    rankingEvolutions={rankingEvolutions} 
+                    settings={settings}
+                    ref={refEn as React.RefObject<HTMLDivElement>}
+                    riderPoints={riderPoints}
+                    pointSystem={pointSystem}
+                    locale="en"
                 />
             </div>
             <div className="flex flex-col gap-y-2">      
