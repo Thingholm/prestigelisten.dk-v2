@@ -731,7 +731,7 @@
         "result(s)": "Result(s)",
         "result": "Result",
         "greatestResults": "Greatest results",
-        "pointsGained": "Points gained",
+        "pointsGained": "Points earned",
         "date": "Date",
         "numberOfRiders": "Rider count",
         "pointsPerRider": "Points per rider",
@@ -1144,7 +1144,7 @@
         },
         "resultsThisYear": {
             "title": "Results This Year - Prestigelisten",
-            "description": "Prestigelisten point-giving results this year, along with riders development."
+            "description": "Prestigelisten results this year, along with riders development."
         },
         "riderPage": {
             "title": "{rider} - Prestigelisten",
