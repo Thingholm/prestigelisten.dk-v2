@@ -8,7 +8,8 @@ export default function ListTable({
     rowAmount,
     highlightedRiderId,
     alltimeRankingsLookupList,
-    isFiltered
+    isFiltered,
+    isPending
 }: Readonly<{
     riders: Ranked<RidersWithNationAndTeam[number]>[],
     rowAmount: number,
@@ -17,7 +18,8 @@ export default function ListTable({
         id: number;
         points: number;
     }>[],
-    isFiltered: boolean
+    isFiltered: boolean,
+    isPending: boolean,
 }>) {
     const t = useTranslations("tableColumns");
     
@@ -35,27 +37,36 @@ export default function ListTable({
                 <TableColumn>{t("points")}</TableColumn>
             </TableHead>
             <TableBody>
-                {riders.slice(0, rowAmount).map(rider => {
-                    const alltimeRanking = alltimeRankingsLookupList.find(alltimeRanking => alltimeRanking.id == rider.id)?.rank;
-
-                    return (
-                        <TableRow 
-                            key={rider.id} 
-                            id={`rider-${rider.id}`} 
-                            isHighlighted={rider.id == highlightedRiderId}
-                        >
-                            <TableCell>
-                                <span className="pr-1.5 sm:pr-0">{rider.rank}</span>
-                                {isFiltered && <SecondaryCellSpan className="table-cell sm:hidden">{alltimeRanking}</SecondaryCellSpan>}
+                {isPending
+                    ? Array.from({ length: rowAmount }, (_, index) => (
+                        <TableRow key={index}>
+                            <TableCell colSpan={6}>
+                                <div className="w-full h-5 my-0.5 bg-gray-200 animate-pulse rounded-md"></div>
                             </TableCell>
-                            {isFiltered && <TableCell className="hidden sm:table-cell">{alltimeRanking}</TableCell>}
-                            <RiderNameCell rider={rider} showFlagBreakpoint="sm"/>
-                            <NationNameCell nation={rider.nations} className="hidden sm:table-cell"/>
-                            <YearCell year={rider.year}/>
-                            <TableCell>{rider.points}</TableCell>
                         </TableRow>
-                    )
-                })}
+                    ))
+                    : riders.slice(0, rowAmount).map(rider => {
+                        const alltimeRanking = alltimeRankingsLookupList.find(alltimeRanking => alltimeRanking.id == rider.id)?.rank;
+
+                        return (
+                            <TableRow 
+                                key={rider.id} 
+                                id={`rider-${rider.id}`} 
+                                isHighlighted={rider.id == highlightedRiderId}
+                            >
+                                <TableCell>
+                                    <span className="pr-1.5 sm:pr-0">{rider.rank}</span>
+                                    {isFiltered && <SecondaryCellSpan className="table-cell sm:hidden">{alltimeRanking}</SecondaryCellSpan>}
+                                </TableCell>
+                                {isFiltered && <TableCell className="hidden sm:table-cell">{alltimeRanking}</TableCell>}
+                                <RiderNameCell rider={rider} showFlagBreakpoint="sm"/>
+                                <NationNameCell nation={rider.nations} className="hidden sm:table-cell"/>
+                                <YearCell year={rider.year}/>
+                                <TableCell>{rider.points}</TableCell>
+                            </TableRow>
+                        )
+                    })
+                }
             </TableBody>
         </Table>
     )

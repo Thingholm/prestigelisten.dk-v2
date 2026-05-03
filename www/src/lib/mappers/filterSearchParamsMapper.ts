@@ -11,6 +11,14 @@ export function filterToSearchParamsMapper(filter: RidersFilter, defaultFilter: 
     
     if (filter.bornAfterOrIn != defaultFilter.bornAfterOrIn) params.set("bornAfterOrIn", filter.bornAfterOrIn.toString());
 
+    if (filter.yearRange?.start != defaultFilter.yearRange?.start) {
+        params.set("yearRangeStart", filter.yearRange?.start.toString() ?? "")
+    }
+
+    if (filter.yearRange?.end != defaultFilter.yearRange?.end) {
+        params.set("yearRangeEnd", filter.yearRange?.end.toString() ?? "")
+    }
+
     if (JSON.stringify(defaultFilter.nations) != JSON.stringify(filter.nations)) {
         const nations = filter.nations.filter(nation => nation) as number[]
         if (nations.length > 0) {
@@ -47,6 +55,28 @@ export function searchParamsToFilterMapper(searchParams: URLSearchParams, defaul
         const year = parseInt(bornAfterOrIn)
         if (!isNaN(year)) {
             newFilter.bornAfterOrIn = year
+        }
+    }
+
+    const yearRangeStart = searchParams.get("yearRangeStart");
+    if (yearRangeStart) {
+        const year = parseInt(yearRangeStart);
+        if (!isNaN(year)) {
+            newFilter.yearRange = {
+                start: year,
+                end: newFilter.yearRange?.end ?? defaultFilter.yearRange?.end ?? year,
+            };
+        }
+    }
+
+    const yearRangeEnd = searchParams.get("yearRangeEnd");
+    if (yearRangeEnd) {
+        const year = parseInt(yearRangeEnd);
+        if (!isNaN(year)) {
+            newFilter.yearRange = {
+                start: newFilter.yearRange?.start ?? defaultFilter.yearRange?.start ?? year,
+                end: year,
+            };
         }
     }
 

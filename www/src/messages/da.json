@@ -908,7 +908,9 @@
             "activeOnly": "Kun aktive ryttere",
             "inactiveOnly": "Kun inaktive ryttere",
             "search": "Søg",
-            "resetFilter": "Nulstil"
+            "resetFilter": "Nulstil",
+            "resultsFrom": "Resultater fra",
+            "resultsTo": "Resultater til"
         }
 
     },

@@ -166,3 +166,25 @@ export const getNationCountEachSeason = unstable_cache(async () => {
 const NationCountQuery = supabaseServer.rpc('get_nation_season_counts_by_year');
 
 export type NationCount = QueryData<typeof NationCountQuery>[number];
+
+export const getRiderSeasonPointsForRange = (start: number, end: number) => unstable_cache(async () => {
+    const { data, error } = await riderSeasonPointsForRangeQuery().gte("year", start).lte("year", end).not("points_for_year", "is", null);
+
+    if (error) { throw error; }
+
+    return data as RiderSeasonPoints[];
+}, ["riderSeasonPointsForRange", start.toString(), end.toString()], { 
+    revalidate: 60 * 60 * 24 * 7,
+    tags: ["all"]
+});
+
+const riderSeasonPointsForRangeQuery = () => supabaseServer
+    .from("rider_seasons")
+    .select(`
+        id,
+        rider_id,
+        points_for_year,
+        year
+    `);
+
+export type RiderSeasonPoints = QueryData<ReturnType<typeof riderSeasonPointsForRangeQuery>>[number];

@@ -3,7 +3,7 @@
 import Section from "@/components/layout/Section";
 import ListTable from "../_tables/ListTable";
 import { rankBy } from "@/lib/helpers/rank";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import Button from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
 import BirthYearsFilterSubsection from "./BirthYearsFilterSubsection";
@@ -15,6 +15,8 @@ import { filterToSearchParamsMapper, searchParamsToFilterMapper } from "@/lib/ma
 import { IoReload } from "react-icons/io5";
 import RidersSearchBar from "../_components/RiderSearchBar";
 import { RidersWithNationAndTeam } from "@/db/rider";
+import { getRiderPointsForRange } from "@/app/actions/rider-seasons-points";
+import PointsYearRangeFilterSubsection from "./PointsYearRangeFilterSubsection";
 
 export type RidersFilter = {
     status: "all" | "active" | "inactive";
@@ -22,9 +24,12 @@ export type RidersFilter = {
     bornBeforeOrIn: number;
     bornAfterOrIn: number;
     nations: (number | undefined)[];
+    yearRange: { start: number; end: number } | null;
 }
 
 const defaultRowAmount = 100;
+const MIN_SEASON_YEAR = 1876;
+const MAX_SEASON_YEAR = new Date().getFullYear();
 
 export default function ListSection({
     riders,
@@ -48,13 +53,40 @@ export default function ListSection({
         isSingleYear: false,
         bornBeforeOrIn: maxBirthYear,
         bornAfterOrIn: minBirthYear,
-        nations: [undefined]
+        nations: [undefined],
+        yearRange: null,
     }
 
     const [filter, setFilter] = useState(searchParamsToFilterMapper(searchParams, defaultFilter))
     const [rowAmount, setRowAmount] = useState(defaultRowAmount)
     const [highlightedRiderId, setHighlightedRiderId] = useState<number | null>(null);
     const isFiltered = JSON.stringify(filter) != JSON.stringify(defaultFilter);
+
+    const [yearRangeRiders, setYearRangeRiders] = useState<RidersWithNationAndTeam | null>(null);
+    const [isPending, startTransition] = useTransition();
+
+    useEffect(() => {
+        if (!filter.yearRange) {
+            setYearRangeRiders(null);
+            return;
+        }
+
+        const { start, end } = filter.yearRange;
+
+        startTransition(async () => {
+            const riderPointsRange = await getRiderPointsForRange(start, end);
+            const ranked = rankBy(
+                riderPointsRange.map((r) => ({
+                    ...riders.find((ri) => ri.id === r.rider_id)!,
+                    points: r.points_for_year,
+                })),
+                "points"
+            );
+            setYearRangeRiders(ranked);
+        });
+    }, [filter.yearRange?.start, filter.yearRange?.end]);
+
+    const baseRiders = filter.yearRange ? (yearRangeRiders ?? []) : riders;
 
     const filterRiders = (riders: RidersWithNationAndTeam) => {
         return riders.filter(rider => {
@@ -78,7 +110,7 @@ export default function ListSection({
     }
 
     const alltimeRankingsLookupList = rankBy(riders.map(rider => ({ id: rider.id, points: rider.points })), "points");
-    const rankedAndFilteredRiders = rankBy(filterRiders(riders), "points")
+    const rankedAndFilteredRiders = rankBy(filterRiders(baseRiders), "points")
 
     useEffect(() => {
         setRowAmount(defaultRowAmount)
@@ -120,6 +152,12 @@ export default function ListSection({
                     nations={nations}
                 />
                 <StatusFilterSubsection filter={filter} setFilter={setFilter}/>
+                <PointsYearRangeFilterSubsection
+                    filter={filter}
+                    setFilter={setFilter}
+                    minSeasonYear={MIN_SEASON_YEAR}
+                    maxSeasonYear={MAX_SEASON_YEAR}
+                />
                 <div>
                     <Button 
                         className="flex items-center gap-2"
@@ -143,6 +181,7 @@ export default function ListSection({
                     rowAmount={rowAmount} 
                     highlightedRiderId={highlightedRiderId}
                     isFiltered={isFiltered}
+                    isPending={isPending}
                 />
                 {rowAmount < rankedAndFilteredRiders.length && <Button fill color="secondary" className="!py-1 mt-1" onClick={() => setRowAmount(s => s + 100)}>{t("showMore")}</Button>}
             </div>

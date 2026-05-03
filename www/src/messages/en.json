@@ -907,7 +907,9 @@
             "activeOnly": "Only active riders",
             "inactiveOnly": "Only inactive riders",
             "search": "Search",
-            "resetFilter": "Reset"
+            "resetFilter": "Reset",
+            "resultsFrom": "Results from",
+            "resultsTo": "Results to"
         }
     },
     "nationPage": {

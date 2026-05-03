@@ -2,7 +2,9 @@ import Section from "@/components/layout/Section";
 import PageHeading from "@/components/ui/PageHeading";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import ListSection from "./_sections/ListSection";
-import { getAllRidersWithNationAndTeam, getMaxRiderBirthYear, getMinRiderBirthYear } from "@/db/rider";
+import { getAllRidersWithNationAndTeam, getMaxRiderBirthYear, getMinRiderBirthYear, getRider } from "@/db/rider";
+import { getRiderPointsForRange } from "@/app/actions/rider-seasons-points";
+import { rankBy } from "@/lib/helpers/rank";
 
 export const revalidate = false;
 export const dynamic = 'force-static';
@@ -36,6 +38,9 @@ export default async function RidersListPage({
     const riders = await getAllRidersWithNationAndTeam();
     const minBirthYear = (await getMinRiderBirthYear()).min;
     const maxBirthYear = (await getMaxRiderBirthYear()).max;
+
+    const riderPointsRange = await getRiderPointsForRange(2026, 2026);
+    const rankedRiderPointsRange = rankBy(riderPointsRange.map(r => ({...riders.find(ri => ri.id === r.rider_id)!, points: r.points_for_year})), "points");
 
     const nations = [...new Map(
         riders.map(r => r.nations).map(nation => [nation.id, {...nation, name: tNations(`${nation.code}.name`)}])
