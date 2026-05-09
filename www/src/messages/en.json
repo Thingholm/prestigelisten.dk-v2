@@ -270,6 +270,10 @@
                 "name": "Uzbekistan",
                 "adjective": "Uzbekistani"
             },
+            "uy": {
+                "name": "Uruguay",
+                "adjective": "Uruguayan"
+            },
             "za": {
                 "name": "South Africa",
                 "adjective": "South African"
@@ -616,6 +620,10 @@
         "uz": {
             "name": "Uzbekistan",
             "adjective": "Uzbekistani"
+        },
+        "uy": {
+            "name": "Uruguay",
+            "adjective": "Uruguayan"
         },
         "za": {
             "name": "South Africa",
