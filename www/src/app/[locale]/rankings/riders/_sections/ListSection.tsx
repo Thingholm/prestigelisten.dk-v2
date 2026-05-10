@@ -145,7 +145,7 @@ export default function ListSection({
                 onClick={() => setShowFilter(!showFilter)} 
                 variant="text" 
                 color="secondary" 
-                className="flex justify-between items-center sm:hidden !px-0 hover:bg-transparent! !-mb-2"
+                className="flex justify-between items-center sm:hidden !px-0 hover:bg-transparent! !-mb-2 !mt-3"
             >
                 <p>{showFilter ? tList("hideFilter") : tList("showFilter")}</p>
                 <IoChevronDown className={`${showFilter ? 'rotate-180' : ''} duration-200`} />
