@@ -52,15 +52,15 @@ export default function PointsYearRangeFilterSubsection({
                 </Select>
             </div>
             <div className="gap-2 flex items-center">
-                <label htmlFor="end-year" className={`${filter.isSingleYear ? "hidden" : ""}`}> {t("resultsTo")}</label>
+                <label htmlFor="end-year"> {t("resultsTo")}</label>
                 <Select 
                     name="end-year" 
                     onChange={handleYearRangeChange} 
-                    className={`${filter.isSingleYear ? "hidden" : ""} px-2 py-1 sm:py-0 sm:px-1`}
+                    className={`px-2 py-1 sm:py-0 sm:px-1`}
                     value={filter.yearRange?.end ?? maxSeasonYear}
                 >
                     {[...Array(maxSeasonYear - (filter.yearRange?.start ?? minSeasonYear) + 1)].map((i, index) => {
-                        const year = (filter.yearRange?.start ?? minSeasonYear) + index;
+                        const year = (filter.yearRange?.end ?? maxSeasonYear) - index;
 
                         return (
                             <option 

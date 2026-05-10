@@ -917,7 +917,9 @@
             "search": "Search",
             "resetFilter": "Reset",
             "resultsFrom": "Results from",
-            "resultsTo": "Results to"
+            "resultsTo": "Results to",
+            "showFilter": "Show filters",
+            "hideFilter": "Hide filters"
         }
     },
     "nationPage": {

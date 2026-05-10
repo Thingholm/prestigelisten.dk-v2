@@ -918,7 +918,9 @@
             "search": "Søg",
             "resetFilter": "Nulstil",
             "resultsFrom": "Resultater fra",
-            "resultsTo": "Resultater til"
+            "resultsTo": "Resultater til",
+            "showFilter": "Vis filtre",
+            "hideFilter": "Skjul filtre"
         }
 
     },

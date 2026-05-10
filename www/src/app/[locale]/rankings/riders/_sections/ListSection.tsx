@@ -12,7 +12,7 @@ import NationsFilterSubsection from "./NationsFilterSubsection";
 import StatusFilterSubsection from "./StatusFilterSubsection";
 import { useRouter, useSearchParams } from "next/navigation";
 import { filterToSearchParamsMapper, searchParamsToFilterMapper } from "@/lib/mappers/filterSearchParamsMapper";
-import { IoReload } from "react-icons/io5";
+import { IoChevronDown, IoReload } from "react-icons/io5";
 import RidersSearchBar from "../_components/RiderSearchBar";
 import { RidersWithNationAndTeam } from "@/db/rider";
 import { getRiderPointsForRange } from "@/app/actions/rider-seasons-points";
@@ -64,6 +64,8 @@ export default function ListSection({
 
     const [yearRangeRiders, setYearRangeRiders] = useState<RidersWithNationAndTeam | null>(null);
     const [isPending, startTransition] = useTransition();
+
+    const [showFilter, setShowFilter] = useState(isFiltered);
 
     useEffect(() => {
         if (!filter.yearRange) {
@@ -139,7 +141,16 @@ export default function ListSection({
 
     return (
         <Section className="flex-col">
-            <div className="flex gap-x-96 sm:gap-x-12 md:gap-x-24 gap-y-8 flex-wrap lg:justify-between">
+            <Button 
+                onClick={() => setShowFilter(!showFilter)} 
+                variant="text" 
+                color="secondary" 
+                className="flex justify-between items-center sm:hidden !px-0 hover:bg-transparent! !-mb-2"
+            >
+                <p>{showFilter ? tList("showFilter") : tList("hideFilter")}</p>
+                <IoChevronDown className={`${showFilter ? 'rotate-180' : ''} duration-200`} />
+            </Button>
+            <div className={`${showFilter ? 'flex' : 'hidden sm:flex'} flex gap-x-96 sm:gap-x-12 md:gap-x-24 gap-y-8 flex-wrap lg:justify-between`}>
                 <BirthYearsFilterSubsection 
                     filter={filter} 
                     setFilter={setFilter}
