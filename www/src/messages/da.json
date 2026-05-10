@@ -269,6 +269,10 @@
                 "name": "Usbekistan",
                 "adjective": "Usbekisk"
             },
+            "uy": {
+                "name": "Uruguay",
+                "adjective": "Uruguayansk"
+            },
             "za": {
                 "name": "Sydafrika",
                 "adjective": "Sydafrikansk"
@@ -615,6 +619,10 @@
         "uz": {
             "name": "Usbekistan",
             "adjective": "Usbekisk"
+        },
+        "uy": {
+            "name": "Uruguay",
+            "adjective": "Uruguayansk"
         },
         "za": {
             "name": "Sydafrika",

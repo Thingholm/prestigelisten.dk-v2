@@ -55,5 +55,6 @@ export const nationCodeById: Record<number, string> = {
   54: "bh",
   55: "il",
   56: "ph",
-  57: "mc"
+  57: "mc",
+  59: "uy",
 };
