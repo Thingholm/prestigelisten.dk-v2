@@ -60,7 +60,7 @@ export default function PointsYearRangeFilterSubsection({
                     value={filter.yearRange?.end ?? maxSeasonYear}
                 >
                     {[...Array(maxSeasonYear - (filter.yearRange?.start ?? minSeasonYear) + 1)].map((i, index) => {
-                        const year = (filter.yearRange?.end ?? maxSeasonYear) - index;
+                        const year = (filter.yearRange?.start ?? minSeasonYear) + index;
 
                         return (
                             <option 
