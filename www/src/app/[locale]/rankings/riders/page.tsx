@@ -39,9 +39,6 @@ export default async function RidersListPage({
     const minBirthYear = (await getMinRiderBirthYear()).min;
     const maxBirthYear = (await getMaxRiderBirthYear()).max;
 
-    const riderPointsRange = await getRiderPointsForRange(2026, 2026);
-    const rankedRiderPointsRange = rankBy(riderPointsRange.map(r => ({...riders.find(ri => ri.id === r.rider_id)!, points: r.points_for_year})), "points");
-
     const nations = [...new Map(
         riders.map(r => r.nations).map(nation => [nation.id, {...nation, name: tNations(`${nation.code}.name`)}])
     ).values()].sort((a, b) => a.name.localeCompare(b.name))
