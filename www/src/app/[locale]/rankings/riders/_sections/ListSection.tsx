@@ -147,7 +147,7 @@ export default function ListSection({
                 color="secondary" 
                 className="flex justify-between items-center sm:hidden !px-0 hover:bg-transparent! !-mb-2"
             >
-                <p>{showFilter ? tList("showFilter") : tList("hideFilter")}</p>
+                <p>{showFilter ? tList("hideFilter") : tList("showFilter")}</p>
                 <IoChevronDown className={`${showFilter ? 'rotate-180' : ''} duration-200`} />
             </Button>
             <div className={`${showFilter ? 'flex' : 'hidden sm:flex'} flex gap-x-96 sm:gap-x-12 md:gap-x-24 gap-y-8 flex-wrap lg:justify-between`}>
