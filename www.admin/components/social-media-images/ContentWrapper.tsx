@@ -51,7 +51,7 @@ export default function ContentWrapper({
     });
     
     return (
-        <div className="flex justify-evenly flex-wrap items-center w-screen gap-y-8 my-8">
+        <div className="flex justify-evenly flex-wrap items-center gap-y-8 my-8">
             <div className="grid gap-4">
                 <TwitterCard 
                     rider={rider} 
@@ -71,16 +71,6 @@ export default function ContentWrapper({
                     riderPoints={riderPoints}
                     pointSystem={pointSystem}
                     locale="da"
-                />
-            
-                <InstagramCard 
-                    rider={rider} 
-                    rankingEvolutions={rankingEvolutions} 
-                    settings={settings}
-                    ref={refEn as React.RefObject<HTMLDivElement>}
-                    riderPoints={riderPoints}
-                    pointSystem={pointSystem}
-                    locale="en"
                 />
             </div>
             <div className="flex flex-col gap-y-2">      
