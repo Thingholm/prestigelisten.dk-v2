@@ -126,17 +126,17 @@
 }
 
 .fi-su {
-  background-image: url(../../utils/flags/su.svg) !important;
+  background-image: url(../utils/flags/su.svg) !important;
 }
 
 .fi-dd {
-  background-image: url(../../utils/flags/dd.svg) !important;
+  background-image: url(../utils/flags/dd.svg) !important;
 }
 
 .fi-wc {
-  background-image: url(../../utils/flags/wc.svg) !important;
+  background-image: url(../utils/flags/wc.svg) !important;
 }
 
 .fi-ol {
-  background-image: url(../../utils/flags/ol.svg) !important;
+  background-image: url(../utils/flags/ol.svg) !important;
 }
