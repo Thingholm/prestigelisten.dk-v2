@@ -42,10 +42,10 @@ export function calculateRankingEvolution(results: ResultWithRaceDate[], riderPo
 
         const newRankings = prevRankings;
 
-        prevRankings = JSON.parse(JSON.stringify(rankBy(prevRankings.map(rp => ({
+        prevRankings = rankBy(prevRankings.map(rp => ({
             ...rp,
             points: rp.points - (groupedByRider.find(riderGroup => riderGroup.key == rp.id)?.points ?? 0)
-        })), "points")))
+        })), "points")
 
         return {
             ...group,
@@ -56,4 +56,31 @@ export function calculateRankingEvolution(results: ResultWithRaceDate[], riderPo
     })
 
     return rankingsByDate
+}
+
+export function calculateRankingEvolutionForRider(results: ResultWithRaceDate[], riderPoints: (RidersWithNationAndTeam[number])[], pointSystem: PointSystem, riderId: number): RankingEvolution | null {
+    const groupedResultsByDate = groupResultsByKey(results, pointSystem, r => r.race_dates?.date ?? "other").sort((a, b) => Date.parse(b.key ?? "") - Date.parse(a.key ?? ""));
+
+    let prevRankings = rankBy(riderPoints, "points");
+
+    for (const group of groupedResultsByDate) {
+        const groupedByRider = groupResultsByKey(group.results, pointSystem, r => r.rider_id);
+        const newRankings = prevRankings;
+
+        prevRankings = rankBy(prevRankings.map(rp => ({
+            ...rp,
+            points: rp.points - (groupedByRider.find(riderGroup => riderGroup.key == rp.id)?.points ?? 0)
+        })), "points")
+
+        if (groupedByRider.some(riderGroup => riderGroup.key == riderId)) {
+            return {
+                ...group,
+                results: groupedByRider.sort((a, b) => b.points - a.points),
+                rankings: newRankings,
+                prevRankings: prevRankings
+            }
+        }
+    }
+
+    return null
 }

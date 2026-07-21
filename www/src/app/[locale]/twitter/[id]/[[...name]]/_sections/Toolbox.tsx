@@ -8,12 +8,12 @@ export default function Toolbox({
     settings,
     setSettings,
     rider,
-    rankingEvolutions
+    rankingEvolution
 }: Readonly<{
     settings: Settings,
     setSettings: Dispatch<SetStateAction<Settings>>,
     rider: Rider,
-    rankingEvolutions: RankingEvolution[] | null
+    rankingEvolution: RankingEvolution | null
 }>) {
     return (
         <div className="flex flex-col gap-8">
@@ -43,7 +43,7 @@ export default function Toolbox({
             </div>
 
             <div className="flex flex-col gap-4">
-                <Checkbox label="Vis seneste resultat"  isChecked={settings.showLatestResult} onChange={(e) => setSettings({ ...settings, showLatestResult: e.target.checked })} isDisabled={!rankingEvolutions?.find(e => e.results.some(r => r.key == rider.id))}/>
+                <Checkbox label="Vis seneste resultat"  isChecked={settings.showLatestResult} onChange={(e) => setSettings({ ...settings, showLatestResult: e.target.checked })} isDisabled={!rankingEvolution}/>
                 <Checkbox label="Vis tabel for aktive"  isChecked={settings.showActiveRankingTable} onChange={(e) => setSettings({ ...settings, showActiveRankingTable: e.target.checked })} isDisabled={!rider.active}/>
             </div>
 

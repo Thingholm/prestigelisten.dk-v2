@@ -9,22 +9,20 @@ import { PointSystem } from "@/db/pointSystem";
 import GroupedResults from "./GroupedResults";
 
 export default function TwitterCard({
-    rankingEvolutions,
+    rankingEvolution,
     rider,
     settings,
     ref,
     riderPoints,
     pointSystem
 }: Readonly<{
-    rankingEvolutions:  RankingEvolution[] | null,
+    rankingEvolution:  RankingEvolution | null,
     rider: Rider,
     settings: Settings,
     ref: React.RefObject<HTMLDivElement>,
     riderPoints: RidersWithNationAndTeam,
     pointSystem: PointSystem
 }>) {
-    const rankingEvolution = rankingEvolutions?.find(e => e.results.some(r => r.key == rider.id));
-
     return (
         <div className="h-[400px] w-[765px] flex" ref={ref}>
             <Profile rider={rider} settings={settings}/>

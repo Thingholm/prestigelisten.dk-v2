@@ -24,12 +24,12 @@ export type Settings = {
 }
 
 export default function ContentWrapper({
-    rankingEvolutions,
+    rankingEvolution,
     rider,
     riderPoints,
     pointSystem
 }: Readonly<{
-    rankingEvolutions:  RankingEvolution[] | null,
+    rankingEvolution:  RankingEvolution | null,
     rider: Rider,
     riderPoints: RidersWithNationAndTeam,
     pointSystem: PointSystem
@@ -46,26 +46,26 @@ export default function ContentWrapper({
         showActiveRankingTable: rider.active ? true : false,
         colorHex: "#D1D5DB",
         whiteText: false,
-        showLatestResult: rankingEvolutions != null,
+        showLatestResult: rankingEvolution != null,
         sortResultsBy: "isolated",
     });
     
     return (
         <div className="flex justify-evenly flex-wrap items-center w-screen gap-y-8 my-8">
-            <TwitterCard 
-                rider={rider} 
-                rankingEvolutions={rankingEvolutions} 
+            <TwitterCard
+                rider={rider}
+                rankingEvolution={rankingEvolution}
                 settings={settings}
                 ref={ref as React.RefObject<HTMLDivElement>}
                 riderPoints={riderPoints}
                 pointSystem={pointSystem}
             />
-            <div className="flex flex-col gap-y-2">      
+            <div className="flex flex-col gap-y-2">
                 <Toolbox
                     settings={settings}
                     setSettings={setSettings}
                     rider={rider}
-                    rankingEvolutions={rankingEvolutions}
+                    rankingEvolution={rankingEvolution}
                 />
                 <div className="flex flex-col gap-y-2">
                     <Button onClick={() => handleSnapshot(ref as React.RefObject<HTMLDivElement>, rider.id, false, locale)}>Download</Button>
